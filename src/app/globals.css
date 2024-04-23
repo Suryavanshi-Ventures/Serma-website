@@ -19,7 +19,12 @@
 @font-face {
   font-family: "Helvetica";
   src: url("/fonts/Helvetica.ttf") format("truetype");
-  /* Additional font properties (e.g., font-weight, font-style) can be specified here */
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/Helvetica-Bold.ttf") format("truetype");
+  font-weight: 700;
 }
 
 body {
