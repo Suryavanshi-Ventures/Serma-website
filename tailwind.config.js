@@ -11,6 +11,9 @@ module.exports = {
         primary: "#C42C2D",
         secondary: "#03989E"
       },
+      fontFamily: {
+        helvetica: ['var(--font-helvetica)'],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
