@@ -1,30 +1,149 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
+
 const Header = () => {
-    return (
-        <div className="z-10 max-w-5xl w-full items-center justify-between  text-sm lg:flex">
-            <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-                Get started by editing&nbsp;
-                <code className=" font-bold">src/app/page.js</code>
-            </p>
-            <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-                <a
-                    className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-                    href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    By{" "}
-                    <Image
-                        src="/vercel.svg"
-                        alt="Vercel Logo"
-                        className="dark:invert"
-                        width={100}
-                        height={24}
-                        priority
-                    />
-                </a>
-            </div>
+  const [showAboutDropdown, setShowAboutDropdown] = useState(false);
+  const [showMenuItems, setShowMenuItems] = useState(false);
+  const [handleVectorChange, setHandleVectorChange] = useState(false);
+  const toggleAboutDropdown = () => {
+    setShowAboutDropdown(!showAboutDropdown);
+  };
+  const handleOpenMenu = () => {
+    setShowMenuItems(!showMenuItems);
+  };
+
+  return (
+    <header className="p-5 relative">
+      <div className="flex justify-between lg:justify-around items-center w-full gap-0  xxl:gap-10  ">
+        <div className="">
+          <Image src="/logo.svg" height={60} width={135} alt="Logo" />
         </div>
-    )
-}
+
+        <ul className=" hidden lg:flex gap-7 xxl:gap-12  animate-flip-down  text-[18px] ">
+          <li className="font-normal cursor-pointer">Home</li>
+          <li className="font-normal cursor-pointer">Event</li>
+          <li className="font-normal cursor-pointer">The Sermapod</li>
+          <li
+            className="flex justify-center items-center gap-2 cursor-pointer bg-white relative font-normal"
+            onClick={toggleAboutDropdown}
+          >
+            About{" "}
+            <span>
+              <svg
+                width="16"
+                height="9"
+                viewBox="0 0 16 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={`transform ${
+                  showAboutDropdown ? "rotate-180 animate-fade" : "animate-fade"
+                }`}
+              >
+                <path
+                  d="M7.99996 10.0599C7.71321 10.0599 7.42649 9.95042 7.20787 9.7319L0.328226 2.85219C-0.109409 2.41455 -0.109409 1.705 0.328226 1.26755C0.765684 0.830089 1.47509 0.830089 1.91276 1.26755L7.99996 7.3551L14.0872 1.26776C14.5248 0.830301 15.2342 0.830301 15.6716 1.26776C16.1094 1.70522 16.1094 2.41477 15.6716 2.8524L8.79205 9.73211C8.57332 9.95066 8.2866 10.0599 7.99996 10.0599Z"
+                  fill="#111111"
+                />
+              </svg>
+            </span>{" "}
+            {showAboutDropdown && (
+              <ul className="absolute animate-fade p-5 w-[200px] space-y-2 rounded-lg left-0 top-8 bg-white shadow-lg py-2">
+                <li className="hover:text-primary cursor-pointer">About Us</li>
+                <li className="hover:text-primary cursor-pointer">Advisory Board</li>
+              </ul>
+            )}
+          </li>
+          <li className="font-normal cursor-pointer">Membership Only Content</li>
+          <li className="font-normal cursor-pointer">Contact US</li>
+        </ul>
+
+        <div>
+          <button
+            onMouseEnter={() => setHandleVectorChange(true)}
+            onMouseLeave={() => setHandleVectorChange(false)}
+            className="lg:flex group hidden transition duration-500 hover:bg-primary hover:text-white  font-normal  justify-center items-center gap-3 text-lg  tracking-wider text-primary  py-[6px] px-6 border border-[#C8C8C8]  hover:border-none  rounded-full"
+          >
+            Join{" "}
+            <span className="group-hover:translate-x-1  duration-200">
+              {handleVectorChange ? (
+                <svg
+                  width="18"
+                  height="8"
+                  viewBox="0 0 20 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
+                    fill="white"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  width="18"
+                  height="8"
+                  viewBox="0 0 20 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  //   class=""
+                >
+                  <path
+                    d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
+                    fill="#C42C2D"
+                  />
+                </svg>
+              )}
+            </span>
+          </button>
+          {/* ----------------------hamburger menu------------------------ */}
+          <div
+            onClick={handleOpenMenu}
+            className="lg:hidden animate-fade-left cursor-pointer"
+          >
+            <svg
+              class="w-10 h-10"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+
+          {/* --------------------------------------showMenuItems--------------------------------- */}
+        </div>
+      </div>
+      {/* ----------------------------Menu's for mobile view----------------------- */}
+      <div className="w-full px-[20px] bg-white  absolute visible lg:hidden animate-fade-left z-50">
+        {showMenuItems && (
+          <ul className="space-y-3  p-3">
+            <div className="border-b-[1px] p-2 rounded-md hover:bg-primary hover:text-white">
+              <li className="">Home</li>
+            </div>
+            <div className="border-b-[1px] p-2 rounded-md hover:bg-primary hover:text-white">
+              <li>Event</li>
+            </div>
+            <div className="border-b-[1px] p-2 rounded-md hover:bg-primary hover:text-white">
+              <li>The Sermapod</li>
+            </div>
+            <div className="border-b-[1px] p-2 rounded-md hover:bg-primary hover:text-white">
+              <li>About</li>
+            </div>
+            <div className="border-b-[1px] p-2 rounded-md hover:bg-primary hover:text-white">
+              <li>Membership Only Content</li>
+            </div>
+            <div className="border-b-[1px] p-2 rounded-md hover:bg-primary hover:text-white">
+              <li>Contact Us</li>
+            </div>
+          </ul>
+        )}
+      </div>
+    </header>
+  );
+};
+
 export default Header;
