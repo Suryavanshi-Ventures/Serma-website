@@ -28,7 +28,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={helvetica.className}>
+      <body className={`${helvetica.className} bg-white`}>
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
           <Header />
           {children}
