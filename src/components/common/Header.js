@@ -14,13 +14,13 @@ const Header = () => {
   };
 
   return (
-    <header className="p-5 relative">
-      <div className="flex justify-between lg:justify-around items-center w-full gap-0  xxl:gap-10  ">
+    <header className=" relative pt-[40px] pb-[14px] px-[85px]">
+      <div className="flex justify-between lg:justify-between items-center w-full gap-0  xxl:gap-10  ">
         <div className="">
           <Image src="/logo.svg" height={60} width={135} alt="Logo" />
         </div>
 
-        <ul className=" hidden lg:flex gap-7 xxl:gap-12  animate-flip-down  text-[18px] ">
+        <ul className=" hidden lg:flex text-[17px] gap-5 xxl:gap-12  animate-flip-down  xxl:text-[18px] ">
           <li className="font-normal cursor-pointer">Home</li>
           <li className="font-normal cursor-pointer">Event</li>
           <li className="font-normal cursor-pointer">The Sermapod</li>

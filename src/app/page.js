@@ -1,15 +1,8 @@
+import LandingPage from "@/components/landing-section/page";
 import Image from "next/image";
 
 export default function Home() {
-  return (
-
-
-
-    <div >
-     children
-    </div>
-
-
-
-  );
+  return <div>
+    <LandingPage/>
+  </div>
 }
