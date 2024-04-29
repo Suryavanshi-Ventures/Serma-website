@@ -3,29 +3,29 @@ const Footer = () => {
   return (
     <div className="">
       <div className="grid grid-cols-1  md:grid-cols-2 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 bg-[#F3F3F3]">
-        <div className="border-r  border-[#33333359] p-5 flex justify-center">
+        <div className="border-r  border-[#3333331c] p-5 flex justify-center">
           <div>
             <div className="flex justify-center">
               <Image src="/logo.svg" height={60} width={135} alt="logo" />
             </div>
-            <div className="sm:my-[40px] xl:w-[300px] responsive-Text text-center">
+            <div className="my-[20px] sm:my-[40px] xl:w-[300px] responsive-Text-footer text-center">
               Sports and Entertainment Risk Management Alliance
             </div>
           </div>
         </div>
-        <div className="border-r  border-[#33333359] p-5 text-center">
+        <div className="border-r  border-[#3333331c] p-5 text-center">
           <div className="font-[700] text-[20px]">Contact Us</div>
 
           <div className="sm:mt-[60px] ">
-            <div className="my-3 underline responsive-Text">
+            <div className="my-3 underline responsive-Text-footer">
               info@theserma.org
             </div>
-            <div className="responsive-Text">+1 (123) 456 -7890</div>
+            <div className="responsive-Text-footer">+1 (123) 456 -7890</div>
           </div>
         </div>
-        <div className="border-r  border-[#33333359] p-5 text-center  ">
+        <div className="border-r  border-[#3333331c] p-5 text-center  ">
           <div className="font-[700] text-[20px]">Links</div>
-          <div className="sm:mt-[60px] responsive-Text">
+          <div className="sm:mt-[60px] responsive-Text-footer">
             <div className="my-3 ">About</div>
             <div>Event</div>
             <div className="my-3">Membership</div>

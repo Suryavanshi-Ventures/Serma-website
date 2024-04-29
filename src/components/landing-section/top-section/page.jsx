@@ -8,7 +8,7 @@ function TopSection() {
       path: "/hero-section/changing-image/runner.svg",
       height: 776,
       width: 850,
-      position: 30,
+      position: 45,
       positionBottom: "",
     },
     {
@@ -49,7 +49,7 @@ function TopSection() {
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
+
   const [fadeIn, setFadeIn] = useState(false);
 
   useEffect(() => {
@@ -66,14 +66,14 @@ function TopSection() {
   return (
     <div>
       <div className="relative flex justify-between items-center ">
-        <div className="w-[831px] h-[800px] bg-primaryBlue flex justify-center pt-[158px]  rounded-r-3xl ">
+        <div className="w-[55%] h-[800px] bg-primaryBlue flex justify-center pt-[158px]  rounded-r-3xl ">
           <div className="w-2/3">
             <div className="text-[40px] text-[#FFFFFF] font-semibold">
               <div>Sports and Entertainment </div>
               <div className="my-[6px]">Risk Management Alliance</div>
             </div>
-            <div className="my-[40px]">
-              <p className="text-[#FFFFFF]">
+            <div className="my-[40px] overflow-hidden">
+              <p className="text-[#FFFFFF] xl:w-[500px]">
                 The Sports and Entertainment Risk Management Alliance (SERMA) is
                 the first risk management association devoted entirely to the
                 sports and entertainment industries. It is an organization of
@@ -106,14 +106,12 @@ function TopSection() {
 
         <div
           className={`absolute left-[${Images[currentImageIndex].position}%] ${
-          // className={`absolute left-[45%] ${
             Images[currentImageIndex].positionBottom === "0"
               ? "bottom-[0.2%]"
               : ""
           } transition-opacity duration-500 ${
             fadeIn ? "opacity-0" : "opacity-100"
           }`}
-       
         >
           <Image
             src={Images[currentImageIndex].path}

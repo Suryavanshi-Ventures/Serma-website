@@ -37,7 +37,7 @@ const Header = () => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className={`transform ${
-                  showAboutDropdown ? "rotate-180 animate-fade" : "animate-fade"
+                  showAboutDropdown ? "rotate-180 animate-fade duration-300" : "animate-fade duration-300"
                 }`}
               >
                 <path
@@ -47,7 +47,7 @@ const Header = () => {
               </svg>
             </span>{" "}
             {showAboutDropdown && (
-              <ul className="absolute animate-fade p-5 w-[200px] space-y-2 rounded-lg left-0 top-8 bg-white shadow-lg py-2">
+              <ul className="absolute animate-fade p-5 w-[200px] space-y-2 rounded-lg left-0 top-8 bg-white shadow-lg py-2 z-50">
                 <li className="hover:text-primary cursor-pointer">About Us</li>
                 <li className="hover:text-primary cursor-pointer">Advisory Board</li>
               </ul>

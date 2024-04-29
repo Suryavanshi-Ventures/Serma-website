@@ -5,8 +5,11 @@
 .heading-1 {
   @apply text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black
 }
-.responsive-Text{
+.responsive-Text-footer{
   @apply text-sm md:text-[16px] lg:text-[18px] 2xl:text-[20px]
+}
+.responsive-Text{
+  @apply text-sm md:text-[16px] lg:text-[20px] 2xl:text-[22px]
 }
 
 /* :root {
