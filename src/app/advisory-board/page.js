@@ -1,0 +1,79 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import LinkedInIcon from "../../../public/Svg/icons/LinkedInIcon.svg"
+import ResumeIcon from "../../../public/Svg/icons/ResumeIcon.svg"
+
+function AdvisoryBoard() {
+
+    const advisory_board_members = [
+        { id: 1, name: "Scott Bermack", position: "Partner, General Liability Co-chair", department: "Weber Gallagher" },
+        { id: 2, name: "Jason Bernstein", position: "VP, Assistant General Counsel ", department: "VP, Assistant General Counsel " },
+        { id: 3, name: "Adam Bunge", position: "Chairman", department: "ideal3" },
+        { id: 4, name: "Brian Cafritz", position: "Partner", department: "KPM Law" },
+        { id: 5, name: "Zandria Conyers ", position: "Senior Vice President & General Counsel  ", department: "Portland Trail Blazers" },
+        { id: 6, name: "Christian Deputy", position: "President", department: "Lockton Companies" },
+        { id: 7, name: "David Dwortz", position: "President/Chief Executive Officer", department: "Helmsman Management" },
+        { id: 8, name: "Mary Gibson", position: "VP, Enterprise Risk Management & Corporate Counsel", department: "Major League Soccer" },
+        { id: 9, name: "Warren Harper", position: "Global Sports & Events Practice Leader, Managing Director", department: "Marsh USA" },
+        { id: 10, name: "Peter Hecht", position: "Founder & EVP", department: "Magna Legal Services" },
+        { id: 11, name: "Simon Keshishian", position: "Vice President, Risk Management", department: "Red Bull" },
+        { id: 12, name: "Laurie Kleinman", position: "Vice President Legal & Risk Management", department: "Comcast Spectacor" },
+        { id: 13, name: "Carlos Kuri", position: "General Counsel", department: "SXSW" },
+        { id: 14, name: "Jessica Mechtly", position: "Associate Director, Risk Management", department: "US Olympic and Paralympic Committee" },
+        { id: 15, name: "John Petrone", position: "Senior Managing Director", department: "Petrone Risk" },
+        { id: 16, name: "Sydney Posner", position: "Chief Executive Officer", department: "ClaimsXchange" },
+        { id: 17, name: "Brian Rosenblatt", position: "General Counsel, SERMA", department: "Income Member, Downey & Lenkov LLC" },
+        { id: 18, name: "Shalom Suniula", position: "Client Executive, Property & Casualty", department: "USI Insurance Services" },
+        { id: 19, name: "Kori Theusch", position: "Creative Director, SERMA", department: "Chief Operating Officer, S1 Medical" },
+        { id: 20, name: "Barrie Wexler ", position: "Executive Vice President - Risk Management ", department: "Paramount Global" },
+
+    ];
+    return (
+        <div className="relative pt-[40px] pb-[14px] px-[85px] mb-14">
+
+            <div className="w-full ">
+                <div className="text-2xl lg:text-4xl font-bold w-80 text-light-black">Advisory Board</div>
+
+                <div className="flex flex-col gap-6 mt-10">
+                    <div className="flex bg-[#F0F0F0] bg-opacity-50 rounded-2xl">
+                        <div className="w-[320px]">
+                            <Image src="/images/advisory-board/ceo.svg" alt="Hackney Publications Logo" className="dark:invert w-full" width={0} height={0} sizes="100vw" priority />
+                        </div>
+                        <div className="flex-1 ml-10">
+                            <div className="text-2xl text-light-black font-bold">Rich Lenkov | Founder/CEO</div>
+                            <div className="text-lg text-black mt-2">As a Capital Member of Downey & Lenkov LLC, Rich has been representing professional sports organizations and multiple entities in the entertainment industry for 25 years. Rich is also the co-founder of Triopolis, a production company with credits including ‘85: The Greatest Team in Football History (starring Barack Obama, Bill Murray, Mike Ditka) and John Wayne Gacy: Defending a Monster. Rich was also the lead producer for the very successful Las Vegas production Renegades, starring Jim McMahon, Terrell Owens and Jose Canseco and is involved in other productions including Rock of Ages and Elvis Presley’s Heartbreak Hotel In Concert.
+                            </div>
+                            <div className="mt-10">
+                                <Link href={"#"} className="transition duration-500 hover:bg-primary hover:text-white  font-normal  justify-center items-center gap-3 text-lg tracking-wider text-primary py-3 px-6 border border-[#C8C8C8]  hover:border-none  rounded-full">Contact Rich</Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="grid grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-7 mt-10">
+                {advisory_board_members.map((member) => (
+                    <div key={member.id} className="w-full">
+
+                        <Image src={`/images/advisory-board/advisory-board-${member.id}.svg`} alt="Hackney Publications Logo" className="dark:invert w-full" width={0} height={0} sizes="100vw" priority />
+
+                        <div className="text-2xl text-secondary font-bold mt-4">{member.name}</div>
+                        <div className="text-base text-gray mt-2">{member.position}</div>
+                        <div className="w-full flex justify-between items-center mt-6">
+                            <div className="flex-1 text-xl text-light-black">{member.department}</div>
+
+                            <div className="flex gap-4">
+                                <Image src={LinkedInIcon} width={36} height={36} />
+                                <Image src={ResumeIcon} width={36} height={36} />
+                            </div>
+
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+        </div>
+    )
+}
+export default AdvisoryBoard;
