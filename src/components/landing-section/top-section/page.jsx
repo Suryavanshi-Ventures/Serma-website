@@ -22,21 +22,21 @@ function TopSection() {
       path: "/hero-section/changing-image/basketball-player.svg",
       height: 766,
       width: 502,
-      position: 47,
+      position: 45,
       positionBottom: "",
     },
     {
       path: "/hero-section/changing-image/drms.svg",
       height: 630,
       width: 620,
-      position: 46,
+      position: 45,
       positionBottom: "",
     },
     {
       path: "/hero-section/changing-image/cyclelist.svg",
       height: 750,
       width: 500,
-      position: 48,
+      position: 45,
       positionBottom: "",
     },
     {
@@ -106,6 +106,7 @@ function TopSection() {
 
         <div
           className={`absolute left-[${Images[currentImageIndex].position}%] ${
+          // className={`absolute left-[45%] ${
             Images[currentImageIndex].positionBottom === "0"
               ? "bottom-[0.2%]"
               : ""

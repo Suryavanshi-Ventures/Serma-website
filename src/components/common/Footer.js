@@ -1,75 +1,82 @@
 import Image from "next/image";
 const Footer = () => {
-    return (
-        <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-            <a
-                href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-                className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <h2 className={`mb-3 text-2xl font-semibold`}>
-                    Docs{" "}
-                    <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                        -&gt;
-                    </span>
-                </h2>
-                <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-                    Find in-depth information about Next.js features and API.
-                </p>
-            </a>
-
-            <a
-                href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <h2 className={`mb-3 text-2xl font-semibold`}>
-                    Learn{" "}
-                    <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                        -&gt;
-                    </span>
-                </h2>
-                <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-                    Learn about Next.js in an interactive course with&nbsp;quizzes!
-                </p>
-            </a>
-
-            <a
-                href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-                className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <h2 className={`mb-3 text-2xl font-semibold`}>
-                    Templates{" "}
-                    <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                        -&gt;
-                    </span>
-                </h2>
-                <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-                    Explore starter templates for Next.js.
-                </p>
-            </a>
-
-            <a
-                href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-                className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <h2 className={`mb-3 text-2xl font-semibold`}>
-                    Deploy{" "}
-                    <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                        -&gt;
-                    </span>
-                </h2>
-                <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-                    Instantly deploy your Next.js site to a shareable URL with Vercel.
-                </p>
-            </a>
+  return (
+    <div className="">
+      <div className="grid grid-cols-1  md:grid-cols-2 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 bg-[#F3F3F3]">
+        <div className="border-r  border-[#33333359] p-5 flex justify-center">
+          <div>
+            <div className="flex justify-center">
+              <Image src="/logo.svg" height={60} width={135} alt="logo" />
+            </div>
+            <div className="sm:my-[40px] xl:w-[300px] responsive-Text text-center">
+              Sports and Entertainment Risk Management Alliance
+            </div>
+          </div>
         </div>
-    )
-}
+        <div className="border-r  border-[#33333359] p-5 text-center">
+          <div className="font-[700] text-[20px]">Contact Us</div>
+
+          <div className="sm:mt-[60px] ">
+            <div className="my-3 underline responsive-Text">
+              info@theserma.org
+            </div>
+            <div className="responsive-Text">+1 (123) 456 -7890</div>
+          </div>
+        </div>
+        <div className="border-r  border-[#33333359] p-5 text-center  ">
+          <div className="font-[700] text-[20px]">Links</div>
+          <div className="sm:mt-[60px] responsive-Text">
+            <div className="my-3 ">About</div>
+            <div>Event</div>
+            <div className="my-3">Membership</div>
+            <div>The Sermapod</div>
+            <div className="my-3">Membership Only Content</div>
+          </div>
+        </div>
+        <div className="p-5">
+          <div className="text-center font-[700] text-[20px]">
+            Connect With Us
+          </div>
+          <div className="flex justify-center gap-3 sm:mt-[60px]">
+            <div>
+              <Image
+                src="/footer/Linkedin.svg"
+                height={43}
+                width={43}
+                alt="logo"
+              />
+            </div>
+            <div>
+              {" "}
+              <Image
+                src="/footer/Facebook.svg"
+                height={43}
+                width={43}
+                alt="logo"
+              />
+            </div>
+            <div>
+              {" "}
+              <Image
+                src="/footer/Twitter.png"
+                height={43}
+                width={43}
+                alt="logo"
+              />
+            </div>
+            <div>
+              {" "}
+              <Image
+                src="/footer/Insta.svg"
+                height={43}
+                width={43}
+                alt="logo"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 export default Footer;
