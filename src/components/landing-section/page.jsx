@@ -2,14 +2,20 @@ import React from "react";
 import TopSection from "./top-section/page";
 import Partners from "./patners/page";
 import UpcomingEvent from "./upcoming-events/page";
+import Membership from "./membership/page";
+import OurMission from "./our-mission/page";
+import Podcast from "./podcast/page";
 
 function LandingPage() {
   return (
     <div>
       <TopSection />
-      <div className="px-[25px] md:px-[85px]  ">
+      <div className="px-[25px] md:px-[85px] space-y-[100px] ">
         <Partners />
         <UpcomingEvent />
+        <Membership/>
+        <OurMission/>
+        <Podcast/>
       </div>
     </div>
   );

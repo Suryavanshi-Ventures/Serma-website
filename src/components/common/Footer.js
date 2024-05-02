@@ -23,21 +23,25 @@ const Footer = () => {
             <div className="responsive-Text-footer">+1 (123) 456 -7890</div>
           </div>
         </div>
-        <div className="border-r  border-[#3333331c] p-5 text-center  ">
-          <div className="font-[700] text-[20px]">Links</div>
-          <div className="sm:mt-[60px] responsive-Text-footer">
+        <div className="border-r  border-[#3333331c] p-5   max-md:text-center ">
+       <div className=" flex justify-center">
+     <div>
+     <div className="font-[700] text-[20px] ">Links</div>
+          <div className="sm:mt-[60px]  responsive-Text-footer">
             <div className="my-3 ">About</div>
             <div>Event</div>
             <div className="my-3">Membership</div>
             <div>The Sermapod</div>
             <div className="my-3">Membership Only Content</div>
           </div>
+     </div>
+       </div>
         </div>
         <div className="p-5">
           <div className="text-center font-[700] text-[20px]">
             Connect With Us
           </div>
-          <div className="flex justify-center gap-3 sm:mt-[60px]">
+          <div className="flex justify-center gap-3 mt-[20px] sm:mt-[60px]">
             <div>
               <Image
                 src="/footer/Linkedin.svg"

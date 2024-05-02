@@ -21,11 +21,11 @@ const Header = () => {
         </div>
 
         <ul className=" hidden lg:flex text-[17px] gap-5 xxl:gap-12  animate-flip-down  xxl:text-[18px] ">
-          <li className="font-normal cursor-pointer">Home</li>
-          <li className="font-normal cursor-pointer">Event</li>
-          <li className="font-normal cursor-pointer">The Sermapod</li>
+          <li className="font-semibold cursor-pointer ">Home</li>
+          <li className="font-semibold cursor-pointer">Event</li>
+          <li className="font-semibold cursor-pointer">The Sermapod</li>
           <li
-            className="flex justify-center items-center gap-2 cursor-pointer bg-white relative font-normal"
+            className="flex justify-center items-center gap-2 cursor-pointer bg-white relative font-semibold"
             onClick={toggleAboutDropdown}
           >
             About{" "}
@@ -37,7 +37,9 @@ const Header = () => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className={`transform ${
-                  showAboutDropdown ? "rotate-180 animate-fade duration-300" : "animate-fade duration-300"
+                  showAboutDropdown
+                    ? "rotate-180 animate-fade duration-300"
+                    : "animate-fade duration-300"
                 }`}
               >
                 <path
@@ -49,19 +51,23 @@ const Header = () => {
             {showAboutDropdown && (
               <ul className="absolute animate-fade p-5 w-[200px] space-y-2 rounded-lg left-0 top-8 bg-white shadow-lg py-2 z-50">
                 <li className="hover:text-primary cursor-pointer">About Us</li>
-                <li className="hover:text-primary cursor-pointer">Advisory Board</li>
+                <li className="hover:text-primary cursor-pointer">
+                  Advisory Board
+                </li>
               </ul>
             )}
           </li>
-          <li className="font-normal cursor-pointer">Membership Only Content</li>
-          <li className="font-normal cursor-pointer">Contact US</li>
+          <li className="font-semibold cursor-pointer">
+            Membership Only Content
+          </li>
+          <li className="font-semibold cursor-pointer">Contact US</li>
         </ul>
 
         <div>
           <button
             onMouseEnter={() => setHandleVectorChange(true)}
             onMouseLeave={() => setHandleVectorChange(false)}
-            className="lg:flex group hidden transition duration-500 hover:bg-primary hover:text-white  font-normal  justify-center items-center gap-3 text-lg  tracking-wider text-primary  py-[6px] px-6 border border-[#C8C8C8]  hover:border-none  rounded-full"
+            className="lg:flex group hidden transition duration-500 hover:bg-primary hover:text-white  font-semibold  justify-center items-center gap-3 text-lg  tracking-wider text-primary  py-[6px] px-6 border border-[#C8C8C8]  hover:border-none  rounded-full"
           >
             Join{" "}
             <span className="group-hover:translate-x-1  duration-200">

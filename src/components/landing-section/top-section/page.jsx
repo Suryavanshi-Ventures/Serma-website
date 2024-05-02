@@ -83,7 +83,7 @@ function TopSection() {
               </p>
             </div>
             <div>
-              <button className="lg:flex group hidden transition duration-500  text-[#DDDDDD]  font-normal  justify-center items-center gap-3 text-lg  tracking-wider   py-3 px-6 border border-[#C8C8C8]  hover:border-none  rounded-full">
+              <button className="lg:flex group hidden transition duration-500  text-[#DDDDDD]  font-normal  justify-center items-center gap-3 text-lg  tracking-wider   py-3 px-6 border border-[#C8C8C8]    rounded-full">
                 Membership{" "}
                 <span className="group-hover:translate-x-1  duration-200">
                   <svg
@@ -105,7 +105,8 @@ function TopSection() {
         </div>
 
         <div
-          className={`absolute left-[${Images[currentImageIndex].position}%] ${
+          // className={`absolute left-[${Images[currentImageIndex].position}%] ${
+          className={`absolute left-[45%] ${
             Images[currentImageIndex].positionBottom === "0"
               ? "bottom-[0.2%]"
               : ""
