@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
         {/* <main className="flex min-h-screen flex-col items-center justify-between p-24"> */}
         <main className="">
           <Header />
-          {/* <div className='w-[1512px]'> */}
+          {/* <div className='px-[25px] md:px-[85px]'> */}
 
           {children}
           {/* </div> */}

@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
-
+import AboutUs from "@/app/about-us/page";
 const Header = () => {
   const [showAboutDropdown, setShowAboutDropdown] = useState(false);
   const [showMenuItems, setShowMenuItems] = useState(false);
@@ -17,12 +18,14 @@ const Header = () => {
     <header className=" relative pt-[40px] pb-[14px] px-[85px]">
       <div className="flex justify-between lg:justify-between items-center w-full gap-0  xxl:gap-10  ">
         <div className="">
-          <Image src="/logo.svg" height={60} width={135} alt="Logo" />
+          <Link href="/">
+            <Image src="/logo.svg" height={60} width={135} alt="Logo" />{" "}
+          </Link>
         </div>
 
         <ul className=" hidden lg:flex text-[17px] gap-5 xxl:gap-12  animate-flip-down  xxl:text-[18px] ">
-          <li className="font-semibold cursor-pointer ">Home</li>
-          <li className="font-semibold cursor-pointer">Event</li>
+          <li className="font-semibold cursor-pointer "><Link href="/">Home</Link></li>
+          <li className="font-semibold cursor-pointer"><Link href="/events">Event</Link></li>
           <li className="font-semibold cursor-pointer">The Sermapod</li>
           <li
             className="flex justify-center items-center gap-2 cursor-pointer bg-white relative font-semibold"
@@ -50,9 +53,11 @@ const Header = () => {
             </span>{" "}
             {showAboutDropdown && (
               <ul className="absolute animate-fade p-5 w-[200px] space-y-2 rounded-lg left-0 top-8 bg-white shadow-lg py-2 z-50">
-                <li className="hover:text-primary cursor-pointer">About Us</li>
                 <li className="hover:text-primary cursor-pointer">
-                  Advisory Board
+                  <Link href="/about-us">About Us</Link>
+                </li>
+                <li className="hover:text-primary cursor-pointer">
+                  <Link href="/advisory-board">Advisory Board</Link>
                 </li>
               </ul>
             )}
@@ -70,7 +75,7 @@ const Header = () => {
             className="lg:flex group hidden transition duration-500 hover:bg-primary hover:text-white  font-semibold  justify-center items-center gap-3 text-lg  tracking-wider text-primary  py-[6px] px-6 border border-[#C8C8C8]  hover:border-none  rounded-full"
           >
             Join{" "}
-            <span className="group-hover:translate-x-1  duration-200">
+            <span className="group-hover:translate-x-1 duration-200">
               {handleVectorChange ? (
                 <svg
                   width="18"

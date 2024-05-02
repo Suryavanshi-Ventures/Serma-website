@@ -52,7 +52,7 @@ function AdvisoryBoard() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-7 mt-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-7 mt-10">
                 {advisory_board_members.map((member) => (
                     <div key={member.id} className="w-full">
 
@@ -61,11 +61,14 @@ function AdvisoryBoard() {
                         <div className="text-2xl text-secondary font-bold mt-4">{member.name}</div>
                         <div className="text-base text-gray mt-2">{member.position}</div>
                         <div className="w-full flex justify-between items-center mt-6">
-                            <div className="flex-1 text-xl text-light-black">{member.department}</div>
+                           
 
-                            <div className="flex gap-4">
-                                <Image src={LinkedInIcon} width={36} height={36} />
+                            <div className="flex lg:flex-row lg:items-center flex-col gap-4">
+                            <div className="flex-1 lg:text-xl text-light-black">{member.department}</div>
+                               <div className="flex gap-3">
+                               <Image src={LinkedInIcon} width={36} height={36} />
                                 <Image src={ResumeIcon} width={36} height={36} />
+                               </div>
                             </div>
 
                         </div>

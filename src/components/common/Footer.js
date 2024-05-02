@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="border-r  border-[#3333331c] p-5 text-center">
           <div className="font-[700] text-[20px]">Contact Us</div>
 
-          <div className="sm:mt-[60px] ">
+          <div className="sm:mt-[60px] xs:space-y-8 ">
             <div className="my-3 underline responsive-Text-footer">
               info@theserma.org
             </div>
