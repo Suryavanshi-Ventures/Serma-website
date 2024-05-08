@@ -35,5 +35,77 @@ module.exports = {
         url: "/contact",
       },
     ],
+
+   EVENT_CARD_DETAILS : [
+      {
+        imageSrc: "/upcoming-event/image-1.png",
+        date: "March 19, 2024 4:00 PM (MDT)",
+        type: "Virtual",
+        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
+      },
+      {
+        imageSrc: "/upcoming-event/image-2.png",
+        date: "March 19, 2024 4:00 PM (MDT)",
+        type: "Virtual",
+        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
+      },
+      {
+        imageSrc: "/upcoming-event/image-3.png",
+        date: "March 19, 2024 4:00 PM (MDT)",
+        type: "Virtual",
+        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
+      }, {
+        imageSrc: "/upcoming-event/image-1.png",
+        date: "March 19, 2024 4:00 PM (MDT)",
+        type: "Virtual",
+        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
+      },
+      {
+        imageSrc: "/upcoming-event/image-3.png",
+        date: "March 19, 2024 4:00 PM (MDT)",
+        type: "Virtual",
+        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
+      },
+      {
+        imageSrc: "/upcoming-event/image-2.png",
+        date: "March 19, 2024 4:00 PM (MDT)",
+        type: "Virtual",
+        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
+      },
+      {
+        imageSrc: "/upcoming-event/image-2.png",
+        date: "March 19, 2024 4:00 PM (MDT)",
+        type: "Virtual",
+        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
+      },
+      {
+        imageSrc: "/upcoming-event/image-2.png",
+        date: "March 19, 2024 4:00 PM (MDT)",
+        type: "Virtual",
+        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
+      },
+      {
+        imageSrc: "/upcoming-event/image-2.png",
+        date: "March 19, 2024 4:00 PM (MDT)",
+        type: "Virtual",
+        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
+      },
+    ],
+
+  MONTHS : [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+  ]
+  
   };
   
