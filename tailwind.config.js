@@ -12,7 +12,7 @@ module.exports = {
         primaryBlue: "#03989E",
         secondary: "#03989E",
         gray: "#9B9A9A",
-        "light-black": "#333333"
+        "light-black": "#333333",
       },
       screens: {
         xs: "480px",
@@ -21,12 +21,12 @@ module.exports = {
         lg: "1024px",
         xl: "1280px",
         xxl: "1440px",
-        "2xl": "1536px",
+        "2xl": "1512px",
         "3xl": "1728px",
         "4xl": "2560px",
       },
       fontFamily: {
-        helvetica: ['var(--font-helvetica)'],
+        helvetica: ["var(--font-helvetica)"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

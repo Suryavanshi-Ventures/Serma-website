@@ -24,8 +24,12 @@ const Header = () => {
         </div>
 
         <ul className=" hidden lg:flex text-[17px] gap-5 xxl:gap-12  animate-flip-down  xxl:text-[18px] ">
-          <li className="font-semibold cursor-pointer "><Link href="/">Home</Link></li>
-          <li className="font-semibold cursor-pointer"><Link href="/events">Event</Link></li>
+          <li className="font-semibold cursor-pointer ">
+            <Link href="/">Home</Link>
+          </li>
+          <li className="font-semibold cursor-pointer">
+            <Link href="/events">Event</Link>
+          </li>
           <li className="font-semibold cursor-pointer">The Sermapod</li>
           <li
             className="flex justify-center items-center gap-2 cursor-pointer bg-white relative font-semibold"
@@ -63,7 +67,7 @@ const Header = () => {
             )}
           </li>
           <li className="font-semibold cursor-pointer">
-            Membership Only Content
+            <Link href="/members-only-content"> Membership Only Content</Link>
           </li>
           <li className="font-semibold cursor-pointer">Contact US</li>
         </ul>
