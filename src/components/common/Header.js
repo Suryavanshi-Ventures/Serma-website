@@ -65,7 +65,7 @@ const Header = () => {
           <li className="font-semibold cursor-pointer">
             Membership Only Content
           </li>
-          <li className="font-semibold cursor-pointer">Contact US</li>
+          <li className="font-semibold cursor-pointer">Contact Us</li>
         </ul>
 
         <div>

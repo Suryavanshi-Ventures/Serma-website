@@ -11,7 +11,9 @@
 .responsive-Text{
   @apply text-sm md:text-[16px] lg:text-[18px] lg:leading-6 2xl:text-[19px] 
 }
-
+/* .border-input {
+  @apply focus:outline:none;
+} */
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

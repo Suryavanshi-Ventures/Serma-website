@@ -1,28 +1,7 @@
 import Image from "next/image";
 import Button from "@/components/button/page";
-
+import { EVENT_CARD_DETAILS } from "@/app/utils/constant/constant";
 function UpcomingEvent() {
-  const eventDetails = [
-    {
-      imageSrc: "/upcoming-event/image-1.png",
-      date: "March 19, 2024 4:00 PM (MDT)",
-      type: "Virtual",
-      title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
-    },
-    {
-      imageSrc: "/upcoming-event/image-2.png",
-      date: "March 19, 2024 4:00 PM (MDT)",
-      type: "Virtual",
-      title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
-    },
-    {
-      imageSrc: "/upcoming-event/image-3.png",
-      date: "March 19, 2024 4:00 PM (MDT)",
-      type: "Virtual",
-      title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
-    }
-  ];
-
   return (
     <div>
       <div>
@@ -33,16 +12,24 @@ function UpcomingEvent() {
           <p>
             The Sports and Entertainment Risk Management Alliance (SERMA) is the
             first risk management association devoted entirely to the sports and
-           
           </p>
           <p>entertainment industries.</p>{" "}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 gap-x-3 gap-y-1 max-sm:space-y-5">
-          {eventDetails.map((event, index) => (
-            <div key={index} className="rounded-2xl shadow-xl flex max-sm:justify-center max-sm:p-0 md:p-3">
+          {EVENT_CARD_DETAILS.map((event, index) => (
+            <div
+              key={index}
+              className="rounded-2xl shadow-xl flex max-sm:justify-center max-sm:p-0 md:p-3"
+            >
               <div className="">
                 <div className="">
-                  <Image src={event.imageSrc} height={225} width={396} alt="image" className="w-full rounded-2xl" />
+                  <Image
+                    src={event.imageSrc}
+                    height={225}
+                    width={396}
+                    alt="image"
+                    className="w-full rounded-2xl"
+                  />
                 </div>
                 <div className="max-md:px-2 md:px-1">
                   <div className="flex md:gap-5 gap-2 my-3 ">
@@ -72,7 +59,9 @@ function UpcomingEvent() {
                     <div className="text-gray text-sm">{event.date}</div>
                   </div>
                   <div className="text-lg my-2">{event.type}</div>
-                  <div className="font-semibold text-[#525971]">{event.title}</div>
+                  <div className="font-semibold text-[#525971]">
+                    {event.title}
+                  </div>
                   <div className="flex justify-end items-center gap-3">
                     <span className="text-primary text-lg my-3">Register</span>
                     <span>
@@ -94,9 +83,9 @@ function UpcomingEvent() {
               </div>
             </div>
           ))}
-        </div >
+        </div>
         <div className="mt-16">
-        <Button content={"View all event"} px={"px-5"} py={"py-2"} />
+          <Button content={"View all event"} px={"px-5"} py={"py-2"} />
         </div>
       </div>
     </div>
