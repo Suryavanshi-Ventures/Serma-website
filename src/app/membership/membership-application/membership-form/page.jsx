@@ -31,16 +31,16 @@ const Page = () => {
   );
   return (
     <div className="mt-20">
-      <div className="mx-20  mb-7">
+      <div className="mx-5 lg:mx-10 2xl:mx-20  mb-7">
         <div>
-          <h2 className="text-4xl font-bold">Membership Application</h2>
+          <h2 className="heading-2 font-bold">Membership Application</h2>
         </div>
         <div className=" mt-[60px] flex justify-center">
           <div className="">
-            <div className="grid grid-cols-2 gap-x-12 gap-y-10 ">
-              <div className=" w-[436px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10 ">
+              <div className=" w-full lg:w-[436px]">
                 <div>
-                  <h2 className="font-bold text-lg">First name*</h2>
+                  <h2 className="font-bold text-lg">First Name*</h2>
                 </div>
                 <div className="mt-4 ">
                   <input
@@ -52,9 +52,9 @@ const Page = () => {
                   />
                 </div>
               </div>
-              <div className=" w-[436px]">
+              <div className=" w-full lg:w-[436px]">
                 <div>
-                  <h2 className="font-bold text-lg">Last name*</h2>
+                  <h2 className="font-bold text-lg">Last Name*</h2>
                 </div>
                 <div className="mt-4 ">
                   <input
@@ -66,7 +66,7 @@ const Page = () => {
                   />
                 </div>
               </div>
-              <div className=" w-[436px]">
+              <div className=" w-full lg:w-[436px]">
                 <div>
                   <h2 className="font-bold text-lg">Organization*</h2>
                 </div>
@@ -80,7 +80,7 @@ const Page = () => {
                   />
                 </div>
               </div>
-              <div className=" w-[436px]">
+              <div className=" w-full lg:w-[436px]">
                 <div>
                   <h2 className="font-bold text-lg">Title*</h2>
                 </div>
@@ -94,7 +94,7 @@ const Page = () => {
                   />
                 </div>
               </div>
-              <div className=" w-[436px]">
+              <div className=" w-full lg:w-[436px]">
                 <div>
                   <h2 className="font-bold text-lg">Email*</h2>
                 </div>
@@ -108,7 +108,7 @@ const Page = () => {
                   />
                 </div>
               </div>
-              <div className=" w-[436px]">
+              <div className=" w-full lg:w-[436px]">
                 <div>
                   <h2 className="font-bold text-lg">Address*</h2>
                 </div>
@@ -122,7 +122,7 @@ const Page = () => {
                   />
                 </div>
               </div>
-              <div className=" w-[436px]">
+              <div className=" w-full lg:w-[436px]">
                 <div>
                   <h2 className="font-bold text-lg">City</h2>
                 </div>
@@ -136,7 +136,7 @@ const Page = () => {
                   />
                 </div>
               </div>
-              <div className=" w-[436px]">
+              <div className=" w-full lg:w-[436px]">
                 <div>
                   <h2 className="font-bold text-lg">State*</h2>
                 </div>
@@ -152,7 +152,7 @@ const Page = () => {
                         id=""
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Select state"
+                        placeholder="Select State"
                         className="outline-none w-full placeholder:text-[#939393] placeholder:text-base text-lg  "
                       />
                       <div>
@@ -178,7 +178,7 @@ const Page = () => {
                     <div
                       className={`mt-1 absolute top-full transition-all ${
                         isDropDown
-                          ? "block  w-[436px] translate-y-0 duration-300 opacity-100  z-50 bg-white"
+                          ? "block  w-full lg:w-[436px] translate-y-0 duration-300 opacity-100  z-50 bg-white"
                           : "opacity-0 w-full "
                       }`}
                     >
@@ -193,7 +193,7 @@ const Page = () => {
                   </div>
                 </div>
               </div>
-              <div className=" w-[436px]">
+              <div className=" w-full lg:w-[436px]">
                 <div>
                   <h2 className="font-bold text-lg">Zip Code</h2>
                 </div>
@@ -207,7 +207,7 @@ const Page = () => {
                   />
                 </div>
               </div>
-              <div className=" w-[436px]">
+              <div className=" w-full lg:w-[436px]">
                 <div>
                   <h2 className="font-bold text-lg">Business Phone*</h2>
                 </div>
@@ -221,7 +221,7 @@ const Page = () => {
                   />
                 </div>
               </div>
-              <div className=" w-[436px]">
+              <div className=" w-full lg:w-[436px]">
                 <div>
                   <h2 className="font-bold text-lg">Mobile Phone</h2>
                 </div>
@@ -235,7 +235,7 @@ const Page = () => {
                   />
                 </div>
               </div>
-              <div className=" w-[436px]">
+              <div className=" w-full lg:w-[436px]">
                 <div>
                   <h2 className="font-bold text-lg">Date</h2>
                 </div>

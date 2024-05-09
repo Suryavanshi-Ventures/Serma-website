@@ -40,12 +40,14 @@ const Membership = () => {
   return (
     <div className="mt-20">
       <div>
-        <div className="flex flex-col mx-20">
+        <div className="flex flex-col mx-5 lg:mx-10 2xl:mx-20">
           <div>
-            <h2 className="text-[36px] font-bold">WHY JOIN SERMA?</h2>
+            <h2 className="heading-2 text-center lg:text-left">
+              WHY JOIN SERMA?
+            </h2>
           </div>
-          <div className="flex justify-end mt-[40px]">
-            <p className="text-xl text-[#9B9A9A] max-w-[1008px]">
+          <div className="flex lg:justify-end mt-[40px]">
+            <p className="paragraph text-[#9B9A9A] max-w-[1008px]">
               While there are a number of excellent organizations with a wide
               range of services in our community, there isn’t one specifically
               dealing with the issues that we face in handling sports and
@@ -65,13 +67,15 @@ const Membership = () => {
           />
         </div>
       </div>
-      <div className="mx-20">
+      <div className="mx-5 lg:mx-10 2xl:mx-20 mt-20">
         <div>
           <div>
             <div>
-              <h2 className="text-[28px] font-bold">SERMA Membership </h2>
+              <h2 className="heading-2 lg:text-left text-center">
+                SERMA Membership
+              </h2>
             </div>
-            <div className="mt-[50px] flex gap-3 ">
+            <div className="mt-[50px] flex lg:flex-row items-center flex-col gap-3 ">
               <div className="border-t border-[#9B9A9A66]">
                 {sermaMembership.map((item, index) => (
                   <div>
@@ -80,7 +84,7 @@ const Membership = () => {
                         <h2 className="text-xl font-bold">{item.title}</h2>
                       </div>
                       <div className="w-1/2">
-                        <p className="text-[#9B9A9A] text-base max-w-[551px]">
+                        <p className="text-[#9B9A9A] paragraph max-w-[551px]">
                           {item.detail}
                         </p>
                       </div>
@@ -90,7 +94,7 @@ const Membership = () => {
                 ))}
               </div>
               <div>
-                <div className="w-[450px] h-[300px] mt-10">
+                <div className="max-w-[450px] h-[300px] mt-10 lg:mt-0">
                   <Image
                     src="/pages/membership/hand-img.png"
                     unoptimized
@@ -105,12 +109,15 @@ const Membership = () => {
         </div>
         <div className="mt-[100px]">
           <div className="text-center">
-            <h2 className="text-[36px] font-bold">Member Benefits</h2>
+            <h2 className="heading-2">Member Benefits</h2>
           </div>
-          <div className="mt-10 flex gap-5">
+          <div className="mt-10 flex lg:flex-row flex-col items-center gap-5">
             {/* card */}
             {memeberBenefit.map((items, index) => (
-              <div className="max-w-[434px] h-[423px] rounded-2xl shadow-xl drop-shadow-xl">
+              <div
+                key={index}
+                className="max-w-[434px] h-[423px] rounded-2xl shadow-xl drop-shadow-xl"
+              >
                 <div className="flex flex-col justify-between items-center h-full w-full">
                   <div className="mt-10">
                     <h2 className="text-[24px] font-bold max-w-[333px]">
@@ -118,7 +125,7 @@ const Membership = () => {
                     </h2>
                   </div>
                   <div>
-                    <div className="w-[434px] h-[273px] ">
+                    <div className="max-w-[434px] h-[273px] ">
                       <Image
                         src={items.img}
                         unoptimized
@@ -134,8 +141,8 @@ const Membership = () => {
             {/*  */}
           </div>
         </div>
-        <div className="mt-[60px]">
-          <ul className="list-disc space-y-2">
+        <div className="mt-[60px] mx-5 sm:mx-0">
+          <ul className="list-disc space-y-2 paragraph">
             <li>
               Access to exclusive member events, including conferences,
               webinars, and networking events

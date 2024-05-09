@@ -5,6 +5,14 @@
 .heading-1 {
   @apply text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black
 }
+
+.heading-2{
+  @apply text-[20px] md:text-[30px] lg:text-[36px] 
+}
+
+.paragraph {
+  @apply text-[12px] md:text-[16px] lg:text-[20px] font-normal 
+}
 .responsive-Text-footer{
   @apply text-sm md:text-[16px] lg:text-[18px] 2xl:text-[20px]
 }

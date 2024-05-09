@@ -5,9 +5,9 @@ import React from "react";
 const Membership = () => {
   return (
     <div>
-      <div className="mx-20">
+      <div className="xs:mx-5 lg:mx-10 2xl:mx-20">
         <div>
-          <div className="max-h-[350px] max-w-[1351px] relative">
+          <div className="h-[500px] xs:max-h-[350px] w-full xs:max-w-[1351px] relative">
             <Image
               src="/pages/members-only-content/member-only.png"
               unoptimized
@@ -15,20 +15,20 @@ const Membership = () => {
               height={100}
               className="w-full h-full object-fill"
             />
-            <div className="absolute top-0 flex justify-center items-center w-full h-full">
-              <h2 className="text-[36px] font-bold text-white">
+            <div className="absolute  top-0 flex justify-center pb-10 items-end xs:items-center w-full h-full">
+              <h2 className="heading-2 font-bold text-white">
                 Members Only Content
               </h2>
             </div>
           </div>
         </div>
-        <div className="mt-[64px]">
-          <div className="flex gap-9 items-start">
+        <div className="mt-[64px] mx-5 ">
+          <div className="flex flex-col md:flex-row gap-9 items-start md:items-center">
             <div>
               <div>
-                <h2 className="text-3xl font-bold">Welcome to SERMA!</h2>
+                <h2 className="heading-2 font-bold">Welcome to SERMA!</h2>
               </div>
-              <hr className="w-full my-8" />
+              <hr className="w-full my-8 border-[#9B9A9A66]" />
               <div className="space-y-4">
                 <div>
                   <h2 className="text-2xl font-bold">MEMBERS-ONLY CONTENT</h2>
@@ -45,10 +45,10 @@ const Membership = () => {
                   </p>
                 </div>
               </div>
-              <hr className=" w-full mt-8" />
+              <hr className=" w-full mt-8 border-[#9B9A9A66]" />
             </div>
-            <div>
-              <div className="max-h-[338px] max-w-[344px] relative">
+            <div className="flex justify-center w-full md:w-fit">
+              <div className="h-[338px] xs:w-[344px] relative ">
                 <Image
                   src="/pages/members-only-content/member-only2.png"
                   unoptimized
@@ -61,55 +61,59 @@ const Membership = () => {
           </div>
         </div>
         <div className="mt-[94px] ">
-          <div className="relative flex flex-col items-center ">
-            <div className="">
-              <h2 className="text-[30px] font-bold">Members-only Login</h2>
-            </div>
-            <div className="mt-[57px] q">
-              <div className="flex justify-center w-[791px] h-[655px] z-50 bg-white rounded-[36px] shadow-xl shadow-[#00000014] drop-shadow-xl">
-                <div className="w-full px-[60px] py-16  ">
-                  <div>
+          <div className="flex justify-center w-full ">
+            <div className="w-full sm:w-fit">
+              <div className="">
+                <h2 className="text-[30px] font-bold text-center">
+                  Members-Only Sign In
+                </h2>
+              </div>
+              <div className="mt-[57px] w-full px-5 md:px-0">
+                <div className="flex sm:justify-center w-full h-fit sm:w-[620px] lg:w-[791px]  md:h-[605px] z-50 bg-white rounded-[36px] shadow-xl shadow-[#00000014] drop-shadow-xl">
+                  <div className="w-full px-4 md:px-[60px] py-[30px] md:py-16  ">
                     <div>
-                      <h2 className="text-[40px] font-normal text-black">
-                        Sign in
-                      </h2>
-                    </div>
-                    <hr className="w-full my-[30px]" />
-                    <div className="space-y-4">
                       <div>
-                        <h2 className="text-base">Enter your email</h2>
+                        <h2 className="heading-2 font-normal text-black">
+                          Sign in
+                        </h2>
                       </div>
-                      <div>
-                        <input
-                          type="text"
-                          name=""
-                          id=""
-                          placeholder="Email address "
-                          className="pl-[38px] py-[20px] outline-none border border-[#B3B3B3] rounded-xl w-full"
-                        />
+                      <hr className="w-full my-[30px]" />
+                      <div className="space-y-4">
+                        <div>
+                          <h2 className="text-base">Enter Your Email</h2>
+                        </div>
+                        <div>
+                          <input
+                            type="text"
+                            name=""
+                            id=""
+                            placeholder="Email Address "
+                            className="pl-4 sm:pl-[38px] py-3  sm:py-[20px] outline-none border border-[#B3B3B3] rounded-xl w-full"
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className="space-y-4 mt-[14px]">
-                      <div>
-                        <h2>Enter your Password</h2>
+                      <div className="space-y-4 mt-[14px]">
+                        <div>
+                          <h2>Enter Your Password</h2>
+                        </div>
+                        <div>
+                          <input
+                            type="text"
+                            name=""
+                            id=""
+                            placeholder="Password"
+                            className="pl-4 sm:pl-[38px] py-3  sm:py-[20px] outline-none border border-[#B3B3B3] rounded-xl w-full"
+                          />
+                        </div>
                       </div>
-                      <div>
-                        <input
-                          type="text"
-                          name=""
-                          id=""
-                          placeholder="Password"
-                          className="pl-[38px] py-[20px] outline-none border border-[#B3B3B3] rounded-xl w-full"
-                        />
+                      <div className="flex justify-end text-lg mt-[13px] text-[#C42C2D]">
+                        <p>Forgot Password?</p>
                       </div>
-                    </div>
-                    <div className="flex justify-end text-lg mt-[13px]">
-                      <p>Forgot Password</p>
-                    </div>
-                    <div className="mt-[27px]">
-                      <button className="w-full text-[22px] py-[26px]  text-white bg-[#C42C2D]">
-                        Sign in
-                      </button>
+                      <div className="mt-[27px]">
+                        <button className="w-full text-sm xs:text-[22px] py-3 xs:py-[26px] rounded-lg  text-white bg-[#C42C2D]">
+                          Sign In
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
