@@ -63,7 +63,7 @@ const Header = () => {
             )}
           </li>
           <li className="font-semibold cursor-pointer">
-            Membership Only Content
+            <Link href="/members-only-content"> Membership Only Content</Link>
           </li>
           <li className="font-semibold cursor-pointer">Contact Us</li>
         </ul>

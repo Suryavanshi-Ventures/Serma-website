@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 function TopSection() {
@@ -82,25 +83,27 @@ function TopSection() {
                 sports and entertainment field.
               </p>
             </div>
-            <div>
-              <button className="lg:flex group hidden transition duration-500  text-[#DDDDDD]  font-normal  justify-center items-center gap-3 text-lg  tracking-wider   py-3 px-6 border border-[#C8C8C8]    rounded-full">
-                Membership{" "}
-                <span className="group-hover:translate-x-1  duration-200">
-                  <svg
-                    width="18"
-                    height="8"
-                    viewBox="0 0 20 8"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
-                      fill="white"
-                    />
-                  </svg>
-                </span>
-              </button>
-            </div>
+            <Link href="/membership">
+              <div>
+                <button className="lg:flex group hidden transition duration-500  text-[#DDDDDD]  font-normal  justify-center items-center gap-3 text-lg  tracking-wider   py-3 px-6 border border-[#C8C8C8]    rounded-full">
+                  Membership
+                  <span className="group-hover:translate-x-1  duration-200">
+                    <svg
+                      width="18"
+                      height="8"
+                      viewBox="0 0 20 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
+                        fill="white"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </Link>
           </div>
         </div>
 
