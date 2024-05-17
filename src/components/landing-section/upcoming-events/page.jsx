@@ -5,7 +5,7 @@ function UpcomingEvent() {
   return (
     <div>
       <div>
-        <div className="text-center text-[36px] font-semibold">
+        <div className="text-center text-[36px] font-semibold text-[#333333]">
           Upcoming Events
         </div>
         <div className="text-center responsive-Text text-gray my-8 md:space-y-2 ">

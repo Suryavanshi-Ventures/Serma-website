@@ -5,7 +5,7 @@ function OurMission() {
   return (
     <div>
       <div className="flex flex-col md:items-center md:flex-row gap-10 md:gap-20 lg:gap-32">
-        <div className="md:text-3xl text-xl font-bold  flex gap-2 max-md:justify-center">
+        <div className="md:text-3xl text-xl font-bold  flex gap-2 max-md:justify-center text-[#333333]">
           <div>Our </div>
           <div>Mission</div>
         </div>

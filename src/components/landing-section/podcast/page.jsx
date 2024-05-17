@@ -6,10 +6,10 @@ import React from "react";
 function Podcast() {
   return (
     <div className="">
-      <div className="md:text-3xl text-xl font-bold text-center">
+      <div className="md:text-3xl text-xl font-bold text-center text-[#333333]">
         Listen To Podcast
       </div>
-      <div className="flex justify-center items-center gap-5 my-8">
+      <div className="flex justify-center items-center gap-5 my-8 ">
         <div>
           <Image
             src="/podcast/youtube.svg"
@@ -18,7 +18,12 @@ function Podcast() {
             alt="you-tube-image"
           />
         </div>
-        <div className="font-semibold md:text-[20px]">Subscribe on Youtube</div>
+
+        <div className="font-semibold md:text-[20px] hover:underline text-[#333333]">
+          <Link href="https://www.youtube.com/@serma8148">
+            Subscribe on YouTube
+          </Link>
+        </div>
       </div>
       {/* <div className="grid place-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:items-end"> */}
       <div className="flex justify-center gap-8 md:items-end flex-wrap ">
@@ -70,10 +75,9 @@ function Podcast() {
         </div>
       </div>
       <span className="my-10  flex justify-center">
-      <Link href={"https://www.youtube.com/@serma8148"} target="_blank">
-  <Button content={"View More"} px={"px-5"} py={"py-2"} />
-</Link>
-
+        <Link href={"https://www.youtube.com/@serma8148"} target="_blank">
+          <Button content={"View More"} px={"px-5"} py={"py-2"} />
+        </Link>
       </span>
     </div>
   );

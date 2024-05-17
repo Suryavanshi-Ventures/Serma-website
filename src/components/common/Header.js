@@ -23,7 +23,7 @@ const Header = () => {
           </Link>
         </div>
 
-        <ul className=" hidden lg:flex text-[17px] gap-5 xxl:gap-12  animate-flip-down  xxl:text-[18px] ">
+        <ul className=" hidden lg:flex text-[17px] gap-5 xxl:gap-12  animate-flip-down  xxl:text-[18px] text-[#333333] ">
           <li className="font-semibold cursor-pointer "><Link href="/">Home</Link></li>
           <li className="font-semibold cursor-pointer"><Link href="/events">Event</Link></li>
           <li className="font-semibold cursor-pointer">The Sermapod</li>

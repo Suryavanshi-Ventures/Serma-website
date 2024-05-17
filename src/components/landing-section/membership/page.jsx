@@ -6,7 +6,7 @@ function Membership() {
   return (
     <div>
       <div className="flex flex-col md:items-center md:flex-row gap-10 md:gap-20 lg:gap-30">
-        <div className="md:text-3xl text-xl font-bold max-md:flex max-md:justify-center gap-2">
+        <div className="md:text-3xl text-xl font-bold max-md:flex max-md:justify-center gap-2 text-[#333333]">
           <div>SERMA</div>
           <div>MEMBERSHIP</div>
         </div>
