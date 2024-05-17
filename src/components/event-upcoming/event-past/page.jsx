@@ -15,12 +15,12 @@ function EventPast() {
               Past Events
             </div>
             <div className="my-2 hidden lg:flex">
-              <BlueLine />
+              <BlueLine width={"70px"}/>
             </div>
             <div className="text-center my-5 lg:my-10 lg:text-left  text-gray responsive-Text w-auto 2xl:w-auto ">
               View our Past events and get ready for our upcoming one
             </div>
-            <div className="w-full gap-2 border-b border-[#A5A5A5] flex py-2">
+            <div className="w-[250px] gap-2 border-b  border-[#A5A5A5] flex py-2">
               <Image
                 src="/events/search.svg"
                 height={17}
@@ -28,7 +28,7 @@ function EventPast() {
                 alt="search-image"
                 className=""
               />
-              <input type="text" className="w-full outline-none" />
+              <input type="text" placeholder="Search all Events" className="w-full outline-none" />
             </div>
             <div className="my-5 text-gray">
               {MONTHS.map((month) => (
@@ -42,7 +42,7 @@ function EventPast() {
                       className=""
                     />
                   </div>
-                  <div className="hover:text-[#13A6AC] cursor-pointer">{month}</div>
+                  <div className="hover:text-[#13A6AC] cursor-pointer hover:underline">{month}</div>
                 </div>
               ))}
             </div>

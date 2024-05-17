@@ -8,7 +8,7 @@ const Footer = () => {
             <div className="flex justify-center">
               <Image src="/logo.svg" height={60} width={135} alt="logo" />
             </div>
-            <div className="my-[20px] sm:my-[40px] xl:w-[300px] responsive-Text-footer text-center">
+            <div className="my-[20px] sm:my-[40px] xl:w-[300px] responsive-Text-footer text-[#333333] text-center">
               Sports and Entertainment Risk Management Alliance
             </div>
           </div>
@@ -17,7 +17,7 @@ const Footer = () => {
           <div className="font-[700] text-[20px]">Contact Us</div>
 
           <div className="sm:mt-[60px] xs:space-y-8 ">
-            <div className="my-3 underline responsive-Text-footer">
+            <div className="my-3 underline responsive-Text-footer text-[#333333]">
               info@theserma.org
             </div>
             <div className="responsive-Text-footer">+1 (123) 456 -7890</div>
@@ -27,7 +27,7 @@ const Footer = () => {
        <div className=" flex justify-center">
      <div>
      <div className="font-[700] text-[20px] ">Links</div>
-          <div className="sm:mt-[60px]  responsive-Text-footer">
+          <div className="sm:mt-[60px]  responsive-Text-footer text-[#333333]">
             <div className="my-3 ">About</div>
             <div>Event</div>
             <div className="my-3">Membership</div>

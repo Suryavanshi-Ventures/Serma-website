@@ -85,7 +85,7 @@ function UpcomingEvent() {
           ))}
         </div>
         <div className="mt-16">
-          <Button content={"View all event"} px={"px-5"} py={"py-2"} />
+          <Button content={"View all events"} px={"px-5"} py={"py-2"} />
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ import { EVENT_CARD_DETAILS } from "@/app/utils/constant/constant";
 
 function SwiperSlidePast() {
   return (
-    <>
+    <div className="">
       <Swiper
         slidesPerView={3}
         grid={{
@@ -103,7 +103,9 @@ function SwiperSlidePast() {
                     <div className="font-semibold text-[#525971]">
                       {event.title}
                     </div>
-                    <div className="flex justify-end items-center gap-3">
+                    <div className="flex items-center justify-between">
+                    <div className="underline text-[#474747] cursor-pointer">Show Detail</div>
+                    <div className="flex  items-center gap-3">
                       <span className="text-primary text-lg my-3">
                         Register
                       </span>
@@ -122,6 +124,7 @@ function SwiperSlidePast() {
                         </svg>
                       </span>
                     </div>
+                   </div>
                   </div>
                 </div>
               </div>
@@ -129,7 +132,7 @@ function SwiperSlidePast() {
           ))}
         </div>
       </Swiper>
-    </>
+    </div>
   );
 }
 

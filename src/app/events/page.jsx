@@ -14,7 +14,7 @@ function Events() {
       <div className='my-[40px] lg:pl-[85px] '>
         <EventUpcoming/>
       </div>
-      <div className='my-[40px] lg:pl-[85px]'>
+      <div className='my-[40px] lg:pl-[85px] '>
         <EventPast/>
       </div>
     </div>

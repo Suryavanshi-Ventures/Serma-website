@@ -24,8 +24,12 @@ const Header = () => {
         </div>
 
         <ul className=" hidden lg:flex text-[17px] gap-5 xxl:gap-12  animate-flip-down  xxl:text-[18px] text-[#333333] ">
-          <li className="font-semibold cursor-pointer "><Link href="/">Home</Link></li>
-          <li className="font-semibold cursor-pointer"><Link href="/events">Event</Link></li>
+          <li className="font-semibold cursor-pointer ">
+            <Link href="/">Home</Link>
+          </li>
+          <li className="font-semibold cursor-pointer">
+            <Link href="/events">Events</Link>
+          </li>
           <li className="font-semibold cursor-pointer">The Sermapod</li>
           <li
             className="flex justify-center items-center gap-2 cursor-pointer bg-white relative font-semibold"
@@ -132,22 +136,22 @@ const Header = () => {
       <div className="w-full px-[20px] bg-white  absolute visible lg:hidden animate-fade-left z-50">
         {showMenuItems && (
           <ul className="space-y-3  p-3">
-            <div className="border-b-[1px] p-2 rounded-md hover:bg-primary hover:text-white">
+            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
               <li className="">Home</li>
             </div>
-            <div className="border-b-[1px] p-2 rounded-md hover:bg-primary hover:text-white">
-              <li>Event</li>
+            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
+              <li>Events</li>
             </div>
-            <div className="border-b-[1px] p-2 rounded-md hover:bg-primary hover:text-white">
+            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
               <li>The Sermapod</li>
             </div>
-            <div className="border-b-[1px] p-2 rounded-md hover:bg-primary hover:text-white">
+            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
               <li>About</li>
             </div>
-            <div className="border-b-[1px] p-2 rounded-md hover:bg-primary hover:text-white">
+            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
               <li>Membership Only Content</li>
             </div>
-            <div className="border-b-[1px] p-2 rounded-md hover:bg-primary hover:text-white">
+            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
               <li>Contact Us</li>
             </div>
           </ul>

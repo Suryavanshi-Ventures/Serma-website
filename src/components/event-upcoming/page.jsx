@@ -12,9 +12,9 @@ function EventUpcoming() {
             <div className='text-3xl font-bold text-center lg:text-left'>
             Upcoming Events
             </div>
-            <div className='my-2 hidden lg:flex'><BlueLine /></div>
+            <div className='my-2 hidden lg:flex'>  <BlueLine width={"150px"}/></div>
            <div className='text-center my-5 lg:my-10 lg:text-left  text-gray responsive-Text w-auto 2xl:w-auto '> 
-           View our Recent events and register for the Event
+           View our Recent events and register for the Events
            </div>
           
         </div>
