@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-function Button({ content, px, py }) {
+function Button({ content, px, py,width }) {
   const [handleVectorChange, setHandleVectorChange] = useState(false);
   return (
     <div>
@@ -9,7 +9,7 @@ function Button({ content, px, py }) {
         <div
           onMouseEnter={() => setHandleVectorChange(true)}
           onMouseLeave={() => setHandleVectorChange(false)}
-          className={`flex justify-center items-center gap-2 ${px} ${py} border border-gray hover:bg-primary hover:text-white cursor-pointer transition duration-300 text-primary  rounded-full `}
+          className={`flex ${width ? "w-full":""} justify-center items-center gap-2 ${px} ${py} border border-gray hover:bg-primary hover:text-white cursor-pointer transition duration-300 text-primary  rounded-full `}
         >
           <span className=" "> {content}</span>{" "}
           <span>

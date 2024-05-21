@@ -6,9 +6,17 @@ import "swiper/css/pagination";
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
+import { useRouter } from "next/navigation";
 import { EVENT_CARD_DETAILS } from "@/app/utils/constant/constant";
 
 function SwiperSlideIncoming() {
+  const router = useRouter();
+
+  const handleClick = (id) => {
+    console.log(id);
+    router.push("/events/dynamicRout");
+  };
+
   return (
     <>
       <Swiper
@@ -100,28 +108,33 @@ function SwiperSlideIncoming() {
                     <div className="font-semibold text-[#525971]">
                       {event.title}
                     </div>
-                   <div className="flex items-center justify-between">
-                    <div className="underline text-[#474747] cursor-pointer">Show Detail</div>
-                    <div className="flex  items-center gap-3">
-                      <span className="text-primary text-lg my-3">
-                        Register
-                      </span>
-                      <span>
-                        <svg
-                          width="18"
-                          height="8"
-                          viewBox="0 0 20 8"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
+                    <div className="flex items-center justify-between">
+                      <div className="underline text-[#474747] cursor-pointer">
+                        Show Detail
+                      </div>
+                      <div className="flex cursor-pointer items-center gap-3">
+                        <span
+                          onClick={() => handleClick(event.id)}
+                          className="text-primary text-lg my-3"
                         >
-                          <path
-                            d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
-                            fill="#C42C2D"
-                          />
-                        </svg>
-                      </span>
+                          Register
+                        </span>
+                        <span>
+                          <svg
+                            width="18"
+                            height="8"
+                            viewBox="0 0 20 8"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
+                              fill="#C42C2D"
+                            />
+                          </svg>
+                        </span>
+                      </div>
                     </div>
-                   </div>
                   </div>
                 </div>
               </div>

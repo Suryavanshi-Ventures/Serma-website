@@ -5,24 +5,21 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Grid, Pagination } from "swiper/modules";
+import { FreeMode, Pagination } from "swiper/modules";
 import { EVENT_CARD_DETAILS } from "@/app/utils/constant/constant";
 
-function SwiperSlidePast() {
+function SwiperSlideIncoming() {
   return (
     <div className="">
       <Swiper
         slidesPerView={3}
-        grid={{
-          rows: 2,
-        }}
         spaceBetween={30}
         freeMode={true}
         pagination={{
           clickable: true,
         }}
-        modules={[Grid, FreeMode]}
-        className="mySwiper"
+        modules={[FreeMode]}
+        className="mySwiper "
         breakpoints={{
           0: {
             slidesPerView: 1,
@@ -60,7 +57,7 @@ function SwiperSlidePast() {
             <SwiperSlide>
               <div
                 key={index}
-                className="rounded-2xl  shadow-xl flex max-md:justify-center max-md:items-center max-sm:p-0 md:p-3"
+                className="rounded-2xl shadow-xl   flex max-md:justify-center max-md:items-center max-sm:p-0 md:p-3"
               >
                 <div className="">
                   <div className="">
@@ -103,7 +100,7 @@ function SwiperSlidePast() {
                     <div className="font-semibold text-[#525971]">
                       {event.title}
                     </div>
-                    <div className="flex items-center justify-between">
+                   <div className="flex items-center justify-between">
                     <div className="underline text-[#474747] cursor-pointer">Show Detail</div>
                     <div className="flex  items-center gap-3">
                       <span className="text-primary text-lg my-3">
@@ -136,4 +133,4 @@ function SwiperSlidePast() {
   );
 }
 
-export default SwiperSlidePast;
+export default SwiperSlideIncoming;

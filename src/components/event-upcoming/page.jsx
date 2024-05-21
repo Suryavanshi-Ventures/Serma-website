@@ -20,7 +20,7 @@ function EventUpcoming() {
         </div>
 {/* ------------------------ */}
 
-<div className='w-full lg:w-[80%] '>
+<div className='w-full lg:w-[80%]'>
     <SwiperSlideIncoming/>
 </div>
       </div>
