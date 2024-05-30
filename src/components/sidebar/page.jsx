@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
 const sidebarItems = [
@@ -35,6 +35,16 @@ function Sidebar() {
   const pathname = usePathname();
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsMobile(window.innerWidth < 768);
+      const handleResize = () => setIsMobile(window.innerWidth < 768);
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
 
   const handleNavigation = (route, index) => {
     router.push(route);
@@ -48,15 +58,32 @@ function Sidebar() {
           <div
             key={index}
             className={`flex px-[10px] py-[10px] items-center gap-5 cursor-pointer rounded-xl transition duration-200 
-              ${pathname.includes(item.route) ? "bg-[#F6E0E0CC] text-primary" : "" } ${
-                activeIndex === index ? "bg-[#F6E0E0CC] text-primary" : "text-gray"
-              }`}
+              ${
+                pathname.includes(item.route)
+                  ? "bg-[#F6E0E0CC] text-primary"
+                  : ""
+              } ${
+              activeIndex === index
+                ? "bg-[#F6E0E0CC] text-primary"
+                : "text-gray"
+            }`}
             onClick={() => handleNavigation(item.route, index)}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <div>
-              <Image src={hoveredIndex === index || activeIndex === index || pathname.includes(item.route) ? item.srcOnHover : item.src} height={30} width={30} alt="logo" />
+              <Image
+                src={
+                  hoveredIndex === index ||
+                  activeIndex === index ||
+                  pathname.includes(item.route)
+                    ? item.srcOnHover
+                    : item.src
+                }
+                height={30}
+                width={30}
+                alt="logo"
+              />
             </div>
             <div className="text-[18px]">{item.label}</div>
           </div>
@@ -69,9 +96,11 @@ function Sidebar() {
             key={index}
             className={`flex px-[10px] py-[10px] items-center gap-4 cursor-pointer rounded-xl transition duration-200 
               hover:bg-[#F6E0E0CC] text-gray
-              ${window.innerWidth < 768 ? 'flex-shrink-0' : ''} 
+              ${isMobile ? "flex-shrink-0" : ""} 
               ${
-                pathname.includes(item.route) || activeIndex === index ? "bg-[#F6E0E0CC] text-primary" : "text-gray"
+                pathname.includes(item.route) || activeIndex === index
+                  ? "bg-[#F6E0E0CC] text-primary"
+                  : "text-gray"
               }
             `}
             onClick={() => handleNavigation(item.route, index)}
@@ -80,7 +109,11 @@ function Sidebar() {
           >
             <div>
               <Image
-                src={hoveredIndex === index || activeIndex === index ? item.srcOnHover : item.src}
+                src={
+                  hoveredIndex === index || activeIndex === index
+                    ? item.srcOnHover
+                    : item.src
+                }
                 height={30}
                 width={30}
                 alt="logo"

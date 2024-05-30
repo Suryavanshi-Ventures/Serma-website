@@ -4,7 +4,7 @@ import { useState } from "react";
 // import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useRouter } from "next/navigation";
-import "tailwindcss/tailwind.css";
+// import "tailwindcss/tailwind.css";
 import dynamic from "next/dynamic";
 import LoadingButton from "@/components/loadingButton/page";
 function CreateTopic() {
