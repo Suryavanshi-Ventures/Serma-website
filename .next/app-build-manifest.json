@@ -1,0 +1,77 @@
+{
+  "pages": {
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/events/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/events/page.css",
+      "static/chunks/app/events/page.js"
+    ],
+    "/membership/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/membership/page.js"
+    ],
+    "/membership/membership-application/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/membership/membership-application/page.js"
+    ],
+    "/members-only-content/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/members-only-content/page.js"
+    ],
+    "/members-only-content/Dashboard/member-forum/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/members-only-content/Dashboard/member-forum/page.js"
+    ],
+    "/members-only-content/Dashboard/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/members-only-content/Dashboard/layout.js"
+    ],
+    "/members-only-content/Dashboard/member-forum/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/members-only-content/Dashboard/member-forum/[id]/page.js"
+    ],
+    "/members-only-content/Dashboard/private-member/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/members-only-content/Dashboard/private-member/page.js"
+    ],
+    "/members-only-content/Dashboard/webinar/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/members-only-content/Dashboard/webinar/page.js"
+    ],
+    "/members-only-content/Dashboard/profile/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/members-only-content/Dashboard/profile/page.js"
+    ],
+    "/members-only-content/Dashboard/private-member/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/members-only-content/Dashboard/private-member/[id]/page.js"
+    ],
+    "/members-only-content/Dashboard/member-forum/create-topic/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/members-only-content/Dashboard/member-forum/create-topic/page.css",
+      "static/chunks/app/members-only-content/Dashboard/member-forum/create-topic/page.js"
+    ]
+  }
+}

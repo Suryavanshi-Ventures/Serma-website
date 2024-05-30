@@ -1,0 +1,12 @@
+{
+  "/members-only-content/page": "app/members-only-content/page.js",
+  "/page": "app/page.js",
+  "/events/page": "app/events/page.js",
+  "/membership/page": "app/membership/page.js",
+  "/membership/membership-application/page": "app/membership/membership-application/page.js",
+  "/members-only-content/Dashboard/member-forum/page": "app/members-only-content/Dashboard/member-forum/page.js",
+  "/members-only-content/Dashboard/member-forum/[id]/page": "app/members-only-content/Dashboard/member-forum/[id]/page.js",
+  "/members-only-content/Dashboard/private-member/[id]/page": "app/members-only-content/Dashboard/private-member/[id]/page.js",
+  "/members-only-content/Dashboard/webinar/page": "app/members-only-content/Dashboard/webinar/page.js",
+  "/members-only-content/Dashboard/profile/page": "app/members-only-content/Dashboard/profile/page.js"
+}
