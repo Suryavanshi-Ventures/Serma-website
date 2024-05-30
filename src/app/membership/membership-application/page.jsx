@@ -102,6 +102,7 @@ const page = () => {
         </div>
       </div>
       <Modal
+      wantTocloseFromScreen ={true}
         width={"w-[600px]"}
         isOpen={popUp}
         onClose={() => setPopUp(false)}

@@ -1,118 +1,501 @@
 module.exports = {
-    HEADER_Content: [
-      {
-        title: "Home",
-        url: "/home",
-      },
-      {
-        title: "Event",
-        url: "/events",
-      },
-      {
-        title: "The Sermapod",
-        url: "/sermapod",
-      },
-      {
-        title: "About",
-        submenu: [
-          {
-            title: "About Us",
-            url: "/about/us",
-          },
-          {
-            title: "Our Team",
-            url: "/about/team",
-          },
-          // Add more submenu items as needed
-        ],
-      },
-      {
-        title: "Membership Only Content",
-        url: "/membership",
-      },
-      {
-        title: "Contact Us",
-        url: "/contact",
-      },
-    ],
+  HEADER_Content: [
+    {
+      title: "Home",
+      url: "/home",
+    },
+    {
+      title: "Event",
+      url: "/events",
+    },
+    {
+      title: "The Sermapod",
+      url: "/sermapod",
+    },
+    {
+      title: "About",
+      submenu: [
+        {
+          title: "About Us",
+          url: "/about/us",
+        },
+        {
+          title: "Our Team",
+          url: "/about/team",
+        },
+        // Add more submenu items as needed
+      ],
+    },
+    {
+      title: "Membership Only Content",
+      url: "/membership",
+    },
+    {
+      title: "Contact Us",
+      url: "/contact",
+    },
+  ],
 
-   EVENT_CARD_DETAILS : [
-      {  id:1,
-        imageSrc: "/upcoming-event/image-1.png",
-        date: "March 19, 2024 4:00 PM (MDT)",
-        type: "Virtual",
-        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
-      },
-      { id:2,
-        imageSrc: "/upcoming-event/image-2.png",
-        date: "March 19, 2024 4:00 PM (MDT)",
-        type: "Virtual",
-        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
-      },
-      {
-        id:3,
-        imageSrc: "/upcoming-event/image-3.png",
-        date: "March 19, 2024 4:00 PM (MDT)",
-        type: "Virtual",
-        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
-      }, {
-        id:4,
-        imageSrc: "/upcoming-event/image-1.png",
-        date: "March 19, 2024 4:00 PM (MDT)",
-        type: "Virtual",
-        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
-      },
-      {
-        id:5,
-        imageSrc: "/upcoming-event/image-3.png",
-        date: "March 19, 2024 4:00 PM (MDT)",
-        type: "Virtual",
-        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
-      },
-      { 
-        id:6,
-        imageSrc: "/upcoming-event/image-2.png",
-        date: "March 19, 2024 4:00 PM (MDT)",
-        type: "Virtual",
-        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
-      },
-      {
-        id:7,
-        imageSrc: "/upcoming-event/image-2.png",
-        date: "March 19, 2024 4:00 PM (MDT)",
-        type: "Virtual",
-        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
-      },
-      {
-        id:8,
-        imageSrc: "/upcoming-event/image-2.png",
-        date: "March 19, 2024 4:00 PM (MDT)",
-        type: "Virtual",
-        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
-      },
-      {
-        id:9,
-        imageSrc: "/upcoming-event/image-2.png",
-        date: "March 19, 2024 4:00 PM (MDT)",
-        type: "Virtual",
-        title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar"
-      },
-    ],
+  EVENT_CARD_DETAILS: [
+    {
+      id: 1,
+      imageSrc: "/upcoming-event/image-1.png",
+      date: "March 19, 2024 4:00 PM (MDT)",
+      type: "Virtual",
+      title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
+    },
+    {
+      id: 2,
+      imageSrc: "/upcoming-event/image-2.png",
+      date: "March 19, 2024 4:00 PM (MDT)",
+      type: "Virtual",
+      title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
+    },
+    {
+      id: 3,
+      imageSrc: "/upcoming-event/image-3.png",
+      date: "March 19, 2024 4:00 PM (MDT)",
+      type: "Virtual",
+      title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
+    },
+    {
+      id: 4,
+      imageSrc: "/upcoming-event/image-1.png",
+      date: "March 19, 2024 4:00 PM (MDT)",
+      type: "Virtual",
+      title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
+    },
+    {
+      id: 5,
+      imageSrc: "/upcoming-event/image-3.png",
+      date: "March 19, 2024 4:00 PM (MDT)",
+      type: "Virtual",
+      title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
+    },
+    {
+      id: 6,
+      imageSrc: "/upcoming-event/image-2.png",
+      date: "March 19, 2024 4:00 PM (MDT)",
+      type: "Virtual",
+      title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
+    },
+    {
+      id: 7,
+      imageSrc: "/upcoming-event/image-2.png",
+      date: "March 19, 2024 4:00 PM (MDT)",
+      type: "Virtual",
+      title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
+    },
+    {
+      id: 8,
+      imageSrc: "/upcoming-event/image-2.png",
+      date: "March 19, 2024 4:00 PM (MDT)",
+      type: "Virtual",
+      title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
+    },
+    {
+      id: 9,
+      imageSrc: "/upcoming-event/image-2.png",
+      date: "March 19, 2024 4:00 PM (MDT)",
+      type: "Virtual",
+      title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
+    },
+  ],
 
-  MONTHS : [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-  ]
-  
-  };
-  
+  MONTHS: [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ],
+
+  EVENT_CARD_DESHBOARD: [
+    {
+      id: 1,
+      imageSrc: "/upcoming-event/image-1.png",
+      date: "March 19, 2024 4:00 PM (MDT)",
+      type: "Virtual",
+      title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
+    },
+    {
+      id: 2,
+      imageSrc: "/upcoming-event/image-2.png",
+      date: "March 19, 2024 4:00 PM (MDT)",
+      type: "Virtual",
+      title: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
+    },
+  ],
+
+  POSTS: [
+    {
+      id: 1,
+      userImage: "/path/to/image1.jpg",
+      topic: "Call for podcast guest",
+      userName: "Lisa Stiegal",
+      date: "October 23, 2023",
+      content:
+        "I'd like to do a podcast about waivers, given the infamous 40-page waiver that this haunted house makes you sign. I'd like to get this on before Halloween, so please let me know if any of you...",
+      replies: 3,
+    },
+    {
+      id: 2,
+      userImage: "/path/to/image1.jpg",
+      userName: "Lisa Stiegal",
+      topic: "Call for podcast guest",
+      date: "October 23, 2023",
+      content:
+        "I'd like to do a podcast about waivers, given the infamous 40-page waiver that this haunted house makes you sign. I'd like to get this on before Halloween, so please let me know if any of you...",
+      replies: 2,
+    },
+    {
+      id: 3,
+      userImage: "/path/to/image1.jpg",
+      userName: "Lisa Stiegal",
+      topic: "Call for podcast guest",
+      date: "October 23, 2023",
+      content:
+        "I'd like to do a podcast about waivers, given the infamous 40-page waiver that this haunted house makes you sign. I'd like to get this on before Halloween, so please let me know if any of you...",
+      replies: 2,
+    },
+    {
+      id: 4,
+      userImage: "/path/to/image1.jpg",
+      userName: "Lisa Stiegal",
+      topic: "Call for podcast guest",
+      date: "October 23, 2023",
+      content:
+        "I'd like to do a podcast about waivers, given the infamous 40-page waiver that this haunted house makes you sign. I'd like to get this on before Halloween, so please let me know if any of you...",
+      replies: 5,
+    },
+    {
+      id: 5,
+      userImage: "/path/to/image1.jpg",
+      userName: "Lisa Stiegal",
+      topic: "Call for podcast guest",
+      date: "October 23, 2023",
+      content:
+        "I'd like to do a podcast about waivers, given the infamous 40-page waiver that this haunted house makes you sign. I'd like to get this on before Halloween, so please let me know if any of you...",
+      replies: 1,
+    },
+    {
+      id: 6,
+      userImage: "/path/to/image1.jpg",
+      userName: "Lisa Stiegal",
+      topic: "Call for podcast guest",
+      date: "October 23, 2023",
+      content:
+        "I'd like to do a podcast about waivers, given the infamous 40-page waiver that this haunted house makes you sign. I'd like to get this on before Halloween, so please let me know if any of you...",
+      replies: 2,
+    },
+    {
+      id: 7,
+      userImage: "/path/to/image1.jpg",
+      userName: "Lisa Stiegal",
+      topic: "Call for podcast guest",
+      date: "October 23, 2023",
+      content:
+        "I'd like to do a podcast about waivers, given the infamous 40-page waiver that this haunted house makes you sign. I'd like to get this on before Halloween, so please let me know if any of you...",
+      replies: 2,
+    },
+
+    // Repeat for all posts
+  ],
+
+  TOPICDETAILS: [
+    {
+      id: 1,
+      topic: {
+        title: "Call for podcast guest",
+        author: {
+          name: "Lisa Stiegal",
+          profilePic: "/dashboard/profile-pic.png",
+        },
+        content:
+          'Hey, SERMAnators This story made me think of an interesting SERMApod topic: <a href="https://www.tennessean.com/story/news/2023/10/09/mckamey-manor-summerton-tennessee-horror-house-halloween-hulu/71083843007/" class="text-blue-500 hover:underline">https://www.tennessean.com/story/news/2023/10/09/mckamey-manor-summerton-tennessee-horror-house-halloween-hulu/71083843007/</a> I’d like to do a podcast about waivers, given the infamous 40-page waiver that this haunted house makes you sign. I’d like to get this on before Halloween, so please let me know if any of you attorney members are interested in speaking about the enforceability of haunted house and other entertainment venue waivers. Thanks, this should be a fun one.',
+        date: "October 23, 2023 1:41 PM",
+        messageId: "13270535",
+      },
+    },
+    {
+      id: 2,
+      topic: {
+        title: "second podcast guest",
+        author: {
+          name: "Lisa Stiegal",
+          profilePic: "/dashboard/profile-pic.png",
+        },
+        content:
+          'Hey, SERMAnators This story made me think of an interesting SERMApod topic: <a href="https://www.tennessean.com/story/news/2023/10/09/mckamey-manor-summerton-tennessee-horror-house-halloween-hulu/71083843007/" class="text-blue-500 hover:underline">https://www.tennessean.com/story/news/2023/10/09/mckamey-manor-summerton-tennessee-horror-house-halloween-hulu/71083843007/</a> I’d like to do a podcast about waivers, given the infamous 40-page waiver that this haunted house makes you sign. I’d like to get this on before Halloween, so please let me know if any of you attorney members are interested in speaking about the enforceability of haunted house and other entertainment venue waivers. Thanks, this should be a fun one.',
+        date: "October 23, 2023 1:41 PM",
+        messageId: "13270535",
+      },
+    },
+    {
+      id: 3,
+      topic: {
+        title: "ccscd Call for podcast guest",
+        author: {
+          name: "Lisa Stiegal",
+          profilePic: "/dashboard/profile-pic.png",
+        },
+        content:
+          'Hey, SERMAnators This story made me think of an interesting SERMApod topic: <a href="https://www.tennessean.com/story/news/2023/10/09/mckamey-manor-summerton-tennessee-horror-house-halloween-hulu/71083843007/" class="text-blue-500 hover:underline">https://www.tennessean.com/story/news/2023/10/09/mckamey-manor-summerton-tennessee-horror-house-halloween-hulu/71083843007/</a> I’d like to do a podcast about waivers, given the infamous 40-page waiver that this haunted house makes you sign. I’d like to get this on before Halloween, so please let me know if any of you attorney members are interested in speaking about the enforceability of haunted house and other entertainment venue waivers. Thanks, this should be a fun one.',
+        date: "October 23, 2023 1:41 PM",
+        messageId: "13270535",
+      },
+    },
+    {
+      id: 4,
+      topic: {
+        title: "   check karCall for podcast guest",
+        author: {
+          name: "Lisa Stiegal",
+          profilePic: "/dashboard/profile-pic.png",
+        },
+        content:
+          'Hey, SERMAnators This story made me think of an interesting SERMApod topic: <a href="https://www.tennessean.com/story/news/2023/10/09/mckamey-manor-summerton-tennessee-horror-house-halloween-hulu/71083843007/" class="text-blue-500 hover:underline">https://www.tennessean.com/story/news/2023/10/09/mckamey-manor-summerton-tennessee-horror-house-halloween-hulu/71083843007/</a> I’d like to do a podcast about waivers, given the infamous 40-page waiver that this haunted house makes you sign. I’d like to get this on before Halloween, so please let me know if any of you attorney members are interested in speaking about the enforceability of haunted house and other entertainment venue waivers. Thanks, this should be a fun one.',
+        date: "October 23, 2023 1:41 PM",
+        messageId: "13270535",
+      },
+    },
+    {
+      id: 5,
+      topic: {
+        title: "wohooooo Call for podcast guest",
+        author: {
+          name: "Lisa Stiegal",
+          profilePic: "/dashboard/profile-pic.png",
+        },
+        content:
+          'Hey, SERMAnators This story made me think of an interesting SERMApod topic: <a href="https://www.tennessean.com/story/news/2023/10/09/mckamey-manor-summerton-tennessee-horror-house-halloween-hulu/71083843007/" class="text-blue-500 hover:underline">https://www.tennessean.com/story/news/2023/10/09/mckamey-manor-summerton-tennessee-horror-house-halloween-hulu/71083843007/</a> I’d like to do a podcast about waivers, given the infamous 40-page waiver that this haunted house makes you sign. I’d like to get this on before Halloween, so please let me know if any of you attorney members are interested in speaking about the enforceability of haunted house and other entertainment venue waivers. Thanks, this should be a fun one.',
+        date: "October 23, 2023 1:41 PM",
+        messageId: "13270535",
+      },
+    },
+    {
+      id: 6,
+      topic: {
+        title: "not Call for podcast guest",
+        author: {
+          name: "Lisa Stiegal",
+          profilePic: "/dashboard/profile-pic.png",
+        },
+        content:
+          'Hey, SERMAnators This story made me think of an interesting SERMApod topic: <a href="https://www.tennessean.com/story/news/2023/10/09/mckamey-manor-summerton-tennessee-horror-house-halloween-hulu/71083843007/" class="text-blue-500 hover:underline">https://www.tennessean.com/story/news/2023/10/09/mckamey-manor-summerton-tennessee-horror-house-halloween-hulu/71083843007/</a> I’d like to do a podcast about waivers, given the infamous 40-page waiver that this haunted house makes you sign. I’d like to get this on before Halloween, so please let me know if any of you attorney members are interested in speaking about the enforceability of haunted house and other entertainment venue waivers. Thanks, this should be a fun one.',
+        date: "October 23, 2023 1:41 PM",
+        messageId: "13270535",
+      },
+    },
+    {
+      id: 7,
+      topic: {
+        title: "dgajfgasjf ashhfgiasygfasi",
+        author: {
+          name: "Lisa Stiegal",
+          profilePic: "/dashboard/profile-pic.png",
+        },
+        content:
+          'Hey, SERMAnators This story made me think of an interesting SERMApod topic: <a href="https://www.tennessean.com/story/news/2023/10/09/mckamey-manor-summerton-tennessee-horror-house-halloween-hulu/71083843007/" class="text-blue-500 hover:underline">https://www.tennessean.com/story/news/2023/10/09/mckamey-manor-summerton-tennessee-horror-house-halloween-hulu/71083843007/</a> I’d like to do a podcast about waivers, given the infamous 40-page waiver that this haunted house makes you sign. I’d like to get this on before Halloween, so please let me know if any of you attorney members are interested in speaking about the enforceability of haunted house and other entertainment venue waivers. Thanks, this should be a fun one.',
+        date: "October 23, 2023 1:41 PM",
+        messageId: "13270535",
+      },
+    },
+  ],
+  PROFILES: [
+    {
+      id: 1,
+      name: "Chloe Adkins",
+      role: "Risk Manager",
+      organization: "USA Swimming",
+      membership: "Industry Membership",
+      image: "/dashboard/profile-pic.png",
+    },
+    {
+      id: 2,
+      name: "Chloe Adkins",
+      role: "Risk Manager",
+      organization: "USA Swimming",
+      membership: "Industry Membership",
+      image: "/dashboard/profile-pic.png",
+    },
+    {
+      id: 3,
+      name: "Chloe Adkins",
+      role: "Risk Manager",
+      organization: "USA Swimming",
+      membership: "Industry Membership",
+      image: "/dashboard/profile-pic.png",
+    },
+    {
+      id: 4,
+      name: "Chloe Adkins",
+      role: "Risk Manager",
+      organization: "USA Swimming",
+      membership: "Industry Membership",
+      image: "/dashboard/profile-pic.png",
+    },
+    {
+      id: 5,
+      name: "Chloe Adkins",
+      role: "Risk Manager",
+      organization: "USA Swimming",
+      membership: "Industry Membership",
+      image: "/dashboard/profile-pic.png",
+    },
+    {
+      id: 6,
+      name: "Chloe Adkins",
+      role: "Risk Manager",
+      organization: "USA Swimming",
+      membership: "Industry Membership",
+      image: "/dashboard/profile-pic.png",
+    },
+    {
+      id: 7,
+      name: "Chloe Adkins",
+      role: "Risk Manager",
+      organization: "USA Swimming",
+      membership: "Industry Membership",
+      image: "/dashboard/profile-pic.png",
+    },
+    {
+      id: 8,
+      name: "Chloe Adkins",
+      role: "Risk Manager",
+      organization: "USA Swimming",
+      membership: "Industry Membership",
+      image: "/dashboard/profile-pic.png",
+    },
+    {
+      id: 9,
+      name: "Chloe Adkins",
+      role: "Risk Manager",
+      organization: "USA Swimming",
+      membership: "Industry Membership",
+      image: "/dashboard/profile-pic.png",
+    },
+    {
+      id: 10,
+      name: "Chloe Adkins",
+      role: "Risk Manager",
+      organization: "USA Swimming",
+      membership: "Industry Membership",
+      image: "/dashboard/profile-pic.png",
+    },
+    // Add all other profiles here
+  ],
+  PRIVATE_MEMBER_DATA: [
+    {
+      id: 1,
+      title:"Priciple",
+      image: "/dashboard/profile-pic.png",
+      firstName: "Bever",
+      lastName :"danial",
+      membershipLevel: "Adzmay/Vendor Membersh",
+      Organization: "Adesman Law Drous, PLLC",
+      Email: "Testi@gmall.com",
+      State: "Connecticut",
+      Zipcode: "00000",
+      Professional: "han they're the 1000% when",
+    },
+    {
+      id: 2,
+      title:"Priciple",
+      image: "/dashboard/profile-pic.png",
+      firstName: "john",
+      lastName :"danial",
+      membershipLevel: "Adzmay/Vendor Membersh",
+      Organization: "Adesman Law Drous, PLLC",
+      Email: "Testi@gmall.com",
+      State: "Connecticut",
+      Zipcode: "00000",
+      Professional: "han they're the 1000% when",
+    },
+    {
+      id: 3,
+      title:"Priciple",
+      image: "/dashboard/profile-pic.png",
+      firstName: "Nick",
+      lastName :"danial",
+      membershipLevel: "Adzmay/Vendor Membersh",
+      Organization: "Adesman Law Drous, PLLC",
+      Email: "Testi@gmall.com",
+      State: "Connecticut",
+      Zipcode: "00000",
+      Professional: "han they're the 1000% when",
+    },
+    {
+      id: 4,
+      title:"Priciple",
+      image: "/dashboard/profile-pic.png",
+      firstName: "Ken",
+      lastName :"danial",
+      membershipLevel: "Adzmay/Vendor Membersh",
+      Organization: "Adesman Law Drous, PLLC",
+      Email: "Testi@gmall.com",
+      State: "Connecticut",
+      Zipcode: "00000",
+      Professional: "han they're the 1000% when",
+    },
+    {
+      id: 5,
+      title:"Priciple",
+      image: "/dashboard/profile-pic.png",
+      firstName: "Tim",
+      lastName :"danial",
+      membershipLevel: "Adzmay/Vendor Membersh",
+      Organization: "Adesman Law Drous, PLLC",
+      Email: "Testi@gmall.com",
+      State: "Connecticut",
+      Zipcode: "00000",
+      Professional: "han they're the 1000% when",
+    },
+    {
+      id: 6,
+      title:"Priciple",
+      image: "/dashboard/profile-pic.png",
+      firstName: "Mack",
+      lastName :"danial",
+      membershipLevel: "Adzmay/Vendor Membersh",
+      Organization: "Adesman Law Drous, PLLC",
+      Email: "Testi@gmall.com",
+      State: "Connecticut",
+      Zipcode: "00000",
+      Professional: "han they're the 1000% when",
+    },
+    {
+      id: 7,
+      title:"Priciple",
+      image: "/dashboard/dummy-image1.png",
+      firstName: "Jack",
+      lastName :"danial",
+      membershipLevel: "Adzmay/Vendor Membersh",
+      Organization: "Adesman Law Drous, PLLC",
+      Email: "Testi@gmall.com",
+      State: "Connecticut",
+      Zipcode: "00000",
+      Professional: "han they're the 1000% when",
+    },
+    {
+      id: 8,
+      title:"Priciple",
+      image: "/dashboard/profile-pic.png",
+      firstName: "Harry",
+      lastName :"danial",
+      membershipLevel: "Adzmay/Vendor Membersh",
+      Organization: "Adesman Law Drous, PLLC",
+      Email: "Testi@gmall.com",
+      State: "Connecticut",
+      Zipcode: "00000",
+      "Professional πια": "han they're the 1000% when",
+    },
+  ],
+};

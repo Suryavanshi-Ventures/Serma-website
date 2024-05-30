@@ -1,7 +1,13 @@
+"use client"
 import Image from "next/image";
 import Button from "@/components/button/page";
+import { useRouter } from "next/navigation";
 import { EVENT_CARD_DETAILS } from "@/app/utils/constant/constant";
 function UpcomingEvent() {
+  const router =useRouter()
+  const handlePush = () =>{
+router.push("/events")
+  }
   return (
     <div>
       <div>
@@ -84,7 +90,7 @@ function UpcomingEvent() {
             </div>
           ))}
         </div>
-        <div className="mt-16">
+        <div onClick={handlePush} className="mt-16">
           <Button content={"View all events"} px={"px-5"} py={"py-2"} />
         </div>
       </div>

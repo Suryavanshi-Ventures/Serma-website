@@ -42,7 +42,7 @@ const Membership = () => {
       <div>
         <div className="flex flex-col mx-5 lg:mx-10 2xl:mx-20">
           <div>
-            <h2 className="heading-2 text-center lg:text-left">
+            <h2 className="heading-2 font-semibold text-[#333333] text-center lg:text-left">
               WHY JOIN SERMA?
             </h2>
           </div>

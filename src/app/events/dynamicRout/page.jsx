@@ -117,6 +117,7 @@ function page() {
         <OtherEvent />
       </div>
       <Modal
+      wantTocloseFromScreen ={true}
         wantCrossButton={true}
         isOpen={register}
         // isOpen={true}
@@ -174,6 +175,7 @@ function page() {
       </Modal>
 
       <Modal
+      wantTocloseFromScreen ={true}
         wantCrossButton={true}
         isOpen={handleOpenanotherPopUp}
         // isOpen={true}

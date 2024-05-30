@@ -16,23 +16,23 @@ const Header = () => {
 
   return (
     <header className=" relative pt-[40px] pb-[14px] px-[85px]">
-      <div className="flex justify-between lg:justify-between items-center w-full gap-0  xxl:gap-10  ">
+      <div className="flex justify-between  items-center w-full gap-0  xxl:gap-10  ">
         <div className="">
           <Link href="/">
             <Image src="/logo.svg" height={60} width={135} alt="Logo" />{" "}
           </Link>
         </div>
 
-        <ul className=" hidden lg:flex text-[17px] gap-5 xxl:gap-12  animate-flip-down  xxl:text-[18px] text-[#333333] ">
-          <li className="font-semibold cursor-pointer ">
+        <ul className=" hidden lg:flex text-[17px] gap-5 xxl:gap-12  animate-flip-down  xxl:text-[17px] text-[#333333] ">
+          <li className="font-semibold text-[#333333]  cursor-pointer ">
             <Link href="/">Home</Link>
           </li>
-          <li className="font-semibold cursor-pointer">
+          <li className="font-semibold text-[#333333]  cursor-pointer">
             <Link href="/events">Events</Link>
           </li>
-          <li className="font-semibold cursor-pointer">The Sermapod</li>
+          <li className="font-semibold text-[#333333]  cursor-pointer">The Sermapod</li>
           <li
-            className="flex justify-center items-center gap-2 cursor-pointer bg-white relative font-semibold"
+            className="flex justify-center items-center gap-2 cursor-pointer bg-white relative font-semibold text-[#333333] "
             onClick={toggleAboutDropdown}
           >
             About{" "}
@@ -66,13 +66,13 @@ const Header = () => {
               </ul>
             )}
           </li>
-          <li className="font-semibold cursor-pointer">
+          <li className="font-semibold text-[#333333]  cursor-pointer">
             <Link href="/members-only-content"> Membership Only Content</Link>
           </li>
-          <li className="font-semibold cursor-pointer">Contact Us</li>
+          <li className="font-semibold text-[#333333]  cursor-pointer">Contact Us</li>
         </ul>
 
-        <div>
+        {/* <div>
           <button
             onMouseEnter={() => setHandleVectorChange(true)}
             onMouseLeave={() => setHandleVectorChange(false)}
@@ -110,6 +110,7 @@ const Header = () => {
               )}
             </span>
           </button>
+          </div> */}
           {/* ----------------------hamburger menu------------------------ */}
           <div
             onClick={handleOpenMenu}
@@ -130,7 +131,7 @@ const Header = () => {
           </div>
 
           {/* --------------------------------------showMenuItems--------------------------------- */}
-        </div>
+      
       </div>
       {/* ----------------------------Menu's for mobile view----------------------- */}
       <div className="w-full px-[20px] bg-white  absolute visible lg:hidden animate-fade-left z-50">

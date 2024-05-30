@@ -1,8 +1,14 @@
+"use client"
 import Button from "@/components/button/page";
 import Image from "next/image";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 function Membership() {
+  const router = useRouter();
+  const handleClick = ()=>{
+router.push("/membership")
+  }
   return (
     <div>
       <div className="flex flex-col md:items-center md:flex-row gap-10 md:gap-20 lg:gap-30">
@@ -89,7 +95,7 @@ function Membership() {
           </div>
         </div>
       </div>
-      <div>
+      <div onClick={handleClick}>
         <Button content={"Join SERMA"} px={"px-5"} py={"py-2"} />
       </div>
     </div>

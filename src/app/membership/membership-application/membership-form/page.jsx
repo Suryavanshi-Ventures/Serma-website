@@ -300,6 +300,7 @@ const Page = () => {
                       </svg>
                       {showDatePicker && (
                         <Modal
+                          wantTocloseFromScreen={true}
                           onClose={() => setShowDatePicker(false)}
                           isOpen={showDatePicker}
                           className="custom-modal  "
