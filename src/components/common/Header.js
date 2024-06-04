@@ -30,7 +30,10 @@ const Header = () => {
           <li className="font-semibold text-[#333333]  cursor-pointer">
             <Link href="/events">Events</Link>
           </li>
-          <li className="font-semibold text-[#333333]  cursor-pointer">The Sermapod</li>
+          <li className="font-semibold text-[#333333]  cursor-pointer">
+            {" "}
+            <Link href="/the-sermapod">The Sermapod</Link>
+          </li>
           <li
             className="flex justify-center items-center gap-2 cursor-pointer bg-white relative font-semibold text-[#333333] "
             onClick={toggleAboutDropdown}
@@ -69,7 +72,9 @@ const Header = () => {
           <li className="font-semibold text-[#333333]  cursor-pointer">
             <Link href="/members-only-content"> Membership Only Content</Link>
           </li>
-          <li className="font-semibold text-[#333333]  cursor-pointer">Contact Us</li>
+          <li className="font-semibold text-[#333333]  cursor-pointer">
+            Contact Us
+          </li>
         </ul>
 
         {/* <div>
@@ -111,27 +116,26 @@ const Header = () => {
             </span>
           </button>
           </div> */}
-          {/* ----------------------hamburger menu------------------------ */}
-          <div
-            onClick={handleOpenMenu}
-            className="lg:hidden animate-fade-left cursor-pointer"
+        {/* ----------------------hamburger menu------------------------ */}
+        <div
+          onClick={handleOpenMenu}
+          className="lg:hidden animate-fade-left cursor-pointer"
+        >
+          <svg
+            class="w-10 h-10"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              class="w-10 h-10"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </div>
+            <path
+              fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
 
-          {/* --------------------------------------showMenuItems--------------------------------- */}
-      
+        {/* --------------------------------------showMenuItems--------------------------------- */}
       </div>
       {/* ----------------------------Menu's for mobile view----------------------- */}
       <div className="w-full px-[20px] bg-white  absolute visible lg:hidden animate-fade-left z-50">
