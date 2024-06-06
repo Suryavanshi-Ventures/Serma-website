@@ -157,28 +157,28 @@ const router = useRouter()
                       <hr className="w-full my-[30px]" />
                       <div className="space-y-4">
                         <div>
-                          <h2 className="text-base">Enter Your Email</h2>
+                          <h2 className="text-base"> Email Address</h2>
                         </div>
                         <div>
                           <input
                             type="text"
                             name=""
                             id=""
-                            placeholder="Email Address"
+                            placeholder="Enter Your Email"
                             className="pl-4 sm:pl-[38px] py-3 sm:py-[20px] outline-none border border-[#B3B3B3] rounded-xl w-full"
                           />
                         </div>
                       </div>
                       <div className="space-y-4 mt-[14px]">
                         <div>
-                          <h2>Enter Your Password</h2>
+                          <h2>Password</h2>
                         </div>
                         <div>
                           <input
                             type="text"
                             name=""
                             id=""
-                            placeholder="Password"
+                            placeholder="Enter Your Password"
                             className="pl-4 sm:pl-[38px] py-3 sm:py-[20px] outline-none border border-[#B3B3B3] rounded-xl w-full"
                           />
                         </div>

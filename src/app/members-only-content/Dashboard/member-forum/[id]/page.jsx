@@ -11,12 +11,23 @@ function GetTopic() {
     router.push("/members-only-content/Dashboard/member-forum");
   };
   const paramdId = params.id;
-  console.log(paramdId);
+
 
   const finalData = TOPICDETAILS.filter((data) => data.id == paramdId);
-  console.log(finalData);
+
   const check = finalData.map((data) => data?.topic);
-  console.log(check?.topic);
+const name = check.map((data) => data?.author?.name)
+  const handleQuote = (quoteId) => {
+    router.push(
+      `/members-only-content/Dashboard/member-forum/quote/${quoteId}`
+    );
+  };
+  const handleReply = (replyId) => {
+    router.push(
+      `/members-only-content/Dashboard/member-forum/reply/${replyId}`
+    );
+  };
+
   return (
     <>
       <div className="w-full   bg-gray-100">
@@ -43,15 +54,18 @@ function GetTopic() {
               />
             </svg>
           </span>
-          <span className="text-primary font-semibold ">Replies</span>
+          <span className="text-primary font-semibold ">{name ? name : "anonymous"}</span>
         </div>
         {finalData.map((data) => (
-          <>
-            <div className="max-w-4xl w-full my-4 bg-[#F8F8F8] shadow-sm rounded-xl p-6 space-y-4">
+          <div key={data?.id}>
+            <div className=" w-full my-4 bg-[#F8F8F8] shadow-sm rounded-xl p-6 space-y-4">
               <div className=" space-y-4">
                 <div className="flex justify-between">
                   <h2 className="text-xl font-bold">{data?.topic?.title}</h2>
-                  <div className="flex border cursor-pointer border-[#C8C8C8] hover:border-primary duration-300 transition p-2 px-4 rounded-full justify-center items-center gap-2">
+                  <div
+                    onClick={() => handleQuote(data?.id)}
+                    className="flex border cursor-pointer border-[#C8C8C8] hover:border-primary duration-300 transition p-2 px-4 rounded-full justify-center items-center gap-2"
+                  >
                     <div>
                       <svg
                         width="22"
@@ -129,10 +143,15 @@ function GetTopic() {
                     />
                   </svg>
                 </span>
-                <span className="text-primary">Reply</span>
+                <span
+                  onClick={() => handleReply(data?.id)}
+                  className="text-primary"
+                >
+                  Reply
+                </span>
               </div>
             </div>
-          </>
+          </div>
         ))}
       </div>
     </>

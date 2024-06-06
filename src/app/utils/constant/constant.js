@@ -148,7 +148,7 @@ module.exports = {
     {
       id: 2,
       userImage: "/path/to/image1.jpg",
-      userName: "Lisa Stiegal",
+      userName: "Tisa Stiegal",
       topic: "Call for podcast guest",
       date: "October 23, 2023",
       content:
@@ -158,7 +158,7 @@ module.exports = {
     {
       id: 3,
       userImage: "/path/to/image1.jpg",
-      userName: "Lisa Stiegal",
+      userName: "Gisa Stiegal",
       topic: "Call for podcast guest",
       date: "October 23, 2023",
       content:
@@ -168,7 +168,7 @@ module.exports = {
     {
       id: 4,
       userImage: "/path/to/image1.jpg",
-      userName: "Lisa Stiegal",
+      userName: "Sisa Stiegal",
       topic: "Call for podcast guest",
       date: "October 23, 2023",
       content:
@@ -178,7 +178,7 @@ module.exports = {
     {
       id: 5,
       userImage: "/path/to/image1.jpg",
-      userName: "Lisa Stiegal",
+      userName: "Risa Stiegal",
       topic: "Call for podcast guest",
       date: "October 23, 2023",
       content:
@@ -229,7 +229,7 @@ module.exports = {
       topic: {
         title: "second podcast guest",
         author: {
-          name: "Lisa Stiegal",
+          name: "Tisa Stiegal",
           profilePic: "/dashboard/profile-pic.png",
         },
         content:
@@ -243,7 +243,7 @@ module.exports = {
       topic: {
         title: "ccscd Call for podcast guest",
         author: {
-          name: "Lisa Stiegal",
+          name: "Gisa Stiegal",
           profilePic: "/dashboard/profile-pic.png",
         },
         content:
@@ -257,7 +257,7 @@ module.exports = {
       topic: {
         title: "   check karCall for podcast guest",
         author: {
-          name: "Lisa Stiegal",
+          name: "Sisa Stiegal",
           profilePic: "/dashboard/profile-pic.png",
         },
         content:
@@ -271,7 +271,7 @@ module.exports = {
       topic: {
         title: "wohooooo Call for podcast guest",
         author: {
-          name: "Lisa Stiegal",
+          name: "Risa Stiegal",
           profilePic: "/dashboard/profile-pic.png",
         },
         content:
