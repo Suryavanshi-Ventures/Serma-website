@@ -2,16 +2,20 @@
 import React, { useMemo, useRef } from "react";
 import { useState } from "react";
 import "react-quill/dist/quill.snow.css";
-import { useRouter } from "next/navigation";
+import { useRouter,useParams } from "next/navigation";
+
 // import "tailwindcss/tailwind.css";
 import dynamic from "next/dynamic";
 import LoadingButton from "@/components/loadingButton/page";
 import Image from "next/image";
-function CreateTopic() {
+function Reply() {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
   const router = useRouter();
+  const params = useParams();
+const paramsId = params.replyId
+ 
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
@@ -52,7 +56,7 @@ function CreateTopic() {
     console.log({ subject, content });
   };
   const SaymanGoBack = () => {
-    router.push("/members-only-content/Dashboard/member-forum");
+    router.push(`/members-only-content/Dashboard/member-forum/${paramsId}`);
   };
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -157,7 +161,7 @@ function CreateTopic() {
           </p>
         </div>
 
-        <div className="flex justify-end gap-4">
+        <div className="flex justify-between md:justify-end gap-4">
           <span>
             {" "}
             <LoadingButton
@@ -186,4 +190,4 @@ function CreateTopic() {
   );
 }
 
-export default CreateTopic;
+export default Reply;

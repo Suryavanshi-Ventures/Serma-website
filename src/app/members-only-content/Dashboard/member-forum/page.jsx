@@ -12,8 +12,8 @@ const MemberForum = () => {
 router.push(`/members-only-content/Dashboard/member-forum/${id}`)
   }
   return (
-    <div className="max-w-4xl mx-auto rounded-lg   border border-[#D9D9D980]">
-   <div className="flex justify-between rounded-lg items-center pt-2 px-4  bg-[#F5F6F8]">
+    <div className=" w-full rounded-lg   border border-[#D9D9D980]">
+   <div className="flex justify-between rounded-lg items-center pt-2 px-4  bg-[#F5F6F8] ">
    <h1 className="text-[16px] font-[600] mb-4">Topic</h1>
    <h2 className="text-[16px] font-[600] mb-4">Replies</h2>
 
@@ -43,6 +43,7 @@ router.push(`/members-only-content/Dashboard/member-forum/${id}`)
                 </div>
                 <div className="text-gray-500">
                   <span className="text-sm flex gap-2">
+                    {/* --------------comment- svg--------------- */}
                     <svg
                       width="18"
                       height="18"
@@ -55,7 +56,7 @@ router.push(`/members-only-content/Dashboard/member-forum/${id}`)
                         fill="#9B9A9A"
                       />
                     </svg>
-
+{/* -------------------------------------------- */}
                     {post.replies}
                   </span>
                 </div>
