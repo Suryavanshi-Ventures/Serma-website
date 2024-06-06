@@ -15,7 +15,7 @@ export default function Layout({ children }) {
   };
   return (
     <div
-      className={` bg-white container 3xl:mx-auto max-w-screen-2xl px-[25px] md:px-[85px] mt-10`}
+      className={` bg-white  3xl:mx-auto max-w-screen-2xl px-[25px] sm:px-[40px] lg:px-[85px] mt-10`}
     >
       <div className="flex justify-between items-center">
         <div className=" text-[20px] md:text-2xl font-semibold">
@@ -92,7 +92,6 @@ export default function Layout({ children }) {
             <DashboardEvents />
           </span>
         </div>
-
         {children}
         {/* </div> */}
         <span className=" block md:hidden">

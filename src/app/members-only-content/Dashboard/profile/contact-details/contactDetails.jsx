@@ -12,7 +12,7 @@ const ContactDetails = () => {
   };
 
   return (
-    <div>
+    <div className="mx-5">
       <div className="flex  items-start relative">
         <div className="mx-auto">
           <div className="w-[140px] h-[140px]  ">
@@ -29,7 +29,7 @@ const ContactDetails = () => {
           onClick={() => handleChangePassword(1)}
           className="flex items-center gap-5 absolute right-4 top-2 cursor-pointer "
         >
-          <div>
+          <div className="hidden xl:flex">
             <svg
               width="24"
               height="24"
@@ -82,7 +82,7 @@ const ContactDetails = () => {
               </defs>
             </svg>
           </div>
-          <div>
+          <div className="hidden xl:flex">
             <p className="text-[16px] text-[#C42C2D] font-bold">
               Change Password
             </p>
@@ -103,7 +103,7 @@ const ContactDetails = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 max-w-[691px] mx-auto gap-x-20 gap-y-10 mt-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 max-w-[566px] lg:max-w-[691px] mx-auto gap-x-20 gap-y-10 mt-16">
         <div>
           <div>
             <h2 className="text-lg font-bold">First Name</h2>

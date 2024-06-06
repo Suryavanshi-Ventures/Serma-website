@@ -14,12 +14,14 @@ function Profile() {
   return (
     <div className="w-full">
       <div>
-        <div className="flex gap-40">
+        <div className="flex max-w-[678px] justify-between items-center ">
           {tabList.map((item, index) => (
             <div onClick={() => setTab(index)} key={index}>
               <h2
-                className={` ${
-                  tab === index ? "border-b-[3px] border-[#C42C2D]  pb-1" : ""
+                className={` text-[#333333] text-normal text-xl ${
+                  tab === index
+                    ? "border-b-[3px] font-bold border-[#C42C2D]  pb-1"
+                    : ""
                 }`}
               >
                 {item}
