@@ -2,7 +2,7 @@
 import React, { useMemo, useRef } from "react";
 import { useState } from "react";
 import "react-quill/dist/quill.snow.css";
-import { useRouter,useParams } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 
 // import "tailwindcss/tailwind.css";
 import dynamic from "next/dynamic";
@@ -14,8 +14,8 @@ function Reply() {
   const [image, setImage] = useState(null);
   const router = useRouter();
   const params = useParams();
-const paramsId = params.replyId
- 
+  const paramsId = params.replyId;
+
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
@@ -23,33 +23,41 @@ const paramsId = params.replyId
   const fileInputRef = useRef(null);
   const modules = {
     toolbar: [
-      [{ 'font': [] }],
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      [{ 'script': 'sub'}, { 'script': 'super' }],   // superscript/subscript
-      [{ 'indent': '-1'}, { 'indent': '+1' }],       // outdent/indent
-      [{ 'direction': 'rtl' }],                      // text direction
-      [{ 'color': [] }, { 'background': [] }],       // dropdown with defaults from theme
-      [{ 'align': [] }],
-      ['bold', 'italic', 'underline', 'strike'],     // toggled buttons
-      ['blockquote', 'code-block'],
-      ['link', 'image', 'video'],
-      ['clean']                                      // remove formatting button
-    ]
+      [{ font: [] }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ script: "sub" }, { script: "super" }], // superscript/subscript
+      [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+      [{ direction: "rtl" }], // text direction
+      [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+      [{ align: [] }],
+      ["bold", "italic", "underline", "strike"], // toggled buttons
+      ["blockquote", "code-block"],
+      ["link", "image", "video"],
+      ["clean"], // remove formatting button
+    ],
   };
-  
+
   const formats = [
-    'font',
-    'header',
-    'list', 'bullet',
-    'script',
-    'indent',
-    'direction',
-    'color', 'background',
-    'align',
-    'bold', 'italic', 'underline', 'strike',
-    'blockquote', 'code-block',
-    'link', 'image', 'video'
+    "font",
+    "header",
+    "list",
+    "bullet",
+    "script",
+    "indent",
+    "direction",
+    "color",
+    "background",
+    "align",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "code-block",
+    "link",
+    "image",
+    "video",
   ];
 
   const handleSubmit = () => {
@@ -123,7 +131,7 @@ const paramsId = params.replyId
         </div>
 
         <div className="  flex gap-5 items-center">
-        <input
+          <input
             type="file"
             ref={fileInputRef}
             className="filetype"
@@ -153,7 +161,9 @@ const paramsId = params.replyId
             You can upload up to 20 files. Each file should be less than 20 MB. 
           </span>
         </div>
-        {image &&  <Image src={image} height={150} width={150} alt="preview image"  />}
+        {image && (
+          <Image src={image} height={150} width={150} alt="preview image" />
+        )}
         <div className="flex items-center gap-5 ">
           <input type="checkbox" className="accent-primary" />
           <p className="text-light-black text-[15px]">

@@ -15,7 +15,7 @@ const Header = () => {
   };
 
   return (
-    <header className=" relative pt-[40px] pb-[14px] px-[85px]">
+    <header className=" relative pt-[40px] pb-[14px] px-[20px] lg:px-[85px]">
       <div className="flex justify-between  items-center w-full gap-0  xxl:gap-10  ">
         <div className="">
           <Link href="/">
@@ -142,19 +142,29 @@ const Header = () => {
         {showMenuItems && (
           <ul className="space-y-3  p-3">
             <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
-              <li className="">Home</li>
+              <li className="">
+                <Link href="/">Home</Link>
+              </li>
             </div>
             <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
-              <li>Events</li>
+              <li>
+                <Link href="/events">Events</Link>
+              </li>
             </div>
             <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
-              <li>The Sermapod</li>
+              <li>
+                <Link href="/the-sermapod">The Sermapod</Link>
+              </li>
             </div>
             <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
               <li>About</li>
             </div>
             <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
-              <li>Membership Only Content</li>
+              <li>
+                <Link href="/members-only-content">
+                  Membership Only Content
+                </Link>
+              </li>
             </div>
             <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
               <li>Contact Us</li>

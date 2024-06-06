@@ -7,8 +7,11 @@
 }
 
 .heading-2{
-  @apply text-[20px] md:text-[30px] lg:text-[36px] 
+  @apply text-[20px] md:text-[30px] 
 }
+/* .heading-2{
+  @apply text-[20px] md:text-[30px] lg:text-[36px] 
+} */
 .heading-3{
   @apply text-[#333333] text-[18px] md:text-2xl font-bold
 }

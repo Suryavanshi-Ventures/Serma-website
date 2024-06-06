@@ -8,16 +8,14 @@ function EventPast() {
   return (
     <div>
       <div>
-        <div className="flex flex-col lg:flex-row   ">
+        <div className="flex flex-col lg:flex-row  max-md:px-5 ">
           {/* -------------------------------- */}
           <div className="lg:w-1/5  w-full">
-            <div className="text-3xl font-bold text-center lg:text-left">
-              Past Events
-            </div>
-            <div className="my-2 hidden lg:flex">
+            <div className="heading-2 font-bold  text-left">Past Events</div>
+            <div className="my-2 ">
               <BlueLine width={"70px"} />
             </div>
-            <div className="text-center my-5 lg:my-10 lg:text-left  text-gray responsive-Text w-auto 2xl:w-auto ">
+            <div className=" my-3 lg:my-10 text-left  text-gray responsive-Text w-auto 2xl:w-auto ">
               View our Past events and get ready for our upcoming one
             </div>
             <div className="w-[250px] gap-2 border-b  border-[#A5A5A5] flex py-2">
@@ -34,16 +32,16 @@ function EventPast() {
                 className="w-full outline-none"
               />
             </div>
-            <div className="my-5 text-gray">
+            <div className="my-5 text-gray  max-md:flex max-md:overflow-scroll  ">
               {MONTHS.map((month) => (
-                <div className="flex items-center gap-10 mb-3">
-                  <div>
+                <div className="flex items-center gap-4 max-md:ml-3 md:gap-10 mb-3">
+                  <div className=" max-md:w-[12px]">
                     <Image
                       src="/events/blue-dot.svg"
                       height={12}
                       width={12}
                       alt="dot"
-                      className=""
+                      className="h-[12px] w-[12px]"
                     />
                   </div>
                   <div className="hover:text-[#13A6AC] cursor-pointer hover:underline">

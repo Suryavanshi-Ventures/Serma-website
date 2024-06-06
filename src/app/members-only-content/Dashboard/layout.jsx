@@ -19,7 +19,15 @@ export default function Layout({ children }) {
     >
       <div className="flex justify-between items-center">
         <div className=" text-[20px] md:text-2xl font-semibold">
-          Members-only Directory
+          {pathname.includes("/member-forum")
+            ? "Member Chat Forum"
+            : pathname.includes("/private-member")
+            ? "Members-only-Directory"
+            : pathname.includes("/webinar")
+            ? "Webinars"
+            : pathname.includes("/profile")
+            ? "Profile"
+            : ""}
         </div>
         {pathname.includes("/member-forum") ? (
           <div onClick={handlePushToCreateTopic}>
@@ -33,8 +41,8 @@ export default function Layout({ children }) {
             />
           </div>
         ) : pathname.includes("/private-member") ? (
-          <div className="flex gap-8 items-center">
-            <div className="relative">
+          <div className="flex  gap-8 items-center">
+            <div className="relative hidden md:flex">
               <input
                 type="text"
                 className="pl-10 pr-4 py-2 w-64 rounded-full border border-gray shadow-sm focus:outline-primary   "
@@ -79,10 +87,32 @@ export default function Layout({ children }) {
           ""
         )}
       </div>
-      <p className="text-gray my-5  text-[14px] md:text-[16px]">
-        Got a question, want to start a discussion? Create and post for other
-        community members to view and comment 
-      </p>
+      <div className="relative  md:hidden w-full my-5">
+              <input
+                type="text"
+                className="pl-10 w-full pr-4 py-2  rounded-full border border-gray shadow-sm focus:outline-primary   "
+                placeholder="Search"
+              />
+              <svg
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12.9 14.32a8 8 0 111.42-1.42l4.32 4.33a1 1 0 01-1.42 1.42l-4.32-4.33zM8 14a6 6 0 100-12 6 6 0 000 12z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+      {pathname.includes("/member-forum") ? (
+        <p className="text-gray my-5  text-[14px] md:text-[16px]">
+          Got a question, want to start a discussion? Create and post for other
+          community members to view and comment 
+        </p>
+      ) : (
+        ""
+      )}
 
       <div className="flex flex-col md:flex-row gap-5 my-7 ">
         <div>
