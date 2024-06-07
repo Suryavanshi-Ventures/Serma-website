@@ -7,7 +7,7 @@ const Membership = () => {
         <h2 className="text-xl font-bold">Membership Details</h2>
       </div>
       <div className="mt-11 ">
-        <div className="max-w-[313px] h-[303px] border-[3px] border-[#C42C2D] rounded-[14px] p-8 flex flex-col justify-between ">
+        <div className="max-w-[313px] h-[202px] xs:h-[303px] border-[3px] border-[#C42C2D] rounded-[14px] p-8 flex flex-col justify-between ">
           <div className="">
             <div className="flex justify-between">
               <div>

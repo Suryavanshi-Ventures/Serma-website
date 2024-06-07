@@ -12,13 +12,13 @@ function Profile() {
   const [tab, setTab] = useState(0);
 
   return (
-    <div className="w-full">
-      <div>
-        <div className="flex max-w-[678px] justify-between items-center ">
+    <div className="w-full ">
+      <div className=" md:absolute w-full top-0 ">
+        <div className="flex md:max-w-[400px] lg:max-w-[508px] justify-between items-center ">
           {tabList.map((item, index) => (
             <div onClick={() => setTab(index)} key={index}>
               <h2
-                className={` text-[#333333] text-normal text-xl ${
+                className={` text-[#333333]  text-sm sm:text-xl cursor-pointer ${
                   tab === index
                     ? "border-b-[3px] font-bold border-[#C42C2D]  pb-1"
                     : ""
@@ -30,7 +30,7 @@ function Profile() {
           ))}
         </div>
       </div>
-      <div className="mt-10 bg-[#D9D9D933] w-full py-10 rounded-2xl ">
+      <div className="mt-10 bg-[#D9D9D933] bg-opacity-20 w-full py-10 rounded-2xl ">
         {tab === 0 ? (
           <ContactDetails />
         ) : tab === 1 ? (

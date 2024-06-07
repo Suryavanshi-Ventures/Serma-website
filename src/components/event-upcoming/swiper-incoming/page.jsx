@@ -65,7 +65,7 @@ function SwiperSlideIncoming() {
             <SwiperSlide>
               <div
                 key={index}
-                className="rounded-2xl shadow-xl flex max-md:justify-center max-md:items-center max-sm:p-0 md:p-3"
+                className="rounded-2xl shadow-lg drop-shadow-md flex max-md:justify-center max-md:items-center max-sm:p-0 md:p-3 my-5"
               >
                 <div className="">
                   <div className="">

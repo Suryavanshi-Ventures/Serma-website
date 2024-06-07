@@ -113,7 +113,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] rounded-xl mt-5 w-full px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl mt-5 w-full px-5 py-5"
             />
           </div>
         </div>
@@ -126,7 +126,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
             />
           </div>
         </div>
@@ -139,7 +139,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
             />
           </div>
         </div>
@@ -152,7 +152,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
             />
           </div>
         </div>
@@ -165,7 +165,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
             />
           </div>
         </div>
@@ -178,7 +178,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
             />
           </div>
         </div>
@@ -191,7 +191,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
             />
           </div>
         </div>
@@ -204,7 +204,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] bg-opacity-50 rounded-xl w-full mt-5  px-5 py-5"
             />
           </div>
         </div>
@@ -217,7 +217,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
             />
           </div>
         </div>
@@ -230,7 +230,18 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
+            />
+          </div>
+        </div>
+        <div className="col-span-1 lg:col-span-2">
+          <div>
+            <h2 className="text-lg font-bold">Professional Bio</h2>
+          </div>
+          <div>
+            <textarea
+              rows={5}
+              className="w-full  border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl mt-5  px-5 py-5"
             />
           </div>
         </div>

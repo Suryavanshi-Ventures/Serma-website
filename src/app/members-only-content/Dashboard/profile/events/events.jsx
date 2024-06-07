@@ -59,7 +59,7 @@ const Events = () => {
     },
   ];
   return (
-    <div className="px-7">
+    <div className=" lg:px-7">
       <div>
         <div>
           <h2 className="text-xl font-bold">Registered Events</h2>
@@ -67,7 +67,7 @@ const Events = () => {
         <div className="mt-10">
           <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-10 justify-items-center">
             {eventsList.map((item, index) => (
-              <div>
+              <div key={index}>
                 <div className=" rounded-[22px] bg-white shadow-xl p-[22px] max-w-[300px]">
                   <div className="max-w-[300px]">
                     <div className="h-[154px] max-w-[272px]">

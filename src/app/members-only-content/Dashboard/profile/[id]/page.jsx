@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Page = () => {
@@ -5,7 +6,9 @@ const Page = () => {
     <div className="w-full">
       <div className="text-[#9B9A9A] text-base font-bold flex items-center gap-3">
         <div>
-          <p className="">Profile</p>
+          <Link href="/members-only-content/Dashboard/profile">
+            <p className="">Profile</p>
+          </Link>
         </div>
         <div>
           <svg
@@ -31,7 +34,7 @@ const Page = () => {
         <div>
           <h2 className="text-xl font-bold">Change Password</h2>
         </div>
-        <div className="max-w-[722px] mt-[30px] mx-auto">
+        <div className="max-w-[700px] mt-[30px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-28 gap-y-7">
             <div>
               <div>
@@ -42,7 +45,8 @@ const Page = () => {
                   type="text"
                   name=""
                   id=""
-                  className="border border-[#9B9A9A4D] rounded-xl w-full mt-5  px-5 py-5 "
+                  placeholder="Enter Current password"
+                  className="border border-[#9B9A9A4D]  outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5 "
                 />
               </div>
             </div>
@@ -55,7 +59,8 @@ const Page = () => {
                   type="text"
                   name=""
                   id=""
-                  className="border border-[#9B9A9A4D] rounded-xl w-full mt-5  px-5 py-5"
+                  placeholder="Enter New password"
+                  className="border border-[#9B9A9A4D]  outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
                 />
               </div>
             </div>
@@ -68,7 +73,8 @@ const Page = () => {
                   type="text"
                   name=""
                   id=""
-                  className="border border-[#9B9A9A4D] rounded-xl w-full mt-5  px-5 py-5"
+                  placeholder="Enter Confirm new password"
+                  className="border border-[#9B9A9A4D]  outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5 text-[#9B9A9A] font-base placeholder:tra"
                 />
               </div>
             </div>

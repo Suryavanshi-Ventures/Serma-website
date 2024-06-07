@@ -34,7 +34,7 @@ const Sermapod = () => {
     },
   ];
   return (
-    <div className="mx-4 sm:mx-12 lg:mx-20 ">
+    <div className="mx-4 sm:mx-12 lg:mx-20 mt-20 mb-28">
       <div>
         <div>
           <div>
