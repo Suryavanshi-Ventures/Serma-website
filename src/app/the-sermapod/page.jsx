@@ -34,7 +34,7 @@ const Sermapod = () => {
     },
   ];
   return (
-    <div className="mx-4 sm:mx-12 lg:mx-20 mt-20 mb-28">
+    <div className="mx-4 sm:mx-12 lg:mx-20 mt-5 mb-28">
       <div>
         <div>
           <div>
@@ -90,7 +90,7 @@ const Sermapod = () => {
       <div className="mt-16">
         <div>
           <h2 className="text-xl sm:text-3xl text-center font-bold">
-            The Sermapod Full video Versions
+          The Sermapod Full Video Versions
           </h2>
         </div>
         <div className="mt-7">
