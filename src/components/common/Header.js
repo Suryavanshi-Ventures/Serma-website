@@ -1,17 +1,28 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import AboutUs from "@/app/about-us/page";
 const Header = () => {
   const [showAboutDropdown, setShowAboutDropdown] = useState(false);
   const [showMenuItems, setShowMenuItems] = useState(false);
   const [handleVectorChange, setHandleVectorChange] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  useEffect(() => {
+    setShowAboutDropdown(false);
+  }, [pathname]);
+
   const toggleAboutDropdown = () => {
     setShowAboutDropdown(!showAboutDropdown);
   };
   const handleOpenMenu = () => {
     setShowMenuItems(!showMenuItems);
+  };
+
+  const handleNavigateToMembership = () => {
+    router.push("/membership/membership-application");
   };
 
   return (
@@ -23,22 +34,47 @@ const Header = () => {
           </Link>
         </div>
 
-        <ul className=" hidden lg:flex text-[17px] gap-5 xxl:gap-12  animate-flip-down  xxl:text-[17px] text-[#333333] ">
-          <li className="font-semibold text-[#333333]  cursor-pointer ">
+        <ul
+          className={`hidden lg:flex text-[17px] gap-5 xxl:gap-12  animate-flip-down  xxl:text-[17px] text-[#333333]`}
+        >
+          <li
+            className={`font-semibold ${
+              pathname == "/" ? "text-primary" : "text-[#333333]"
+            }   cursor-pointer hover:text-primary transition duration-200`}
+          >
             <Link href="/">Home</Link>
           </li>
-          <li className="font-semibold text-[#333333]  cursor-pointer">
+          <li
+            className={`font-semibold ${
+              pathname.includes("/events") ? "text-primary" : "text-[#333333]"
+            }   cursor-pointer hover:text-primary transition duration-200`}
+          >
             <Link href="/events">Events</Link>
           </li>
-          <li className="font-semibold text-[#333333]  cursor-pointer">
+          <li
+            className={`font-semibold  ${
+              pathname.includes("/the-sermapod")
+                ? "text-primary"
+                : "text-[#333333]"
+            }  cursor-pointer hover:text-primary transition duration-200`}
+          >
             {" "}
             <Link href="/the-sermapod">The Sermapod</Link>
           </li>
           <li
-            className="flex justify-center items-center gap-2 cursor-pointer bg-white relative font-semibold text-[#333333] "
+            className="flex justify-center items-center gap-2 cursor-pointer bg-white relative font-semibold  "
             onClick={toggleAboutDropdown}
           >
-            About{" "}
+            <span
+              className={`hover:text-primary ${
+                pathname.includes("/about-us")
+                  ? "text-primary"
+                  : "text-[#333333]"
+              } transition duration-200`}
+            >
+              {" "}
+              About{" "}
+            </span>
             <span>
               <svg
                 width="16"
@@ -60,62 +96,91 @@ const Header = () => {
             </span>{" "}
             {showAboutDropdown && (
               <ul className="absolute animate-fade p-5 w-[200px] space-y-2 rounded-lg left-0 top-8 bg-white shadow-lg py-2 z-50">
-                <li className="hover:text-primary cursor-pointer">
+                <li
+                  className={`hover:text-primary cursor-pointer ${
+                    pathname.includes("/about-us")
+                      ? "text-primary"
+                      : "text-[#333333]"
+                  }`}
+                >
                   <Link href="/about-us">About Us</Link>
                 </li>
-                <li className="hover:text-primary cursor-pointer">
+
+                <li
+                  className={`hover:text-primary cursor-pointer ${
+                    pathname.includes("/advisory-board")
+                      ? "text-primary"
+                      : "text-[#333333]"
+                  }`}
+                >
                   <Link href="/advisory-board">Advisory Board</Link>
                 </li>
               </ul>
             )}
           </li>
-          <li className="font-semibold text-[#333333]  cursor-pointer">
-            <Link href="/members-only-content"> Membership Only Content</Link>
+          <li
+            className={`font-semibold ${
+              pathname.includes("/members-only-content")
+                ? "text-primary"
+                : "text-[#333333]"
+            } cursor-pointer hover:text-primary transition duration-200`}
+          >
+            <Link href="/members-only-content">Members-Only Content</Link>
           </li>
-          <li className="font-semibold text-[#333333]  cursor-pointer">
+          <li
+            className={`font-semibold text-[#333333] cursor-pointer hover:text-primary transition duration-200`}
+          >
             Contact Us
           </li>
         </ul>
 
-        {/* <div>
-          <button
-            onMouseEnter={() => setHandleVectorChange(true)}
-            onMouseLeave={() => setHandleVectorChange(false)}
-            className="lg:flex group hidden transition duration-500 hover:bg-primary hover:text-white  font-semibold  justify-center items-center gap-3 text-lg  tracking-wider text-primary  py-[6px] px-6 border border-[#C8C8C8]  hover:border-none  rounded-full"
-          >
-            Join{" "}
-            <span className="group-hover:translate-x-1 duration-200">
-              {handleVectorChange ? (
-                <svg
-                  width="18"
-                  height="8"
-                  viewBox="0 0 20 8"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
-                    fill="white"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  width="18"
-                  height="8"
-                  viewBox="0 0 20 8"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  //   class=""
-                >
-                  <path
-                    d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
-                    fill="#C42C2D"
-                  />
-                </svg>
-              )}
-            </span>
-          </button>
-          </div> */}
+        {pathname.includes(
+          "/member-forum" || "/private-member" || "/webinar" || "/profile"
+        ) ? (
+          ""
+        ) : (
+          <div>
+            <button
+              onMouseEnter={() => setHandleVectorChange(true)}
+              onMouseLeave={() => setHandleVectorChange(false)}
+              onClick={handleNavigateToMembership}
+              className="lg:flex group hidden transition duration-500 hover:bg-primary hover:text-white  font-semibold  justify-center items-center gap-3 text-lg  tracking-wider text-primary  py-[6px] px-6 border border-[#C8C8C8]  hover:border-none  rounded-full"
+            >
+              Join{" "}
+              <span className="group-hover:translate-x-1 duration-200">
+                {handleVectorChange ? (
+                  <svg
+                    width="18"
+                    height="8"
+                    viewBox="0 0 20 8"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
+                      fill="white"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    width="18"
+                    height="8"
+                    viewBox="0 0 20 8"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    //   class=""
+                  >
+                    <path
+                      d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
+                      fill="#C42C2D"
+                    />
+                  </svg>
+                )}
+              </span>
+            </button>
+          </div>
+        )}
+
         {/* ----------------------hamburger menu------------------------ */}
         <div
           onClick={handleOpenMenu}

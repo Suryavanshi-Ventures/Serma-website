@@ -13,14 +13,14 @@ function TopSection() {
       positionBottom: "",
     },
     {
-      path: "/hero-section/changing-image/female-singer.svg",
-      height: 730,
-      width: 530,
+      path: "/hero-section/changing-image/female-singer-new.png",
+      height: 500,
+      width: 400,
       position: 45,
       positionBottom: "",
     },
     {
-      path: "/hero-section/changing-image/basketball-player.svg",
+      path: "/hero-section/changing-image/basketball-player-new.png",
       height: 766,
       width: 502,
       position: 45,
