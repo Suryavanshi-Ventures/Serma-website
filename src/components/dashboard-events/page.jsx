@@ -14,16 +14,16 @@ function DashboardEvents() {
       {EVENT_CARD_DESHBOARD.map((event, index) => (
         <div
           key={index}
-          className="w-full md:w-[300px]  rounded-2xl shadow-xl flex max-md:justify-center max-md:items-center max-sm:p-0 md:p-3 "
+          className="w-full md:w-[300px]   rounded-2xl  flex max-md:justify-center max-md:items-center max-sm:p-0  "
         >
-          <div className="md:py-3   "> 
+          <div className="md:py-3  shadow-xl my-2 py-4 px-3 rounded-xl " > 
             <div className="">
               <Image
                 src={event.imageSrc}
                 height={225}
                 width={396}
                 alt="image"
-                className=" rounded-2xl"
+                className="rounded-2xl"
               />
             </div>
             <div className="max-lg:px-2 lg:px-1">

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -6,25 +6,30 @@ import Image from "next/image";
 import { POSTS } from "@/app/utils/constant/constant";
 
 const MemberForum = () => {
-  const router =useRouter()
-  const handleSeePost = (id)=>{
-    console.log(id)
-router.push(`/members-only-content/Dashboard/member-forum/${id}`)
-  }
+  const router = useRouter();
+  const handleSeePost = (id) => {
+    console.log(id);
+    router.push(`/members-only-content/Dashboard/member-forum/${id}`);
+  };
   return (
     <div className=" w-full rounded-lg   border border-[#D9D9D980]">
-   <div className="flex justify-between rounded-lg items-center pt-2 px-4  bg-[#F5F6F8] ">
-   <h1 className="text-[16px] font-[600] mb-4">Topic</h1>
-   <h2 className="text-[16px] font-[600] mb-4">Replies</h2>
-
-   </div>
+      <div className="flex justify-between rounded-lg items-center pt-2 px-4  bg-[#F5F6F8] ">
+        <h1 className="text-[16px] font-[600] mb-4">Topic</h1>
+        <h2 className="text-[16px] font-[600] mb-4">Replies</h2>
+      </div>
       {POSTS.map((post, index) => (
-       <div key={index} className="bg-white p-4 shadow" style={{ borderBottom: '1px solid rgba(217, 217, 217, 0.5)' }}>
-       {/* Content here */}
-  
-     
+        <div
+          key={index}
+          className="bg-white p-4 shadow"
+          style={{ borderBottom: "1px solid rgba(217, 217, 217, 0.5)" }}
+        >
+          {/* Content here */}
+
           <div className="flex items-start space-x-4 ">
-            <div onClick={() => handleSeePost(post.id)} className="w-10 h-10 relative cursor-pointer">
+            <div
+              onClick={() => handleSeePost(post.id)}
+              className="w-10 h-10 relative cursor-pointer"
+            >
               <Image
                 // src={post.userImage}
                 src="/dashboard/profile-pic.png"
@@ -34,12 +39,20 @@ router.push(`/members-only-content/Dashboard/member-forum/${id}`)
               />
             </div>
             <div className="flex-1">
-             
-                <div onClick={() => handleSeePost(post.id)} className="cursor-pointer" >{post.topic}</div>
+              <div
+                onClick={() => handleSeePost(post.id)}
+                className="cursor-pointer"
+              >
+                {post.topic}
+              </div>
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-3 md:gap-5 my-1">
-                  <h2 className=" max-md:text-[12px] text-gray">{post.userName}</h2>
-                  <p className="text-[12px] text-gray md:text-sm">{post.date}</p>
+                  <h2 className=" max-md:text-[12px] text-gray">
+                    {post.userName}
+                  </h2>
+                  <p className="text-[12px] text-gray md:text-sm">
+                    {post.date}
+                  </p>
                 </div>
                 <div className="text-gray-500">
                   <span className="text-sm flex gap-2">
@@ -56,7 +69,7 @@ router.push(`/members-only-content/Dashboard/member-forum/${id}`)
                         fill="#9B9A9A"
                       />
                     </svg>
-{/* -------------------------------------------- */}
+                    {/* -------------------------------------------- */}
                     {post.replies}
                   </span>
                 </div>

@@ -22,7 +22,6 @@ const Header = () => {
             <Image src="/logo.svg" height={60} width={135} alt="Logo" />{" "}
           </Link>
         </div>
-
         <ul className=" hidden lg:flex text-[17px] gap-5 xxl:gap-12  animate-flip-down  xxl:text-[17px] text-[#333333] ">
           <li className="font-semibold text-[#333333]  cursor-pointer ">
             <Link href="/">Home</Link>
@@ -31,14 +30,13 @@ const Header = () => {
             <Link href="/events">Events</Link>
           </li>
           <li className="font-semibold text-[#333333]  cursor-pointer">
-            {" "}
             <Link href="/the-sermapod">The Sermapod</Link>
           </li>
           <li
             className="flex justify-center items-center gap-2 cursor-pointer bg-white relative font-semibold text-[#333333] "
             onClick={toggleAboutDropdown}
           >
-            About{" "}
+            About
             <span>
               <svg
                 width="16"
@@ -57,7 +55,7 @@ const Header = () => {
                   fill="#111111"
                 />
               </svg>
-            </span>{" "}
+            </span>
             {showAboutDropdown && (
               <ul className="absolute animate-fade p-5 w-[200px] space-y-2 rounded-lg left-0 top-8 bg-white shadow-lg py-2 z-50">
                 <li className="hover:text-primary cursor-pointer">
@@ -76,7 +74,6 @@ const Header = () => {
             Contact Us
           </li>
         </ul>
-
         {/* <div>
           <button
             onMouseEnter={() => setHandleVectorChange(true)}

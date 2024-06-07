@@ -6,14 +6,14 @@ import SwiperSlideIncoming from './swiper-incoming/page'
 function EventUpcoming() {
   return (
     <div>
-      <div className='flex flex-col lg:flex-row   '>
+      <div className='flex flex-col lg:flex-row max-md:px-5 px-[25px]  '>
         {/* -------------------------------- */}
         <div className='lg:w-1/5  w-full'> 
-            <div className='text-3xl font-bold text-center lg:text-left'>
+            <div className='heading-2 font-bold text-left'>
             Upcoming Events
             </div>
-            <div className='my-2 hidden lg:flex'>  <BlueLine width={"150px"}/></div>
-           <div className='text-center my-5 lg:my-10 lg:text-left  text-gray responsive-Text w-auto 2xl:w-auto '> 
+            <div className='my-2 '>  <BlueLine width={"150px"}/></div>
+           <div className=' my-3 md:my-10 lg:text-left  text-gray responsive-Text w-auto 2xl:w-auto '> 
            View our Recent events and register for the Events
            </div>
           
