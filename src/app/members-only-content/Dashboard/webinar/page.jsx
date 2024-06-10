@@ -87,9 +87,9 @@ function Webinar() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-12">
         {currentData.map((item, index) => (
           <div>
-            <div className=" rounded-[22px] bg-white  shadow-[0_3px_10px_rgb(0,0,0,0.2)]   p-[22px]">
-              <div className="max-w-[445px]">
-                <div className="h-[252px] max-w-[445px]">
+            <div className="  flex justify-center bg-white   ">
+              <div className="max-w-[445px] shadow-[0_3px_10px_rgb(0,0,0,0.2)]  rounded-[22px]  p-[15px]  md:p-[22px]">
+                <div className="flex justify-center h-[252px] max-w-[445px]">
                   <Image
                     src={item.img}
                     width={100}
@@ -131,21 +131,21 @@ function Webinar() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-[15px] text-[#9B9A9A]">{item.date}</p>
+                      <p className=" text-[12px] md:text-[15px] text-[#9B9A9A]">{item.date}</p>
                     </div>
                   </div>
                   <div className="mt-[26px]">
-                    <p className="text-[22px] font-normal">{item.title}</p>
+                    <p className=" responsive-Text font-normal">{item.title}</p>
                   </div>
-                  <div className="mt-8">
-                    <p className="text-[22px] font-bold text-[#525971]">
+                  <div className="mt-8 " >
+                    <p className="  responsive-Text font-bold text-[#525971]">
                       {item.desc}
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center justify-end gap-3 mt-9">
                   <div>
-                    <p className="text-[22px] font-normal text-[#C42C2D]">
+                    <p className=" responsive-Text font-normal text-[#C42C2D]">
                       Register
                     </p>
                   </div>
