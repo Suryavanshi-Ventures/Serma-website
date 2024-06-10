@@ -68,7 +68,7 @@ const Events = () => {
           <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-10 justify-items-center">
             {eventsList.map((item, index) => (
               <div key={index}>
-                <div className=" rounded-[22px] bg-white shadow-xl p-[22px] max-w-[300px]">
+                <div className=" rounded-[22px] bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-[22px] max-w-[300px]">
                   <div className="max-w-[300px]">
                     <div className="h-[154px] max-w-[272px]">
                       <Image

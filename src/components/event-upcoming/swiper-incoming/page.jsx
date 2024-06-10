@@ -67,7 +67,7 @@ function SwiperSlideIncoming() {
                 key={index}
                 className=" flex max-md:justify-center max-md:items-center  p-3"
               >
-                <div className=" px-2 py-3 rounded-2xl shadow-xl">
+                <div className=" px-2 py-3 rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
                   <div className="">
                     <Image
                       src={event.imageSrc}

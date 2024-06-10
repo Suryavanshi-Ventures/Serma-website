@@ -64,7 +64,7 @@ function Sidebar() {
                   : ""
               } ${
               activeIndex === index
-                ? "bg-[#F6E0E0CC] text-primary"
+                ? "bg-[#F6E0E0CC] text-primary font-semibold"
                 : "text-gray"
             }`}
             onClick={() => handleNavigation(item.route, index)}
@@ -85,7 +85,7 @@ function Sidebar() {
                 alt="logo"
               />
             </div>
-            <div className="text-[18px]">{item.label}</div>
+            <div className="text-[18px] px-0">{item.label}</div>
           </div>
         ))}
       </div>

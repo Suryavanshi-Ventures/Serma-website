@@ -2,25 +2,30 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import ContactDetails from "./contact-details/contactDetails";
-import Membership from "./membership/membership";
-import Events from "./events/events";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+
+// Dynamic imports for components
+const ContactDetails = dynamic(() =>
+  import("./contact-details/contactDetails")
+);
+const Membership = dynamic(() => import("./membership/membership"));
+const Events = dynamic(() => import("./events/events"));
 
 function Profile() {
   const tabList = ["Contact Details", "Membership", "Events"];
   const [tab, setTab] = useState(0);
 
   return (
-    <div className="w-full ">
-      <div className=" md:absolute w-full top-0 ">
-        <div className="flex md:max-w-[400px] lg:max-w-[508px] justify-between items-center ">
+    <div className="w-full">
+      <div className="md:absolute w-full top-0">
+        <div className="flex  md:max-w-[400px]  lg:max-w-[508px] justify-between items-center">
           {tabList.map((item, index) => (
             <div onClick={() => setTab(index)} key={index}>
               <h2
-                className={` text-[#333333]  text-sm sm:text-xl cursor-pointer ${
+                className={`text-[#333333] text-sm sm:text-xl cursor-pointer ${
                   tab === index
-                    ? "border-b-[3px] font-bold border-[#C42C2D]  pb-1"
+                    ? "border-b-[3px] font-bold border-[#C42C2D] pb-1"
                     : ""
                 }`}
               >
@@ -30,7 +35,7 @@ function Profile() {
           ))}
         </div>
       </div>
-      <div className="mt-10 bg-[#D9D9D933] bg-opacity-20 w-full py-10 rounded-2xl ">
+      <div className="mt-10 bg-[#d9d9d91c] bg-opacity-20 w-full py-10 rounded-2xl">
         {tab === 0 ? (
           <ContactDetails />
         ) : tab === 1 ? (

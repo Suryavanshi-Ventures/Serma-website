@@ -7,8 +7,6 @@ import { useRouter, usePathname } from "next/navigation";
 export default function Layout({ children }) {
   const router = useRouter();
   const pathname = usePathname();
-  console.log(pathname);
-  console.log(pathname.includes("/private-member"));
 
   const handlePushToCreateTopic = () => {
     router.push("/members-only-content/Dashboard/member-forum/create-topic");
@@ -89,7 +87,7 @@ export default function Layout({ children }) {
             </div>
           </div>
         ) : pathname.includes("/profile") ? (
-          <div className="text-[20px] md:text-2xl font-semibold">
+          <div className="text-[20px]   md:text-2xl font-semibold">
             <h2>Profile</h2>
           </div>
         ) : pathname.includes("/webinar") ? (
@@ -106,13 +104,21 @@ export default function Layout({ children }) {
           <Sidebar />
           <hr className="hidden md:block text-[#9B9A9A33] my-10" />
           <span className=" hidden md:block">
-            <DashboardEvents />
+            {pathname.includes("/webinar") || pathname.includes("/profile") ? (
+              <div className="md:w-[300px]"></div>
+            ) : (
+              <DashboardEvents />
+            )}
           </span>
         </div>
         {children}
         {/* </div> */}
         <span className=" block md:hidden">
-          <DashboardEvents />
+          {pathname.includes("/webinar") || pathname.includes("/profile") ? (
+            <div className="md:w-[300px]"></div>
+          ) : (
+            <DashboardEvents />
+          )}
         </span>
       </div>
     </div>

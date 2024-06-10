@@ -26,9 +26,9 @@ function Partners() {
         <div>
           {" "}
           <Image
-            src="/partners/partner-logo.svg"
+            src="/partners/partner-logo-new.svg"
             height={50}
-            width={290}
+            width={300}
             alt="image"
           />
         </div>

@@ -4,10 +4,12 @@ import React from "react";
 const Page = () => {
   return (
     <div className="w-full">
-      <div className="text-[#9B9A9A] text-base font-bold flex items-center gap-3">
+      <div className="text-gray  text-base font-bold flex items-center gap-3">
         <div>
           <Link href="/members-only-content/Dashboard/profile">
-            <p className="">Profile</p>
+            <p className=" hover:text-primary transition duration-300">
+              Profile
+            </p>
           </Link>
         </div>
         <div>
@@ -30,9 +32,9 @@ const Page = () => {
           <p className="text-[#C42C2D]">Change Password</p>
         </div>
       </div>
-      <div className="mt-10 bg-[#D9D9D933] w-full p-[30px] rounded-2xl">
+      <div className="mt-10 text-[#333333] border border-[#D9D9D980] w-full p-[30px] rounded-2xl">
         <div>
-          <h2 className="text-xl font-bold">Change Password</h2>
+          <h2 className="text-xl font-bold ">Change Password</h2>
         </div>
         <div className="max-w-[700px] mt-[30px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-28 gap-y-7">
@@ -45,8 +47,8 @@ const Page = () => {
                   type="text"
                   name=""
                   id=""
-                  placeholder="Enter Current password"
-                  className="border border-[#9B9A9A4D]  outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5 "
+                  placeholder="Enter Current Password"
+                  className="border border-[#9B9A9A4D]  outline-primary text-lg font-normal  rounded-xl w-full mt-5  px-3 py-3 "
                 />
               </div>
             </div>
@@ -59,8 +61,8 @@ const Page = () => {
                   type="text"
                   name=""
                   id=""
-                  placeholder="Enter New password"
-                  className="border border-[#9B9A9A4D]  outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
+                  placeholder="Enter New Password"
+                  className="border border-[#9B9A9A4D]  outline-primary text-lg font-normal  rounded-xl w-full mt-5  px-3 py-3"
                 />
               </div>
             </div>
@@ -73,19 +75,19 @@ const Page = () => {
                   type="text"
                   name=""
                   id=""
-                  placeholder="Enter Confirm new password"
-                  className="border border-[#9B9A9A4D]  outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5 text-[#9B9A9A] font-base placeholder:tra"
+                  placeholder="Enter Confirm new Password"
+                  className="border border-[#9B9A9A4D]  outline-primary text-lg font-normal  rounded-xl w-full mt-5  px-3 py-3 text-gray font-base placeholder:tra"
                 />
               </div>
             </div>
           </div>
-          <div className="mt-6">
-            <div>
-              <h2 className="text-[#9B9A9A] text-base font-bold">
+          <div >
+            <div className="my-4">
+              <h2 className="text-gray text-base font-bold">
                 Password must have:
               </h2>
             </div>
-            <div className="text-[#9B9A9A] text-base font-bold mt-5">
+            <div className="text-gray text-base font-bold ">
               <li>12 characters or more</li>
               <li>Upper and Lower case letters</li>
               <li>At least one number</li>
@@ -96,7 +98,7 @@ const Page = () => {
       </div>
       <div className="gap-x-10  items-center mt-10 flex justify-end">
         <div>
-          <button className="border border-[#C42C2D] text-[#C42C2D] bg-white rounded-lg px-8 py-3">
+          <button className="border hover:bg-primary hover:text-white transition duration-300  border-[#C42C2D] text-[#C42C2D] bg-white rounded-lg px-8 py-3">
             Cancel
           </button>
         </div>

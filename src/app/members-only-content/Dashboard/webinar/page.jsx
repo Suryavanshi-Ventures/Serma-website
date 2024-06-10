@@ -87,7 +87,7 @@ function Webinar() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-12">
         {currentData.map((item, index) => (
           <div>
-            <div className=" rounded-[22px] bg-white shadow-xl drop-shadow-lg   p-[22px]">
+            <div className=" rounded-[22px] bg-white  shadow-[0_3px_10px_rgb(0,0,0,0.2)]   p-[22px]">
               <div className="max-w-[445px]">
                 <div className="h-[252px] max-w-[445px]">
                   <Image

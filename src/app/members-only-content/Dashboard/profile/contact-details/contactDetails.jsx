@@ -12,7 +12,7 @@ const ContactDetails = () => {
   };
 
   return (
-    <div className="mx-5">
+    <div className="mx-5 text-[#333333]">
       <div className="flex  items-start relative">
         <div className="mx-auto">
           <div className="w-[140px] h-[140px]  ">
@@ -113,7 +113,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl mt-5 w-full px-5 py-5"
+              className="border border-[#9B9A9A4D]  outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl mt-5 w-full px-3 py-3"
             />
           </div>
         </div>
@@ -126,7 +126,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
         </div>
@@ -139,7 +139,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
         </div>
@@ -152,7 +152,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
         </div>
@@ -165,7 +165,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
         </div>
@@ -178,7 +178,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
         </div>
@@ -191,7 +191,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
         </div>
@@ -204,7 +204,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] bg-opacity-50 rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] bg-opacity-50 rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
         </div>
@@ -217,7 +217,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
         </div>
@@ -227,10 +227,10 @@ const ContactDetails = () => {
           </div>
           <div>
             <input
-              type="text"
+              type="number"
               name=""
               id=""
-              className="border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-5 py-5"
+              className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
           </div>
         </div>
@@ -241,7 +241,7 @@ const ContactDetails = () => {
           <div>
             <textarea
               rows={5}
-              className="w-full  border border-[#9B9A9A4D] outline-none text-lg font-normal bg-[#F8F8F880] rounded-xl mt-5  px-5 py-5"
+              className="w-full  border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl mt-5  px-3 py-3"
             />
           </div>
         </div>
