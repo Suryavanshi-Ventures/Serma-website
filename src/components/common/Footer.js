@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 const Footer = () => {
   const [handleVectorChange, setHandleVectorChange] = useState(false);
@@ -7,8 +8,8 @@ const Footer = () => {
   const [twitter, setTwitter] = useState(false);
   const [insta, setInsta] = useState(false);
   return (
-    <div className="">
-      <div className="grid grid-cols-1  md:grid-cols-2 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 bg-[#F3F3F3]">
+    <div className="bg-[#F3F3F3]">
+      <div className="grid grid-cols-1  md:grid-cols-2 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
         <div className="border-r  border-[#3333331c] p-5 flex justify-center">
           <div>
             <div className="flex justify-center">
@@ -28,7 +29,7 @@ const Footer = () => {
             <div className="my-3 underline responsive-Text-footer text-[#333333]">
               info@theserma.org
             </div>
-            <div className="responsive-Text-footer">+1 (123) 456 -7890</div>
+            <div className="responsive-Text-footer">+1 (123) 456-7890</div>
           </div>
         </div>
         <div className="border-r  border-[#3333331c] p-5   max-md:text-center ">
@@ -38,11 +39,28 @@ const Footer = () => {
                 Links
               </div>
               <div className="sm:mt-[60px]  responsive-Text-footer text-[#333333]">
-                <div className="my-3 ">About</div>
-                <div>Event</div>
-                <div className="my-3">Membership</div>
-                <div>The Sermapod</div>
-                <div className="my-3">Membership Only Content</div>
+                <div className="my-3 hover:text-primary  transition duration-200 ">
+                  {" "}
+                  <Link href="/about-us">About</Link>
+                </div>
+                <div className="hover:text-primary transition duration-200 ">
+                  <Link href="/events">Events</Link>
+                </div>
+                <div className="my-3 hover:text-primary transition duration-200 ">
+                  <Link href="/membership/membership-application">
+                    Membership
+                  </Link>
+                </div>
+                <div className="hover:text-primary transition duration-200 ">
+                  {" "}
+                  <Link href="/the-sermapod">The Sermapod</Link>{" "}
+                </div>
+                <div className="my-3 hover:text-primary transition duration-200 ">
+                  {" "}
+                  <Link href="/members-only-content">
+                    Membership Only Content
+                  </Link>{" "}
+                </div>
               </div>
             </div>
           </div>
@@ -183,6 +201,12 @@ const Footer = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex justify-end pr-24 py-4 gap-10 font-semibold text-[#333333]">
+        <div className="cursor-pointer">
+          Copyright 2024 © Suryavanshi Ventures-  All rights reserved.
+        </div>
+        <div className="cursor-pointer">Terms & Conditions Privacy Policy</div>
       </div>
     </div>
   );

@@ -34,7 +34,7 @@ const Sermapod = () => {
     },
   ];
   return (
-    <div className="mx-4 sm:mx-12 lg:mx-20 mt-20 mb-28">
+    <div className="mx-4 sm:mx-12 lg:mx-20 mt-5 mb-28">
       <div>
         <div>
           <div>
@@ -51,7 +51,7 @@ const Sermapod = () => {
                 height={"100%"}
               />
             </div>
-            <div className="border rounded-sm sm:h-full p-2  min-w-[393px]">
+            <div className="border border-[#D1D1D1] rounded-md sm:h-full p-2  min-w-[393px]">
               <div>
                 <div className="text-center text-base sm:text-lg font-bold">
                   <h2>Mix Sermapod</h2>
@@ -90,7 +90,7 @@ const Sermapod = () => {
       <div className="mt-16">
         <div>
           <h2 className="text-xl sm:text-3xl text-center font-bold">
-            The Sermapod Full video Versions
+            The Sermapod Full Video Versions
           </h2>
         </div>
         <div className="mt-7">
