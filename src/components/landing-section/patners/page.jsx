@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 function Partners() {
   return (
-    <div className=" mt-[100px] max-sm:px-3">
+    <div className=" mt-[50px] md:mt-[100px] ">
       <div className="flex justify-center items-center gap-20 sm:gap-28 md:gap-48">
         <div>
           <Image
@@ -27,8 +27,8 @@ function Partners() {
           {" "}
           <Image
             src="/partners/partner-logo-new.svg"
-            height={50}
-            width={300}
+            height={40}
+            width={250}
             alt="image"
           />
         </div>

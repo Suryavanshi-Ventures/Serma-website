@@ -6,52 +6,94 @@ import React, { useEffect, useState } from "react";
 function TopSection() {
   const Images = [
     {
+      id: 1,
       path: "/hero-section/changing-image/runner.svg",
+
       height: 776,
       width: 850,
       position: 45,
+      responsiveHeight: 400,
+      responsivePositionLeft: 30,
+      responsiveWidth: 400,
       positionBottom: "",
     },
     {
+      id: 2,
       path: "/hero-section/changing-image/female-singer-new.png",
+
       height: 500,
       width: 400,
       position: 45,
+      responsiveHeight: 150,
+      responsivePositionLeft: 24,
+      responsiveWidth: 200,
       positionBottom: "",
     },
     {
+      id: 3,
       path: "/hero-section/changing-image/basketball-player-new.png",
+
       height: 766,
       width: 502,
       position: 45,
+      responsiveHeight: 260,
+      responsivePositionLeft: 45,
+      responsiveWidth: 260,
       positionBottom: "",
     },
     {
+      id: 4,
       path: "/hero-section/changing-image/drms.svg",
+
       height: 630,
       width: 620,
       position: 45,
+      responsiveHeight: 300,
+      responsivePositionLeft: 45,
+      responsiveWidth: 400,
       positionBottom: "",
     },
     {
+      id: 5,
       path: "/hero-section/changing-image/cyclelist.svg",
+
       height: 750,
       width: 500,
       position: 45,
+      responsiveHeight: 250,
+      responsivePositionLeft: 45,
+      responsiveWidth: 250,
       positionBottom: "",
     },
     {
+      id: 6,
       path: "/hero-section/changing-image/dj-new.png",
+
       height: 1020,
       width: 680,
       position: 45,
+      responsiveHeight: 300,
+      responsivePositionLeft: 45,
+      responsiveWidth: 500,
       positionBottom: "0",
     },
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  const [IslgScreenActive, setIslgScreenActive] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
+  console.log(IslgScreenActive);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIslgScreenActive(window.innerWidth >= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Set initial state
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -66,15 +108,15 @@ function TopSection() {
 
   return (
     <div>
-      <div className="relative flex justify-between items-center ">
-        <div className="w-[55%] h-[800px] bg-primaryBlue flex justify-center pt-[158px]  rounded-r-3xl ">
-          <div className="w-2/3">
-            <div className="text-[40px] text-[#FFFFFF] font-semibold">
+      <div className="relative flex max-lg:bg-primaryBlue  justify-between items-center ">
+        <div className="lg:w-[55%]    lg:h-[800px] lg:bg-primaryBlue flex justify-center lg:pt-[158px] pt-[400px]  rounded-r-3xl ">
+          <div className="lg:w-2/3 max-lg:px-[20px] ">
+            <div className="text-[24px] md:text-[30px] lg:text-[40px] text-[#FFFFFF] font-semibold">
               <div>Sports and Entertainment </div>
               <div className="my-[6px]">Risk Management Alliance</div>
             </div>
             <div className="my-[40px] overflow-hidden">
-              <p className="text-[#FFFFFF] xl:w-[500px]">
+              <p className="text-[#FFFFFF] xl:w-[500px] max-lg:pr-3">
                 The Sports and Entertainment Risk Management Alliance (SERMA) is
                 the first risk management association devoted entirely to the
                 sports and entertainment industries. It is an organization of
@@ -84,8 +126,8 @@ function TopSection() {
               </p>
             </div>
             <Link href="/membership">
-              <div>
-                <button className="lg:flex group hidden transition duration-500  text-[#DDDDDD]  font-normal  justify-center items-center gap-3 text-lg  tracking-wider   py-3 px-6 border border-[#C8C8C8]    rounded-full">
+              <div className="my-5 max-md:pr-[20px]">
+                <button className="flex group max-md:w-full  transition duration-500  text-[#DDDDDD]  font-normal  justify-center items-center gap-3 text-lg  tracking-wider py-3 px-6 border border-[#C8C8C8]    rounded-full">
                   Membership
                   <span className="group-hover:translate-x-1  duration-200">
                     <svg
@@ -106,10 +148,11 @@ function TopSection() {
             </Link>
           </div>
         </div>
-
+    
         <div
           // className={`absolute left-[${Images[currentImageIndex].position}%] ${
-          className={`absolute left-[45%] ${
+          // className={`absolute max-lg:top-0 md:left-[35%] left-[${Images[currentImageIndex].responsivePositionLeft}%]  lg:left-[45%] ${
+          className={`absolute max-lg:top-3 md:left-[35%] ${Images[currentImageIndex].id == 1 || Images[currentImageIndex].id == 6 ? "left-[-10%]" : "left-[20%]"}   lg:left-[45%] ${
             Images[currentImageIndex].positionBottom === "0"
               ? "bottom-[0.2%]"
               : ""
@@ -120,20 +163,31 @@ function TopSection() {
           <Image
             src={Images[currentImageIndex].path}
             // src="/hero-section/changing-image/dj-new.png"
-            height={Images[currentImageIndex].height}
+            height={
+              IslgScreenActive
+                ? Images[currentImageIndex].height
+                : Images[currentImageIndex].responsiveHeight
+            }
             // height={1020}
-            width={Images[currentImageIndex].width}
+            // height={100}
+            width={
+              IslgScreenActive
+                ? Images[currentImageIndex].width
+                : Images[currentImageIndex].responsiveWidth
+            }
             // width={680}
+            // width={100}
             alt="image"
-            className="animate-fade"
+            className={`animate-fade max-lg:w-[${Images[currentImageIndex].responsiveWidth}px]  max-lg:h-[${Images[currentImageIndex].responsiveHeight}px] `}
           />
         </div>
-        <div className="pr-20">
+        <div className="  max-lg:mt-[-400px] max-lg:ml-[-70px] lg:pr-20">
           <Image
             src="/hero-section/rotate-content.svg"
             height={40}
             width={60}
             alt="image"
+            className="max-lg:h-[300px] max-lg:w-[300px]"
           />
         </div>
       </div>

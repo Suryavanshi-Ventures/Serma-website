@@ -38,7 +38,7 @@ const Membership = () => {
     },
   ];
   return (
-    <div className="mt-20">
+    <div className="md:mt-20 text-[#333333]">
       <div>
         <div className="flex flex-col mx-5 lg:mx-10 2xl:mx-20">
           <div>
@@ -47,7 +47,7 @@ const Membership = () => {
             </h2>
           </div>
           <div className="flex lg:justify-end mt-[40px]">
-            <p className="paragraph text-[#9B9A9A] max-w-[1008px]">
+            <p className="paragraph text-[#9B9A9A] max-w-[1008px] loos">
               While there are a number of excellent organizations with a wide
               range of services in our community, there isn’t one specifically
               dealing with the issues that we face in handling sports and
@@ -57,7 +57,7 @@ const Membership = () => {
             </p>
           </div>
         </div>
-        <div className="w-full h-[550] mt-10">
+        <div className=" hidden sm:flex  w-full h-[300px] mt-10">
           <Image
             src="/pages/membership/top-image.png"
             unoptimized
@@ -66,22 +66,33 @@ const Membership = () => {
             className="object-fill w-full h-full"
           />
         </div>
+        <div className=" flex sm:hidden w-full h-[380px] mt-10">
+          <Image
+            src="/pages/membership/responsive.png"
+            unoptimized
+            width={100}
+            height={100}
+            className="object-fill w-full h-full"
+          />
+        </div>
       </div>
-      <div className="mx-5 lg:mx-10 2xl:mx-20 mt-20">
+      <div className="mx-5 lg:mx-10 2xl:mx-20 mt-5 md:mt-20">
         <div>
           <div>
             <div>
-              <h2 className="heading-2 lg:text-left text-center">
+              <h2 className="heading-2 lg:text-left text-center font-semibold">
                 SERMA Membership
               </h2>
             </div>
-            <div className="mt-[50px] flex lg:flex-row items-center flex-col gap-3 ">
+            <div className="md:mt-[50px] flex lg:flex-row items-center flex-col-reverse gap-3 ">
               <div className="border-t border-[#9B9A9A66]">
                 {sermaMembership.map((item, index) => (
                   <div>
                     <div className="flex  items-center py-[30px]">
                       <div className="w-1/2">
-                        <h2 className="text-xl font-bold">{item.title}</h2>
+                        <h2 className="text-[16px] md:text-xl font-bold max-md:px-2">
+                          {item.title}
+                        </h2>
                       </div>
                       <div className="w-1/2">
                         <p className="text-[#9B9A9A] paragraph max-w-[551px]">
@@ -94,7 +105,7 @@ const Membership = () => {
                 ))}
               </div>
               <div>
-                <div className="max-w-[450px] h-[300px] mt-10 lg:mt-0">
+                <div className="max-w-[450px] h-[300px]  lg:mt-0">
                   <Image
                     src="/pages/membership/hand-img.png"
                     unoptimized
@@ -107,9 +118,19 @@ const Membership = () => {
             </div>
           </div>
         </div>
-        <div className="mt-[100px]">
+        <div className="mt-[50px] md:mt-[100px]">
           <div className="text-center">
-            <h2 className="heading-2">Member Benefits</h2>
+            <h2 className="heading-2 lg:text-left font-semibold">
+              Member Benefits
+            </h2>
+            <p className="paragraph md:hidden mt-3 text-gray leading-loose">
+              While there are a number of excellent organizations with a wide
+              range of services in our community, there isn’t one specifically
+              dealing with the issues that we face in handling sports and
+              entertainment claims and risk management. SERMA will fill that
+              void by providing compelling and interesting programming in an
+              exciting and interactive environment.
+            </p>
           </div>
           <div className="mt-10 flex lg:flex-row flex-col items-center gap-5">
             {/* card */}
@@ -120,7 +141,7 @@ const Membership = () => {
               >
                 <div className="flex flex-col justify-between items-center h-full w-full">
                   <div className="mt-10">
-                    <h2 className="text-[24px] font-bold max-w-[333px]">
+                    <h2 className="text-xl md:text-[24px] font-bold max-w-[333px]">
                       {items.title}
                     </h2>
                   </div>

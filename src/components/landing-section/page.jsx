@@ -10,7 +10,7 @@ function LandingPage() {
   return (
     <div>
       <TopSection />
-      <div className="px-[25px] md:px-[85px] space-y-[100px] ">
+      <div className="px-[25px] md:px-[85px] space-y-[50px] md:space-y-[100px] ">
         <Partners />
         <UpcomingEvent />
         <Membership/>

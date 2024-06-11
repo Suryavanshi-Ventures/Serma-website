@@ -134,10 +134,10 @@ function Webinar() {
                       <p className=" text-[12px] md:text-[15px] text-[#9B9A9A]">{item.date}</p>
                     </div>
                   </div>
-                  <div className="mt-[26px]">
-                    <p className=" responsive-Text font-normal">{item.title}</p>
+                  <div className="my-[20px]">
+                    <p className=" responsive-Text font-normal text-[#333333]">{item.title}</p>
                   </div>
-                  <div className="mt-8 " >
+                  <div className=" " >
                     <p className="  responsive-Text font-bold text-[#525971]">
                       {item.desc}
                     </p>

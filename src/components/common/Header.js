@@ -12,6 +12,7 @@ const Header = () => {
   const router = useRouter();
   useEffect(() => {
     setShowAboutDropdown(false);
+    setShowMenuItems(false);
   }, [pathname]);
 
   const toggleAboutDropdown = () => {
@@ -33,7 +34,7 @@ const Header = () => {
             <Image src="/logo.svg" height={60} width={135} alt="Logo" />{" "}
           </Link>
         </div>
-
+      
         <ul
           className={`hidden lg:flex text-[17px] gap-5 xxl:gap-12  animate-flip-down  xxl:text-[17px] text-[#333333]`}
         >

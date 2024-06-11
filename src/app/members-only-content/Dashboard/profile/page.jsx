@@ -18,12 +18,12 @@ function Profile() {
 
   return (
     <div className="w-full ">
-      <div className=" md:absolute  top-0  ">
+      <div className=" md:absolute  top-0 ">
         <div className="flex md:gap-10 lg:gap-20  xl:gap-32  justify-between items-center ">
           {tabList.map((item, index) => (
             <div onClick={() => setTab(index)} key={index}>
               <h2
-                className={` text-[#333333]  text-sm sm:text-xl text-nowrap cursor-pointer py-2 ${
+                className={` text-[#333333]  text-sm sm:text-xl text-nowrap cursor-pointer py-2 max-sm:font-bold ${
                   tab === index
                     ? "border-b-[3px] font-bold border-[#C42C2D] pb-1"
                     : ""

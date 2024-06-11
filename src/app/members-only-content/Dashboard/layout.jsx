@@ -19,7 +19,7 @@ export default function Layout({ children }) {
         {pathname.includes("/member-forum") ? (
           <div className="flex justify-between w-full">
             <div>
-              <div className=" text-[20px] md:text-2xl font-semibold">
+              <div className=" text-[20px] text-[#333333] md:text-2xl font-semibold">
                 Member Chat Forum
               </div>
               <p className="text-gray my-5  text-[14px] md:text-[16px]">
@@ -40,7 +40,7 @@ export default function Layout({ children }) {
           </div>
         ) : pathname.includes("/private-member") ? (
           <div className="flex justify-between w-full">
-            <h2 className=" text-[20px] md:text-2xl font-semibold">
+            <h2 className="text-[#333333] text-[20px] md:text-2xl font-semibold">
               Members-only Directory
             </h2>
             <div className="flex gap-8 items-center">
@@ -87,11 +87,11 @@ export default function Layout({ children }) {
             </div>
           </div>
         ) : pathname.includes("/profile") ? (
-          <div className="text-[20px]   md:text-2xl font-semibold">
+          <div className="text-[20px] text-[#333333]   md:text-2xl font-semibold">
             <h2>Profile</h2>
           </div>
         ) : pathname.includes("/webinar") ? (
-          <div className="text-[20px] md:text-2xl font-semibold">
+          <div className="text-[20px]  text-[#333333] md:text-2xl font-semibold">
             <h2>Webinars</h2>
           </div>
         ) : (

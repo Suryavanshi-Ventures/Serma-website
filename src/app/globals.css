@@ -17,7 +17,7 @@
 }
 
 .paragraph {
-  @apply text-[12px] md:text-[16px] lg:text-[18px] font-normal 
+  @apply text-[14px] md:text-[16px] lg:text-[18px] font-normal 
 }
 .responsive-Text-footer{
   @apply text-sm md:text-[16px] lg:text-[18px] 

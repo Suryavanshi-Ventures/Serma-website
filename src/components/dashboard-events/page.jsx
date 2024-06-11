@@ -10,7 +10,7 @@ import Button from "../button/page";
 function DashboardEvents() {
   return (
     <div className="">
-      <div className="text-xl font-semibold text-center">Events</div>
+      <div className="text-xl font-semibold text-center text-[#111111]">Events</div>
       {EVENT_CARD_DESHBOARD.map((event, index) => (
         <div
           key={index}
