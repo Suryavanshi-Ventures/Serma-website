@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function AboutUs() {
   return (
-    <div className="relative pt-[40px] pb-[14px] px-[20px] md:px-[85px] mb-14">
+    <div className="relative md:pt-[40px] pb-[14px] px-[20px] md:px-[85px] mb-14 text-[#333333]">
       <div className="w-full">
         <div className="grid grid-cols-2">
           <div className="text-xl md:text-2xl lg:text-4xl font-bold w-80 text-light-black">
@@ -63,10 +63,10 @@ function AboutUs() {
 
       <div className="w-full mt-8 md:mt-14 flex items-center">
         <div className="w-full md:w-3/5 ">
-          <div className="text-xl max-md:text-center md:text-2xl lg:text-4xl font-bold w-80 text-light-black">
+          <div className="text-xl max-md:text-center md:text-2xl lg:text-4xl font-bold w-full md:w-80  text-light-black">
             Our Mission
           </div>
-          <div className="text-xl text-gray mt-5  ">
+          <div className="text-xl text-gray mt-5 paragraph ">
             To be the world's foremost resource for information and networking
             in the sports and entertainment risk industries. We strive to
             provide a respectful, transparent and inclusive dialogue where
@@ -74,34 +74,34 @@ function AboutUs() {
             risk and claims.  
           </div>
 
-          <div className="text-xl text-light-black mt-8">
+          <div className=" text-[16px] md:text-xl text-light-black mt-8">
             SERMA is a marketplace of ideas for those in sports & entertainment
             risk and the claims industry
           </div>
           <div className="mt-5">
             <ul className="pl-6 list-disc list-outside ">
-              <li className="text-lg text-gray">
+              <li className="text-lg text-gray paragraph">
                 We share resources, best practices, strategies 
               </li>
-              <li className="text-lg text-gray">
+              <li className="text-lg text-gray paragraph">
                 We are inclusive of a broad range of professionals, ideas,
                 viewpoints
               </li>
-              <li className="text-lg text-gray space-x-1">
+              <li className="text-lg text-gray paragraph space-x-1">
                 We present educational & networking opportunities in an intimate
                 environment that promotes relationship building & individual
                 growth
               </li>
             </ul>
           </div>
-          <div className="mt-5 text-lg light-black">
+          <div className="mt-5 text-[16px] md:text-xl light-black">
             Our goal is to be the foremost resource for sharing current trends
             and strategies as well as providing endless networking
             opportunities. These opportunities will present themselves both
             virtually and in-person events.
           </div>
         </div>
-        <div className="w-2/5">
+        <div className="hidden md:flex w-2/5">
           <div className="flex w-full justify-center items-center">
             <div className="w-96">
               <Image
@@ -119,13 +119,13 @@ function AboutUs() {
       </div>
 
       <div className="w-full mt-14 ">
-        <div className="text-2xl lg:text-4xl font-bold w-80 text-light-black">
+        <div className="text-xl md:text-2xl lg:text-4xl font-bold  w-full max-md:text-center md:w-80 text-light-black">
           Strategic Partners
         </div>
 
         <div className="flex flex-col gap-6 mt-10">
-          <div className="flex bg-[#F0F0F0] bg-opacity-50 p-10 items-center rounded-2xl">
-            <div className="w-[290px]">
+          <div className="flex max-md:flex-col md:p-10 py-8  max-md:space-y-5 bg-[#F0F0F0] bg-opacity-50 items-center rounded-2xl">
+            <div className="w-[233px] md:w-[290px] ">
               <Image
                 src="/images/strategic-partner-1.svg"
                 alt="Hackney Publications Logo"
@@ -137,7 +137,7 @@ function AboutUs() {
               />
             </div>
             <div className="flex-1 ml-10">
-              <div className="text-lg light-black">
+              <div className="text-[14px] md:text-lg light-black max-md:my-5">
                 Hackney Publications delivers valuable and important information
                 about the legal side of the sports industry. Its overriding
                 mission is to maintain a narrow editorial focus on issues that
@@ -153,8 +153,8 @@ function AboutUs() {
               </div>
             </div>
           </div>
-          <div className="flex bg-[#F0F0F0] bg-opacity-50 p-10 items-center rounded-2xl">
-            <div className="w-[290px]">
+          <div className="flex max-md:flex-col md:p-10 py-6  max-md:space-y-5 bg-[#F0F0F0] bg-opacity-50  items-center rounded-2xl">
+            <div className=" w-[222px] md:w-[290px]">
               <Image
                 src="/images/strategic-partner-2.svg"
                 alt="ClaimsXchange Logo"
@@ -166,7 +166,7 @@ function AboutUs() {
               />
             </div>
             <div className="flex-1 ml-10">
-              <div className="text-lg light-black">
+              <div className="text-[14px] md:text-lg light-black max-md:my-5">
                 The ClaimsXchange is a membership organization that connects
                 innovative and collaborative professionals who share a passion
                 for advancing the claims industry. Through exclusive events,
@@ -184,8 +184,8 @@ function AboutUs() {
               </div>
             </div>
           </div>
-          <div className="flex bg-[#F0F0F0] bg-opacity-50 p-10 items-center rounded-2xl">
-            <div className="w-[290px]">
+          <div className="flex max-md:flex-col md:p-10 py-6  max-md:space-y-5 bg-[#F0F0F0] bg-opacity-50  items-center rounded-2xl">
+            <div className="w-[133px] md:w-[290px]">
               <Image
                 src="/images/strategic-partner-3.svg"
                 alt="MusicallyFed Logo"
@@ -197,7 +197,7 @@ function AboutUs() {
               />
             </div>
             <div className="flex-1 ml-10">
-              <div className="text-lg light-black">
+              <div className="text-[14px] md:text-lg light-black max-md:my-5">
                 MusicallyFed is a non-profit organization that works to mobilize
                 the music industry in the fight against hunger. They work with
                 artists, promoters, management, and venues nationwide to donate
@@ -215,8 +215,8 @@ function AboutUs() {
               </div>
             </div>
           </div>
-          <div className="flex bg-[#F0F0F0] bg-opacity-50 p-10 items-center rounded-2xl">
-            <div className="w-[290px]">
+          <div className="flex max-md:flex-col md:p-10 py-6  max-md:space-y-5 bg-[#F0F0F0] bg-opacity-50  items-center rounded-2xl">
+            <div className="w-[175px] md:w-[290px]">
               <Image
                 src="/images/strategic-partner-4.svg"
                 alt="NAYS Logo"
@@ -228,7 +228,7 @@ function AboutUs() {
               />
             </div>
             <div className="flex-1 ml-10">
-              <div className="text-lg light-black">
+              <div className="text-[14px] md:text-lg light-black max-md:my-5">
                 MusicallyFed is a non-profit organization that works to mobilize
                 the music industry in the fight against hunger. They work with
                 artists, promoters, management, and venues nationwide to donate
