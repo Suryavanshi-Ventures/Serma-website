@@ -100,11 +100,11 @@ function SwiperSlideIncoming() {
                     <div className="font-semibold text-[#525971]">
                       {event.title}
                     </div>
-                    <div className="flex items-center justify-between">
-                      <div className="underline text-[#474747] cursor-pointer">
+                    <div className="flex items-center justify-end">
+                      <div className="underline text-primary cursor-pointer">
                         Show Detail
                       </div>
-                      <div className="flex  items-center gap-3">
+                      {/* <div className="flex  jus gap-3">
                         <span className="text-primary text-lg my-3">
                           Register
                         </span>
@@ -122,7 +122,7 @@ function SwiperSlideIncoming() {
                             />
                           </svg>
                         </span>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

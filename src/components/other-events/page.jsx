@@ -9,7 +9,7 @@ function OtherEvent() {
       <div className="flex flex-col lg:flex-row  my-5 ">
         {/* -------------------------------- */}
         <div className="lg:w-1/5  w-full">
-          <div className="text-3xl font-bold text-center lg:text-left">
+          <div className=" text-[#333333] text-xl  sm:text-2xl lg:text-3xl  font-bold text-center lg:text-left">
             Other Events
           </div>
           <div className="my-2 hidden lg:flex">

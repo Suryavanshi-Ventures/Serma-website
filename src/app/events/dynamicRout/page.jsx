@@ -16,8 +16,8 @@ function page() {
     router.push("/events/dynamicRout/registration-form");
   };
   return (
-    <div className="px-[25px] md:px-[85px]">
-      <div className="my-10 flex  justify-center lg:justify-start">
+    <div className="px-[25px] md:px-[85px] text-[#333333]">
+      <div className="my-5 md:my-10 flex  justify-start">
         <div>
           <h2 className="text-[#333333] text-xl  sm:text-2xl lg:text-3xl font-bold">
             SERMASips Happy Hour
@@ -42,8 +42,8 @@ function page() {
             St Denver - Postino 9CO
           </div>
         </div>
-        <div className="">
-          <div className="p-4 md:p-10  bg-white w-auto md:w-[400px] text-[20px] shadow-[-5px_6px_40px_0px_#00000024]  rounded-lg ">
+        <div className="max-md:w-full">
+          <div className="p-4 md:p-10  bg-white  md:w-[400px] text-[20px] shadow-[-5px_6px_40px_0px_#00000024]  rounded-lg ">
             <div className="flex my-3 gap-8 justify-start text-gray font-medium">
               <div>Date :</div>
               <div>March 19,2024</div>

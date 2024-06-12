@@ -236,7 +236,7 @@ const RegistrationForm = () => {
             <span>
               <LoadingButton
                 disabledProp={() => {}}
-                style="hover:bg-primary transition-all font-[700] duration-200 text-black p-[7px] w-full xs:w-[132px] rounded-3xl text-primary border border-primary hover:text-white"
+                style="hover:bg-primary transition-all font-[700] duration-200 text-black px-[20px] py-[8px] w-full xs:w-[132px] rounded-3xl text-primary border border-gray hover:text-white"
                 text="Cancel"
                 spinnerWidth="23"
                 spinnerHeight="23"

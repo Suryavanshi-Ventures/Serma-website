@@ -16,7 +16,7 @@ const Membership = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isPasswordMatch, setIsPasswordMatch] = useState(true);
-const router = useRouter()
+  const router = useRouter();
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
     setIsPasswordMatch(e.target.value === confirmPassword);
@@ -42,9 +42,9 @@ const router = useRouter()
     setIsEmailValid(emailRegex.test(email));
   };
 
-  const handleGoToDashboard =()=>{
-    router.push("/members-only-content/Dashboard/member-forum")
-  }
+  const handleGoToDashboard = () => {
+    router.push("/members-only-content/Dashboard/member-forum");
+  };
 
   const handleResetPassword = () => {
     if (isEmailValid) {
@@ -82,9 +82,9 @@ const router = useRouter()
 
   return (
     <div>
-      <div className="xs:mx-5 lg:mx-10 2xl:mx-20">
+      <div className="xs:mx-5 lg:mx-10 2xl:mx-20 text-[#333333]">
         <div>
-          <div className="h-[500px] xs:max-h-[350px] w-full xs:max-w-[1351px] relative">
+          <div className="hidden md:flex h-[300px] md:h-[500px] xs:max-h-[350px] w-full xs:max-w-[1351px] relative">
             <Image
               src="/pages/members-only-content/member-only.png"
               unoptimized
@@ -98,6 +98,15 @@ const router = useRouter()
               </h2>
             </div>
           </div>
+          <div className="flex md:hidden">
+            <Image
+              src="/pages/members-only-content/member-only-responsive.png"
+              unoptimized
+              width={800}
+              height={800}
+              className=""
+            />
+          </div>
         </div>
         <div className="mt-[64px] mx-5">
           <div className="flex flex-col md:flex-row gap-9 items-start md:items-center">
@@ -105,13 +114,13 @@ const router = useRouter()
               <div>
                 <h2 className="heading-2 font-bold">Welcome to SERMA!</h2>
               </div>
-              <hr className="w-full my-8 border-[#9B9A9A66]" />
+              <hr className="w-full my-4 md:my-8 border-[#9B9A9A66]" />
               <div className="space-y-4">
                 <div>
-                  <h2 className="text-2xl font-bold">MEMBERS-ONLY CONTENT</h2>
+                  <h2 className=" text-[16px] md:text-2xl font-bold">MEMBERS-ONLY CONTENT</h2>
                 </div>
                 <div>
-                  <p className="text-gray text-xl font-normal">
+                  <p className="text-gray text-xl font-normal paragraph">
                     Please take a moment to update your user profile so that you
                     can start interacting with other SERMA members.
                   </p>
@@ -192,15 +201,14 @@ const router = useRouter()
                         </p>
                       </div>
                       <div onClick={handleGoToDashboard} className="mt-[27px]">
-                    
                         <LoadingButton
-                disabledProp={() => {}}
-                style="hover:bg-primary  transition-all  duration-200 text-black w-full text-sm xs:text-[22px] py-3 xs:py-[26px] rounded-lg text-white bg-[#C42C2D] "
-                text="Sign In"
-                spinnerWidth="23"
-                spinnerHeight="23"
-                loading={false}
-              />
+                          disabledProp={() => {}}
+                          style="hover:bg-primary  transition-all  duration-200 text-black w-full text-sm xs:text-[22px] py-3 xs:py-[26px] rounded-lg text-white bg-[#C42C2D] "
+                          text="Sign In"
+                          spinnerWidth="23"
+                          spinnerHeight="23"
+                          loading={false}
+                        />
                       </div>
                     </div>
                   </div>
@@ -213,12 +221,12 @@ const router = useRouter()
       <div className="bg-[#03989E] flex justify-center items-center text-white h-[588px] -mt-20 -z-10">
         <div className="flex flex-col items-center text-center space-y-[50px]">
           <div>
-            <h2 className="text-[30px] font-normal">
+            <h2 className="text-xl md:text-[30px] font-normal">
               Have additional questions? Email us below.
             </h2>
           </div>
           <div>
-            <p className="text-[24px] font-bold max-w-[805px]">
+            <p className="max-md:px-[20px] text-[16px] md:text-[24px] font-bold w-full md:max-w-[805px]">
               Please take a moment to update your user profile so that you can
               start interacting with other SERMA members.
             </p>

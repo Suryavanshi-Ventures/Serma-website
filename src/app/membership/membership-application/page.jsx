@@ -108,7 +108,7 @@ const page = () => {
         onClose={() => setPopUp(false)}
         className="custom-modal  "
       >
-        <div className="w-full px-16  text-center ">
+        <div className="w-full px-5 md:px-16  text-center ">
           <div>
             <h2 className="text-2xl font-bold">Membership Application</h2>
           </div>

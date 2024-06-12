@@ -202,11 +202,11 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-end pr-24 py-4 gap-10 font-semibold text-[#333333]">
-        <div className="cursor-pointer">
+      <div className="flex max-md:text-[12px] max-md:px-[20px] gap-2  justify-center md:justify-end md:pr-24 py-4 md:gap-10 font-semibold text-[#333333]">
+        <div className="cursor-pointer ">
           Copyright 2024 © Suryavanshi Ventures-  All rights reserved.
         </div>
-        <div className="cursor-pointer">Terms & Conditions Privacy Policy</div>
+        <div className="cursor-pointer ">Terms & Conditions Privacy Policy</div>
       </div>
     </div>
   );
