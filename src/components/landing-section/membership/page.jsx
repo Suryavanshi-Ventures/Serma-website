@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Button from "@/components/button/page";
 import Image from "next/image";
 import React from "react";
@@ -6,15 +6,15 @@ import { useRouter } from "next/navigation";
 
 function Membership() {
   const router = useRouter();
-  const handleClick = ()=>{
-router.push("/membership")
-  }
+  const handleClick = () => {
+    router.push("/membership");
+  };
   return (
-    <div>
-      <div className="flex flex-col md:items-center md:flex-row gap-10 md:gap-20 lg:gap-30">
-        <div className="md:text-3xl text-xl font-bold max-md:flex max-md:justify-center gap-2 text-[#333333]">
+    <>
+      <div className="flex flex-col md:items-center md:flex-row gap-10 md:gap-20 lg:gap-36 ">
+        <div className="md:text-[36px] text-xl font-bold  max-md:flex max-md:justify-center max-md:items-center gap-2 text-[#333333] ">
           <div>SERMA </div>
-          <div>Membership</div>
+          <div className="my-2">Membership</div>
         </div>
         <div className="responsive-Text text-[#9B9A9A] ">
           While there are a number of excellent organizations with a wide range
@@ -35,7 +35,7 @@ router.push("/membership")
               objectFit="cover"
             />
           </div>
-          <div className="text-center font-semibold text-[18px] my-3">
+          <div className="text-center font-semibold text-[18px] my-3 text-[#333333]">
             Industry Membership
           </div>
           <div className="px-2 text-[14px] max-md:pb-5 text-center">
@@ -53,7 +53,7 @@ router.push("/membership")
               objectFit="cover"
             />
           </div>
-          <div className="text-center font-semibold text-[18px] my-3">
+          <div className="text-center font-semibold text-[18px] my-3 text-[#333333]">
             Founding Member
           </div>
           <div className="px-2 text-[14px] max-md:pb-5 text-center">
@@ -70,7 +70,7 @@ router.push("/membership")
               objectFit="cover"
             />
           </div>
-          <div className="text-center font-semibold text-[18px] my-3">
+          <div className="text-center font-semibold text-[18px] my-3 text-[#333333]">
             Attorney/Vendor Membership
           </div>
           <div className="px-2 text-[14px] max-md:pb-5 text-center">
@@ -87,7 +87,7 @@ router.push("/membership")
               objectFit="cover"
             />
           </div>
-          <div className="text-center font-semibold text-[18px] my-3">
+          <div className="text-center font-semibold text-[18px] my-3 text-[#333333]">
             Student Membership
           </div>
           <div className="px-2 text-[14px] max-md:pb-5 text-center">
@@ -98,7 +98,7 @@ router.push("/membership")
       <div onClick={handleClick}>
         <Button content={"Join SERMA"} px={"px-5"} py={"py-2"} />
       </div>
-    </div>
+    </>
   );
 }
 

@@ -6,10 +6,10 @@ import React from "react";
 function Podcast() {
   return (
     <div className="">
-      <div className="md:text-3xl text-xl font-bold text-center text-[#333333]">
+      <div className="md:text-[36px] text-xl font-bold text-center text-[#333333]">
         Listen To Podcast
       </div>
-      <div className="flex justify-center items-center gap-5 my-8 ">
+      <div className="flex justify-center items-center gap-5 my-12 ">
         <div>
           <Image
             src="/podcast/youtube.svg"

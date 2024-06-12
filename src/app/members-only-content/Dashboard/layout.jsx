@@ -27,15 +27,21 @@ export default function Layout({ children }) {
                 other community members to view and comment 
               </p>
             </div>
-            <div onClick={handlePushToCreateTopic}>
-              <LoadingButton
+            <div onClick={handlePushToCreateTopic} className=" ">
+              {/* <LoadingButton
                 disabledProp={() => {}}
-                style="hover:bg-primary transition-all  max-md:text-[12px] p-2 duration-200 text-black md:p-[7px] w-full xs:w-[132px] rounded-3xl text-primary border hover:text-white"
+                style=" hover:bg-primary md:p-[7px] w-full   transition-all  max-md:text-[12px]   duration-200 text-black rounded-3xl text-primary border hover:text-white"
                 text="+ Create Topic"
                 spinnerWidth="23"
                 spinnerHeight="23"
                 loading={false}
-              />
+              /> */}
+              <div
+                onClick={handlePushToCreateTopic}
+                className="border  cursor-pointer text-[14px] hover:bg-primary transition duration-200 hover:text-white text-primary  border-primary w-[150px] py-[10px] rounded-full  flex justify-center items-center "
+              >
+                + Create Topic
+              </div>
             </div>
           </div>
         ) : pathname.includes("/private-member") ? (

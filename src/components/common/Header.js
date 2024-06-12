@@ -8,11 +8,13 @@ const Header = () => {
   const [showAboutDropdown, setShowAboutDropdown] = useState(false);
   const [showMenuItems, setShowMenuItems] = useState(false);
   const [handleVectorChange, setHandleVectorChange] = useState(false);
+  const [OpenMobileSidebar, setOpenMobileSidebar] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   useEffect(() => {
     setShowAboutDropdown(false);
     setShowMenuItems(false);
+    setOpenMobileSidebar(false);
   }, [pathname]);
 
   const toggleAboutDropdown = () => {
@@ -25,6 +27,9 @@ const Header = () => {
   const handleNavigateToMembership = () => {
     router.push("/membership/membership-application");
   };
+  const OpenMobileSidebarFunct = () => {
+    setOpenMobileSidebar(!OpenMobileSidebar);
+  };
 
   return (
     <header className=" relative pt-[40px] pb-[40px] px-[20px] lg:px-[85px]">
@@ -34,7 +39,7 @@ const Header = () => {
             <Image src="/logo.svg" height={60} width={135} alt="Logo" />{" "}
           </Link>
         </div>
-      
+
         <ul
           className={`hidden lg:flex text-[17px] gap-5 xxl:gap-12  animate-flip-down  xxl:text-[17px] text-[#333333]`}
         >
@@ -186,20 +191,39 @@ const Header = () => {
         {/* ----------------------hamburger menu------------------------ */}
         <div
           onClick={handleOpenMenu}
-          className="lg:hidden animate-fade-left cursor-pointer"
+          className="lg:hidden animate-fade-left cursor-pointer "
         >
-          <svg
-            class="w-10 h-10"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
+          {showMenuItems ? (
+            <svg
+              width="20"
+              height="21"
+              viewBox="0 0 15 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="animate-fade-left"
+            >
+              <path
+                d="M7.43032 6.57838L13.1739 0.834735L14.8149 2.47576L9.07133 8.2194L14.8149 13.963L13.1739 15.604L7.43032 9.86041L1.68668 15.604L0.0456543 13.963L5.7893 8.2194L0.0456543 2.47576L1.68668 0.834735L7.43032 6.57838Z"
+                fill="#333333"
+              />
+            </svg>
+          ) : (
+            <svg
+              width="35"
+              height="35"
+              viewBox="0 0 31 31"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="15.5" cy="15.5" r="15.5" fill="#1A1A1A" />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M21.75 10.7083C21.75 10.3171 21.4329 10 21.0417 10H9.70833C9.31712 10 9 10.3171 9 10.7083C9 11.0995 9.31712 11.4167 9.70833 11.4167H21.0417C21.4329 11.4167 21.75 11.0995 21.75 10.7083ZM21.75 14.9583C21.75 14.5671 21.4329 14.25 21.0417 14.25H13.9583C13.5671 14.25 13.25 14.5671 13.25 14.9583C13.25 15.3495 13.5671 15.6667 13.9583 15.6667H21.0417C21.4329 15.6667 21.75 15.3495 21.75 14.9583ZM21.75 19.2083C21.75 18.8171 21.4329 18.5 21.0417 18.5H17.5C17.1088 18.5 16.7917 18.8171 16.7917 19.2083C16.7917 19.5995 17.1088 19.9167 17.5 19.9167H21.0417C21.4329 19.9167 21.75 19.5995 21.75 19.2083Z"
+                fill="white"
+              />
+            </svg>
+          )}
         </div>
 
         {/* --------------------------------------showMenuItems--------------------------------- */}
@@ -207,33 +231,102 @@ const Header = () => {
       {/* ----------------------------Menu's for mobile view----------------------- */}
       <div className="w-full px-[20px] bg-white  absolute visible lg:hidden animate-fade-left z-50">
         {showMenuItems && (
-          <ul className="space-y-3  p-3">
-            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
-              <li className="">
+          <ul className="space-y-3  p-3 animate-fade-right transition duration-300">
+            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:text-primary">
+              <li
+                className={`${
+                  pathname == "/" ? "text-primary" : "text-[#333333]"
+                } `}
+              >
                 <Link href="/">Home</Link>
               </li>
             </div>
-            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
-              <li>
+            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:text-primary">
+              <li
+                className={`${
+                  pathname.includes("/events")
+                    ? "text-primary"
+                    : "text-[#333333]"
+                } `}
+              >
                 <Link href="/events">Events</Link>
               </li>
             </div>
-            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
-              <li>
+            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:text-primary">
+              <li
+                className={` ${
+                  pathname.includes("/the-sermapod")
+                    ? "text-primary"
+                    : "text-[#333333]"
+                } `}
+              >
                 <Link href="/the-sermapod">The Sermapod</Link>
               </li>
             </div>
-            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
-              <li>About</li>
+            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md ">
+              <li
+                onClick={OpenMobileSidebarFunct}
+                className="flex items-center gap-3"
+              >
+                {" "}
+                <span>About</span>
+                <svg
+                  width="16"
+                  height="9"
+                  viewBox="0 0 16 11"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={`transform ${
+                    OpenMobileSidebar
+                      ? "rotate-180 animate-fade duration-300"
+                      : "animate-fade duration-300"
+                  }`}
+                >
+                  <path
+                    d="M7.99996 10.0599C7.71321 10.0599 7.42649 9.95042 7.20787 9.7319L0.328226 2.85219C-0.109409 2.41455 -0.109409 1.705 0.328226 1.26755C0.765684 0.830089 1.47509 0.830089 1.91276 1.26755L7.99996 7.3551L14.0872 1.26776C14.5248 0.830301 15.2342 0.830301 15.6716 1.26776C16.1094 1.70522 16.1094 2.41477 15.6716 2.8524L8.79205 9.73211C8.57332 9.95066 8.2866 10.0599 7.99996 10.0599Z"
+                    fill="#111111"
+                  />
+                </svg>
+              </li>
+              {OpenMobileSidebar ? (
+                <div className="border-l animate-flip-down border-gray my-2 pl-[20px] space-y-2">
+                  <div
+                    className={`hover:text-primary cursor-pointer ${
+                      pathname.includes("/about-us")
+                        ? "text-primary"
+                        : "text-[#333333]"
+                    }`}
+                  >
+                    <Link href="/about-us">About Us</Link>
+                  </div>
+                  <div
+                    className={`hover:text-primary cursor-pointer ${
+                      pathname.includes("/advisory-board")
+                        ? "text-primary"
+                        : "text-[#333333]"
+                    }`}
+                  >
+                    <Link href="/advisory-board">Advisory Board</Link>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
-            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
-              <li>
+            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md ">
+              <li
+                className={`hover:text-primary ${
+                  pathname.includes("/members-only-content")
+                    ? "text-primary"
+                    : "text-[#333333]"
+                }`}
+              >
                 <Link href="/members-only-content">
                   Membership Only Content
                 </Link>
               </li>
             </div>
-            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:bg-primary hover:text-white">
+            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:text-primary">
               <li>Contact Us</li>
             </div>
           </ul>

@@ -9,7 +9,7 @@ const Footer = () => {
   const [insta, setInsta] = useState(false);
   return (
     <div className="bg-[#F3F3F3]">
-      <div className="grid grid-cols-1  md:grid-cols-2 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
+      <div className="grid grid-cols-1    md:grid-cols-2 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
         <div className="border-r  border-[#3333331c] p-5 flex justify-center">
           <div>
             <div className="flex justify-center">
