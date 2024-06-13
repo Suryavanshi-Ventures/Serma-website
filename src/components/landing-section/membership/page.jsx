@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 function Membership() {
   const router = useRouter();
   const handleClick = () => {
-    router.push("/membership");
+    router.push("/membership/membership-application");
   };
   return (
     <>
@@ -27,12 +27,13 @@ function Membership() {
       </div>
       <div className="grid  sm:grid-cols-2 lg:grid-cols-4 grid-rows-1 gap-x-5 gap-y-1 md:my-10 my-5">
         <div className="  rounded-xl shadow-lg p-1 md:p-3 max-sm:py-4 ">
-          <div className="w-full flex max-sm:justify-center">
+          <div className="w-full  flex max-sm:justify-center">
             <Image
               src="/membership/member-1.png"
               width={322}
               height={198}
               objectFit="cover"
+              alt="image"
             />
           </div>
           <div className="text-center font-semibold text-[18px] my-3 text-[#333333]">

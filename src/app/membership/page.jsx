@@ -57,7 +57,7 @@ const Membership = () => {
             </p>
           </div>
         </div>
-        <div className=" hidden sm:flex  w-full h-[300px] mt-10">
+        <div className=" hidden sm:flex  w-full h-[500px] mt-10">
           <Image
             src="/pages/membership/top-image.png"
             unoptimized
