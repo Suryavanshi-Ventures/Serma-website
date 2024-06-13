@@ -135,7 +135,7 @@ function AdvisoryBoard() {
               <Image
                 src="/images/advisory-board/ceo.svg"
                 alt="Hackney Publications Logo"
-                className="dark:invert w-full"
+                className=" w-full"
                 width={0}
                 height={0}
                 sizes="100vw"
@@ -178,7 +178,7 @@ function AdvisoryBoard() {
             <Image
               src={`/images/advisory-board/advisory-board-${member.id}.svg`}
               alt="Hackney Publications Logo"
-              className="dark:invert w-full"
+              className=" w-full"
               width={0}
               height={0}
               sizes="100vw"

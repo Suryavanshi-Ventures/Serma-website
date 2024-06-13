@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import AboutUs from "@/app/about-us/page";
 const Header = () => {
@@ -11,11 +11,28 @@ const Header = () => {
   const [OpenMobileSidebar, setOpenMobileSidebar] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const aboutDropdownRef = useRef(null);
   useEffect(() => {
     setShowAboutDropdown(false);
     setShowMenuItems(false);
     setOpenMobileSidebar(false);
   }, [pathname]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        aboutDropdownRef.current &&
+        !aboutDropdownRef.current.contains(event.target)
+      ) {
+        setShowAboutDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const toggleAboutDropdown = () => {
     setShowAboutDropdown(!showAboutDropdown);
@@ -70,10 +87,12 @@ const Header = () => {
           <li
             className="flex justify-center items-center gap-2 cursor-pointer bg-white relative font-semibold  "
             onClick={toggleAboutDropdown}
+            ref={aboutDropdownRef}
           >
             <span
               className={`hover:text-primary ${
-                pathname.includes("/about-us")
+                pathname.includes("/about-us") ||
+                pathname.includes("/advisory-board")
                   ? "text-primary"
                   : "text-[#333333]"
               } transition duration-200`}
