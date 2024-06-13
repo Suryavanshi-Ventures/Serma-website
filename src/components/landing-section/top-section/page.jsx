@@ -82,7 +82,7 @@ function TopSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [IslgScreenActive, setIslgScreenActive] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
-  console.log(IslgScreenActive);
+ 
 
   useEffect(() => {
     const handleResize = () => {
@@ -152,7 +152,7 @@ function TopSection() {
         <div
           // className={`absolute left-[${Images[currentImageIndex].position}%] ${
           // className={`absolute max-lg:top-0 md:left-[35%] left-[${Images[currentImageIndex].responsivePositionLeft}%]  lg:left-[45%] ${
-          className={`absolute max-lg:top-3 md:left-[35%] ${Images[currentImageIndex].id == 1 || Images[currentImageIndex].id == 6 ? "left-[-10%]" : "left-[20%]"}   lg:left-[45%] ${
+          className={`absolute max-lg:top-3 ${Images[currentImageIndex].id == 1 || Images[currentImageIndex].id == 4 || Images[currentImageIndex].id == 6 ? "md:left-[22%]" : "md:left-[40%]"}  ${Images[currentImageIndex].id == 1 || Images[currentImageIndex].id == 6 ? "left-[-10%]" : "left-[20%]"} ${Images[currentImageIndex].id == 1 ? "lg:left-[30%]" :"lg:left-[45%]"}    ${
             Images[currentImageIndex].positionBottom === "0"
               ? "bottom-[0.2%]"
               : ""
