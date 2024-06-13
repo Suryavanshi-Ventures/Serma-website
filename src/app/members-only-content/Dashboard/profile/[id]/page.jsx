@@ -81,13 +81,13 @@ const Page = () => {
               </div>
             </div>
           </div>
-          <div >
+          <div>
             <div className="my-4">
               <h2 className="text-gray text-base font-bold">
                 Password must have:
               </h2>
             </div>
-            <div className="text-gray text-base font-bold ">
+            <div className="text-gray text-base font-normal ">
               <li>12 characters or more</li>
               <li>Upper and Lower case letters</li>
               <li>At least one number</li>

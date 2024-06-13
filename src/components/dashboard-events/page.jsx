@@ -6,17 +6,20 @@ import Image from "next/image";
 import React from "react";
 import LoadingButton from "../loadingButton/page";
 import Button from "../button/page";
+import Link from "next/link";
 
 function DashboardEvents() {
   return (
     <div className="">
-      <div className="text-xl font-semibold text-center text-[#111111]">Events</div>
+      <div className="text-xl font-semibold text-center text-[#111111]">
+        Events
+      </div>
       {EVENT_CARD_DESHBOARD.map((event, index) => (
         <div
           key={index}
           className="w-full md:w-[300px]   rounded-2xl  flex max-md:justify-center max-md:items-center max-sm:p-0  "
         >
-          <div className="md:py-3  shadow-xl my-2 py-4 px-3 rounded-xl " > 
+          <div className="md:py-3  shadow-xl my-2 py-4 px-3 rounded-xl ">
             <div className="">
               <Image
                 src={event.imageSrc}
@@ -60,7 +63,9 @@ function DashboardEvents() {
                   Show Detail
                 </div>
                 <div className="flex cursor-pointer items-center gap-3">
-                  <span className="text-primary text-[16px] my-3">Register</span>
+                  <span className="text-primary text-[16px] my-3">
+                    Register
+                  </span>
                   <span>
                     <svg
                       width="18"
@@ -81,9 +86,16 @@ function DashboardEvents() {
           </div>
         </div>
       ))}
-     <div>
-     <Button content={"View all events"} px={"px-6"} py={"py-2"} width={"full"} />
-     </div>
+      <div>
+        <Link href="/events">
+          <Button
+            content={"View all events"}
+            px={"px-6"}
+            py={"py-2"}
+            width={"full"}
+          />
+        </Link>
+      </div>
     </div>
   );
 }

@@ -62,7 +62,7 @@ const Header = () => {
         >
           <li
             className={`font-semibold ${
-              pathname == "/" ? "text-primary" : "text-[#333333]"
+              pathname == "/" ? "text-primary " : "text-[#333333]"
             }   cursor-pointer hover:text-primary transition duration-200`}
           >
             <Link href="/">Home</Link>
