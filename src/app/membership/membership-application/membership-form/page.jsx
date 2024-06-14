@@ -24,13 +24,11 @@ const Page = () => {
     };
   }, []);
 
-  console.log(search, "this is search");
-
   const filteredList = dropList.filter((item) =>
     item.toLowerCase().includes(search.toLowerCase())
   );
   return (
-    <div className="mt-20">
+    <div className="mt-20 text-[#333333]">
       <div className="mx-5 lg:mx-10 2xl:mx-20  mb-7">
         <div>
           <h2 className="heading-2 font-bold">Membership Application</h2>
@@ -303,7 +301,8 @@ const Page = () => {
                           wantTocloseFromScreen={true}
                           onClose={() => setShowDatePicker(false)}
                           isOpen={showDatePicker}
-                          className="custom-modal  "
+                          className="custom-modal"
+                          width={"max-w-[200px]"}
                         >
                           <div>
                             <input
@@ -327,33 +326,34 @@ const Page = () => {
                 </p>
               </div>
               <div className="flex items-center gap-11 mt-10">
-                <div className="flex gap-4 items-center">
-                  <div>
-                    <input
-                      type="checkbox"
-                      name=""
-                      id=""
-                      className="w-6 h-6 flex items-center accent-white "
-                    />
-                  </div>
-                  <div>
-                    <p className="text-xl font-normal">Yes</p>
-                  </div>
-                </div>
-                <div className="flex gap-4 items-center">
-                  <div>
-                    <input
-                      type="checkbox"
-                      name=""
-                      id=""
-                      className="w-6 h-6 flex items-center accent-white "
-                    />
-                  </div>
-                  <div>
-                    <p className="text-xl font-normal">No</p>
-                  </div>
-                </div>
-              </div>
+  <div className="flex gap-4 items-center">
+    <div>
+      <input
+        type="radio"
+        name="option"
+        id="yes"
+        className="w-4 h-4 flex items-center accent-primary"
+      />
+    </div>
+    <div>
+      <p className="text-[18px] font-normal">Yes</p>
+    </div>
+  </div>
+  <div className="flex gap-4 items-center">
+    <div>
+      <input
+        type="radio"
+        name="option"
+        id="no"
+        className="w-4 h-4 flex items-center accent-primary"
+      />
+    </div>
+    <div>
+      <p className="text-[18px] font-normal">No</p>
+    </div>
+  </div>
+</div>
+
             </div>
             <div className="mt-[60px] flex justify-between">
               <div>

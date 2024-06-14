@@ -50,15 +50,16 @@ const Header = () => {
 
   return (
     <header className=" relative pt-[40px] pb-[40px] px-[20px] lg:px-[85px]">
-      <div className="flex justify-between  items-center w-full gap-0  xxl:gap-10  ">
+     
+      <div className="flex justify-between items-center w-full gap-0  xxl:gap-10">
         <div className="">
           <Link href="/">
-            <Image src="/logo.svg" height={60} width={135} alt="Logo" />{" "}
+            <Image src="/logo.svg" height={60} width={135} alt="Logo" />{""}
           </Link>
         </div>
 
         <ul
-          className={`hidden lg:flex text-[17px] gap-5 xxl:gap-12  animate-flip-down  xxl:text-[17px] text-[#333333]`}
+          className={`hidden lg:flex max-[1100px]:text-[14px] text-[17px]  gap-5 xxl:gap-12  animate-flip-down   text-[#333333]`}
         >
           <li
             className={`font-semibold ${

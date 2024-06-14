@@ -55,7 +55,7 @@ const page = () => {
             <div
               onClick={() => setIsSelectedCard(index)}
               key={index}
-              className={` w-[300px] sm:w-[375px] h-[354px] shadow-xl drop-shadow-xl bg-white
+              className={` w-[300px] sm:w-[375px] h-[354px] shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white
          px-[24px] pt-[24px] rounded-[20px] cursor-pointer ${
            index === isSelectedCard ? "border-[#C42C2D] border-2" : ""
          }`}
@@ -103,12 +103,22 @@ const page = () => {
       </div>
       <Modal
         wantTocloseFromScreen={true}
-        width={"w-[600px]"}
+        width={"max-w-[600px]"}
         isOpen={popUp}
         onClose={() => setPopUp(false)}
         className="custom-modal  "
       >
-        <div className="w-full px-5 md:px-16  text-center ">
+
+
+
+{/* wantTocloseFromScreen={false}
+        wantCrossButton={true}
+        isOpen={forgetPassPop}
+        onClose={() => setForgetPassPop(false)}
+        className="custom-modal"
+        width={"max-w-[600px]"} */}
+
+        <div className="w-full    px-5 md:px-16  text-center ">
           <div>
             <h2 className="text-2xl font-bold">Membership Application</h2>
           </div>
@@ -120,7 +130,7 @@ const page = () => {
           <div className="mt-[40px]">
             <input
               placeholder="Enter Your Email"
-              className="pl-[30px] py-4 w-full outline-none border border-[#D7D7D7] rounded-xl"
+              className="pl-[30px] py-4 w-full  outline-primary border border-[#D7D7D7] rounded-xl"
             />
           </div>
           <div>

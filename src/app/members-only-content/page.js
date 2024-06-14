@@ -256,9 +256,9 @@ const Membership = () => {
         isOpen={forgetPassPop}
         onClose={() => setForgetPassPop(false)}
         className="custom-modal"
-        width={"max-w-[500px]"}
+        width={"max-w-[600px]"}
       >
-        <div>
+        <div >
           <h2 className="text-xl">Forgot Password?</h2>
           <div className="my-5">
             <hr className="text-[#B3B3B380]" />

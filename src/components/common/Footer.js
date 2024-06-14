@@ -29,7 +29,7 @@ const Footer = () => {
             <div className="my-3 underline responsive-Text-footer text-[#333333]">
               info@theserma.org
             </div>
-            <div className="responsive-Text-footer">+1 (123) 456-7890</div>
+            <div className="responsive-Text-footer text-[#333333]">+1 (123) 456-7890</div>
           </div>
         </div>
         <div className="border-r  border-[#3333331c] p-5   max-md:text-center ">
@@ -47,7 +47,7 @@ const Footer = () => {
                   <Link href="/events">Events</Link>
                 </div>
                 <div className="my-3 hover:text-primary transition duration-200 ">
-                  <Link href="/membership/membership-application">
+                  <Link href="/membership">
                     Membership
                   </Link>
                 </div>
@@ -58,7 +58,7 @@ const Footer = () => {
                 <div className="my-3 hover:text-primary transition duration-200 ">
                   {" "}
                   <Link href="/members-only-content">
-                    Membership Only Content
+                  Members-Only Content
                   </Link>{" "}
                 </div>
               </div>
