@@ -66,7 +66,7 @@ function TopSection() {
       height: 1020,
       width: 680,
       position: 45,
-      responsiveHeight: 300,
+      responsiveHeight: 250,
       responsivePositionLeft: 45,
       responsiveWidth: 450,
       positionBottom: "0",
