@@ -17,7 +17,7 @@ function page() {
   };
   return (
     <div className="px-[25px] md:px-[85px] text-[#333333]">
-      <div className="my-5 md:my-10 flex  justify-start">
+      <div className=" md:my-10 flex  justify-start">
         <div>
           <h2 className="text-[#333333] text-xl  sm:text-2xl lg:text-3xl font-bold">
             SERMASips Happy Hour
@@ -27,7 +27,9 @@ function page() {
           </div>
         </div>
       </div>
-
+      <div className="md:hidden text-[14px] mb-5">
+        View our Recent events and register for the Event
+      </div>
       <div className="flex   flex-col-reverse items-center   lg:flex-row  gap-20">
         <div className=" md:w-[600px]">
           <div className="heading-3">
@@ -44,12 +46,12 @@ function page() {
         </div>
         <div className="max-md:w-full">
           <div className="p-4 md:p-10  bg-white  md:w-[400px] text-[20px] shadow-[-5px_6px_40px_0px_#00000024]  rounded-lg ">
-            <div className="flex my-3 gap-8 justify-start text-gray font-medium">
+            <div className="flex my-3 gap-12 justify-start text-gray font-medium">
               <div>Date :</div>
               <div>March 19,2024</div>
             </div>
             <hr className="text-gray" />
-            <div className="flex my-3 gap-8 justify-start text-gray font-medium">
+            <div className="flex my-3 gap-12 justify-start text-gray font-medium">
               <div>Time :</div>
               <div>4:00 PM (MDT)</div>
             </div>
@@ -104,7 +106,7 @@ function page() {
           </div>
         </div>
       </div>
-      <div className="my-8 ">
+      <div className="my-4 md:my-8 ">
         <Image
           src="/events/bg-image.png"
           height={800}
@@ -117,7 +119,7 @@ function page() {
         <OtherEvent />
       </div>
       <Modal
-      wantTocloseFromScreen ={true}
+        wantTocloseFromScreen={true}
         wantCrossButton={true}
         isOpen={register}
         // isOpen={true}
@@ -129,7 +131,7 @@ function page() {
           <div className="text-xl text-center font-semibold">
             SERMASips Happy Hour
           </div>
-          <div className="text-sm text-gray my-4 px-3">
+          <div className="text-[14px] md:text-sm text-gray my-4 px-3">
             SERMASips Happy Hour April 10, 2024 4:00 PM - 6:00 PM
           </div>
           <div className="flex gap-5 text-gray px-3">
@@ -175,7 +177,7 @@ function page() {
       </Modal>
 
       <Modal
-      wantTocloseFromScreen ={true}
+        wantTocloseFromScreen={true}
         wantCrossButton={true}
         isOpen={handleOpenanotherPopUp}
         // isOpen={true}

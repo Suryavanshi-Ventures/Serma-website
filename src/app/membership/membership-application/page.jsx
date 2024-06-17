@@ -55,7 +55,7 @@ const page = () => {
             <div
               onClick={() => setIsSelectedCard(index)}
               key={index}
-              className={` w-[300px] sm:w-[375px] h-[354px] shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white
+              className={` w-[300px] sm:w-[375px] max-sm:py-5 sm:h-[354px] shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white
          px-[24px] pt-[24px] rounded-[20px] cursor-pointer ${
            index === isSelectedCard ? "border-[#C42C2D] border-2" : ""
          }`}
@@ -123,19 +123,19 @@ const page = () => {
             <h2 className="text-2xl font-bold">Membership Application</h2>
           </div>
           <div>
-            <p className="text-[#9B9A9A] text-base font-normal mt-5">
+            <p className="text-[#9B9A9A] text-base  font-normal mt-5">
               Student - $200.00 (USD) Subscription period: 1 year
             </p>
           </div>
           <div className="mt-[40px]">
             <input
               placeholder="Enter Your Email"
-              className="pl-[30px] py-4 w-full  outline-primary border border-[#D7D7D7] rounded-xl"
+              className="pl-[30px] py-3 md:py-4 w-full  outline-primary border border-[#D7D7D7] rounded-xl"
             />
           </div>
           <div>
             <Link href="/membership/membership-application/membership-form">
-              <Button content={"Next"} px={"px-6"} py={"py-3 w-full"} />
+              <Button content={"Next"} px={"md:px-6"} py={"py-2 md:py-3 w-full"} />
             </Link>
           </div>
         </div>

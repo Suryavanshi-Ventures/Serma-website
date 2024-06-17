@@ -123,13 +123,13 @@ function AdvisoryBoard() {
     },
   ];
   return (
-    <div className="relative pt-[40px] pb-[14px] px-[20px]  md:px-[85px] mb-14">
+    <div className="relative md:pt-[40px] pb-[14px] px-[20px]  md:px-[85px] mb-14">
       <div className="w-full ">
-        <div className="text-2xl lg:text-4xl font-bold w-80 text-light-black">
+        <div className="text-2xl lg:text-4xl font-bold w-80 text-light-black px-2">
           Advisory Board
         </div>
 
-        <div className="flex flex-col gap-6 mt-10">
+        <div className="flex flex-col gap-6 mt-5 md:mt-10">
           <div className="flex flex-col md:flex-row bg-[#F0F0F0] p-4 bg-opacity-50 rounded-2xl">
             <div className="md:w-[320px]">
               <Image
@@ -143,10 +143,10 @@ function AdvisoryBoard() {
               />
             </div>
             <div className="flex-1 md:ml-10">
-              <div className="text-[16px] max-md:my-5 max-md:text-center md:text-2xl text-light-black font-bold">
+              <div className="text-[16px] max-md:my-5  md:text-2xl text-light-black font-bold">
                 Rich Lenkov | Founder/CEO
               </div>
-              <div className="paragraph md:text-lg text-black mt-2">
+              <div className="paragraph md:text-lg text-black mt-2 leading-loose">
                 As a Capital Member of Downey & Lenkov LLC, Rich has been
                 representing professional sports organizations and multiple
                 entities in the entertainment industry for 25 years. Rich is
@@ -159,7 +159,7 @@ function AdvisoryBoard() {
                 productions including Rock of Ages and Elvis Presley’s
                 Heartbreak Hotel In Concert.
               </div>
-              <div className="mt-10 flex  md:w-[200px] py-3 px-6 transition duration-500 hover:bg-primary hover:text-white  font-normal  justify-center items-center gap-3 text-lg tracking-wider text-primary  border border-[#C8C8C8]  hover:border-none  rounded-full">
+              <div className="mt-5 md:mt-10 flex  md:w-[200px] md:py-3 py-2 md:px-6 transition duration-500 hover:bg-primary hover:text-white  font-normal  justify-center items-center gap-3 text-lg tracking-wider text-primary  border border-[#C8C8C8]  hover:border-none  rounded-full">
                 <Link
                   href={"#"}
                   className=" text-center "
@@ -189,12 +189,12 @@ function AdvisoryBoard() {
               {member.name}
             </div>
             <div className="text-base flex items-center text-gray mt-2 md:h-[40px] ">{member.position}</div>
-            <div className="w-full flex justify-between items-center mt-6">
+            <div className="w-full  items-center mt-6">
               <div className="flex lg:flex-row lg:justify-between  items-center  gap-4">
                 <div className="flex-1  lg:text-[16px] text-light-black">
                   {member.department}
                 </div>
-                <div className="flex gap-3">
+                <div className="flex  gap-3">
                   <Image src={LinkedInIcon} width={36} height={36} />
                   <Image src={ResumeIcon} width={36} height={36} />
                 </div>

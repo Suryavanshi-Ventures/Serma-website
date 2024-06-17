@@ -88,13 +88,13 @@ const Membership = () => {
               <div className="border-t border-[#9B9A9A66]">
                 {sermaMembership.map((item, index) => (
                   <div>
-                    <div className="flex  items-center py-[30px]">
+                    <div className="flex  items-center py-[10px] md:py-[30px]">
                       <div className="w-1/2">
                         <h2 className="text-[16px] md:text-xl font-bold max-md:px-2">
                           {item.title}
                         </h2>
                       </div>
-                      <div className="w-1/2">
+                      <div className="w-2/3 md:w-1/2">
                         <p className="text-[#9B9A9A] paragraph max-w-[551px]">
                           {item.detail}
                         </p>
@@ -105,7 +105,7 @@ const Membership = () => {
                 ))}
               </div>
               <div>
-                <div className="max-w-[450px] h-[300px]  lg:mt-0">
+                <div className="max-w-[450px] md:h-[300px]  lg:mt-0">
                   <Image
                     src="/pages/membership/hand-img.png"
                     unoptimized
@@ -137,16 +137,16 @@ const Membership = () => {
             {memeberBenefit.map((items, index) => (
               <div
                 key={index}
-                className="max-w-[434px] h-[423px] rounded-2xl shadow-xl drop-shadow-xl"
+                className="max-w-[434px] h-[423px] rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
               >
                 <div className="flex flex-col justify-between items-center h-full w-full">
                   <div className="mt-10">
-                    <h2 className="text-xl md:text-[24px] font-bold max-w-[333px]">
+                    <h2 className="text-xl max-md:text-center md:text-[24px] font-bold max-w-[333px]">
                       {items.title}
                     </h2>
                   </div>
                   <div>
-                    <div className="max-w-[434px] h-[273px] ">
+                    <div className="max-w-[434px] h-[273px]">
                       <Image
                         src={items.img}
                         unoptimized
@@ -163,7 +163,7 @@ const Membership = () => {
           </div>
         </div>
         <div className="mt-[60px] mx-5 sm:mx-0">
-          <ul className="list-disc space-y-2 paragraph">
+          <ul className="list-disc space-y-2 md:paragraph">
             <li>
               Access to exclusive member events, including conferences,
               webinars, and networking events
@@ -187,7 +187,7 @@ const Membership = () => {
             </li>
           </ul>
         </div>
-        <div className="mt-[60px]">
+        <div className="md:mt-[60px] mt-[20px] w-full ">
           <Link href="/membership/membership-application">
             {" "}
             <Button content={"Join SERMA"} px={"px-5"} py={"py-2"} />

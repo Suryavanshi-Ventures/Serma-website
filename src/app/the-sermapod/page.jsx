@@ -51,7 +51,7 @@ const Sermapod = () => {
                 height={"100%"}
               />
             </div>
-            <div className="border border-[#D1D1D1] rounded-md sm:h-full p-2  min-w-[393px]">
+            <div className="border border-[#D1D1D1] rounded-md sm:h-full p-2  md:min-w-[393px]">
               <div>
                 <div className="text-center text-base sm:text-lg font-bold">
                   <h2>Mix Sermapod</h2>

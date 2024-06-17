@@ -133,7 +133,7 @@ const Membership = () => {
               </div>
               <hr className="w-full mt-8 border-[#9B9A9A66]" />
             </div>
-            <div className="flex justify-center w-full md:w-fit">
+            <div className="hidden md:flex justify-center w-full md:w-fit">
               <div className="h-[338px] xs:w-[344px] relative">
                 <Image
                   src="/pages/members-only-content/member-only2.png"
@@ -146,16 +146,16 @@ const Membership = () => {
             </div>
           </div>
         </div>
-        <div className="mt-[94px]">
+        <div className="mt-[50px] md:mt-[94px]">
           <div className="flex justify-center w-full">
             <div className="w-full sm:w-fit">
               <div className="">
-                <h2 className="text-[30px] font-bold text-center">
+                <h2 className="text-[20px] md:text-[30px] font-bold text-center">
                   Members-Only Sign In
                 </h2>
               </div>
-              <div className="mt-[57px] w-full px-5 md:px-0">
-                <div className="flex sm:justify-center w-full h-fit sm:w-[620px] lg:w-[791px] md:h-[605px] z-50 bg-white rounded-[36px] shadow-xl shadow-[#00000014] drop-shadow-xl">
+              <div className="mt-[30px] md:mt-[57px] w-full px-5 md:px-0">
+                <div className="flex sm:justify-center w-full h-fit sm:w-[620px] lg:w-[791px] md:h-[605px] z-50 bg-white rounded-xl md:rounded-[36px] shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
                   <div className="w-full px-4 md:px-[60px] py-[30px] md:py-16">
                     <div>
                       <div>
@@ -174,7 +174,7 @@ const Membership = () => {
                             name=""
                             id=""
                             placeholder="Enter Your Email"
-                            className="pl-4 sm:pl-[38px] py-3 sm:py-[20px] outline-none border border-[#B3B3B3] rounded-xl w-full"
+                            className="pl-4 sm:pl-[38px] py-2 sm:py-[20px] outline-primary border border-[#B3B3B3] rounded-xl w-full"
                           />
                         </div>
                       </div>
@@ -188,11 +188,11 @@ const Membership = () => {
                             name=""
                             id=""
                             placeholder="Enter Your Password"
-                            className="pl-4 sm:pl-[38px] py-3 sm:py-[20px] outline-none border border-[#B3B3B3] rounded-xl w-full"
+                            className="pl-4 sm:pl-[38px] py-2 sm:py-[20px] outline-primary border border-[#B3B3B3] rounded-xl w-full"
                           />
                         </div>
                       </div>
-                      <div className="flex justify-end  text-lg mt-[13px] text-[#C42C2D]">
+                      <div className="flex justify-end text-[12px] md:text-lg mt-[13px] text-[#C42C2D]">
                         <p
                           onClick={HandleForgetPass1}
                           className="cursor-pointer"
@@ -218,15 +218,15 @@ const Membership = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#03989E] flex justify-center items-center text-white h-[588px] -mt-20 -z-10">
-        <div className="flex flex-col items-center text-center space-y-[50px]">
-          <div>
-            <h2 className="text-xl md:text-[30px] font-normal">
+      <div className="bg-[#03989E] max-md:mb-[30px] flex  justify-center items-center text-white h-[400px] md:h-[588px]  -mt-20 -z-10">
+        <div className="flex flex-col  max-md:mt-[60px] items-center text-center space-y-[30px] md:space-y-[50px]">
+          <div className="">
+            <h2 className="text-xl md:text-[30px] font-normal max-md:px-2">
               Have additional questions? Email us below.
             </h2>
           </div>
           <div>
-            <p className="max-md:px-[20px] text-[16px] md:text-[24px] font-bold w-full md:max-w-[805px]">
+            <p className="max-md:px-[20px] text-[16px] md:text-[24px] font-semibold w-full md:max-w-[805px]">
               Please take a moment to update your user profile so that you can
               start interacting with other SERMA members.
             </p>
@@ -258,7 +258,7 @@ const Membership = () => {
         className="custom-modal"
         width={"max-w-[600px]"}
       >
-        <div >
+        <div className="px-2" >
           <h2 className="text-xl">Forgot Password?</h2>
           <div className="my-5">
             <hr className="text-[#B3B3B380]" />
@@ -271,7 +271,7 @@ const Membership = () => {
               value={email}
               onChange={handleChange}
               placeholder="Enter Your Email"
-              className="border border-gray p-3 rounded-md my-5 w-full outline-primary"
+              className="border border-gray p-2 md:p-3 rounded-md my-5 w-full outline-primary"
             />
           </div>
           <span
@@ -299,7 +299,7 @@ const Membership = () => {
         className="custom-modal"
         width={"max-w-[500px]"}
       >
-        <div>
+        <div className="px-2">
           <h2 className="text-xl">Password Reset?</h2>
           <div className="my-5 text-sm text-gray">
             We Sent a code to Demo@gmail.com
@@ -307,7 +307,7 @@ const Membership = () => {
           <div className="my-5">
             <hr className="text-[#B3B3B380]" />
           </div>
-          <div className="flex justify-center gap-5">
+          <div className="flex justify-between md:justify-center gap-5 ">
             {otp.map((_, index) => (
               <input
                 key={index}
@@ -360,7 +360,7 @@ const Membership = () => {
         className="custom-modal"
         width={"max-w-[500px]"}
       >
-        <div>
+        <div className="px-2">
           <h2 className="text-xl">Set new Password?</h2>
           <div className="my-5 text-xs text-gray">
             Must Be at least 8 Characters.
@@ -376,11 +376,11 @@ const Membership = () => {
               value={password}
               onChange={handlePasswordChange}
               placeholder="Enter Password"
-              className="border border-gray p-3 rounded-md w-full outline-primary"
+              className="border border-gray p-2 md:p-3 rounded-md w-full outline-primary"
             />
             <span
               onClick={handlePassVisible}
-              className="absolute right-2 top-5 cursor-pointer"
+              className="absolute right-2 top-4 md:top-5 cursor-pointer"
             >
               <svg
                 width="18"
@@ -404,11 +404,11 @@ const Membership = () => {
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
               placeholder="Confirm Password"
-              className="border border-gray p-3 rounded-md w-full outline-primary"
+              className="border border-gray p-2 md:p-3 rounded-md w-full outline-primary"
             />
             <span
               onClick={handlePassVisible2}
-              className="absolute right-2 top-5 cursor-pointer"
+              className="absolute right-2 top-4 md:top-5 cursor-pointer"
             >
               <svg
                 width="18"

@@ -10,10 +10,10 @@ function UpcomingEvent() {
   };
   return (
     <>
-      <div className="text-center text-xl md:text-[36px] font-semibold text-[#333333]">
+      <div className="text-center text-xl md:text-[36px] font-semibold text-[#333333] ">
         Upcoming Events
       </div>
-      <div className="text-center responsive-Text text-gray my-4 md:my-8 md:space-y-2 ">
+      <div className="text-center responsive-Text text-gray  md:my-8 md:space-y-2 ">
         <p>
           The Sports and Entertainment Risk Management Alliance (SERMA) is the
           first risk management association devoted entirely to the sports and

@@ -9,18 +9,19 @@ const Footer = () => {
   const [insta, setInsta] = useState(false);
   return (
     <div className="bg-[#F3F3F3]">
-      <div className="grid grid-cols-1    md:grid-cols-2 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
-        <div className="border-r  border-[#3333331c] p-5 flex justify-center">
-          <div>
-            <div className="flex justify-center">
+      <div className="grid grid-cols-1 max-md:px-[20px]   md:grid-cols-2 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
+        <div className="md:border-r max-md:border-b  border-[#3333331c] py-3 md:p-5  flex sm:justify-center">
+          <div className="">
+            <div className="flex justify-start sm:justify-center">
               <Image src="/logo.svg" height={60} width={135} alt="logo" />
             </div>
-            <div className="my-[20px] sm:my-[40px] xl:w-[300px] responsive-Text-footer text-[#333333] text-center">
+            <div className="my-[20px] sm:my-[40px] xl:w-[300px]  responsive-Text-footer text-[#333333] text-left  sm:text-center">
               Sports and Entertainment Risk Management Alliance
             </div>
           </div>
         </div>
-        <div className="border-r  border-[#3333331c] p-5 text-center">
+
+        <div className="md:border-r max-md:border-b border-[#3333331c] py-3 md:p-5 sm:text-center">
           <div className="font-[700] text-[20px] text-[#333333]">
             Contact Us
           </div>
@@ -29,11 +30,13 @@ const Footer = () => {
             <div className="my-3 underline responsive-Text-footer text-[#333333]">
               info@theserma.org
             </div>
-            <div className="responsive-Text-footer text-[#333333]">+1 (123) 456-7890</div>
+            <div className="responsive-Text-footer text-[#333333]">
+              +1 (123) 456-7890
+            </div>
           </div>
         </div>
-        <div className="border-r  border-[#3333331c] p-5   max-md:text-center ">
-          <div className=" flex justify-center">
+        <div className="md:border-r max-md:border-b   border-[#3333331c] py-3 md:p-5 text-center  max-sm:text-left ">
+          <div className=" flex sm:justify-center">
             <div>
               <div className="font-[700] text-[20px] text-[#333333] ">
                 Links
@@ -47,9 +50,7 @@ const Footer = () => {
                   <Link href="/events">Events</Link>
                 </div>
                 <div className="my-3 hover:text-primary transition duration-200 ">
-                  <Link href="/membership">
-                    Membership
-                  </Link>
+                  <Link href="/membership">Membership</Link>
                 </div>
                 <div className="hover:text-primary transition duration-200 ">
                   {" "}
@@ -58,18 +59,18 @@ const Footer = () => {
                 <div className="my-3 hover:text-primary transition duration-200 ">
                   {" "}
                   <Link href="/members-only-content">
-                  Members-Only Content
+                    Members-Only Content
                   </Link>{" "}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="p-5">
-          <div className="text-center font-[700] text-[20px] text-[#333333]">
+        <div className="sm:p-5 py-3">
+          <div className="sm:text-center font-[700] text-[16px] sm:text-[20px] text-[#333333]">
             Connect With Us
           </div>
-          <div className="flex justify-center gap-3 mt-[20px] sm:mt-[60px]">
+          <div className="flex justify-start sm:justify-center gap-3 mt-[20px] sm:mt-[60px]">
             <div
               onMouseEnter={() => setHandleVectorChange(true)}
               onMouseLeave={() => setHandleVectorChange(false)}
@@ -202,11 +203,11 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="flex max-md:text-[12px] max-md:px-[20px] gap-2  justify-center md:justify-end md:pr-24 py-4 md:gap-10 font-semibold text-[#333333]">
-        <div className="cursor-pointer ">
+      <div className="px-[20px] flex max-md:text-[12px] my-4 max-md:px-[20px] gap-2  justify-center md:justify-end md:pr-24 py-4 md:gap-10 font-semibold text-[#333333]">
+        <div className="cursor-pointer max-md:w-1/2 ">
           Copyright 2024 © Suryavanshi Ventures-  All rights reserved.
         </div>
-        <div className="cursor-pointer ">Terms & Conditions Privacy Policy</div>
+        <div className="cursor-pointer max-md:w-1/2">Terms & Conditions Privacy Policy</div>
       </div>
     </div>
   );

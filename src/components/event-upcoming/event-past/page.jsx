@@ -50,6 +50,10 @@ function EventPast() {
                 </div>
               ))}
             </div>
+     {/* <div className="md:hidden flex gap-3">
+      <button>Prev</button>
+      <button>Next</button>
+     </div> */}
           </div>
           {/* ------------------------ */}
 
