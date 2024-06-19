@@ -9,16 +9,17 @@ function UpcomingEvent() {
     router.push("/events");
   };
   return (
-    <>
+    <div>
       <div className="text-center text-xl md:text-[36px] font-semibold text-[#333333] ">
         Upcoming Events
       </div>
-      <div className="text-center responsive-Text text-gray  md:my-8 md:space-y-2 ">
-        <p>
+      <div className="text-center responsive-Text text-gray my-6   xl:my-8  ">
+        <p className="leading-loose">
           The Sports and Entertainment Risk Management Alliance (SERMA) is the
           first risk management association devoted entirely to the sports and
+          entertainment industries.
         </p>
-        <p>entertainment industries.</p>{" "}
+        {/* <p>entertainment industries.</p>{" "} */}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 gap-x-3 gap-y-1 max-sm:space-y-5">
         {EVENT_CARD_DETAILS.map((event, index) => (
@@ -92,7 +93,7 @@ function UpcomingEvent() {
       <div onClick={handlePush} className="mt-16">
         <Button content={"View all events"} px={"px-5"} py={"py-2"} />
       </div>
-    </>
+    </div>
   );
 }
 

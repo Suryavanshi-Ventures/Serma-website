@@ -13,7 +13,7 @@ export default function Layout({ children }) {
   };
   return (
     <div
-      className={` bg-white  3xl:mx-auto max-w-screen-2xl px-[25px] sm:px-[40px] lg:px-[85px] mt-10  relative`}
+      className={` bg-white  3xl:mx-auto max-w-screen-2xl px-[25px] sm:px-[40px] lg:px-[50px] xl:px-[85px] mt-10  relative`}
     >
       <div className="flex justify-between items-center ">
         {pathname.includes("/member-forum") ? (

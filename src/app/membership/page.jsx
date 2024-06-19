@@ -38,7 +38,7 @@ const Membership = () => {
     },
   ];
   return (
-    <div className="md:mt-20 text-[#333333]">
+    <div className="xl:mt-20 text-[#333333]">
       <div>
         <div className="flex flex-col mx-5 lg:mx-10 2xl:mx-20">
           <div>
@@ -47,7 +47,7 @@ const Membership = () => {
             </h2>
           </div>
           <div className="flex lg:justify-end mt-[40px]">
-            <p className="paragraph text-[#9B9A9A] max-w-[1008px] loos">
+            <p className="paragraph text-[#9B9A9A] max-w-[1008px] leading-loose">
               While there are a number of excellent organizations with a wide
               range of services in our community, there isn’t one specifically
               dealing with the issues that we face in handling sports and

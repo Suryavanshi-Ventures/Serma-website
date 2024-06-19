@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 function Partners() {
   return (
-    <div className=" mt-[50px] md:mt-[100px] ">
-      <div className="flex justify-center items-center gap-20 sm:gap-28 md:gap-48">
+    <div className=" mt-[50px]  md:mt-[60px] xl:[100px] ">
+      <div className="flex justify-around xl:justify-center items-center gap-20 sm:gap-28 md:gap-56">
         <div>
           <Image
             src="/partners/digistream.svg"

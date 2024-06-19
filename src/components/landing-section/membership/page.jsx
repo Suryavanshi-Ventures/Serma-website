@@ -10,13 +10,13 @@ function Membership() {
     router.push("/membership/membership-application");
   };
   return (
-    <>
+    <div>
       <div className="flex flex-col md:items-center md:flex-row gap-10 md:gap-20 lg:gap-36 ">
         <div className="md:text-[36px] text-xl font-bold  max-md:flex max-md:justify-center max-md:items-center gap-2 text-[#333333] ">
           <div>SERMA </div>
           <div className="my-2">Membership</div>
         </div>
-        <div className="responsive-Text text-[#9B9A9A] ">
+        <div className="responsive-Text text-[#9B9A9A] leading-loose ">
           While there are a number of excellent organizations with a wide range
           of services in our community, there isn’t one specifically dealing
           with the issues that we face in handling sports and entertainment
@@ -36,10 +36,10 @@ function Membership() {
               alt="image"
             />
           </div>
-          <div className="text-center font-semibold text-[18px] my-3 text-[#333333]">
+          <div className="text-center font-semibold md:text-[14px] xl:text-[18px] my-3 text-[#333333]">
             Industry Membership
           </div>
-          <div className="px-2 text-[14px] max-md:pb-5 text-center">
+          <div className="px-2 text-[12px] xl:text-[14px] max-md:pb-5 text-center">
             Open to industry professionals engaged in risk or claims management.
             This includes risk managers, claims managers, insurance
             professionals, and in-house counsel.
@@ -54,10 +54,10 @@ function Membership() {
               objectFit="cover"
             />
           </div>
-          <div className="text-center font-semibold text-[18px] my-3 text-[#333333]">
+          <div className="text-center font-semibold md:text-[14px] xl:text-[18px] my-3 text-[#333333]">
             Founding Member
           </div>
-          <div className="px-2 text-[14px] max-md:pb-5 text-center">
+          <div className="px-2 text-[12px] xl:text-[14px] max-md:pb-5 text-center">
             The first 25 members to join SERMA will be granted the designation
             of Founding Member. This is a lifetime appointment.
           </div>
@@ -71,10 +71,10 @@ function Membership() {
               objectFit="cover"
             />
           </div>
-          <div className="text-center font-semibold text-[18px] my-3 text-[#333333]">
+          <div className="text-center font-semibold md:text-[14px] xl:text-[18px] my-3 text-[#333333]">
             Attorney/Vendor Membership
           </div>
-          <div className="px-2 text-[14px] max-md:pb-5 text-center">
+          <div className="px-2 text-[12px] xl:text-[14px] max-md:pb-5 text-center">
             Open to outside counsel, TPA professionals, brokers, and service
             providers.
           </div>
@@ -88,10 +88,10 @@ function Membership() {
               objectFit="cover"
             />
           </div>
-          <div className="text-center font-semibold text-[18px] my-3 text-[#333333]">
+          <div className="text-center font-semibold md:text-[14px] xl:text-[18px] my-3 text-[#333333]">
             Student Membership
           </div>
-          <div className="px-2 text-[14px] max-md:pb-5 text-center">
+          <div className="px-2 text-[12px] xl:text-[14px] max-md:pb-5 text-center">
             Open to college/university students.
           </div>
         </div>
@@ -99,7 +99,7 @@ function Membership() {
       <div onClick={handleClick}>
         <Button content={"Join SERMA"} px={"px-5"} py={"py-2"} />
       </div>
-    </>
+    </div>
   );
 }
 

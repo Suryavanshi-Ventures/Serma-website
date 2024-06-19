@@ -90,9 +90,10 @@ function TopSection() {
 
   return (
     <div>
-      <div className="hidden lg:flex  relative     justify-between items-center">
+      <div className="hidden lg:flex   relative     justify-between items-center">
         <div className="lg:w-[55%]    lg:h-[800px] lg:bg-primaryBlue flex justify-center lg:pt-[158px] pt-[400px] rounded-r-3xl">
-          <div className="lg:w-2/3   max-lg:px-[20px] ">
+          {/* <div className="lg:w-2/3   max-lg:px-[20px] "> */}
+          <div className="xl:w-2/3   max-xl:w-[500px] max-xl:px-[20px]">
             <div className="text-[24px]  md:text-[30px] lg:text-[40px] text-[#FFFFFF] font-semibold">
               <div>Sports and Entertainment</div>
               <div className="my-[6px]">Risk Management Alliance</div>
@@ -163,7 +164,7 @@ function TopSection() {
           />
         </div>
 
-        <div className="overflow-hidden max-lg:mt-[-400px]  lg:pr-20">
+        <div className="overflow-hidden max-lg:mt-[-400px] lg:pr-10 xl:pr-20">
           <Image
             src="/hero-section/rotate-content.svg"
             height={40}
