@@ -6,7 +6,7 @@ import React from "react";
 async function fetchData() {
   try {
     const response = await fetch(
-      "http://34.235.48.203/api/v1/event/upcoming_event"
+      "http://34.235.48.203/api/v1/event/upcoming_events"
     );
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
