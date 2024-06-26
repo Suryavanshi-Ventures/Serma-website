@@ -3,19 +3,22 @@ import "swiper/css";
 import Image from "next/image";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 import { useRouter } from "next/navigation";
 import { EVENT_CARD_DETAILS } from "@/app/utils/constant/constant";
 
-function SwiperSlideIncoming() {
+function SwiperSlideIncoming({ data }) {
+  console.log(data, "this is sdafajklfa");
   const router = useRouter();
 
   const handleClick = (id) => {
     console.log(id);
-    router.push("/events/dynamicRout");
+    router.push(`/events/${id}`);
   };
+
+  useEffect;
 
   return (
     <>
@@ -61,20 +64,20 @@ function SwiperSlideIncoming() {
         }}
       >
         <div className="">
-          {EVENT_CARD_DETAILS.map((event, index) => (
+          {data.map((event, index) => (
             <SwiperSlide>
               <div
                 key={index}
                 className=" flex max-md:justify-center max-md:items-center  p-3"
               >
                 <div className=" px-2 py-3 rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
-                  <div className="">
+                  <div className=" w-[297px] h-[168px]">
                     <Image
-                      src={event.imageSrc}
+                      src={event.image_url}
                       height={225}
                       width={396}
                       alt="image"
-                      className="w-full rounded-2xl"
+                      className="rounded-2xl object-fill w-full h-full"
                     />
                   </div>
                   <div className="max-lg:px-2 lg:px-1">
@@ -102,9 +105,11 @@ function SwiperSlideIncoming() {
                           </clipPath>
                         </defs>
                       </svg>
-                      <div className="text-gray text-sm">{event.date}</div>
+                      <div className="text-gray text-sm">
+                        {event.start_date_time}
+                      </div>
                     </div>
-                    <div className="text-lg my-2">{event.type}</div>
+                    <div className="text-lg my-2">{event.event_type}</div>
                     <div className="font-semibold text-[#525971]">
                       {event.title}
                     </div>
