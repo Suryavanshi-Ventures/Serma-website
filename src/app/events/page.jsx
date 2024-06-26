@@ -12,15 +12,31 @@ async function fetchData() {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const data = await response.json();
-    return data.result;
+    return { result: data.result, error: null };
   } catch (error) {
     console.error("Error fetching events:", error.message);
-    // You can handle the error here, for example, you might want to return an empty array or a specific error object
-    return []; // or throw error; depending on how you want to handle it downstream
+    return { result: null, error: error.message };
+  }
+}
+
+async function fetchData2() {
+  try {
+    const response = await fetch(
+      "http://34.235.48.203/api/v1/event/past_events"
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    return { result: data.result, error: null };
+  } catch (error) {
+    console.error("Error fetching events:", error.message);
+    return { result: null, error: error.message };
   }
 }
 export default async function Events() {
-  const data = await fetchData();
+  const upcoming_events = await fetchData();
+  const past_events = await fetchData2();
 
   return (
     <div className="">
@@ -45,10 +61,13 @@ export default async function Events() {
         </div>
       </div>
       <div className="my-[40px] lg:pl-[62px] ">
-        <EventUpcoming data={data} />
+        <EventUpcoming
+          data={upcoming_events.result}
+          error={upcoming_events.error}
+        />
       </div>
       <div className="my-[40px]  lg:pl-[85px]">
-        <EventPast />
+        <EventPast data={past_events.result} error={past_events.error} />
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import SwiperSlidePast from "./swiper-past/page";
 
-function EventPast() {
+function EventPast({ data, error }) {
   return (
     <div>
       <div>
@@ -50,7 +50,7 @@ function EventPast() {
                 </div>
               ))}
             </div>
-     {/* <div className="md:hidden flex gap-3">
+            {/* <div className="md:hidden flex gap-3">
       <button>Prev</button>
       <button>Next</button>
      </div> */}
@@ -58,7 +58,7 @@ function EventPast() {
           {/* ------------------------ */}
 
           <div className="w-full lg:w-[80%]">
-            <SwiperSlidePast />
+            <SwiperSlidePast data={data} error={error} />
           </div>
         </div>
       </div>
