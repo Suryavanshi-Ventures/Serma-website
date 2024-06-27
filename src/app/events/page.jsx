@@ -3,40 +3,26 @@ import EventUpcoming from "@/components/event-upcoming/page";
 import Image from "next/image";
 import React from "react";
 
-async function fetchData() {
+async function fetchData(url) {
   try {
-    const response = await fetch(
-      "http://34.235.48.203/api/v1/event/upcoming_events"
-    );
+    const response = await fetch(url, { next: { revalidate: 60 } });
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const data = await response.json();
     return { result: data.result, error: null };
   } catch (error) {
-    console.error("Error fetching events:", error.message);
-    return { result: null, error: error.message };
-  }
-}
-
-async function fetchData2() {
-  try {
-    const response = await fetch(
-      "http://34.235.48.203/api/v1/event/past_events"
-    );
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    const data = await response.json();
-    return { result: data.result, error: null };
-  } catch (error) {
-    console.error("Error fetching events:", error.message);
+    console.error(`Error fetching data from ${url}:`, error.message);
     return { result: null, error: error.message };
   }
 }
 export default async function Events() {
-  const upcoming_events = await fetchData();
-  const past_events = await fetchData2();
+  const upcoming_events = await fetchData(
+    "http://34.235.48.203/api/v1/event/upcoming_events"
+  );
+  const past_events = await fetchData(
+    "http://34.235.48.203/api/v1/event/past_events"
+  );
 
   return (
     <div className="">
