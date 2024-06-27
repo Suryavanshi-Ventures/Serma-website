@@ -15,7 +15,7 @@ const Modal = ({
     : "fixed inset-0 flex items-center justify-center z-50 transition-opacity duration-200 ease-in-out opacity-0 pointer-events-none";
   return (
     <div className={ModalClass} onClick={() => { if (wantTocloseFromScreen) onClose(); }}>
-      {console.log(width)}
+      
       <div className="modal-overlay absolute inset-0 bg-black backdrop-brightness-50 opacity-50"></div>
       <div
         className={`modal-container bg-white  w-full ${width}  relative max-sm:mx-5 mx-auto rounded-lg shadow-lg z-50 overflow-y-auto`}

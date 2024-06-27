@@ -12,6 +12,7 @@ async function fetchData() {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const data = await response.json();
+    
     return data.result;
   } catch (error) {
     console.error("Error fetching events:", error.message);
@@ -19,6 +20,9 @@ async function fetchData() {
     return []; // or throw error; depending on how you want to handle it downstream
   }
 }
+
+
+
 export default async function Events() {
   const data = await fetchData();
 
@@ -44,7 +48,7 @@ export default async function Events() {
           />
         </div>
       </div>
-      <div className="my-[40px] lg:pl-[62px] ">
+      <div className="my-[40px] lg:pl-[62px]">
         <EventUpcoming data={data} />
       </div>
       <div className="my-[40px]  lg:pl-[85px]">

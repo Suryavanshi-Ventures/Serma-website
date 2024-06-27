@@ -4,9 +4,10 @@ import Button from "@/components/button/page";
 import Modal from "@/components/common-modal/modal";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const page = () => {
+const MemberShip = () => {
   const card = [
     {
       title: "Industry Membership - Free",
@@ -22,9 +23,32 @@ const page = () => {
     },
   ];
 
-  const [popUp, setPopUp] = useState();
-  const [isSelectedCard, setIsSelectedCard] = useState();
+  const [popUp, setPopUp] = useState(false);
+  const [isSelectedCard, setIsSelectedCard] = useState(null);
+  const [apiData, setApiData] = useState(null);
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InN1cGVyYWRtaW5AbWFpbC5jb20iLCJpYXQiOjE3MTkzOTM4MzgsImV4cCI6MTcxOTQwMTAzOH0.Ss6knatHkEDvwEDir2qmaeS6zpznxuOk4NKRudgCjy4";
+  useEffect(() => {
+    const fetchApiData = async () => {
+      try {
+        const response = await axios.get(
+          "http://34.235.48.203/api/v1/membership/plan/find",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        console.log(response.data?.res);
+        setApiData(response.data);
+      } catch (error) {
+        console.error("Error fetching API data:", error);
+      }
+    };
 
+    fetchApiData();
+  }, [token]);
+  console.log(apiData);
   return (
     <div>
       <div className="lg:mx-10 2xl:mx-20 mb-10">
@@ -106,18 +130,8 @@ const page = () => {
         width={"max-w-[600px]"}
         isOpen={popUp}
         onClose={() => setPopUp(false)}
-        className="custom-modal  "
-      >
-
-
-
-{/* wantTocloseFromScreen={false}
-        wantCrossButton={true}
-        isOpen={forgetPassPop}
-        onClose={() => setForgetPassPop(false)}
         className="custom-modal"
-        width={"max-w-[600px]"} */}
-
+      >
         <div className="w-full    px-5 md:px-16  text-center ">
           <div>
             <h2 className="text-2xl font-bold">Membership Application</h2>
@@ -135,7 +149,11 @@ const page = () => {
           </div>
           <div>
             <Link href="/membership/membership-application/membership-form">
-              <Button content={"Next"} px={"md:px-6"} py={"py-2 md:py-3 w-full"} />
+              <Button
+                content={"Next"}
+                px={"md:px-6"}
+                py={"py-2 md:py-3 w-full"}
+              />
             </Link>
           </div>
         </div>
@@ -144,4 +162,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default MemberShip;

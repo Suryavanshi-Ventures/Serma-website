@@ -3,9 +3,14 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Modal from "@/components/common-modal/modal";
 import LoadingButton from "@/components/loadingButton/page";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import CustomAlert from "@/components/alert/page";
 const Membership = () => {
+  const [errors, setErrors] = useState({ emailError: "", passwordError: "" });
   const [email, setEmail] = useState("");
+  const [mainEmail, setMainEmail] = useState("");
+  const [mainPass, setMainPass] = useState("");
   const [forgetPassPop, setForgetPassPop] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [OpenOtpBox, setOpenOtpBox] = useState(false);
@@ -16,6 +21,18 @@ const Membership = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isPasswordMatch, setIsPasswordMatch] = useState(true);
+  const [AlertDetails, setAlertDetails] = useState({
+    isOpen: false,
+    message: "",
+    duration: 3000,
+    position: "bottom",
+    type: "success",
+  });
+  const { data: session, status } = useSession();
+
+  console.log(session);
+  console.log(status);
+
   const router = useRouter();
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
@@ -42,9 +59,9 @@ const Membership = () => {
     setIsEmailValid(emailRegex.test(email));
   };
 
-  const handleGoToDashboard = () => {
-    router.push("/members-only-content/Dashboard/member-forum");
-  };
+  // const handleLogin = () => {
+  //   router.push("/members-only-content/Dashboard/member-forum");
+  // };
 
   const handleResetPassword = () => {
     if (isEmailValid) {
@@ -80,8 +97,68 @@ const Membership = () => {
     setForgetPassPop(true);
   };
 
+  const MyvalidateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+  const handleLogin = async () => {
+    const emailError = MyvalidateEmail(mainEmail)
+      ? ""
+      : "Invalid email address";
+    const passwordError = mainPass ? "" : "Password is required";
+
+    if (emailError || passwordError) {
+      setErrors({ emailError, passwordError });
+      return;
+    }
+    const Result = await signIn("credentials", {
+      redirect: false,
+      email: mainEmail,
+      password: mainPass,
+    });
+    if (Result?.error) {
+      // setIsLoading(false);
+      console.log(Result);
+      console.log("error happend in SIGN IN FUNCTION ");
+
+      const ErrorObject = JSON.parse(Result?.error);
+
+      setAlertDetails({
+        isOpen: true,
+        message: ErrorObject?.responseMessage ?? "Failed to login",
+        duration: 3000,
+        position: "top",
+        type: "danger",
+      });
+      // setIsLoading(false);
+    } else {
+      setAlertDetails({
+        isOpen: true,
+        message: "Login Successfully!",
+        duration: 3000,
+        position: "top",
+        type: "success",
+      });
+      router.push("/members-only-content/Dashboard/member-forum");
+    }
+  };
+
   return (
     <div>
+      {AlertDetails.isOpen && (
+        <CustomAlert
+          message={AlertDetails.message}
+          duration={AlertDetails.duration}
+          onClose={() =>
+            setAlertDetails({
+              ...AlertDetails,
+              isOpen: false,
+            })
+          }
+          position={AlertDetails.position}
+          type={AlertDetails.type}
+        />
+      )}
       <div className="xs:mx-5 lg:mx-10 2xl:mx-20 text-[#333333]">
         <div>
           <div className="hidden md:flex h-[300px] md:h-[500px] xs:max-h-[350px] w-full xs:max-w-[1351px] relative">
@@ -117,7 +194,9 @@ const Membership = () => {
               <hr className="w-full my-4 md:my-8 border-[#9B9A9A66]" />
               <div className="space-y-4">
                 <div>
-                  <h2 className=" text-[16px] md:text-2xl font-bold">MEMBERS-ONLY CONTENT</h2>
+                  <h2 className=" text-[16px] md:text-2xl font-bold">
+                    MEMBERS-ONLY CONTENT
+                  </h2>
                 </div>
                 <div>
                   <p className="text-gray text-xl font-normal paragraph">
@@ -173,9 +252,14 @@ const Membership = () => {
                             type="text"
                             name=""
                             id=""
+                            value={mainEmail}
+                            onChange={(e) => setMainEmail(e.target.value)}
                             placeholder="Enter Your Email"
                             className="pl-4 sm:pl-[38px] py-2 sm:py-[20px] outline-primary border border-[#B3B3B3] rounded-xl w-full"
                           />
+                          {errors.emailError && (
+                            <p className="text-red-500">{errors.emailError}</p>
+                          )}
                         </div>
                       </div>
                       <div className="space-y-4 mt-[14px]">
@@ -184,12 +268,17 @@ const Membership = () => {
                         </div>
                         <div>
                           <input
-                            type="text"
-                            name=""
-                            id=""
+                            type="password"
                             placeholder="Enter Your Password"
+                            value={mainPass}
+                            onChange={(e) => setMainPass(e.target.value)}
                             className="pl-4 sm:pl-[38px] py-2 sm:py-[20px] outline-primary border border-[#B3B3B3] rounded-xl w-full"
                           />
+                          {errors.passwordError && (
+                            <p className="text-red-500">
+                              {errors.passwordError}
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="flex justify-end text-[12px] md:text-lg mt-[13px] text-[#C42C2D]">
@@ -200,7 +289,7 @@ const Membership = () => {
                           Forgot Password?
                         </p>
                       </div>
-                      <div onClick={handleGoToDashboard} className="mt-[27px]">
+                      <div onClick={handleLogin} className="mt-[27px]">
                         <LoadingButton
                           disabledProp={() => {}}
                           style="hover:bg-primary  transition-all  duration-200 text-black w-full text-sm xs:text-[22px] py-3 xs:py-[26px] rounded-lg text-white bg-[#C42C2D] "
@@ -250,6 +339,7 @@ const Membership = () => {
           </div>
         </div>
       </div>
+
       <Modal
         wantTocloseFromScreen={false}
         wantCrossButton={true}
@@ -258,7 +348,7 @@ const Membership = () => {
         className="custom-modal"
         width={"max-w-[600px]"}
       >
-        <div className="px-2" >
+        <div className="px-2">
           <h2 className="text-xl">Forgot Password?</h2>
           <div className="my-5">
             <hr className="text-[#B3B3B380]" />
