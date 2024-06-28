@@ -29,7 +29,8 @@ const Membership = () => {
     type: "success",
   });
   const { data: session, status } = useSession();
-
+  // const token =session.user.userToken
+  //  console.log(session?.user?.userToken,"token")
   // console.log(session);
   // console.log(status);
 
