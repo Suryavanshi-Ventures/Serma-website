@@ -5,16 +5,55 @@ import Modal from "@/components/common-modal/modal";
 import LoadingButton from "@/components/loadingButton/page";
 import OtherEvent from "@/components/other-events/page";
 import Image from "next/image";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-function page() {
+import React, { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { fetchData } from "@/utils/api";
+function page({ params }) {
   const router = useRouter();
+
+  console.log(params.id, "parmapas");
   const [handleVectorChange, setHandleVectorChange] = useState(false);
   const [register, setRegister] = useState(false);
   const [handleOpenanotherPopUp, setHandleOpenanotherPopUp] = useState(false);
   const handleOpenForm = () => {
     router.push("/events/dynamicRout/registration-form");
   };
+
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const [pastEvents, setPastEvents] = useState(null);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  console.log(upcomingEvents, "regist upcoming");
+  console.log(pastEvents, "regist past");
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const upcoming_events = await fetchData(
+        "http://34.235.48.203/api/v1/event/upcoming_events"
+      );
+      const past_events = await fetchData(
+        "http://34.235.48.203/api/v1/event/past_events"
+      );
+      setUpcomingEvents(upcoming_events.result);
+      setPastEvents(past_events);
+    };
+
+    fetchEvents();
+  }, []);
+  const eventCheck = upcomingEvents && upcomingEvents.map((item) => item.id)[0];
+  console.log(eventCheck, "Mapped event IDs");
+
+  const foundEvent =
+    eventCheck && eventCheck.find((eventId) => eventId === params.id);
+  console.log(foundEvent, "Found event ID");
+
+  // Ensure you handle the case where foundEvent might be undefined or null
+  if (foundEvent) {
+    // Handle when event ID is found
+    console.log(`Event ID ${params.id} found in upcoming events`);
+  } else {
+    // Handle when event ID is not found
+    console.log(`Event ID ${params.id} not found in upcoming events`);
+  }
   return (
     <div className="px-[25px] md:px-[85px] text-[#333333]">
       <div className=" md:my-10 flex  justify-start">

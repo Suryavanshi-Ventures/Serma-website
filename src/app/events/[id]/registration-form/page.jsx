@@ -33,6 +33,25 @@ const RegistrationForm = () => {
     e.preventDefault();
     console.log(formData);
   };
+  const [upcomingEvents, setUpcomingEvents] = useState(null);
+  const [pastEvents, setPastEvents] = useState(null);
+  console.log(upcomingEvents, "regist upcoming");
+  console.log(pastEvents, "regist past");
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const upcoming_events = await fetchData(
+        "http://34.235.48.203/api/v1/event/upcoming_events"
+      );
+      const past_events = await fetchData(
+        "http://34.235.48.203/api/v1/event/past_events"
+      );
+      setUpcomingEvents(upcoming_events);
+      setPastEvents(past_events);
+    };
+
+    fetchEvents();
+  }, []);
 
   return (
     <>
