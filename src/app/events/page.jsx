@@ -17,8 +17,6 @@ async function fetchData(url) {
   }
 }
 
-
-
 export default async function Events() {
   const upcoming_events = await fetchData(
     "http://34.235.48.203/api/v1/event/upcoming_events"

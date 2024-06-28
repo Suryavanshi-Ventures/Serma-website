@@ -30,8 +30,11 @@ const Membership = () => {
   });
   const { data: session, status } = useSession();
 
-  console.log(session);
-  console.log(status);
+  // console.log(session);
+  // console.log(status);
+
+  console.log(process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL) 
+  
 
   const router = useRouter();
   const handlePasswordChange = (e) => {
