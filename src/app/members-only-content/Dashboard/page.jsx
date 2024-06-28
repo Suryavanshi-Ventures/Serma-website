@@ -1,11 +1,12 @@
+import Image from 'next/image'
 import React from 'react'
 
-function Dashboard() {
+function DashBoard() {
   return (
     <div>
-      yooo
+      <Image src="/pages/membership/top-image.png" height={1000} width={1000} alt="Image" />
     </div>
   )
 }
 
-export default Dashboard
+export default DashBoard

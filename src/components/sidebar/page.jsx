@@ -1,7 +1,9 @@
+"use client";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
-
+import { signOut, useSession } from "next-auth/react";
+import CustomAlert from "../alert/page";
 const sidebarItems = [
   {
     src: "/dashboard/member-normal.svg",
@@ -27,7 +29,12 @@ const sidebarItems = [
     label: "Profile",
     route: "/members-only-content/Dashboard/profile",
   },
-  { src: "/dashboard/logout.svg", label: "Logout", route: "/logout" }, // Adjust the logout route if necessary
+  {
+    src: "/dashboard/logout.svg",
+    srcOnHover: "/dashboard/logout-red2.svg",
+    label: "Logout",
+    // route: "/",
+  }, // Adjust the logout route if necessary
 ];
 
 function Sidebar() {
@@ -36,23 +43,61 @@ function Sidebar() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [AlertDetails, setAlertDetails] = useState({
+    isOpen: false,
+    message: "",
+    duration: 3000,
+    position: "bottom",
+    type: "success",
+  });
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       setIsMobile(window.innerWidth < 768);
       const handleResize = () => setIsMobile(window.innerWidth < 768);
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
     }
   }, []);
 
+  const onclickLogout = () => {
+    // signOut({ callbackUrl: "http://localhost:3000/" });
+    signOut(() => signOut({ redirect: false }));
+    // signOut();
+    setAlertDetails({
+      isOpen: true,
+      message: "Logout Successfully! ",
+      duration: 3000,
+      position: "top",
+      type: "success",
+    });
+  };
+
   const handleNavigation = (route, index) => {
-    router.push(route);
-    setActiveIndex(index === activeIndex ? null : index);
+    if (index === 4) {
+      onclickLogout();
+    } else {
+      router.push(route);
+      setActiveIndex(index === activeIndex ? null : index);
+    }
   };
 
   return (
     <>
+      {AlertDetails.isOpen && (
+        <CustomAlert
+          message={AlertDetails.message}
+          duration={AlertDetails.duration}
+          onClose={() =>
+            setAlertDetails({
+              ...AlertDetails,
+              isOpen: false,
+            })
+          }
+          position={AlertDetails.position}
+          type={AlertDetails.type}
+        />
+      )}
       <div className="hidden md:block space-y-6 h-auto">
         {sidebarItems.map((item, index) => (
           <div

@@ -19,6 +19,8 @@ import "./globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 
+import ProviderWrapper from "./utils/ProviderWrapper/provider";
+
 export const metadata = {
   title: "Serma",
   description: "Sports and Entertainment Risk Management Alliance",
@@ -31,14 +33,16 @@ export default function RootLayout({ children }) {
         className={`${helvetica.className} bg-white container 3xl:mx-auto max-w-screen-2xl`}
       >
         {/* <main className="flex min-h-screen flex-col items-center justify-between p-24"> */}
-        <main className="">
-          <Header />
-          {/* <div className='px-[25px] md:px-[85px]'> */}
+        <ProviderWrapper>
+          <main className="">
+            <Header />
+            {/* <div className='px-[25px] md:px-[85px]'> */}
 
-          {children}
-          {/* </div> */}
-          <Footer />
-        </main>
+            {children}
+            {/* </div> */}
+            <Footer />
+          </main>
+        </ProviderWrapper>
       </body>
     </html>
   );

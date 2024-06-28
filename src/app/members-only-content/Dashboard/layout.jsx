@@ -3,6 +3,7 @@ import Sidebar from "@/components/sidebar/page";
 import LoadingButton from "@/components/loadingButton/page";
 import DashboardEvents from "@/components/dashboard-events/page";
 import { useRouter, usePathname } from "next/navigation";
+import ProtectRoute from "@/app/utils/protected_Routes/protectedRoutes";
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -12,6 +13,7 @@ export default function Layout({ children }) {
     router.push("/members-only-content/Dashboard/member-forum/create-topic");
   };
   return (
+    <ProtectRoute>
     <div
       className={` bg-white  3xl:mx-auto max-w-screen-2xl px-[25px] sm:px-[40px] lg:px-[50px] xl:px-[85px] mt-10  relative`}
     >
@@ -128,5 +130,6 @@ export default function Layout({ children }) {
         </span>
       </div>
     </div>
+    </ProtectRoute>
   );
 }
