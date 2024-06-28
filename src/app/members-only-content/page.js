@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import CustomAlert from "@/components/alert/page";
 const Membership = () => {
   const [errors, setErrors] = useState({ emailError: "", passwordError: "" });
+  const [isLoading, setIsloading] = useState(false);
   const [email, setEmail] = useState("");
   const [mainEmail, setMainEmail] = useState("");
   const [mainPass, setMainPass] = useState("");
@@ -33,9 +34,6 @@ const Membership = () => {
   //  console.log(session?.user?.userToken,"token")
   // console.log(session);
   // console.log(status);
-
-  console.log(process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL) 
-  
 
   const router = useRouter();
   const handlePasswordChange = (e) => {
@@ -106,6 +104,8 @@ const Membership = () => {
     return emailRegex.test(email);
   };
   const handleLogin = async () => {
+    setIsloading(true);
+
     const emailError = MyvalidateEmail(mainEmail)
       ? ""
       : "Invalid email address";
@@ -113,6 +113,7 @@ const Membership = () => {
 
     if (emailError || passwordError) {
       setErrors({ emailError, passwordError });
+      setIsloading(false);
       return;
     }
     const Result = await signIn("credentials", {
@@ -121,8 +122,8 @@ const Membership = () => {
       password: mainPass,
     });
     if (Result?.error) {
-      // setIsLoading(false);
-      console.log(Result);
+      setIsloading(false);
+
       console.log("error happend in SIGN IN FUNCTION ");
 
       const ErrorObject = JSON.parse(Result?.error);
@@ -143,6 +144,7 @@ const Membership = () => {
         position: "top",
         type: "success",
       });
+      setIsloading(false);
       router.push("/members-only-content/Dashboard/member-forum");
     }
   };
@@ -300,7 +302,7 @@ const Membership = () => {
                           text="Sign In"
                           spinnerWidth="23"
                           spinnerHeight="23"
-                          loading={false}
+                          loading={isLoading}
                         />
                       </div>
                     </div>
