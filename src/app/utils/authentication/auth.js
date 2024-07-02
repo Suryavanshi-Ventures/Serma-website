@@ -2,6 +2,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
 export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
+  
   providers: [
     CredentialsProvider({
       credentials: {
@@ -9,8 +10,6 @@ export const authOptions = {
         password: { label: "Pasword", type: "password" },
       },
       async authorize(credentials) {
-        console.log(credentials, "credentials");
-
         try {
           const response = await axios.post(
             "http://34.235.48.203/api/v1/auth/login",
@@ -19,30 +18,24 @@ export const authOptions = {
               password: credentials.password,
             }
           );
-          console.log(response?.data?.data);
-
-          if (response.status === 200) {
+      
+          if (response.status === 200 && response.data.data) {
             const GetProfileDataResponse = response.data.data;
             const ReturnedUserObj = {
-              //   userToken: AccessToken,
-              userToken: GetProfileDataResponse?.token,
-              userFirstName: GetProfileDataResponse?.first_name,
-              userLastName: GetProfileDataResponse?.last_name,
-              userEmail: GetProfileDataResponse?.email,
+              userToken: GetProfileDataResponse.token,
+              userFirstName: GetProfileDataResponse.first_name,
+              userLastName: GetProfileDataResponse.last_name,
+              userEmail: GetProfileDataResponse.email,
             };
-            console.log(ReturnedUserObj, "yoo");
-
-            return Promise.resolve(ReturnedUserObj);
+            return ReturnedUserObj;
+          } else {
+            throw new Error("Invalid response from authentication API");
           }
         } catch (error) {
-          console.log(error.response.status, "fail");
-          const ErrorObject = {
-            responseMessage: error.response.data.message,
-            responseStatus: error.response.status,
-          };
-          throw new Error(JSON.stringify(ErrorObject));
+          console.error("Authorization error:", error);
+          throw new Error("Authentication failed");
         }
-      },
+      }
     }),
   ],
   session: {

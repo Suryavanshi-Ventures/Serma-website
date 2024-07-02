@@ -7,11 +7,24 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import LoadingButton from "@/components/loadingButton/page";
 import Image from "next/image";
+import CustomAlert from "@/components/alert/page";
+import axios from "axios";
+import { useSession } from "next-auth/react";
 function CreateTopic() {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
+  const [showImageForUser, setShowImageForUser] = useState(null);
   const router = useRouter();
+  const [AlertDetails, setAlertDetails] = useState({
+    isOpen: false,
+    message: "",
+    duration: 3000,
+    position: "bottom",
+    type: "success",
+  });
+
+  const { data: session, status } = useSession();
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
@@ -19,51 +32,164 @@ function CreateTopic() {
   const fileInputRef = useRef(null);
   const modules = {
     toolbar: [
-      [{ 'font': [] }],
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      [{ 'script': 'sub'}, { 'script': 'super' }],   // superscript/subscript
-      [{ 'indent': '-1'}, { 'indent': '+1' }],       // outdent/indent
-      [{ 'direction': 'rtl' }],                      // text direction
-      [{ 'color': [] }, { 'background': [] }],       // dropdown with defaults from theme
-      [{ 'align': [] }],
-      ['bold', 'italic', 'underline', 'strike'],     // toggled buttons
-      ['blockquote', 'code-block'],
-      ['link', 'image', 'video'],
-      ['clean']                                      // remove formatting button
-    ]
+      [{ font: [] }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ script: "sub" }, { script: "super" }], // superscript/subscript
+      [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+      [{ direction: "rtl" }], // text direction
+      [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+      [{ align: [] }],
+      ["bold", "italic", "underline", "strike"], // toggled buttons
+      ["blockquote", "code-block"],
+      ["link", "image", "video"],
+      ["clean"], // remove formatting button
+    ],
   };
-  
-  const formats = [
-    'font',
-    'header',
-    'list', 'bullet',
-    'script',
-    'indent',
-    'direction',
-    'color', 'background',
-    'align',
-    'bold', 'italic', 'underline', 'strike',
-    'blockquote', 'code-block',
-    'link', 'image', 'video'
-  ];
 
-  const handleSubmit = () => {
-    console.log({ subject, content });
-  };
+  const formats = [
+    "font",
+    "header",
+    "list",
+    "bullet",
+    "script",
+    "indent",
+    "direction",
+    "color",
+    "background",
+    "align",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "code-block",
+    "link",
+    "image",
+    "video",
+  ];
+  // console.log(process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL)
+
   const SaymanGoBack = () => {
     router.push("/members-only-content/Dashboard/member-forum");
   };
-  const onImageChange = (event) => {
+  // const onImageChange = (event) => {
+  //   if (event.target.files && event.target.files[0]) {
+  //     setImage(URL.createObjectURL(event.target.files[0]));
+  //   }
+  // };
+
+  const onImageChange = async (event) => {
     if (event.target.files && event.target.files[0]) {
-      setImage(URL.createObjectURL(event.target.files[0]));
+      //  setShowImageForUser(URL.createObjectURL(event.target.files[0]))
+      const file = event.target.files[0];
+      const formData = new FormData();
+      formData.append("file", file);
+
+      try {
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/file/upload/multiple`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        setShowImageForUser(
+          response?.data?.result?.data.map((data) => data.media_url)
+        );
+        // Assuming the API returns the URL of the uploaded image
+        const imageUrl = response?.data?.result?.data.map(
+          (data) => data.media_url
+        ); // Update this according to your API response
+        setImage(imageUrl);
+      } catch (error) {
+        console.error("Error uploading image:", error);
+      }
     }
   };
+
+  console.log(showImageForUser);
+
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
+
+  const handleSubmit = async () => {
+    if (!subject || !content) {
+      setAlertDetails({
+        isOpen: true,
+        message: "Please Enter Subject and Description",
+        duration: 3000,
+        position: "top",
+        type: "info",
+      });
+      return;
+    }
+    const apiUrl = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic/create`;
+    const body = {
+      title: subject,
+      content: content,
+      attachments: image,
+      // attachments: [ "blob:http://localhost:3000/6825c81a-c50f-455f-abe6-e219b41d6ec6"],
+    };
+
+    const token = session?.user?.userToken;
+
+    if (!token) {
+      setAlertDetails({
+        isOpen: true,
+        message: "You are not authenticated to create topic",
+        duration: 3000,
+        position: "top",
+        type: "danger",
+      });
+      return;
+    }
+
+    try {
+      // Make the POST request
+      const response = await axios.post(apiUrl, body, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("API Response:", response.data);
+
+      setAlertDetails({
+        isOpen: true,
+        message: "Topic Created Successfully",
+        duration: 3000,
+        position: "top",
+        type: "success",
+      });
+    } catch (error) {
+      // Handle errors
+
+      console.error("Error making API call:", error);
+    }
+  };
+  console.log(image);
+
   return (
     <>
+      {AlertDetails.isOpen && (
+        <CustomAlert
+          message={AlertDetails.message}
+          duration={AlertDetails.duration}
+          onClose={() =>
+            setAlertDetails({
+              ...AlertDetails,
+              isOpen: false,
+            })
+          }
+          position={AlertDetails.position}
+          type={AlertDetails.type}
+        />
+      )}
       <div className="   w-full  bg-white  rounded-xl  space-y-4">
         <div className="flex items-center gap-5 mb-10">
           <div
@@ -119,7 +245,7 @@ function CreateTopic() {
         </div>
 
         <div className="  flex gap-5 items-center">
-        <input
+          <input
             type="file"
             ref={fileInputRef}
             className="filetype"
@@ -149,7 +275,12 @@ function CreateTopic() {
             You can upload up to 20 files. Each file should be less than 20 MB. 
           </span>
         </div>
-        {image &&  <Image src={image} height={150} width={150} alt="preview image"  />}
+        {showImageForUser &&
+          showImageForUser.map((data) => (
+            <>
+              <Image src={data} height={150} width={150} alt="preview image" />
+            </>
+          ))}
         <div className="flex items-center gap-5 ">
           <input type="checkbox" className="accent-primary" />
           <p className="text-light-black text-[15px]">
