@@ -9,7 +9,7 @@ const Footer = () => {
   const [insta, setInsta] = useState(false);
   return (
     <div className="bg-[#F3F3F3]">
-      <div className="grid grid-cols-1 max-md:px-[20px]   md:grid-cols-2 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
+      <div className="grid grid-cols-1 max-md:px-[20px] md:grid-cols-2  lg:grid-cols-4 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
         <div className="md:border-r max-md:border-b  border-[#3333331c] py-3 md:p-5  flex sm:justify-center">
           <div className="">
             <div className="flex justify-start sm:justify-center">
@@ -38,7 +38,7 @@ const Footer = () => {
         <div className="md:border-r max-md:border-b   border-[#3333331c] py-3 md:p-5 text-center  max-sm:text-left ">
           <div className=" flex sm:justify-center">
             <div>
-              <div className="font-[700] text-[20px] text-[#333333] ">
+              <div className="font-[700] text-[20px] text-[#333333]">
                 Links
               </div>
               <div className="sm:mt-[60px]  responsive-Text-footer text-[#333333]">

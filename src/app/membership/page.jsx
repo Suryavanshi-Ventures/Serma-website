@@ -120,7 +120,7 @@ const Membership = () => {
         </div>
         <div className="mt-[50px] md:mt-[100px]">
           <div className="text-center">
-            <h2 className="heading-2 lg:text-left font-semibold">
+            <h2 className="heading-2 text-center font-semibold ">
               Member Benefits
             </h2>
             <p className="paragraph md:hidden mt-3 text-gray leading-loose">
@@ -137,16 +137,16 @@ const Membership = () => {
             {memeberBenefit.map((items, index) => (
               <div
                 key={index}
-                className="max-w-[434px] h-[423px] rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+                className="max-w-[434px]  md:h-[400px] rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
               >
                 <div className="flex flex-col justify-between items-center h-full w-full">
                   <div className="mt-10">
-                    <h2 className="text-xl max-md:text-center md:text-[24px] font-bold max-w-[333px]">
+                    <h2 className="text-lg md:px-2  text-center 2xl:text-[22px] font-bold max-w-[333px] text-[#333333]">
                       {items.title}
                     </h2>
                   </div>
                   <div>
-                    <div className="max-w-[434px] h-[273px]">
+                    <div className="max-w-[434px]  h-[250px]">
                       <Image
                         src={items.img}
                         unoptimized
@@ -162,8 +162,8 @@ const Membership = () => {
             {/*  */}
           </div>
         </div>
-        <div className="mt-[60px] mx-5 sm:mx-0">
-          <ul className="list-disc space-y-2 md:paragraph">
+        <div className="mt-[60px] mx-5 ">
+          <ul className="list-disc space-y-2 text-[14px] md:text-[16px] lg:text-[18px] xl:text-[19px] leading-loose">
             <li>
               Access to exclusive member events, including conferences,
               webinars, and networking events

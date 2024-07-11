@@ -166,7 +166,7 @@ const Membership = () => {
           type={AlertDetails.type}
         />
       )}
-      <div className="xs:mx-5 lg:mx-10 2xl:mx-20 text-[#333333]">
+      <div className="xs:mx-5  xl:mx-10 2xl:mx-20 text-[#333333]">
         <div>
           <div className="hidden md:flex h-[300px] md:h-[500px] xs:max-h-[350px] w-full xs:max-w-[1351px] relative">
             <Image
@@ -198,7 +198,7 @@ const Membership = () => {
               <div>
                 <h2 className="heading-2 font-bold">Welcome to SERMA!</h2>
               </div>
-              <hr className="w-full my-4 md:my-8 border-[#9B9A9A66]" />
+              <hr className="w-full my-4 md:my-8 border-[#9B9A9A66]"/>
               <div className="space-y-4">
                 <div>
                   <h2 className=" text-[16px] md:text-2xl font-bold">

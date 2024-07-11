@@ -1,26 +1,69 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-
+import { useSession } from "next-auth/react";
 import { POSTS } from "@/app/utils/constant/constant";
-
+import axios from "axios";
+import { formatDate } from "@/components/date-format/page";
 const MemberForum = () => {
   const router = useRouter();
+  const { data: session, status } = useSession();
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const token = session?.user?.userToken;
+
   const handleSeePost = (id) => {
-    console.log(id);
     router.push(`/members-only-content/Dashboard/member-forum/${id}`);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!token) {
+        console.log("No token found");
+        return;
+      }
+
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic/find`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setPosts(response?.data?.result);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [token]);
+
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
   return (
-    <div className=" w-full rounded-lg   border border-[#D9D9D980]">
-      <div className="flex justify-between rounded-lg items-center pt-2 px-4  bg-[#F5F6F8] ">
+    <div className=" w-full rounded-lg   border border-[#D9D9D980]  overflow-hidden">
+      <div className="flex justify-between rounded-lg items-center pt-2 px-4  bg-[#F5F6F8]  ">
         <h1 className="text-[16px] font-[600] mb-4">Topic</h1>
         <h2 className="text-[16px] font-[600] mb-4">Replies</h2>
       </div>
-      {POSTS.map((post, index) => (
+      {posts.map((post, index) => (
         <div
           key={index}
-          className="bg-white p-4 shadow"
+          className="bg-white p-4 shadow "
           style={{ borderBottom: "1px solid rgba(217, 217, 217, 0.5)" }}
         >
           {/* Content here */}
@@ -30,28 +73,42 @@ const MemberForum = () => {
               onClick={() => handleSeePost(post.id)}
               className="w-10 h-10 relative cursor-pointer"
             >
-              <Image
-                // src={post.userImage}
-                src="/dashboard/profile-pic.png"
-                alt={post.userName}
-                layout="fill"
-                className="rounded-full object-cover"
-              />
+              {post?.attachments ? (
+                post?.attachments.map((data) => (
+                  <Image
+                    // src={post.userImage}
+                    src={data || "/dashboard/profile-pic.png"}
+                    alt="user-Image"
+                    layout="fill"
+                    className="rounded-full object-cover"
+                  />
+                ))
+              ) : (
+                <Image
+                  // src={post.userImage}
+                  src={"/dashboard/profile-pic.png"}
+                  alt="user-Image"
+                  layout="fill"
+                  className="rounded-full object-cover"
+                />
+              )}
             </div>
             <div className="flex-1">
               <div
                 onClick={() => handleSeePost(post.id)}
                 className="cursor-pointer"
               >
-                {post.topic}
+                {post.title}
               </div>
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-3 md:gap-5 my-1">
                   <h2 className=" max-md:text-[12px] text-gray">
-                    {post.userName}
+                    {(post?.user?.first_name ? post?.user?.first_name : "N/A") +
+                      " " +
+                      (post?.user?.last_name ? post?.user?.last_name : "N/A")}
                   </h2>
                   <p className="text-[12px] text-gray md:text-sm">
-                    {post.date}
+                    {formatDate(post?.updated_at)}
                   </p>
                 </div>
                 <div className="text-gray-500">
@@ -70,11 +127,14 @@ const MemberForum = () => {
                       />
                     </svg>
                     {/* -------------------------------------------- */}
-                    {post.replies}
+                    {post?.comments}
                   </span>
                 </div>
               </div>
-              <p className="mt-2 text-[#333333] text-[14px]">{post.content}</p>
+              <p
+                className="mt-2 text-[#333333] text-[14px]  w-[850px] overflow-hidden"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              ></p>
             </div>
           </div>
         </div>

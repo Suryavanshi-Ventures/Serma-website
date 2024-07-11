@@ -49,7 +49,8 @@ const Header = () => {
   };
 
   return (
-    <header className="relative pt-[40px] pb-[40px] px-[20px] lg:px-[50px] xl:px-[85px]">
+    // <header className="relative pt-[40px] pb-[40px] px-[20px] lg:px-[50px] xl:px-[85px]">
+    <header className="relative pt-[40px] pb-[40px] px-[30px] lg:px-[20px] xl:px-[85px]">
       <div className="flex justify-between items-center w-full gap-0  xxl:gap-10">
         <div className="">
           <Link href="/">
@@ -59,7 +60,7 @@ const Header = () => {
         </div>
 
         <ul
-          className={`hidden lg:flex max-[1100px]:text-[15px] text-[17px] gap-6  md:gap-8 xl:gap-12 animate-flip-down   text-[#333333]`}
+          className={`hidden lg:flex max-[1100px]:text-[16px] text-[17px] gap-6  md:gap-8 xl:gap-12 animate-flip-down   text-[#333333]`}
         >
           <li
             className={`font-semibold ${

@@ -8,17 +8,17 @@ function EventPast({ data, error }) {
   return (
     <div>
       <div>
-        <div className="flex flex-col lg:flex-row  max-md:px-5 ">
+        <div className="flex flex-col lg:flex-row  max-md:px-5">
           {/* -------------------------------- */}
           <div className="lg:w-1/5  w-full">
             <div className="heading-2 font-bold  text-left">Past Events</div>
             <div className="my-2 ">
-              <BlueLine width={"70px"} />
+              <BlueLine width={"70px"}/>
             </div>
             <div className=" my-3 lg:my-10 text-left  text-gray responsive-Text w-auto 2xl:w-auto ">
               View our Past events and get ready for our upcoming one
             </div>
-            <div className="w-[250px] gap-2 border-b  border-[#A5A5A5] flex py-2">
+            <div className="xl:w-[250px]  gap-2 border-b  border-[#A5A5A5] flex py-2">
               <Image
                 src="/events/search.svg"
                 height={17}
@@ -32,9 +32,9 @@ function EventPast({ data, error }) {
                 className="w-full outline-none"
               />
             </div>
-            <div className="my-5 text-gray  max-md:flex max-md:overflow-scroll  ">
-              {MONTHS.map((month) => (
-                <div className="flex items-center gap-4 max-md:ml-3 md:gap-10 mb-3">
+            <div className="my-5 text-gray  max-md:flex max-md:overflow-scroll">
+              {MONTHS.map((month,i) => (
+                <div key={i} className="flex items-center gap-4 max-md:ml-3 md:gap-10 mb-3">
                   <div className=" max-md:w-[12px]">
                     <Image
                       src="/events/blue-dot.svg"
@@ -51,9 +51,9 @@ function EventPast({ data, error }) {
               ))}
             </div>
             {/* <div className="md:hidden flex gap-3">
-      <button>Prev</button>
-      <button>Next</button>
-     </div> */}
+            <button>Prev</button>
+            <button>Next</button>
+            </div> */}
           </div>
           {/* ------------------------ */}
 

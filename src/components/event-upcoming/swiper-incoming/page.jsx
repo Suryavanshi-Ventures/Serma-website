@@ -10,8 +10,6 @@ import { useRouter } from "next/navigation";
 import { EVENT_CARD_DETAILS } from "@/app/utils/constant/constant";
 
 function SwiperSlideIncoming({ data, error }) {
-  console.log(data, "this is sdafajklfa");
-  console.log(error, "this is eerr");
   const router = useRouter();
 
   const handleClick = (id) => {
@@ -46,7 +44,7 @@ function SwiperSlideIncoming({ data, error }) {
             spaceBetween: 10,
           },
           500: {
-            slidesPerView: 1,
+            slidesPerView: 1.5,
             spaceBetween: 10,
           },
 
@@ -82,9 +80,9 @@ function SwiperSlideIncoming({ data, error }) {
             ) : (
               data.map((event, index) => (
                 <SwiperSlide key={index}>
-                  <div className="rounded-2xl flex max-md:justify-center max-md:items-center max-sm:p-0 md:p-3">
+                  <div className="rounded-2xl  flex max-md:justify-center max-md:items-center max-sm:p-0 md:p-3">
                     <div className="px-2 py-3 rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
-                      <div className="w-[297px] h-[168px]">
+                      <div className="lg:w-[230px] xl:w-[297px] lg:h-[130px] xl:h-[168px]">
                         <Image
                           src={event.image_url}
                           height={225}

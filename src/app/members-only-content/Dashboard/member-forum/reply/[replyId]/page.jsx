@@ -1,21 +1,58 @@
 "use client";
-import React, { useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import { useRouter, useParams } from "next/navigation";
-
+import { useSession } from "next-auth/react";
 // import "tailwindcss/tailwind.css";
 import dynamic from "next/dynamic";
 import LoadingButton from "@/components/loadingButton/page";
 import Image from "next/image";
+import axios from "axios";
+import CustomAlert from "@/components/alert/page";
 function Reply() {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
-  const [image, setImage] = useState(null);
+  const [images, setImages] = useState([]);
+  const [title, setTitle] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const router = useRouter();
   const params = useParams();
+  const { data: session } = useSession();
   const paramsId = params.replyId;
+  const token = session?.user?.userToken;
+  useEffect(() => {
+    const fetchTopic = async () => {
+      if (token) {
+        try {
+          const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic/findById/${paramsId}`,
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          );
+          setTitle(response.data.result.data?.title);
+        } catch (error) {
+          setError(error);
+        } finally {
+          setLoading(false);
+        }
+      }
+    };
+    fetchTopic();
+  }, [token, paramsId]);
 
+  console.log(title);
+  console.log(paramsId);
+
+  const [AlertDetails, setAlertDetails] = useState({
+    isOpen: false,
+    message: "",
+    duration: 3000,
+    position: "bottom",
+    type: "success",
+  });
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
@@ -60,22 +97,96 @@ function Reply() {
     "video",
   ];
 
-  const handleSubmit = () => {
-    console.log({ subject, content });
+  const handleSubmit = async () => {
+    const apiUrl = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic_reply/create/${paramsId}`;
+    const body = {
+      content: content,
+      attachments: images,
+    };
+
+    try {
+      const response = await axios.post(apiUrl, body, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("API Response:", response.data);
+
+      setAlertDetails({
+        isOpen: true,
+        message: "Reply Added Successfully",
+        duration: 3000,
+        position: "top",
+        type: "success",
+      });
+    } catch (error) {
+      setAlertDetails({
+        isOpen: true,
+        message: error?.response?.data?.message || "Failed to Add Reply",
+        duration: 3000,
+        position: "top",
+        type: "danger",
+      });
+      console.error("Error making API call:", error);
+    }
+
+    // console.log({ subject, content, images });
   };
   const SaymanGoBack = () => {
     router.push(`/members-only-content/Dashboard/member-forum/${paramsId}`);
   };
-  const onImageChange = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      setImage(URL.createObjectURL(event.target.files[0]));
+  const onImageChange = async (event) => {
+    const files = event.target.files;
+
+    const formData = new FormData();
+
+    Array.from(files).forEach((file) => {
+      formData.append("file", file);
+    });
+
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/file/upload/multiple`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      const uploadedImageUrls = response?.data?.result?.data.map(
+        (item) => item.media_url
+      );
+      setImages((prevImages) => [...prevImages, ...uploadedImageUrls]);
+    } catch (error) {
+      console.error("Image upload error:", error);
     }
   };
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
+
+  const handleRemoveImage = (index) => {
+    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+  };
   return (
     <>
+      {AlertDetails.isOpen && (
+        <CustomAlert
+          message={AlertDetails.message}
+          duration={AlertDetails.duration}
+          onClose={() =>
+            setAlertDetails({
+              ...AlertDetails,
+              isOpen: false,
+            })
+          }
+          position={AlertDetails.position}
+          type={AlertDetails.type}
+        />
+      )}
       <div className="   w-full  bg-white  rounded-xl  space-y-4">
         <div className="flex items-center gap-5 mb-10">
           <div
@@ -113,9 +224,10 @@ function Reply() {
           <input
             type="text"
             id="subject"
-            value={subject}
+            value={title}
             placeholder="Enter Title"
             onChange={(e) => setSubject(e.target.value)}
+            disabled={true}
             className="mt-1 block w-full md:w-1/2   px-3 py-2 border border-gray rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
           />
         </div>
@@ -136,6 +248,7 @@ function Reply() {
             ref={fileInputRef}
             className="filetype"
             onChange={onImageChange}
+            multiple
             style={{ display: "none" }}
           />
           <span
@@ -161,9 +274,35 @@ function Reply() {
             You can upload up to 20 files. Each file should be less than 20 MB. 
           </span>
         </div>
-        {image && (
-          <Image src={image} height={150} width={150} alt="preview image" />
-        )}
+        {images.map((img, index) => (
+          <div key={index} className=" ">
+            <div className="relative ">
+              <Image
+                src={img}
+                height={150}
+                width={150}
+                alt={`preview image ${index + 1}`}
+              />
+              <button
+                className="absolute top-1 rounded-full p-1"
+                onClick={() => handleRemoveImage(index)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 text-red-500"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 1c.55 0 1 .45 1 1h4.5c.83 0 1.5.67 1.5 1.5v1c0 .28-.22.5-.5.5s-.5-.22-.5-.5v-1c0-.28-.22-.5-.5-.5h-3V5h1.5c.83 0 1.5.67 1.5 1.5v11c0 .83-.67 1.5-1.5 1.5h-8c-.83 0-1.5-.67-1.5-1.5V6.5c0-.83.67-1.5 1.5-1.5H7V3.5c0-.28.22-.5.5-.5s.5.22.5.5V5h3V3c0-.55.45-1 1-1zM7 9c-.28 0-.5.22-.5.5v7c0 .28.22.5.5.5s.5-.22.5-.5v-7c0-.28-.22-.5-.5-.5zm3 0c-.28 0-.5.22-.5.5v7c0 .28.22.5.5.5s.5-.22.5-.5v-7c0-.28-.22-.5-.5-.5zm3 0c-.28 0-.5.22-.5.5v7c0 .28.22.5.5.5s.5-.22.5-.5v-7c0-.28-.22-.5-.5-.5z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        ))}
         <div className="flex items-center gap-5 ">
           <input type="checkbox" className="accent-primary" />
           <p className="text-light-black text-[15px]">

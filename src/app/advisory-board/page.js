@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import LinkedInIcon from "../../../public/Svg/icons/LinkedInIcon.svg";
 import ResumeIcon from "../../../public/Svg/icons/ResumeIcon.svg";
+import Container from "@/components/container/page";
 
 function AdvisoryBoard() {
   const advisory_board_members = [
@@ -122,8 +123,9 @@ function AdvisoryBoard() {
       department: "Paramount Global",
     },
   ];
-  return (
-    <div className="relative md:pt-[40px] pb-[14px] px-[20px]  md:px-[85px] mb-14">
+  return (   
+    <Container>  
+    <div className="relative md:pt-[40px] pb-[14px]   mb-14">
       <div className="w-full ">
         <div className="text-2xl lg:text-4xl font-bold w-80 text-light-black px-2">
           Advisory Board
@@ -146,7 +148,7 @@ function AdvisoryBoard() {
               <div className="text-[16px] max-md:my-5  md:text-2xl text-light-black font-bold">
                 Rich Lenkov | Founder/CEO
               </div>
-              <div className="paragraph md:text-lg text-black mt-2 leading-loose">
+              <div className="text-[14px]  xl:text-lg text-black mt-4 leading-loose">
                 As a Capital Member of Downey & Lenkov LLC, Rich has been
                 representing professional sports organizations and multiple
                 entities in the entertainment industry for 25 years. Rich is
@@ -159,7 +161,7 @@ function AdvisoryBoard() {
                 productions including Rock of Ages and Elvis Presley’s
                 Heartbreak Hotel In Concert.
               </div>
-              <div className="mt-5 md:mt-10 flex  md:w-[200px] md:py-3 py-2 md:px-6 transition duration-500 hover:bg-primary hover:text-white  font-normal  justify-center items-center gap-3 text-lg tracking-wider text-primary  border border-[#C8C8C8]  hover:border-none  rounded-full">
+              <div className="mt-5 xl:mt-10 flex  md:w-[200px] md:py-3 py-2 md:px-6 transition duration-500 hover:bg-primary hover:text-white  font-normal  justify-center items-center gap-3 text-lg tracking-wider text-primary  border border-[#C8C8C8]  hover:border-none  rounded-full">
                 <Link
                   href={"#"}
                   className=" text-center "
@@ -188,10 +190,10 @@ function AdvisoryBoard() {
             <div className="text-2xl text-secondary font-bold mt-4">
               {member.name}
             </div>
-            <div className="text-base flex items-center text-gray mt-2 md:h-[40px] ">{member.position}</div>
+            <div className="text-base flex text-[14px] items-center text-gray mt-2 md:h-[40px] ">{member.position}</div>
             <div className="w-full  items-center mt-6">
               <div className="flex lg:flex-row lg:justify-between  items-center  gap-4">
-                <div className="flex-1  lg:text-[16px] text-light-black">
+                <div className="flex-1 lg:text-[14px] xl:text-[16px] text-light-black">
                   {member.department}
                 </div>
                 <div className="flex  gap-3">
@@ -204,6 +206,7 @@ function AdvisoryBoard() {
         ))}
       </div>
     </div>
+    </Container>
   );
 }
 export default AdvisoryBoard;

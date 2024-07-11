@@ -3,6 +3,7 @@ import EventUpcoming from "@/components/event-upcoming/page";
 import Image from "next/image";
 import React from "react";
 import { fetchData } from "@/utils/api";
+import Container from "@/components/container/page";
 
 export default async function Events() {
   const upcoming_events = await fetchData(
@@ -14,7 +15,8 @@ export default async function Events() {
 
   return (
     <div className="">
-      <div className="px-[25px] lg:px-[50px]  xl:px-[85px]">
+      {/* <div className="px-[25px] lg:px-[30px]  xl:px-[85px]"> */}
+      <Container>
         <div className="hidden md:flex ">
           <Image
             src="/upcoming-event/event-bg-image-svg.svg"
@@ -33,14 +35,15 @@ export default async function Events() {
             className="rounded-md"
           />
         </div>
-      </div>
-      <div className="my-[40px] lg:pl-[62px] ">
+        </Container>
+      {/* </div> */}
+      <div className="my-[40px] lg:pl-[10px] xl:pl-[62px] ">
         <EventUpcoming
           data={upcoming_events.result}
           error={upcoming_events.error}
         />
       </div>
-      <div className="my-[40px]  lg:pl-[85px]">
+      <div className="my-[40px] lg:pl-[35px] xl:pl-[85px]">
         <EventPast data={past_events.result} error={past_events.error} />
       </div>
     </div>

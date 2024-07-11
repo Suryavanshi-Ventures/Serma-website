@@ -1,3 +1,4 @@
+import Container from "@/components/container/page";
 import React from "react";
 
 const Sermapod = () => {
@@ -34,14 +35,15 @@ const Sermapod = () => {
     },
   ];
   return (
-    <div className="mx-4 sm:mx-12 lg:mx-20 mt-5 mb-28">
+    <Container>
+    <div className=" mt-5 mb-28">
       <div>
         <div>
           <div>
             <h2 className="text-2xl sm:text-[36px] font-bold">The Sermapod</h2>
           </div>
-          <div className="flex flex-col lg:flex-row h-full lg:h-[520px] gap-[50px] mt-8 sm:mt-9">
-            <div className="w-full  h-[222px] md:h-[422px] lg:h-full">
+          <div className="flex flex-col lg:flex-row h-full xl:h-[520px] gap-[50px] mt-8 sm:mt-9">
+            <div className="w-full  h-[222px] md:h-[422px] xl:h-full ">
               <iframe
                 className="rounded-2xl"
                 src="https://www.youtube.com/embed/clipBzZICDE"
@@ -56,7 +58,7 @@ const Sermapod = () => {
                 <div className="text-center text-base sm:text-lg font-bold">
                   <h2>Mix Sermapod</h2>
                 </div>
-                <div className="space-y-3.5 mt-5 sm:mt-2 overflow-auto h-[334px] sm:h-[450px] ">
+                <div className="space-y-3.5 mt-5 sm:mt-2 overflow-auto h-[334px] sm:h-[372px] xl:h-[450px] ">
                   {mixSermapod.map((item, index) => (
                     <div className="flex items-center gap-[16px]">
                       <div>
@@ -110,7 +112,8 @@ const Sermapod = () => {
           </div>
         </div>
       </div>
-    </div>
+   </div>
+      </Container>
   );
 };
 

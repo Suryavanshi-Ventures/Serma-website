@@ -190,7 +190,7 @@ function CreateTopic() {
           type={AlertDetails.type}
         />
       )}
-      <div className="   w-full  bg-white  rounded-xl  space-y-4">
+      <div className="   w-full  bg-white  rounded-xl  space-y-4 overflow-hidden">
         <div className="flex items-center gap-5 mb-10">
           <div
             onClick={SaymanGoBack}
@@ -233,14 +233,14 @@ function CreateTopic() {
             className="mt-1 block w-full md:w-1/2   px-3 py-2 border border-gray rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
           />
         </div>
-        <div className="">
+        <div className="overflow-hidden">
           <ReactQuill
             modules={modules}
             theme="snow"
             value={content}
             onChange={setContent}
             formats={formats}
-            //   className="bg-[#F8F8F8]"
+            // className=""
           />
         </div>
 

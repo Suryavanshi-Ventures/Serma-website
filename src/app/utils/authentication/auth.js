@@ -2,7 +2,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
 export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
-  
   providers: [
     CredentialsProvider({
       credentials: {
@@ -10,6 +9,8 @@ export const authOptions = {
         password: { label: "Pasword", type: "password" },
       },
       async authorize(credentials) {
+        console.log(credentials, "credentials");
+
         try {
           const response = await axios.post(
             "http://34.235.48.203/api/v1/auth/login",
@@ -18,24 +19,35 @@ export const authOptions = {
               password: credentials.password,
             }
           );
-      
-          if (response.status === 200 && response.data.data) {
+          console.log(response?.data?.data);
+
+          if (response.status === 200) {
             const GetProfileDataResponse = response.data.data;
             const ReturnedUserObj = {
-              userToken: GetProfileDataResponse.token,
-              userFirstName: GetProfileDataResponse.first_name,
-              userLastName: GetProfileDataResponse.last_name,
-              userEmail: GetProfileDataResponse.email,
+              //   userToken: AccessToken,
+              userToken: GetProfileDataResponse?.token,
+              userFirstName: GetProfileDataResponse?.first_name,
+              userLastName: GetProfileDataResponse?.last_name,
+              userEmail: GetProfileDataResponse?.email,
+              userLoginId: GetProfileDataResponse?.id,
+              userAccessLevel: GetProfileDataResponse?.access_level,
+              userAccessRole: GetProfileDataResponse?.access_role,
+              userMembershipPlan: GetProfileDataResponse?.membership_plan_id,
+              userProfileUrl: GetProfileDataResponse?.profile_url,
             };
-            return ReturnedUserObj;
-          } else {
-            throw new Error("Invalid response from authentication API");
+            console.log(ReturnedUserObj, "yoo");
+
+            return Promise.resolve(ReturnedUserObj);
           }
         } catch (error) {
-          console.error("Authorization error:", error);
-          throw new Error("Authentication failed");
+          console.log(error.response.status, "fail");
+          const ErrorObject = {
+            responseMessage: error.response.data.message,
+            responseStatus: error.response.status,
+          };
+          throw new Error(JSON.stringify(ErrorObject));
         }
-      }
+      },
     }),
   ],
   session: {
