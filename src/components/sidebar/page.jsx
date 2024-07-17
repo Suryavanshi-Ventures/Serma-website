@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import CustomAlert from "../alert/page";
+
 const sidebarItems = [
   {
     src: "/dashboard/member-normal.svg",
@@ -43,6 +44,7 @@ function Sidebar() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const { data: session } = useSession();
   const [AlertDetails, setAlertDetails] = useState({
     isOpen: false,
     message: "",
@@ -50,6 +52,9 @@ function Sidebar() {
     position: "bottom",
     type: "success",
   });
+
+  const token = session?.user?.userToken;
+  const [previousToken, setPreviousToken] = useState(token);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -60,10 +65,15 @@ function Sidebar() {
     }
   }, []);
 
+  // useEffect(() => {
+  //   if (token && token !== previousToken) {
+  //     onclickLogout();
+  //   }
+  //   setPreviousToken(token);
+  // }, [token]);
+
   const onclickLogout = () => {
-    // signOut({ callbackUrl: "http://localhost:3000/" });
-    signOut(() => signOut({ redirect: false }));
-    // signOut();
+    signOut({ redirect: false });
     setAlertDetails({
       isOpen: true,
       message: "Logout Successfully! ",

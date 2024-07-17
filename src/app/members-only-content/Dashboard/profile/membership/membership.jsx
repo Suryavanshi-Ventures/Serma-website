@@ -2,7 +2,7 @@ import React from "react";
 
 const Membership = () => {
   return (
-    <div className="px-7 text-[#333333]">
+    <div className="px-7 text-[#333333] ">
       <div>
         <h2 className="text-xl font-bold">Membership Details</h2>
       </div>

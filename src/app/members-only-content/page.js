@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Modal from "@/components/common-modal/modal";
 import LoadingButton from "@/components/loadingButton/page";
@@ -30,10 +30,7 @@ const Membership = () => {
     type: "success",
   });
   const { data: session, status } = useSession();
-  // const token =session.user.userToken
-  //  console.log(session?.user?.userToken,"token")
-  // console.log(session);
-  // console.log(status);
+  const token = session?.user?.userToken;
 
   const router = useRouter();
   const handlePasswordChange = (e) => {
@@ -137,7 +134,6 @@ const Membership = () => {
       });
       // setIsLoading(false);
     } else {
-      
       setAlertDetails({
         isOpen: true,
         message: "Login Successfully!",
@@ -149,6 +145,12 @@ const Membership = () => {
       router.push("/members-only-content/Dashboard/member-forum");
     }
   };
+
+  useEffect(() => {
+    if (token) {
+      router.push("/members-only-content/Dashboard/member-forum");
+    }
+  }, [token]);
 
   return (
     <div>
@@ -198,7 +200,7 @@ const Membership = () => {
               <div>
                 <h2 className="heading-2 font-bold">Welcome to SERMA!</h2>
               </div>
-              <hr className="w-full my-4 md:my-8 border-[#9B9A9A66]"/>
+              <hr className="w-full my-4 md:my-8 border-[#9B9A9A66]" />
               <div className="space-y-4">
                 <div>
                   <h2 className=" text-[16px] md:text-2xl font-bold">

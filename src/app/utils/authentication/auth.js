@@ -13,13 +13,12 @@ export const authOptions = {
 
         try {
           const response = await axios.post(
-            "http://34.235.48.203/api/v1/auth/login",
+            `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/auth/login`,
             {
               email: credentials.email,
               password: credentials.password,
             }
           );
-          console.log(response?.data?.data);
 
           if (response.status === 200) {
             const GetProfileDataResponse = response.data.data;
@@ -34,8 +33,14 @@ export const authOptions = {
               userAccessRole: GetProfileDataResponse?.access_role,
               userMembershipPlan: GetProfileDataResponse?.membership_plan_id,
               userProfileUrl: GetProfileDataResponse?.profile_url,
+              userMembershipLevel: GetProfileDataResponse?.membership_level,
+              userOrganization: GetProfileDataResponse?.organization,
+              userTitle: GetProfileDataResponse?.title,
+              state: GetProfileDataResponse?.state,
+              city: GetProfileDataResponse?.city,
+              zipCode: GetProfileDataResponse?.zip_code,
+              mobile: GetProfileDataResponse?.mobile_number,
             };
-            console.log(ReturnedUserObj, "yoo");
 
             return Promise.resolve(ReturnedUserObj);
           }

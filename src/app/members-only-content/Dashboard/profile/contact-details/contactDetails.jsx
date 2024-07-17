@@ -2,10 +2,26 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
+import { useSession } from "next-auth/react";
 
 const ContactDetails = () => {
+  const { data: session } = useSession();
+
   const router = useRouter();
+  const [details, setDetails] = useState({
+    firstName: session?.user?.userFirstName ?? "N/A",
+    lastName: session?.user?.userLastName ?? "N/A",
+    memberShipLevel: session?.user?.userMembershipLevel ?? "N/A",
+    organization: session?.user?.userOrganization ?? "N/A",
+    title: session?.user?.userTitle ?? "N/A",
+    email: session?.user?.userEmail ?? "N/A",
+    state: session?.user?.state ?? "N/A",
+    city: session?.user?.city ?? "N/A",
+    zipcode: session?.user?.zipCode ?? "N/A",
+    mobile: session?.user?.mobile ?? "N/A",
+    bio: "N/A",
+  });
 
   const handleChangePassword = () => {
     router.push(`/members-only-content/Dashboard/profile/${1}`);
@@ -113,6 +129,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
+              value={details?.firstName}
               className="border border-[#9B9A9A4D]  outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl mt-5 w-full px-3 py-3"
             />
           </div>
@@ -126,6 +143,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
+              value={details?.lastName}
               className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
@@ -139,6 +157,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
+              value={details?.memberShipLevel}
               className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
@@ -152,6 +171,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
+              value={details?.organization}
               className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
@@ -165,6 +185,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
+              value={details?.title}
               className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
@@ -178,6 +199,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
+              value={details?.email}
               className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
@@ -191,6 +213,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
+              value={details?.state}
               className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
@@ -204,6 +227,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
+              value={details?.city}
               className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] bg-opacity-50 rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
@@ -217,6 +241,7 @@ const ContactDetails = () => {
               type="text"
               name=""
               id=""
+              value={details?.zipcode}
               className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3"
             />
           </div>
@@ -230,6 +255,7 @@ const ContactDetails = () => {
               type="number"
               name=""
               id=""
+              value={details?.mobile}
               className="border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl w-full mt-5  px-3 py-3 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
           </div>
@@ -241,6 +267,7 @@ const ContactDetails = () => {
           <div>
             <textarea
               rows={5}
+              value={details?.bio}
               className="w-full  border border-[#9B9A9A4D] outline-primary text-lg font-normal bg-[#F8F8F880] rounded-xl mt-5  px-3 py-3"
             />
           </div>
