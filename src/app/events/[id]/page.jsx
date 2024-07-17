@@ -8,7 +8,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { fetchData } from "@/utils/api";
-function page({ params }) {
+function GetEvent({ params }) {
   const router = useRouter();
 
   console.log(params.id, "parmapas");
@@ -42,6 +42,7 @@ function page({ params }) {
   const eventCheck = upcomingEvents && upcomingEvents.map((item) => item.id)[0];
   console.log(eventCheck, "Mapped event IDs");
 
+  console.log(eventCheck)
   const foundEvent =
     eventCheck && eventCheck.find((eventId) => eventId === params.id);
   console.log(foundEvent, "Found event ID");
@@ -290,4 +291,4 @@ function page({ params }) {
   );
 }
 
-export default page;
+export default GetEvent;
