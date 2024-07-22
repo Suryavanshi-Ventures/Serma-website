@@ -7,10 +7,10 @@ import Container from "@/components/container/page";
 
 export default async function Events() {
   const upcoming_events = await fetchData(
-    "http://34.235.48.203/api/v1/event/upcoming_events"
+   `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/upcoming_events`
   );
   const past_events = await fetchData(
-    "http://34.235.48.203/api/v1/event/past_events"
+   `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/past_events`
   );
 
   return (

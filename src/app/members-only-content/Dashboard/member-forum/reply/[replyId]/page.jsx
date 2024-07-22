@@ -22,6 +22,7 @@ function Reply() {
   const { data: session } = useSession();
   const paramsId = params.replyId;
   const token = session?.user?.userToken;
+
   useEffect(() => {
     const fetchTopic = async () => {
       if (token) {
@@ -161,6 +162,14 @@ function Reply() {
       );
       setImages((prevImages) => [...prevImages, ...uploadedImageUrls]);
     } catch (error) {
+      setAlertDetails({
+        isOpen: true,
+        message: "Failed to Attach image",
+        duration: 3000,
+        position: "top",
+        type: "danger",
+      });
+      console.log(error);
       console.error("Image upload error:", error);
     }
   };

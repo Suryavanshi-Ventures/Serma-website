@@ -3,11 +3,11 @@ import "swiper/css";
 import Image from "next/image";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Pagination } from "swiper/modules";
+import { FreeMode } from "swiper/modules";
 import { useRouter } from "next/navigation";
-import { EVENT_CARD_DETAILS } from "@/app/utils/constant/constant";
+
 
 function SwiperSlideIncoming({ data, error }) {
   const router = useRouter();
@@ -17,10 +17,10 @@ function SwiperSlideIncoming({ data, error }) {
     router.push(`/events/${id}`);
   };
 
-  useEffect;
+  // useEffect;
 
   return (
-    <>
+    <div>
       <Swiper
         slidesPerView={3}
         spaceBetween={30}
@@ -163,7 +163,7 @@ function SwiperSlideIncoming({ data, error }) {
           )}
         </div>
       </Swiper>
-    </>
+    </div>
   );
 }
 

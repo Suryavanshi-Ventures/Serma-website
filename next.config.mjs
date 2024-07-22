@@ -8,6 +8,12 @@ const nextConfig = {
         // port: '',
         // pathname: '/account123/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'new.words.png',
+        // port: '',
+        // pathname: '/account123/**',
+      },
     ],
   },
 };

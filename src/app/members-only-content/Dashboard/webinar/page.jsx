@@ -1,69 +1,34 @@
 "use client";
+import useAxiosFetch from "@/hooks/axiosFetch";
 import Image from "next/image";
 import React, { useState } from "react";
+import { useSession } from "next-auth/react";
+import { formatDate } from "@/components/date-format/page";
 
 function Webinar() {
-  const webinarList = [
-    {
-      date: "March 19, 2024 4:00 PM (MDT)  ",
-      title: "Virtual",
-      img: "/dashboard/webinar/item-1.png",
-      desc: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
-    },
-    {
-      date: "March 19, 2024 4:00 PM (MDT)  ",
-      title: "Virtual",
-      img: "/dashboard/webinar/item-1.png",
-      desc: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
-    },
-    {
-      date: "March 19, 2024 4:00 PM (MDT)  ",
-      title: "Virtual",
-      img: "/dashboard/webinar/item-1.png",
-      desc: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
-    },
-    {
-      date: "March 19, 2024 4:00 PM (MDT)  ",
-      title: "Virtual",
-      img: "/dashboard/webinar/item-1.png",
-      desc: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
-    },
-    {
-      date: "March 19, 2024 4:00 PM (MDT)  ",
-      title: "Virtual",
-      img: "/dashboard/webinar/item-1.png",
-      desc: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
-    },
-    {
-      date: "March 19, 2024 4:00 PM (MDT)  ",
-      title: "Virtual",
-      img: "/dashboard/webinar/item-1.png",
-      desc: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
-    },
-    {
-      date: "March 19, 2024 4:00 PM (MDT)  ",
-      title: "Virtual",
-      img: "/dashboard/webinar/item-1.png",
-      desc: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
-    },
-    {
-      date: "March 19, 2024 4:00 PM (MDT)  ",
-      title: "Virtual",
-      img: "/dashboard/webinar/item-1.png",
-      desc: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
-    },
-    {
-      date: "March 19, 2024 4:00 PM (MDT)  ",
-      title: "Virtual",
-      img: "/dashboard/webinar/item-1.png",
-      desc: "SERMA® Webinar: Treating Elite Athlete Injuries Webinar",
-    },
-  ];
+  const { data: session } = useSession();
+  const token = session?.user?.userToken;
+  const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/upcoming_events`;
 
-  const itemsPerPage = 4; // Change this to the number of items you want per page
+  const {
+    data: webinars,
+    loading,
+    error,
+  } = useAxiosFetch(
+    API_URL,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
+    token
+  );
+  console.log(loading)
+  console.log(error)
+  const webinarList = webinars?.result;
+
+  const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(webinarList.length / itemsPerPage);
+  const totalPages = Math.ceil(webinarList?.length / itemsPerPage);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -77,25 +42,25 @@ function Webinar() {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   };
 
-  const currentData = webinarList.slice(
+  const currentData = webinarList?.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
   return (
     <div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-12">
-        {currentData.map((item, index) => (
-          <div>
+      <div className="grid sm:grid-cols-2     xl:grid-cols-3 gap-x-4 gap-y-12 ">
+        {currentData?.map((item, index) => (
+          <div key={item?.id}>
             <div className="  flex justify-center bg-white   ">
               <div className="max-w-[445px] shadow-[0_3px_10px_rgb(0,0,0,0.2)]  rounded-[22px]  p-[15px]  md:p-[22px]">
-                <div className="flex justify-center h-[252px] max-w-[445px]">
+                <div className="flex justify-center h-[150px] md:h-[160px] w-full">
                   <Image
-                    src={item.img}
+                    src={item?.image_url}
                     width={100}
                     unoptimized
                     height={100}
-                    className="object-fill w-full h-full"
+                    className="object-fill w-full h-full rounded-lg"
                   />
                 </div>
                 <div className="mt-7">
@@ -131,19 +96,23 @@ function Webinar() {
                       </svg>
                     </div>
                     <div>
-                      <p className=" text-[12px] md:text-[15px] text-[#9B9A9A]">{item.date}</p>
+                      <p className=" text-[12px] md:text-[15px] text-[#9B9A9A]">
+                        {formatDate(item?.start_date_time)}
+                      </p>
                     </div>
                   </div>
                   <div className="my-[20px]">
-                    <p className=" responsive-Text font-normal text-[#333333]">{item.title}</p>
+                    <p className=" responsive-Text font-normal text-[#333333]">
+                      {item?.title}
+                    </p>
                   </div>
-                  <div className=" " >
-                    <p className="  responsive-Text font-bold text-[#525971]">
-                      {item.desc}
+                  <div className=" ">
+                    <p className="responsive-Text font-bold text-[#525971] ">
+                      {item?.description}
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center justify-end gap-3 mt-9">
+                <div className="flex items-center justify-end gap-3 mt-6">
                   <div>
                     <p className=" responsive-Text font-normal text-[#C42C2D]">
                       Register
