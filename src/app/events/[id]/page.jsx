@@ -11,7 +11,7 @@ import { fetchData } from "@/utils/api";
 function page({ params }) {
   const router = useRouter();
 
-  console.log(params.id, "parmapas");
+  console.log(typeof params.id, "parmapas");
   const [handleVectorChange, setHandleVectorChange] = useState(false);
   const [register, setRegister] = useState(false);
   const [handleOpenanotherPopUp, setHandleOpenanotherPopUp] = useState(false);
@@ -39,21 +39,16 @@ function page({ params }) {
 
     fetchEvents();
   }, []);
-  const eventCheck = upcomingEvents && upcomingEvents.map((item) => item.id)[0];
-  console.log(eventCheck, "Mapped event IDs");
 
-  const foundEvent =
-    eventCheck && eventCheck.find((eventId) => eventId === params.id);
-  console.log(foundEvent, "Found event ID");
+  useEffect(() => {
+    if (upcomingEvents) {
+      const eventCheck = upcomingEvents.find(
+        (item) => String(item.id) === params.id
+      );
+      console.log(eventCheck, "check for event");
+    }
+  }, [upcomingEvents, params.id]);
 
-  // Ensure you handle the case where foundEvent might be undefined or null
-  if (foundEvent) {
-    // Handle when event ID is found
-    console.log(`Event ID ${params.id} found in upcoming events`);
-  } else {
-    // Handle when event ID is not found
-    console.log(`Event ID ${params.id} not found in upcoming events`);
-  }
   return (
     <div className="px-[25px] md:px-[85px] text-[#333333]">
       <div className=" md:my-10 flex  justify-start">
