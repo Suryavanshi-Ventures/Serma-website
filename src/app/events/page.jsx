@@ -7,10 +7,19 @@ import Container from "@/components/container/page";
 
 export default async function Events() {
   const upcoming_events = await fetchData(
-   `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/upcoming_events`
+    `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/upcoming_events`
   );
   const past_events = await fetchData(
-   `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/past_events`
+    `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/past_events`
+  );
+
+  console.log(
+    "Upcoming Events URL:",
+    `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/upcoming_events`
+  );
+  console.log(
+    "Past Events URL:",
+    `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/past_events`
   );
 
   return (
@@ -35,7 +44,7 @@ export default async function Events() {
             className="rounded-md"
           />
         </div>
-        </Container>
+      </Container>
       {/* </div> */}
       <div className="my-[40px] lg:pl-[10px] xl:pl-[62px] ">
         <EventUpcoming

@@ -123,11 +123,11 @@ const Membership = () => {
 
       console.log("error happend in SIGN IN FUNCTION ");
 
-      const ErrorObject = JSON.parse(Result?.error);
+      // const ErrorObject = JSON.parse(Result?.error);
 
       setAlertDetails({
         isOpen: true,
-        message: ErrorObject?.responseMessage ?? "Failed to login",
+        message: "Failed to login",
         duration: 3000,
         position: "top",
         type: "danger",
