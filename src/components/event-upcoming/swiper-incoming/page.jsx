@@ -7,6 +7,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import { useRouter } from "next/navigation";
+import NoInfoAvailable from "@/components/no-info/page";
 
 
 function SwiperSlideIncoming({ data, error }) {
@@ -64,7 +65,7 @@ function SwiperSlideIncoming({ data, error }) {
       >
         <div className="">
           {error ? (
-            <div>`error loading upcoming events: ${error}`</div>
+            <div>error loading upcoming events: ${error}</div>
           ) : data ? (
             data.length === 0 ? (
               <div className="mx-auto w-[80%] h-[300px]">
@@ -159,7 +160,9 @@ function SwiperSlideIncoming({ data, error }) {
               ))
             )
           ) : (
-            <div>Loading...</div>
+            <div>
+              <NoInfoAvailable/>
+            </div>
           )}
         </div>
       </Swiper>

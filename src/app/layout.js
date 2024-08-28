@@ -26,7 +26,6 @@ export const metadata = {
   description: "Sports and Entertainment Risk Management Alliance",
 };
 
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -35,16 +34,14 @@ export default function RootLayout({ children }) {
       >
         {/* <main className="flex min-h-screen flex-col items-center justify-between p-24"> */}
         <ProviderWrapper>
-        
-            <main className="">
-              <Header />
-              {/* <div className='px-[25px] md:px-[85px]'> */}
+          <main className="">
+            <Header />
+            {/* <div className='px-[25px] md:px-[85px]'> */}
 
-              {children}
-              {/* </div> */}
-              <Footer />
-            </main>
-       
+            {children}
+            {/* </div> */}
+            <Footer />
+          </main>
         </ProviderWrapper>
       </body>
     </html>

@@ -2,7 +2,8 @@
 "use client";
 import Button from "@/components/button/page";
 import LoadingButton from "@/components/loadingButton/page";
-import React, { useState } from "react";
+import { fetchData } from "next-auth/client/_utils";
+import React, { useEffect, useState } from "react";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -35,23 +36,25 @@ const RegistrationForm = () => {
   };
   const [upcomingEvents, setUpcomingEvents] = useState(null);
   const [pastEvents, setPastEvents] = useState(null);
-  console.log(upcomingEvents, "regist upcoming");
-  console.log(pastEvents, "regist past");
+  // console.log(upcomingEvents, "regist upcoming");
+  // console.log(pastEvents, "regist past");
+ 
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      const upcoming_events = await fetchData(
-        "http://34.235.48.203/api/v1/event/upcoming_events"
-      );
-      const past_events = await fetchData(
-        "http://34.235.48.203/api/v1/event/past_events"
-      );
-      setUpcomingEvents(upcoming_events);
-      setPastEvents(past_events);
-    };
+  // useEffect(() => {
+  //   const fetchEvents = async () => {
+  //     const upcoming_events = await fetchData(
+  //       `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/upcoming_events`
+  //     );
+  //     const past_events = await fetchData(
+  //       // "http://34.235.48.203/api/v1/event/past_events"
+  //       `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/past_events`
+  //     );
+  //     setUpcomingEvents(upcoming_events);
+  //     setPastEvents(past_events);
+  //   };
 
-    fetchEvents();
-  }, []);
+  //   fetchEvents();
+  // }, []);
 
   return (
     <>

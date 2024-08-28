@@ -65,12 +65,12 @@ function Sidebar() {
     }
   }, []);
 
-  // useEffect(() => {
-  //   if (token && token !== previousToken) {
-  //     onclickLogout();
-  //   }
-  //   setPreviousToken(token);
-  // }, [token]);
+  useEffect(() => {
+    if (token && token !== previousToken) {
+      onclickLogout();
+    }
+    setPreviousToken(token);
+  }, [token]);
 
   const onclickLogout = () => {
     signOut({ redirect: false });
@@ -112,7 +112,7 @@ function Sidebar() {
         {sidebarItems.map((item, index) => (
           <div
             key={index}
-            className={`flex px-[10px] py-[10px] items-center gap-5 cursor-pointer rounded-xl transition duration-200 
+            className={`flex px-[10px] py-[8px] font-bold    items-center gap-5 cursor-pointer rounded-xl transition duration-200 
               ${
                 pathname.includes(item.route)
                   ? "bg-[#F6E0E0CC] text-primary"
@@ -138,9 +138,12 @@ function Sidebar() {
                 height={30}
                 width={30}
                 alt="logo"
+                className="h-8"
               />
             </div>
-            <div className="text-[18px] px-0">{item.label}</div>
+            <div className="text-[18px] px-0 hover:text-primary">
+              {item.label}
+            </div>
           </div>
         ))}
       </div>
@@ -149,7 +152,7 @@ function Sidebar() {
         {sidebarItems.map((item, index) => (
           <div
             key={index}
-            className={`flex px-[10px] py-[10px] items-center gap-4 cursor-pointer rounded-xl transition duration-200 
+            className={`flex px-[10px] py-[10px]   items-center gap-4 cursor-pointer rounded-xl transition duration-200 
               hover:bg-[#F6E0E0CC] text-gray
               ${isMobile ? "flex-shrink-0" : ""} 
               ${

@@ -5,159 +5,200 @@ import Modal from "@/components/common-modal/modal";
 import LoadingButton from "@/components/loadingButton/page";
 import OtherEvent from "@/components/other-events/page";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import { fetchData } from "@/utils/api";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import useAxiosFetch from "@/hooks/axiosFetch";
+import { FormatDateOnly } from "@/components/date-format/date-only/pae";
+import { FormatTimeOnly } from "@/components/date-format/time-only/page";
+import { formatDate } from "@/components/date-format/page";
+import Skeleton from "@/components/skeleton/skeleton";
+import OopsSomeThingWrong from "@/components/oops-something-wrong/page";
+import Container from "@/components/container/page";
 function GetEvent({ params }) {
   const router = useRouter();
-
-  console.log(params.id, "parmapas");
+  const eventId = params.id;
+  const { data: session } = useSession();
+  const token = session?.user?.userToken;
+  const [email, setEmail] = useState("");
+  const [emailValid, setEmailValid] = useState(false);
   const [handleVectorChange, setHandleVectorChange] = useState(false);
   const [register, setRegister] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [ValidationError, setValidationError] = useState("");
   const [handleOpenanotherPopUp, setHandleOpenanotherPopUp] = useState(false);
-  const handleOpenForm = () => {
-    router.push("/events/dynamicRout/registration-form");
+  const API_URL_UPCOMING = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/findById/${eventId}`;
+  const {
+    data: ApiData,
+    loading,
+    error,
+  } = useAxiosFetch(
+    API_URL_UPCOMING,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
+    token
+  );
+
+  const upcomingEvents = ApiData?.result?.data;
+
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
-  const [upcomingEvents, setUpcomingEvents] = useState([]);
-  const [pastEvents, setPastEvents] = useState(null);
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  console.log(upcomingEvents, "regist upcoming");
-  console.log(pastEvents, "regist past");
+  const handleEmailChange = (event) => {
+    const { value } = event.target;
+    setEmail(value);
+    setEmailValid(validateEmail(value) && value.trim() !== "");
+  };
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      const upcoming_events = await fetchData(
-        "http://34.235.48.203/api/v1/event/upcoming_events"
-      );
-      const past_events = await fetchData(
-        "http://34.235.48.203/api/v1/event/past_events"
-      );
-      setUpcomingEvents(upcoming_events.result);
-      setPastEvents(past_events);
-    };
+  const handleContinueClick = () => {
+    if (emailValid) {
+      setHandleOpenanotherPopUp(true);
+    } else {
+      alert("Please enter a valid email address.");
+    }
+  };
 
-    fetchEvents();
-  }, []);
-  const eventCheck = upcomingEvents && upcomingEvents.map((item) => item.id)[0];
-  console.log(eventCheck, "Mapped event IDs");
+  const handleRadioChange = (event) => {
+    setSelectedOption(event.target.value);
+    setValidationError("");
+  };
 
-  console.log(eventCheck)
-  const foundEvent =
-    eventCheck && eventCheck.find((eventId) => eventId === params.id);
-  console.log(foundEvent, "Found event ID");
+  const handleNextClick = () => {
+    if (!selectedOption) {
+      setValidationError("Please select atleast an option.");
+    } else if (selectedOption === "Non-Member") {
+      handleOpenForm();
+    } else if (selectedOption === "Webinar") {
+      redirectToStripe();
+    }
+  };
 
-  // Ensure you handle the case where foundEvent might be undefined or null
-  if (foundEvent) {
-    // Handle when event ID is found
-    console.log(`Event ID ${params.id} found in upcoming events`);
-  } else {
-    // Handle when event ID is not found
-    console.log(`Event ID ${params.id} not found in upcoming events`);
-  }
+  const handleOpenForm = () => {
+    router.push("/events/dynamicRout/registration-form");
+    console.log("Opening form for non-member...");
+  };
+
+  const redirectToStripe = () => {
+    console.log("Redirecting to Stripe for webinar payment...");
+  };
+
   return (
-    <div className="px-[25px] md:px-[85px] text-[#333333]">
-      <div className=" md:my-10 flex  justify-start">
-        <div>
-          <h2 className="text-[#333333] text-xl  sm:text-2xl lg:text-3xl font-bold">
-            SERMASips Happy Hour
-          </h2>
-          <div className="my-3">
-            <BlueLine width={"150px"} />
-          </div>
-        </div>
-      </div>
+    <Container>
       <div className="md:hidden text-[14px] mb-5">
         View our Recent events and register for the Event
       </div>
-      <div className="flex   flex-col-reverse items-center   lg:flex-row  gap-20">
-        <div className=" md:w-[600px]">
-          <div className="heading-3">
-            SERMA® is back with SERMASips, happy hours across the country!
-          </div>
-          <div className="my-4 md:my-8 text-[18px] font-semibold">
-            Happy Hour Locations:
-          </div>
-          <div className="underline lg:pr-24">
-            Tampa - M. Bird - 1910 North Ola Ave Philadelphia - The Assembly
-            Rooftop - 1840 Benjamin Franklin Pkwy New York - BAR 54 - 135 W 45th
-            St Denver - Postino 9CO
-          </div>
-        </div>
-        <div className="max-md:w-full">
-          <div className="p-4 md:p-10  bg-white  md:w-[400px] text-[20px] shadow-[-5px_6px_40px_0px_#00000024]  rounded-lg ">
-            <div className="flex my-3 gap-12 justify-start text-gray font-medium">
-              <div>Date :</div>
-              <div>March 19,2024</div>
-            </div>
-            <hr className="text-gray" />
-            <div className="flex my-3 gap-12 justify-start text-gray font-medium">
-              <div>Time :</div>
-              <div>4:00 PM (MDT)</div>
-            </div>
-            <hr className="text-gray" />
-            <div className="flex mt-3 mb-6 gap-5 justify-start text-gray font-medium">
-              <div>Location :</div>
-              <div>Dallas ,Texas</div>
-            </div>
-            <div
-              onClick={() => setRegister(!register)}
-              onMouseEnter={() => setHandleVectorChange(true)}
-              onMouseLeave={() => setHandleVectorChange(false)}
-              className="flex  cursor-pointer transition duration-300 justify-center items-center gap-[10px] border border-primary hover:bg-primary   p-[7px] rounded-xl w-[150px]"
-            >
-              <div
-                className={`  ${
-                  handleVectorChange ? "text-white " : "text-primary"
-                }`}
-              >
-                Register
+      {loading ? (
+        <Skeleton key={10} item={10} style="h-[100px] w-full rounded-lg mb-3" />
+      ) : error ? (
+        <OopsSomeThingWrong />
+      ) : (
+        <div>
+          <div className="flex md:justify-between  max-md:flex-col   ">
+            <div className="">
+              <div>
+                <h2 className="text-[#333333] text-xl  sm:text-2xl lg:text-3xl font-bold">
+                  {upcomingEvents?.title}
+                </h2>
+                <div className="my-3">
+                  <BlueLine width={"150px"} />
+                </div>
               </div>
 
-              {handleVectorChange ? (
-                <svg
-                  width="18"
-                  height="8"
-                  viewBox="0 0 20 8"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+              <div className="  xl:w-[600px] max-md:my-6 ">
+                <div className=" md:my-8 text-[18px] font-semibold">
+                  Happy Hour Locations :
+                </div>
+                <div className="underline lg:pr-24 my-4">
+                  {upcomingEvents?.location}
+                </div>
+              </div>
+            </div>
+
+            <div className="max-md:w-full ">
+              <div className="p-4 md:p-10   bg-white  md:w-[400px] text-[20px] shadow-[-5px_6px_40px_0px_#00000024]  rounded-lg ">
+                <div className="flex my-3 gap-12  justify-start text-gray font-medium">
+                  <div className="max-sm:text-[16px]">Date :</div>
+
+                  <div className="max-sm:text-[16px]">
+                    {FormatDateOnly(upcomingEvents?.start_date_time)}
+                  </div>
+                </div>
+                <hr className="text-gray" />
+                <div className="flex my-3 gap-12 justify-start text-gray font-medium">
+                  <div className="max-sm:text-[16px]">Time :</div>
+                  <div className="max-sm:text-[16px]">
+                    {FormatTimeOnly(upcomingEvents?.start_date_time)}
+                  </div>
+                </div>
+                <hr className="text-gray" />
+                <div className="flex mt-3 mb-6 gap-5 justify-start text-gray font-medium">
+                  <div className="max-sm:text-[16px]">Location :</div>
+                  <div className="max-sm:text-[16px]">
+                    {upcomingEvents?.location}
+                  </div>
+                </div>
+                <div
+                  onClick={() => setRegister(!register)}
+                  onMouseEnter={() => setHandleVectorChange(true)}
+                  onMouseLeave={() => setHandleVectorChange(false)}
+                  className="flex  cursor-pointer transition duration-300 justify-center items-center gap-[10px] border border-primary hover:bg-primary   p-[7px] rounded-xl w-[150px]"
                 >
-                  <path
-                    d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
-                    fill="white"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  width="18"
-                  height="8"
-                  viewBox="0 0 20 8"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  //   class=""
-                >
-                  <path
-                    d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
-                    fill="#C42C2D"
-                  />
-                </svg>
-              )}
+                  <div
+                    className={`  ${
+                      handleVectorChange ? "text-white " : "text-primary"
+                    }`}
+                  >
+                    Register
+                  </div>
+
+                  {handleVectorChange ? (
+                    <svg
+                      width="18"
+                      height="8"
+                      viewBox="0 0 20 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
+                        fill="white"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      width="18"
+                      height="8"
+                      viewBox="0 0 20 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
+                        fill="#C42C2D"
+                      />
+                    </svg>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
+          <div className="my-4 md:my-8 ">
+            <Image
+              src={upcomingEvents?.image_url ?? "/events/bg-image.png"}
+              height={800}
+              width={1350}
+              alt="image"
+              className="rounded-xl"
+            />
+          </div>
+          <div className="">
+            <OtherEvent />
+          </div>
         </div>
-      </div>
-      <div className="my-4 md:my-8 ">
-        <Image
-          src="/events/bg-image.png"
-          height={800}
-          width={1350}
-          alt="image"
-          className="rounded-xl"
-        />
-      </div>
-      <div className="">
-        <OtherEvent />
-      </div>
+      )}
+
       <Modal
         wantTocloseFromScreen={true}
         wantCrossButton={true}
@@ -165,14 +206,15 @@ function GetEvent({ params }) {
         // isOpen={true}
         onClose={() => setRegister(false)}
         className="custom-modal"
-        width={"max-w-[500px]"}
+        width={"max-w-[530px]"}
       >
         <div className="px-[10px]">
           <div className="text-xl text-center font-semibold">
-            SERMASips Happy Hour
+            {upcomingEvents?.title}
           </div>
           <div className="text-[14px] md:text-sm text-gray my-4 px-3">
-            SERMASips Happy Hour April 10, 2024 4:00 PM - 6:00 PM
+            SERMASips Happy Hour : {formatDate(upcomingEvents?.start_date_time)}{" "}
+            - {FormatTimeOnly(upcomingEvents?.end_date_time)}
           </div>
           <div className="flex gap-5 text-gray px-3">
             <div className="flex items-center gap-4">
@@ -196,21 +238,22 @@ function GetEvent({ params }) {
               </div>
               <div>Location :</div>
             </div>
-            <div>Virtual</div>
+            <div>{upcomingEvents?.location}</div>
           </div>
           <input
             type="email"
             placeholder="Enter Your Email"
             className="border border-gray outline-none mt-4 rounded-lg p-2 w-full"
+            value={email}
+            onChange={handleEmailChange}
           />
-          <span
-            onClick={() => setHandleOpenanotherPopUp(!handleOpenanotherPopUp)}
-          >
+          <span onClick={handleContinueClick}>
             <Button
               content={"Continue"}
               px={"px-5"}
               py={"py-2"}
               width={"full"}
+              // disabled={!emailValid} // Disable button if email is not valid
             />
           </span>
         </div>
@@ -259,13 +302,34 @@ function GetEvent({ params }) {
           <div className=" flex gap-5 px-3 my-5">
             <div className="text-xl font-semibold">Registration</div>
             <div>
-              <div className="flex gap-3">
-                <input type="radio" name="" className="accent-primary" />
-                <label>Non-Member – $15.00</label>
-              </div>
-              <div className="flex gap-3 my-3 ">
-                <input type="radio" name="" className="accent-primary" />
-                <label>Webinar: Ski Area Risk Management</label>
+              <div>
+                <div>
+                  <div className="flex gap-3">
+                    <input
+                      type="radio"
+                      name="membership"
+                      value="Non-Member"
+                      className="accent-primary"
+                      checked={selectedOption === "Non-Member"}
+                      onChange={handleRadioChange}
+                    />
+                    <label>Non-Member – $15.00</label>
+                  </div>
+                  <div className="flex gap-3 my-3">
+                    <input
+                      type="radio"
+                      name="membership"
+                      value="Webinar"
+                      className="accent-primary"
+                      checked={selectedOption === "Webinar"}
+                      onChange={handleRadioChange}
+                    />
+                    <label>Webinar: Ski Area Risk Management</label>
+                  </div>
+                </div>
+                {ValidationError && (
+                  <p className="text-red-500">{ValidationError}</p>
+                )}
               </div>
             </div>
           </div>
@@ -281,13 +345,13 @@ function GetEvent({ params }) {
                 loading={false}
               />
             </span>
-            <span onClick={handleOpenForm}>
+            <span onClick={handleNextClick}>
               <Button content={"Next"} px={"px-6"} py={"py-2"} width={"full"} />
             </span>
           </div>
         </div>
       </Modal>
-    </div>
+    </Container>
   );
 }
 

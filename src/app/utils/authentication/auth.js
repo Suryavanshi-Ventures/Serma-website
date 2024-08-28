@@ -45,10 +45,10 @@ export const authOptions = {
             return Promise.resolve(ReturnedUserObj);
           }
         } catch (error) {
-          console.log(error.response.status, "fail");
+          
           const ErrorObject = {
-            responseMessage: error.response.data.message,
-            responseStatus: error.response.status,
+            responseMessage: error?.response?.data?.message,
+            responseStatus: error?.response?.status,
           };
           throw new Error(JSON.stringify(ErrorObject));
         }

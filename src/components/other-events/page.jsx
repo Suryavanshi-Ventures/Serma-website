@@ -1,9 +1,29 @@
 import React from "react";
 import BlueLine from "../blue-line/page";
 import { EVENT_CARD_DETAILS } from "@/app/utils/constant/constant";
-import Image from "next/image";
 import SwiperSlideIncoming from "../event-upcoming/swiper-incoming/page";
+import useAxiosFetch from "@/hooks/axiosFetch";
+import { useSession } from "next-auth/react";
+import Skeleton from "../skeleton/skeleton";
 function OtherEvent() {
+  //
+  const { data: session } = useSession();
+  const token = session?.user?.userToken;
+  const API_URL_UPCOMING = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/upcoming_events`;
+  const {
+    data: upcoming_events,
+    loading,
+    error,
+  } = useAxiosFetch(
+    API_URL_UPCOMING,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
+    token
+  );
+  const upcoming_data = upcoming_events?.result;
+  
+
   return (
     <div>
       <div className="flex flex-col lg:flex-row  my-5 ">
@@ -23,7 +43,15 @@ function OtherEvent() {
         {/* ------------------------ */}
 
         <div className="w-full lg:w-[80%]">
-          <SwiperSlideIncoming />
+          {loading ? (
+            <Skeleton
+              key={10}
+              item={5}
+              style="h-[50px] w-full rounded-lg mb-3"
+            />
+          ) : (
+            <SwiperSlideIncoming data={upcoming_data} error={error} />
+          )}
         </div>
       </div>
     </div>

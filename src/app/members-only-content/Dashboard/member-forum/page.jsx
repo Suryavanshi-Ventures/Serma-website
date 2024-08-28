@@ -1,13 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { POSTS } from "@/app/utils/constant/constant";
-import axios from "axios";
 import { formatDate } from "@/components/date-format/page";
 import Skeleton from "@/components/skeleton/skeleton";
 import useAxiosFetch from "@/hooks/axiosFetch";
+import OopsSomeThingWrong from "@/components/oops-something-wrong/page";
 const MemberForum = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
@@ -57,7 +56,7 @@ const MemberForum = () => {
   // }, [token]);
 
   if (error) {
-    return <p>Error: {error.message}</p>;
+    return <p></p>;
   }
 
   return (
@@ -66,9 +65,10 @@ const MemberForum = () => {
         <h1 className="text-[16px] font-[600] mb-4">Topic</h1>
         <h2 className="text-[16px] font-[600] mb-4">Replies</h2>
       </div>
-
-      {loading ? (
-        <Skeleton key={10} item={10} style="h-[100px] w-full rounded-lg mb-3" />
+  
+   
+      {error ? <OopsSomeThingWrong/> :  loading ? (
+        <Skeleton key={10} item={10} style={` h-[100px] w-full rounded-lg mb-3`} />
       ) : (
         <>
           {posts?.result.map((post, index) => (
@@ -82,7 +82,7 @@ const MemberForum = () => {
               <div className="flex items-start space-x-4 ">
                 <div
                   onClick={() => handleSeePost(post.id)}
-                  className="w-10 h-10 relative cursor-pointer"
+                  className="w-10 h-10  relative cursor-pointer"
                 >
                   {post?.attachments ? (
                     post?.attachments.map((data) => (

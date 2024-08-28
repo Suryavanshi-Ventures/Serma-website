@@ -38,11 +38,11 @@ const Footer = () => {
         <div className="md:border-r max-md:border-b   border-[#3333331c] py-3 md:p-5 text-center  max-sm:text-left ">
           <div className=" flex sm:justify-center">
             <div>
-              <div className="font-[700] text-[20px] text-[#333333]">
+              <div className="font-[700]  text-left text-[20px] text-[#333333]">
                 Links
               </div>
-              <div className="sm:mt-[60px]  responsive-Text-footer text-[#333333]">
-                <div className="my-3 hover:text-primary  transition duration-200 ">
+              <div className="sm:mt-[60px] responsive-Text-footer text-[#333333] text-left">
+                <div className="my-3   hover:text-primary  transition duration-200 ">
                   {" "}
                   <Link href="/about-us">About</Link>
                 </div>
@@ -207,7 +207,9 @@ const Footer = () => {
         <div className="cursor-pointer max-md:w-1/2 ">
           Copyright 2024 © Suryavanshi Ventures-  All rights reserved.
         </div>
-        <div className="cursor-pointer max-md:w-1/2">Terms & Conditions Privacy Policy</div>
+        <div className="cursor-pointer max-md:w-full ">
+          Terms & Conditions Privacy Policy
+        </div>
       </div>
     </div>
   );

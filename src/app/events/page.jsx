@@ -2,7 +2,7 @@ import EventPast from "@/components/event-upcoming/event-past/page";
 import EventUpcoming from "@/components/event-upcoming/page";
 import Image from "next/image";
 import React from "react";
-import { fetchData } from "@/utils/api";
+import { fetchData } from "../utils/api-fetcher/api";
 import Container from "@/components/container/page";
 
 export default async function Events() {
@@ -39,8 +39,8 @@ export default async function Events() {
       {/* </div> */}
       <div className="my-[40px] lg:pl-[10px] xl:pl-[62px] ">
         <EventUpcoming
-          data={upcoming_events.result}
-          error={upcoming_events.error}
+          data={upcoming_events?.result}
+          error={upcoming_events?.error}
         />
       </div>
       <div className="my-[40px] lg:pl-[35px] xl:pl-[85px]">

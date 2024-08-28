@@ -22,7 +22,16 @@ function OurMission() {
         </p>
       </div>
       <div className="mt-8">
-        <Image src="/our-mission/mission.webp" height={500} width={1800} alt="image" className="rounded-md"/>
+        <Image
+          src="/our-mission/missionn.webp"
+          height={500}
+          width={1800}
+          alt="Our Mission"
+          className="rounded-md"
+          layout="responsive"
+          priority={true} // Only if it's critical for above-the-fold content
+          quality={75} // Adjust this as needed, default is 75
+        />
       </div>
     </div>
   );
