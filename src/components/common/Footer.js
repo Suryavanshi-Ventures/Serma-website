@@ -9,7 +9,7 @@ const Footer = () => {
   const [insta, setInsta] = useState(false);
   return (
     <div className="bg-[#F3F3F3]">
-      <div className="grid grid-cols-1 max-md:px-[20px] md:grid-cols-2  lg:grid-cols-4 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
+      <div className="grid grid-cols-1 max-md:px-[20px] md:grid-cols-4  lg:grid-cols-4 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
         <div className="md:border-r max-md:border-b  border-[#3333331c] py-3 md:p-5  flex sm:justify-center">
           <div className="">
             <div className="flex justify-start sm:justify-center">
@@ -203,9 +203,12 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="px-[20px] flex max-md:text-[12px] my-4 max-md:px-[20px] gap-2  justify-center md:justify-end md:pr-24 py-4 md:gap-10 font-semibold text-[#333333]">
+      <div className="px-[20px] flex max-md:text-[12px]  max-md:px-[20px] gap-2  justify-between lg:justify-end md:pr-24 py-4 md:gap-10 font-semibold text-[#333333]">
         <div className="cursor-pointer max-md:w-1/2 ">
-          Copyright 2024 © Suryavanshi Ventures-  All rights reserved.
+          Copyright 2024 © Suryavanshi Ventures- All rights reserved.
+        </div>
+        <div className="cursor-pointer max-md:w-1/2">
+          Terms & Conditions Privacy Policy
         </div>
         <div className="cursor-pointer max-md:w-full ">
           Terms & Conditions Privacy Policy

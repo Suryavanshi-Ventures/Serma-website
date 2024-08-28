@@ -30,7 +30,7 @@ const ContactRow = ({ data, onClick }) => (
           className="rounded-full w-[40px] h-[40px]"
         />
       </div>
-      <div>
+      <div onClick={() => onClick(data?.id)} className="cursor-pointer underline">
         {data?.first_name ?? "N/A"} {data?.last_name ?? "N/A"}
       </div>
       <div>{data?.organization ?? "N/A"}</div>

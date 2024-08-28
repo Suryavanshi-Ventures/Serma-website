@@ -4,10 +4,12 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import useAxiosFetch from "@/hooks/axiosFetch";
+import { useRouter } from "next/navigation";
 
 function MemberProfile() {
   const { id } = useParams();
   const { data: session } = useSession();
+  const router = useRouter();
   const token = session?.user?.userToken;
   const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/contact/findById/${id}`;
   const {
@@ -22,12 +24,17 @@ function MemberProfile() {
     id
   );
   const userDetailsData = userDetail?.result?.data;
-
+  const handleGoBack = () => {
+    router.push("/members-only-content/Dashboard/private-member");
+  };
   return (
     <div className="w-full">
       <>
         <div className="hidden md:flex  items-center gap-3">
-          <div className="text-gray font-semibold hover:text-primary transition duration-300 cursor-pointer">
+          <div
+            onClick={handleGoBack}
+            className="text-gray font-semibold hover:text-primary transition duration-300 cursor-pointer"
+          >
             Members-only Directory
           </div>
           <svg
@@ -141,7 +148,7 @@ function MemberProfile() {
             />
           </div>
           <hr className="text-[#9B9A9A33]" />
-          <div className="flex flex-col 2xl:space-x-[185px] xl:space-x-[150px]   md:flex-row  md:px-[20px]  ">
+          <div className="flex flex-col 2xl:space-x-[185px] xl:space-x-[150px]  md:flex-row  md:px-[25px]  ">
             <div className="font-semibold text-gray my-2">Professional Bio</div>
             <textarea
               type="text"

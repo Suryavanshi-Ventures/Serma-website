@@ -65,12 +65,12 @@ function Sidebar() {
     }
   }, []);
 
-  useEffect(() => {
-    if (token && token !== previousToken) {
-      onclickLogout();
-    }
-    setPreviousToken(token);
-  }, [token]);
+  // useEffect(() => {
+  //   if (token && token !== previousToken) {
+  //     onclickLogout();
+  //   }
+  //   setPreviousToken(token);
+  // }, [token]);
 
   const onclickLogout = () => {
     signOut({ redirect: false });

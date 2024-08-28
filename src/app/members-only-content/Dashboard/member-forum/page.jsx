@@ -55,9 +55,7 @@ const MemberForum = () => {
   //   fetchData();
   // }, [token]);
 
-  if (error) {
-    return <p></p>;
-  }
+
 
   return (
     <div className=" w-full rounded-lg   border border-[#D9D9D980]  overflow-hidden">
