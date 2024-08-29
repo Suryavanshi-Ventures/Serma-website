@@ -191,15 +191,15 @@ function AdvisoryBoard() {
               {member.name}
             </div>
             <div className="text-base flex text-[14px] items-center text-gray mt-2 md:h-[40px] ">{member.position}</div>
-            <div className="w-full  items-center mt-6">
+            <div className="w-full  items-center mt-2">
               <div className="flex lg:flex-row lg:justify-between  items-center  gap-4">
                 <div className="flex-1 lg:text-[14px] xl:text-[16px] text-light-black">
                   {member.department}
                 </div>
-                <div className="flex  gap-3">
+                {/* <div className="flex  gap-3">
                   <Image src={LinkedInIcon} width={36} height={36} />
                   <Image src={ResumeIcon} width={36} height={36} />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

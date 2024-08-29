@@ -24,9 +24,10 @@ export default async function Events() {
             height={444}
             alt="Event Image"
             className=""
+            priority={true}
           />
         </div>
-        <div className=" md:hidden">
+        <div className="md:hidden">
           <Image
             src="/upcoming-event/responsive-img.png"
             width={2000}
@@ -37,7 +38,7 @@ export default async function Events() {
         </div>
       </Container>
       {/* </div> */}
-      <div className="my-[40px] lg:pl-[10px] xl:pl-[62px] ">
+      <div className="my-[40px] lg:pl-[10px] xl:pl-[62px]">
         <EventUpcoming
           data={upcoming_events?.result}
           error={upcoming_events?.error}

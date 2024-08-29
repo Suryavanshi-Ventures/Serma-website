@@ -191,6 +191,7 @@ function GetEvent({ params }) {
               width={1350}
               alt="image"
               className="rounded-xl"
+              priority={true}
             />
           </div>
           <div className="">

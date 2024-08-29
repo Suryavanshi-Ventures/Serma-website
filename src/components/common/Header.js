@@ -60,7 +60,7 @@ const Header = () => {
         </div>
 
         <ul
-          className={`hidden lg:flex max-[1100px]:text-[16px] text-[17px] gap-6  md:gap-8 xl:gap-12 animate-flip-down   text-[#333333]`}
+          className={`hidden lg2:flex max-[1100px]:text-[16px] text-[17px] gap-6  md:gap-8 xl:gap-12 animate-flip-down   text-[#333333]`}
         >
           <li
             className={`font-semibold ${
@@ -172,7 +172,7 @@ const Header = () => {
               onMouseEnter={() => setHandleVectorChange(true)}
               onMouseLeave={() => setHandleVectorChange(false)}
               onClick={handleNavigateToMembership}
-              className="lg:flex group hidden transition duration-500 hover:bg-primary hover:text-white  font-semibold  justify-center items-center gap-3 text-lg  tracking-wider text-primary  py-[6px] px-6 border border-[#C8C8C8]  hover:border-none  rounded-full"
+              className="lg2:flex group hidden transition duration-500 hover:bg-primary hover:text-white  font-semibold  justify-center items-center gap-3 text-lg  tracking-wider text-primary  py-[6px] px-6 border border-[#C8C8C8]  hover:border-none  rounded-full"
             >
               Join{" "}
               <span className="group-hover:translate-x-1 duration-200">
@@ -212,7 +212,7 @@ const Header = () => {
         {/* ----------------------hamburger menu------------------------ */}
         <div
           onClick={handleOpenMenu}
-          className="lg:hidden animate-fade-left cursor-pointer "
+          className="lg2:hidden animate-fade-left cursor-pointer "
         >
           {showMenuItems ? (
             <svg
@@ -250,7 +250,7 @@ const Header = () => {
         {/* --------------------------------------showMenuItems--------------------------------- */}
       </div>
       {/* ----------------------------Menu's for mobile view----------------------- */}
-      <div className="w-full px-[20px] bg-white  absolute visible lg:hidden animate-fade-left z-50">
+      <div className="w-full px-[20px] bg-white  absolute visible lg2:hidden animate-fade-left z-50">
         {showMenuItems && (
           <ul className="space-y-3  p-3 animate-fade-right transition duration-300">
             <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:text-primary">
