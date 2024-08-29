@@ -29,7 +29,7 @@ export default async function Events() {
         </div>
         <div className="md:hidden">
           <Image
-            src="/upcoming-event/responsive-img.png"
+            src="/upcoming-event/responsive-img2.png"
             width={2000}
             height={444}
             alt="Event Image"
@@ -38,13 +38,13 @@ export default async function Events() {
         </div>
       </Container>
       {/* </div> */}
-      <div className="my-[40px] lg:pl-[10px] xl:pl-[62px]">
+      <div className="my-[40px] lg:pl-[10px] xl:pl-[62px]  ">
         <EventUpcoming
           data={upcoming_events?.result}
           error={upcoming_events?.error}
         />
       </div>
-      <div className="my-[40px] lg:pl-[35px] xl:pl-[85px]">
+      <div className="my-[40px] lg:pl-[10px] xl:pl-[62px]">
         <EventPast data={past_events.result} error={past_events.error} />
       </div>
     </div>

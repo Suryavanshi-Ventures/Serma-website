@@ -81,7 +81,7 @@ function SwiperSlideIncoming({ data, error }) {
             ) : (
               data.map((event, index) => (
                 <SwiperSlide key={index}>
-                  <div className="rounded-2xl  flex max-md:justify-center max-md:items-center max-sm:p-0 md:p-3">
+                  <div className="rounded-2xl  flex max-md:justify-center max-md:items-center max-md:p-2 md:p-3">
                     <div className="px-2 py-3 rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
                       <div className="lg:w-[230px] xl:w-[297px] lg:h-[130px] xl:h-[168px]">
                         <Image

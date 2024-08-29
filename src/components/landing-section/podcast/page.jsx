@@ -20,7 +20,7 @@ function Podcast() {
         </div>
 
         <div className="font-semibold md:text-[20px] hover:underline text-[#333333]">
-          <Link href="https://www.youtube.com/@serma8148">
+          <Link href="https://www.youtube.com/@serma8148" target="_blank"> 
             Subscribe on YouTube
           </Link>
         </div>

@@ -9,8 +9,8 @@ const Footer = () => {
   const [insta, setInsta] = useState(false);
   return (
     <div className="bg-[#F3F3F3]">
-      <div className="grid grid-cols-1 max-md:px-[20px] md:grid-cols-4  lg:grid-cols-4 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
-        <div className="md:border-r max-md:border-b  border-[#3333331c] py-3 md:p-5  flex sm:justify-center">
+      <div className="grid grid-cols-1  max-md:px-[20px] md:grid-cols-4  lg:grid-cols-4 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
+        <div className="md:border-r  max-md:border-b  border-[#3333331c] py-3 md:p-5  flex sm:justify-center">
           <div className="">
             <div className="flex justify-start sm:justify-center">
               <Image src="/logo.svg" height={60} width={135} alt="logo" />
@@ -41,7 +41,7 @@ const Footer = () => {
               <div className="font-[700]  text-left text-[20px] text-[#333333]">
                 Links
               </div>
-              <div className="sm:mt-[60px] responsive-Text-footer text-[#333333] text-left">
+              <div className="sm:mt-[60px] space-y-5 responsive-Text-footer text-[#333333] text-left">
                 <div className="my-3   hover:text-primary  transition duration-200 ">
                   {" "}
                   <Link href="/about-us">About</Link>
@@ -76,44 +76,46 @@ const Footer = () => {
               onMouseLeave={() => setHandleVectorChange(false)}
               className="cursor-pointer"
             >
-              <svg
-                width="46"
-                height="46"
-                viewBox="0 0 46 46"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="hover:bg-[#0073AF] rounded-full transition duration-300  "
-              >
-                <path
-                  opacity="0.1"
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M22.6732 44.3479C34.643 44.3479 44.3464 34.6445 44.3464 22.6747C44.3464 10.7049 34.643 1.00146 22.6732 1.00146C10.7034 1.00146 1 10.7049 1 22.6747C1 34.6445 10.7034 44.3479 22.6732 44.3479Z"
-                  stroke="#282828"
-                  strokeWidth="1.8577"
-                />
-                <path
-                  d="M17.6987 18.2992C18.7134 18.2992 19.536 17.4766 19.536 16.4618C19.536 15.4471 18.7134 14.6245 17.6987 14.6245C16.6839 14.6245 15.8613 15.4471 15.8613 16.4618C15.8613 17.4766 16.6839 18.2992 17.6987 18.2992Z"
-                  fill="#333333"
-                  className={`${
-                    handleVectorChange ? "text-white" : ""
-                  }  fill-current`}
-                />
-                <path
-                  d="M19.2298 19.5266H16.1675C15.9985 19.5266 15.8613 19.6638 15.8613 19.8328V29.0195C15.8613 29.1885 15.9985 29.3257 16.1675 29.3257H19.2298C19.3988 29.3257 19.536 29.1885 19.536 29.0195V19.8328C19.536 19.6638 19.3988 19.5266 19.2298 19.5266Z"
-                  fill="#333333"
-                  className={`${
-                    handleVectorChange ? "text-white" : ""
-                  }  fill-current`}
-                />
-                <path
-                  d="M28.3552 19.0177C27.0464 18.5693 25.4093 18.9631 24.4276 19.6693C24.3939 19.5376 24.2738 19.4396 24.1311 19.4396H21.0689C20.8999 19.4396 20.7627 19.5768 20.7627 19.7458V28.9325C20.7627 29.1015 20.8999 29.2387 21.0689 29.2387H24.1311C24.3002 29.2387 24.4374 29.1015 24.4374 28.9325V22.3304C24.9322 21.9041 25.5698 21.7681 26.0916 21.9898C26.5974 22.2036 26.8871 22.7254 26.8871 23.4205V28.9325C26.8871 29.1015 27.0243 29.2387 27.1934 29.2387H30.2556C30.4246 29.2387 30.5618 29.1015 30.5618 28.9325V22.8038C30.5269 20.2872 29.343 19.3557 28.3552 19.0177Z"
-                  fill="#333333"
-                  className={`${
-                    handleVectorChange ? "text-white" : ""
-                  }  fill-current`}
-                />
-              </svg>
+              <Link href="https://www.linkedin.com/company/the-serma/">
+                <svg
+                  width="46"
+                  height="46"
+                  viewBox="0 0 46 46"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="hover:bg-[#0073AF] rounded-full transition duration-300  "
+                >
+                  <path
+                    opacity="0.1"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M22.6732 44.3479C34.643 44.3479 44.3464 34.6445 44.3464 22.6747C44.3464 10.7049 34.643 1.00146 22.6732 1.00146C10.7034 1.00146 1 10.7049 1 22.6747C1 34.6445 10.7034 44.3479 22.6732 44.3479Z"
+                    stroke="#282828"
+                    strokeWidth="1.8577"
+                  />
+                  <path
+                    d="M17.6987 18.2992C18.7134 18.2992 19.536 17.4766 19.536 16.4618C19.536 15.4471 18.7134 14.6245 17.6987 14.6245C16.6839 14.6245 15.8613 15.4471 15.8613 16.4618C15.8613 17.4766 16.6839 18.2992 17.6987 18.2992Z"
+                    fill="#333333"
+                    className={`${
+                      handleVectorChange ? "text-white" : ""
+                    }  fill-current`}
+                  />
+                  <path
+                    d="M19.2298 19.5266H16.1675C15.9985 19.5266 15.8613 19.6638 15.8613 19.8328V29.0195C15.8613 29.1885 15.9985 29.3257 16.1675 29.3257H19.2298C19.3988 29.3257 19.536 29.1885 19.536 29.0195V19.8328C19.536 19.6638 19.3988 19.5266 19.2298 19.5266Z"
+                    fill="#333333"
+                    className={`${
+                      handleVectorChange ? "text-white" : ""
+                    }  fill-current`}
+                  />
+                  <path
+                    d="M28.3552 19.0177C27.0464 18.5693 25.4093 18.9631 24.4276 19.6693C24.3939 19.5376 24.2738 19.4396 24.1311 19.4396H21.0689C20.8999 19.4396 20.7627 19.5768 20.7627 19.7458V28.9325C20.7627 29.1015 20.8999 29.2387 21.0689 29.2387H24.1311C24.3002 29.2387 24.4374 29.1015 24.4374 28.9325V22.3304C24.9322 21.9041 25.5698 21.7681 26.0916 21.9898C26.5974 22.2036 26.8871 22.7254 26.8871 23.4205V28.9325C26.8871 29.1015 27.0243 29.2387 27.1934 29.2387H30.2556C30.4246 29.2387 30.5618 29.1015 30.5618 28.9325V22.8038C30.5269 20.2872 29.343 19.3557 28.3552 19.0177Z"
+                    fill="#333333"
+                    className={`${
+                      handleVectorChange ? "text-white" : ""
+                    }  fill-current`}
+                  />
+                </svg>
+              </Link>
             </div>
             {/* -------------------------------facebook------------------------------- */}
             <div
@@ -122,27 +124,29 @@ const Footer = () => {
               className="cursor-pointer "
             >
               {" "}
-              <svg
-                width="46"
-                height="46"
-                viewBox="0 0 46 46"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className={`hover:bg-[#1877F2] text-white rounded-full transition duration-300 `}
-              >
-                <path
-                  opacity="0.1"
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M22.597 44.3479C34.5668 44.3479 44.2703 34.6445 44.2703 22.6747C44.2703 10.7049 34.5668 1.00146 22.597 1.00146C10.6273 1.00146 0.923828 10.7049 0.923828 22.6747C0.923828 34.6445 10.6273 44.3479 22.597 44.3479Z"
-                  stroke="#282828"
-                  strokeWidth="1.8577"
-                />
-                <path
-                  d="M24.5705 17.1272H26.5624C26.7456 17.1272 26.8944 16.987 26.8944 16.8144V14.9373C26.8944 14.7647 26.7456 14.6245 26.5624 14.6245H24.5705C22.5573 14.6245 20.9186 16.168 20.9186 18.0657V20.2555H18.5947C18.4114 20.2555 18.2627 20.3957 18.2627 20.5684V22.4454C18.2627 22.6181 18.4114 22.7582 18.5947 22.7582H20.9186V29.3277C20.9186 29.5004 21.0673 29.6406 21.2506 29.6406H23.2425C23.4258 29.6406 23.5745 29.5004 23.5745 29.3277V22.7582H25.8984C26.0412 22.7582 26.168 22.6719 26.2138 22.5442L26.8778 20.6672C26.9116 20.5721 26.8944 20.467 26.832 20.3851C26.7689 20.3037 26.6693 20.2555 26.5624 20.2555H23.5745V18.0657C23.5745 17.5483 24.0214 17.1272 24.5705 17.1272Z"
-                  fill={`${facebook ? "white" : "black"}`}
-                />
-              </svg>
+              <Link href="https://www.facebook.com/theserma">
+                <svg
+                  width="46"
+                  height="46"
+                  viewBox="0 0 46 46"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={`hover:bg-[#1877F2] text-white rounded-full transition duration-300 `}
+                >
+                  <path
+                    opacity="0.1"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M22.597 44.3479C34.5668 44.3479 44.2703 34.6445 44.2703 22.6747C44.2703 10.7049 34.5668 1.00146 22.597 1.00146C10.6273 1.00146 0.923828 10.7049 0.923828 22.6747C0.923828 34.6445 10.6273 44.3479 22.597 44.3479Z"
+                    stroke="#282828"
+                    strokeWidth="1.8577"
+                  />
+                  <path
+                    d="M24.5705 17.1272H26.5624C26.7456 17.1272 26.8944 16.987 26.8944 16.8144V14.9373C26.8944 14.7647 26.7456 14.6245 26.5624 14.6245H24.5705C22.5573 14.6245 20.9186 16.168 20.9186 18.0657V20.2555H18.5947C18.4114 20.2555 18.2627 20.3957 18.2627 20.5684V22.4454C18.2627 22.6181 18.4114 22.7582 18.5947 22.7582H20.9186V29.3277C20.9186 29.5004 21.0673 29.6406 21.2506 29.6406H23.2425C23.4258 29.6406 23.5745 29.5004 23.5745 29.3277V22.7582H25.8984C26.0412 22.7582 26.168 22.6719 26.2138 22.5442L26.8778 20.6672C26.9116 20.5721 26.8944 20.467 26.832 20.3851C26.7689 20.3037 26.6693 20.2555 26.5624 20.2555H23.5745V18.0657C23.5745 17.5483 24.0214 17.1272 24.5705 17.1272Z"
+                    fill={`${facebook ? "white" : "black"}`}
+                  />
+                </svg>
+              </Link>
             </div>
             {/* -----------------------------------twitter----------------------------- */}
             <div
@@ -192,25 +196,26 @@ const Footer = () => {
               className="cursor-pointer "
             >
               {" "}
-              <Image
-                src={`${insta ? "/footer/InstaNew.svg" : "/footer/Insta.svg"}`}
-                height={48}
-                width={48}
-                alt="logo"
-                className="transition duration-300"
-              />
+              <Link href="https://www.instagram.com/the.serma?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                <Image
+                  src={`${
+                    insta ? "/footer/InstaNew.svg" : "/footer/Insta.svg"
+                  }`}
+                  height={48}
+                  width={48}
+                  alt="logo"
+                  className="transition duration-300"
+                />
+              </Link>
             </div>
           </div>
         </div>
       </div>
-      <div className="px-[20px] flex max-md:text-[12px]  max-md:px-[20px] gap-2  justify-between lg:justify-end md:pr-24 py-4 md:gap-10 font-semibold text-[#333333]">
+      <div className="px-[20px] py-8 flex max-md:text-[12px]  max-md:px-[20px] gap-2  justify-between lg:justify-end md:pr-24  md:gap-16 font-semibold text-[#333333]">
         <div className="cursor-pointer max-md:w-1/2 ">
           Copyright 2024 © Suryavanshi Ventures- All rights reserved.
         </div>
         <div className="cursor-pointer max-md:w-1/2">
-          Terms & Conditions Privacy Policy
-        </div>
-        <div className="cursor-pointer max-md:w-full ">
           Terms & Conditions Privacy Policy
         </div>
       </div>

@@ -8,18 +8,14 @@ import SwiperSlidePast from "./swiper-past/page";
 
 function EventPast({ data, error }) {
   const [selectedMonth, setSelectedMonth] = useState(0);
-  console.log(selectedMonth, "this is select month");
-
   const handleSelectMonth = (i) => {
     setSelectedMonth(i);
   };
-
   const handlePrevMonth = () => {
     if (selectedMonth > 0) {
       setSelectedMonth(selectedMonth - 1);
     }
   };
-
   const handleNextMonth = () => {
     if (selectedMonth < MONTHS.length - 1) {
       setSelectedMonth(selectedMonth + 1);
@@ -29,10 +25,10 @@ function EventPast({ data, error }) {
   return (
     <div>
       <div>
-        <div className="flex flex-col lg:flex-row  max-md:px-5">
+        <div className="flex flex-col lg:flex-row  max-md:px-5 px-[25px]">
           {/* -------------------------------- */}
           <div className="lg:w-1/5  w-full">
-            <div className="heading-2 font-bold  text-left">Past Events</div>
+            <div className="heading-2 font-bold text-left">Past Events</div>
             <div className="my-2 ">
               <BlueLine width={"70px"} />
             </div>
@@ -53,7 +49,7 @@ function EventPast({ data, error }) {
                 className="w-full outline-none"
               />
             </div>
-            <div className="my-5 text-gray max-md:flex max-md:overflow-scroll">
+            <div className="my-5 text-gray  max-md:flex max-md:overflow-scroll">
               {MONTHS.map((month, i) => (
                 <div
                   key={i}
@@ -79,7 +75,8 @@ function EventPast({ data, error }) {
                 </div>
               ))}
             </div>
-            <div className="md:hidden flex gap-3">
+            {/* -----------------next button------------------- */}
+            <div className="md:hidden flex justify-end gap-5 my-5 pr-3 ">
               <button onClick={handlePrevMonth} disabled={selectedMonth === 0}>
                 <svg
                   width="24"

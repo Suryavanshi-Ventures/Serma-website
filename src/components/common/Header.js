@@ -50,7 +50,7 @@ const Header = () => {
 
   return (
     // <header className="relative pt-[40px] pb-[40px] px-[20px] lg:px-[50px] xl:px-[85px]">
-    <header className="relative pt-[40px] pb-[40px] px-[30px] lg:px-[20px] xl:px-[85px]">
+    <header className="relative pt-[20px] lg2:pt-[40px] pb-[20px] lg2:pb-[40px] px-[20px] lg:px-[20px] xl:px-[85px]">
       <div className="flex justify-between items-center w-full gap-0  xxl:gap-10">
         <div className="">
           <Link href="/">
@@ -212,7 +212,7 @@ const Header = () => {
         {/* ----------------------hamburger menu------------------------ */}
         <div
           onClick={handleOpenMenu}
-          className="lg2:hidden animate-fade-left cursor-pointer "
+          className="lg2:hidden animate-fade-left cursor-pointer"
         >
           {showMenuItems ? (
             <svg
