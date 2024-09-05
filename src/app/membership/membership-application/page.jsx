@@ -5,6 +5,8 @@ import Modal from "@/components/common-modal/modal";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 
 const MemberShip = () => {
@@ -26,29 +28,50 @@ const MemberShip = () => {
   const [popUp, setPopUp] = useState(false);
   const [isSelectedCard, setIsSelectedCard] = useState(null);
   const [apiData, setApiData] = useState(null);
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InN1cGVyYWRtaW5AbWFpbC5jb20iLCJpYXQiOjE3MTkzOTM4MzgsImV4cCI6MTcxOTQwMTAzOH0.Ss6knatHkEDvwEDir2qmaeS6zpznxuOk4NKRudgCjy4";
-  useEffect(() => {
-    const fetchApiData = async () => {
-      try {
-        const response = await axios.get(
-          "http://34.235.48.203/api/v1/membership/plan/find",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        console.log(response.data?.res);
-        setApiData(response.data);
-      } catch (error) {
-        console.error("Error fetching API data:", error);
-      }
-    };
+  const { data: session, status } = useSession();
+  const token = session?.user?.userToken;
+  const [email, setEmail] = useState("");
+  const [emailValid, setEmailValid] = useState(false);
+  const router = useRouter();
+  // useEffect(() => {
+  //   const fetchApiData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/membership/plan/find`,
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //         }
+  //       );
+  //       console.log(response.data?.res);
+  //       setApiData(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching API data:", error);
+  //     }
+  //   };
 
-    fetchApiData();
-  }, [token]);
-  console.log(apiData);
+  //   fetchApiData();
+  // }, [token]);
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const handleEmailChange = (event) => {
+    const { value } = event.target;
+    setEmail(value);
+    setEmailValid(validateEmail(value) && value.trim() !== "");
+  };
+
+  const handleContinueClick = () => {
+    if (emailValid) {
+
+      router.push("/membership/membership-application/membership-form");
+      console.log("your next step",email);
+    } else {
+      alert("Please enter a valid email address.");
+    }
+  };
   return (
     <div>
       <div className="lg:mx-10 2xl:mx-20 mb-10">
@@ -145,16 +168,18 @@ const MemberShip = () => {
             <input
               placeholder="Enter Your Email"
               className="pl-[30px] py-3 md:py-4 w-full  outline-primary border border-[#D7D7D7] rounded-xl"
+              value={email}
+              onChange={handleEmailChange}
             />
           </div>
           <div>
-            <Link href="/membership/membership-application/membership-form">
+            <span onClick={handleContinueClick}>
               <Button
                 content={"Next"}
                 px={"md:px-6"}
                 py={"py-2 md:py-3 w-full"}
               />
-            </Link>
+            </span>
           </div>
         </div>
       </Modal>
