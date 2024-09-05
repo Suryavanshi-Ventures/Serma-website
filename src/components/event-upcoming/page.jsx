@@ -14,7 +14,8 @@ function EventUpcoming({ data, error }) {
             {" "}
             <BlueLine width={"150px"} />
           </div>
-          <div className=" my-3 md:my-10 lg:text-left  text-gray responsive-Text w-auto 2xl:w-auto ">
+          <div className="my-3 md:my-5 lg:text-left text-gray responsive-Text w-auto 2xl:w-auto
+          ">
             View our Recent events and register for the Events
           </div>
         </div>

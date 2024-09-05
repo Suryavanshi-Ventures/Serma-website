@@ -141,7 +141,7 @@ function Sidebar() {
                 className="h-8"
               />
             </div>
-            <div className="text-[18px] px-0 hover:text-primary">
+            <div className="lg:text-[18px] text-base px-0 hover:text-primary">
               {item.label}
             </div>
           </div>
@@ -152,8 +152,7 @@ function Sidebar() {
         {sidebarItems.map((item, index) => (
           <div
             key={index}
-            className={`flex px-[10px] py-[10px]   items-center gap-4 cursor-pointer rounded-xl transition duration-200 
-              hover:bg-[#F6E0E0CC] text-gray
+            className={`flex px-[10px] py-[10px] me-3 items-center gap-4 cursor-pointer rounded-xl transition duration-200 hover:bg-[#F6E0E0CC] text-gray
               ${isMobile ? "flex-shrink-0" : ""} 
               ${
                 pathname.includes(item.route) || activeIndex === index

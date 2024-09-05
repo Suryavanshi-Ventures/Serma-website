@@ -15,16 +15,16 @@ export default function Layout({ children }) {
   return (
     <ProtectRoute>
       <div
-        className={` bg-white  3xl:mx-auto max-w-screen-2xl px-[25px] sm:px-[40px] lg:px-[50px] xl:px-[85px] mt-10  relative`}
+        className={`bg-white 3xl:mx-auto max-w-screen-2xl px-3 sm:px-5 lg:px-[50px] xl:px-[85px] mt-10 relative`}
       >
         <div className="flex justify-between items-center ">
           {pathname.includes("/member-forum") ? (
-            <div className="flex justify-between w-full">
+            <div className="sm:flex justify-between w-full">
               <div>
                 <div className=" text-[20px] text-[#333333] md:text-2xl font-semibold">
                   Member Chat Forum
                 </div>
-                <p className="text-gray my-5  text-[14px] md:text-[16px]">
+                <p className="text-gray sm:my-5 my-3 text-[14px] md:text-[16px]">
                   Got a question, want to start a discussion? Create and post
                   for other community members to view and comment 
                 </p>
@@ -40,22 +40,22 @@ export default function Layout({ children }) {
               /> */}
                 <div
                   onClick={handlePushToCreateTopic}
-                  className="border  cursor-pointer text-[14px] hover:bg-primary transition duration-200 hover:text-white text-primary  border-primary w-[150px] py-[10px] rounded-full  flex justify-center items-center "
+                  className="border cursor-pointer text-[14px] hover:bg-[#9b9a9a] transition duration-200 hover:text-white text-[#9b9a9a]  border-[#9b9a9a] w-[150px] py-[10px] rounded-full  flex justify-center items-center "
                 >
                   + Create Topic
                 </div>
               </div>
             </div>
           ) : pathname.includes("/private-member") ? (
-            <div className="flex justify-between w-full">
-              <h2 className="text-[#333333] text-[20px] md:text-2xl font-semibold">
+            <div className="sm:flex justify-between w-full">
+              <h2 className="text-[#333333] text-[20px] md:text-2xl font-semibold sm:mb-0 mb-3">
                 Members-only Directory
               </h2>
-              <div className="flex gap-8 items-center">
-                <div className="relative">
+              <div className="flex gap-8 items-center sm:w-auto w-full">
+                <div className="relative w-full">
                   <input
                     type="text"
-                    className="pl-10 pr-4 py-2 w-64 rounded-full border border-gray shadow-sm focus:outline-primary   "
+                    className="pl-10 pr-4 py-2 sm:w-64 w-full rounded-full border border-gray shadow-sm focus:outline-primary   "
                     placeholder="Search"
                   />
                   <svg

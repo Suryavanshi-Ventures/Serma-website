@@ -57,23 +57,28 @@ const Membership = () => {
             </p>
           </div>
         </div>
-        <div className=" hidden sm:flex  w-full h-[500px] mt-10">
+        <div className="w-full relative mt-10">
           <Image
             src="/pages/membership/top-image.png"
             unoptimized
-            width={100}
-            height={100}
-            className="object-fill w-full h-full"
+            width={1512}
+            height={550}
+            className="object-fill w-full h-full hidden sm:flex"
           />
-        </div>
-        <div className=" flex sm:hidden w-full h-[380px] mt-10">
           <Image
             src="/pages/membership/responsive.png"
             unoptimized
-            width={100}
-            height={100}
-            className="object-fill w-full h-full"
+            width={1024}
+            height={1400}
+            className="object-fill w-full h-full sm:hidden flex"
           />
+          <div className="absolute bottom-0 w-full lg:p-10 p-5 ps-10 backdrop-blur-md">
+            <ul className="text-white mb-0 max-w-[1148px] mx-auto list-disc">
+              <li className="mb-2">To learn more about crucial issues facing the entertainment and sports claims, risk, insurance and legal communities.</li>
+              <li className="mb-2">To contribute content in this important and emerging area.</li>
+              <li className="mb-0">To expand your network and professional development by meeting other peers through online webinars and in-person events.</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div className="mx-5 lg:mx-10 2xl:mx-20 mt-5 md:mt-20">
@@ -88,13 +93,13 @@ const Membership = () => {
               <div className="border-t border-[#9B9A9A66]">
                 {sermaMembership.map((item, index) => (
                   <div>
-                    <div className="flex  items-center py-[10px] md:py-[30px]">
-                      <div className="w-1/2">
-                        <h2 className="text-[16px] md:text-xl font-bold max-md:px-2">
+                    <div className="sm:flex py-[10px] md:py-[30px]">
+                      <div className="sm:w-1/2">
+                        <h2 className="text-[16px] md:text-xl font-bold md:px-2 sm:mb-0 mb-2">
                           {item.title}
                         </h2>
                       </div>
-                      <div className="w-2/3 md:w-1/2">
+                      <div className="sm:w-2/3 md:w-1/2">
                         <p className="text-[#9B9A9A] paragraph max-w-[551px]">
                           {item.detail}
                         </p>
@@ -105,7 +110,7 @@ const Membership = () => {
                 ))}
               </div>
               <div>
-                <div className="max-w-[450px] md:h-[300px]  lg:mt-0">
+                <div className="xl:max-w-[450px] max-w-[350px] lg:mt-0">
                   <Image
                     src="/pages/membership/hand-img.png"
                     unoptimized
@@ -132,28 +137,27 @@ const Membership = () => {
               exciting and interactive environment.
             </p>
           </div>
-          <div className="mt-10 flex lg:flex-row flex-col items-center gap-5">
+          <div className="mt-10 row mx-0 items-center">
             {/* card */}
             {memeberBenefit.map((items, index) => (
-              <div
-                key={index}
-                className="max-w-[434px]  md:h-[400px] rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
-              >
-                <div className="flex flex-col justify-between items-center h-full w-full">
-                  <div className="mt-10">
-                    <h2 className="text-lg md:px-2  text-center 2xl:text-[22px] font-bold max-w-[333px] text-[#333333]">
-                      {items.title}
-                    </h2>
-                  </div>
-                  <div>
-                    <div className="max-w-[434px]  h-[250px]">
-                      <Image
-                        src={items.img}
-                        unoptimized
-                        width={100}
-                        height={100}
-                        className="object-fill w-full h-full"
-                      />
+              <div key={index} className="lg:col-4 sm:col-6 lg:mb-0 mb-6 h-full">
+                <div className="rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+                  <div className="flex flex-col justify-between items-center 2xl:h-[423px] w-full">
+                    <div className="2xl:h-[150px] sm:h-[100px] 2xl:p-10 sm:p-7 h-auto p-4 w-full">
+                      <h2 className="lg:text-lg text-base md:px-2 text-center 2xl:text-[24px] font-bold text-[#333333]">
+                        {items.title}
+                      </h2>
+                    </div>
+                    <div>
+                      <div className="">
+                        <Image
+                          src={items.img}
+                          unoptimized
+                          width={473}
+                          height={273}
+                          className="object-fill w-full h-full"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

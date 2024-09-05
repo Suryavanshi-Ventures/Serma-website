@@ -63,9 +63,9 @@ const RegistrationForm = () => {
           Enter Registration Form
         </h2>
         <form>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5 w-full space-y-4">
-            <div className="mt-4">
-              <label className="block font-bold text-[#333333]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-5 w-full">
+            <div className="">
+              <label className="block font-bold text-[#333333] mb-2">
                 First name*
               </label>
               <input
@@ -79,7 +79,7 @@ const RegistrationForm = () => {
               />
             </div>
             <div>
-              <label className="block font-bold text-[#333333]">
+              <label className="block font-bold text-[#333333] mb-2">
                 Last name*
               </label>
               <input
@@ -93,7 +93,7 @@ const RegistrationForm = () => {
               />
             </div>
             <div className="">
-              <label className="block font-bold text-[#333333]">
+              <label className="block font-bold text-[#333333] mb-2">
                 Organization*
               </label>
               <input
@@ -107,7 +107,7 @@ const RegistrationForm = () => {
               />
             </div>
             <div className="space">
-              <label className="block font-bold text-[#333333]">Title*</label>
+              <label className="block font-bold text-[#333333] mb-2">Title*</label>
               <input
                 type="text"
                 name="title"
@@ -120,7 +120,7 @@ const RegistrationForm = () => {
             </div>
 
             <div className="space">
-              <label className="block font-bold text-[#333333]">Email*</label>
+              <label className="block font-bold text-[#333333] mb-2">Email*</label>
               <input
                 type="email"
                 name="email"
@@ -133,7 +133,7 @@ const RegistrationForm = () => {
               />
             </div>
             <div className="space">
-              <label className="block font-bold text-[#333333]">Address*</label>
+              <label className="block font-bold text-[#333333] mb-2">Address*</label>
               <input
                 type="text"
                 name="address"
@@ -145,7 +145,7 @@ const RegistrationForm = () => {
               />
             </div>
             <div>
-              <label className="block font-bold text-[#333333]">City</label>
+              <label className="block font-bold text-[#333333] mb-2">City</label>
               <input
                 type="text"
                 name="city"
@@ -156,7 +156,7 @@ const RegistrationForm = () => {
               />
             </div>
             <div>
-              <label className="block font-bold text-[#333333]">State*</label>
+              <label className="block font-bold text-[#333333] mb-2">State*</label>
               <select
                 name="state"
                 value={formData.state}
@@ -175,7 +175,7 @@ const RegistrationForm = () => {
             </div>
 
             <div>
-              <label className="block font-bold text-[#333333]">Zip Code</label>
+              <label className="block font-bold text-[#333333] mb-2">Zip Code</label>
               <input
                 type="text"
                 name="zipCode"
@@ -186,7 +186,7 @@ const RegistrationForm = () => {
               />
             </div>
             <div>
-              <label className="block font-bold text-[#333333]">
+              <label className="block font-bold text-[#333333] mb-2">
                 Business Phone*
               </label>
               <input
@@ -201,7 +201,7 @@ const RegistrationForm = () => {
             </div>
 
             <div>
-              <label className="block font-bold text-[#333333]">
+              <label className="block font-bold text-[#333333] mb-2">
                 Mobile Phone
               </label>
               <input
@@ -214,7 +214,7 @@ const RegistrationForm = () => {
               />
             </div>
             <div>
-              <label className="block font-bold text-[#333333]">Date</label>
+              <label className="block font-bold text-[#333333] mb-2">Date</label>
               <input
                 type="date"
                 name="date"

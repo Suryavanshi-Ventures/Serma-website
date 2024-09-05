@@ -203,8 +203,8 @@ const Membership = () => {
               <hr className="w-full my-4 md:my-8 border-[#9B9A9A66]" />
               <div className="space-y-4">
                 <div>
-                  <h2 className=" text-[16px] md:text-2xl font-bold">
-                    MEMBERS-ONLY CONTENT
+                  <h2 className=" text-[16px] md:text-xl font-bold uppercase">
+                    Members Only Content
                   </h2>
                 </div>
                 <div>
@@ -324,7 +324,7 @@ const Membership = () => {
             </h2>
           </div>
           <div>
-            <p className="max-md:px-[20px] text-[16px] md:text-[24px] font-semibold w-full md:max-w-[805px]">
+            <p className="max-md:px-[20px] text-[16px] md:text-[22px] font-semibold w-full md:max-w-[805px]">
               Please take a moment to update your user profile so that you can
               start interacting with other SERMA members.
             </p>

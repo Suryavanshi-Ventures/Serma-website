@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${helvetica.className} bg-white container 3xl:mx-auto max-w-screen-2xl`}
+        className={`${helvetica.className} bg-white container mx-auto max-w-screen-2xl`}
       >
         {/* <main className="flex min-h-screen flex-col items-center justify-between p-24"> */}
         <ProviderWrapper>

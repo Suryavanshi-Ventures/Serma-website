@@ -53,20 +53,20 @@ function EventPast({ data, error }) {
               {MONTHS.map((month, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-4 max-md:ml-3 md:gap-10 mb-3"
+                  className="flex items-center gap-4 max-md:ml-3 md:gap-10 mb-4"
                 >
-                  <div className="max-md:w-[12px]">
+                  <div className="max-md:w-[14px]">
                     <Image
                       src="/events/blue-dot.svg"
                       height={12}
                       width={12}
                       alt="dot"
-                      className="h-[12px] w-[12px]"
+                      className="h-[14px] w-[14px]"
                     />
                   </div>
                   <div
                     onClick={() => handleSelectMonth(i)}
-                    className={`cursor-pointer ${
+                    className={`cursor-pointer text-[18px] ${
                       selectedMonth === i ? "text-[#13A6AC] underline" : ""
                     }`}
                   >

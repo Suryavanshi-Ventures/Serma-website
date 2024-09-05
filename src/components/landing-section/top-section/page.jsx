@@ -107,10 +107,9 @@ function TopSection() {
   };
 
   return (
-    <div>
+    <>
       {/* ------------------------------------lg2----------------------------------------- */}
-
-      <div className=" hidden lg:flex xl:hidden relative justify-between items-center ">
+      <div className=" hidden lg:flex xl:hidden relative justify-between items-center">
         <div className="lg:w-[55%] lg:h-[800px] lg:bg-primaryBlue flex justify-center lg:pt-[158px] pt-[400px] rounded-r-3xl">
           <div className="xl:w-2/3 max-xl:w-[500px] max-xl:px-[20px]">
             <h1 className="text-[#FFFFFF] font-semibold text-[24px] md:text-[30px] lg:text-[40px]">
@@ -367,7 +366,7 @@ function TopSection() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

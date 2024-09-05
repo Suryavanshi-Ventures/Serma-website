@@ -3,6 +3,7 @@ import Image from "next/image";
 import Button from "@/components/button/page";
 import { useRouter } from "next/navigation";
 import { EVENT_CARD_DETAILS } from "@/app/utils/constant/constant";
+import Link from "next/link";
 function UpcomingEvent() {
   const router = useRouter();
   const handlePush = () => {
@@ -13,7 +14,7 @@ function UpcomingEvent() {
       <div className="text-center text-xl md:text-[36px] font-semibold text-[#333333] ">
         Upcoming Events
       </div>
-      <div className="text-center responsive-Text text-gray my-6   xl:my-8  ">
+      <div className="text-center text-xl text-gray my-6 xl:my-8">
         <p className="leading-loose">
           The Sports and Entertainment Risk Management Alliance (SERMA) is the
           first risk management association devoted entirely to the sports and
@@ -21,7 +22,7 @@ function UpcomingEvent() {
         </p>
         {/* <p>entertainment industries.</p>{" "} */}
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 gap-x-3 gap-y-1 max-sm:space-y-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 gap-x-3 gap-y-3 max-sm:space-y-5">
         {EVENT_CARD_DETAILS.map((event, index) => (
           <div
             key={index}
@@ -65,25 +66,27 @@ function UpcomingEvent() {
                   <div className="text-gray text-sm">{event.date}</div>
                 </div>
                 <div className="text-lg my-2">{event.type}</div>
-                <div className="font-semibold text-[#525971]">
+                <div className="text-lg font-semibold text-[#525971]">
                   {event.title}
                 </div>
-                <div className="flex justify-end items-center gap-3">
-                  <span className="text-primary text-lg my-3">Register</span>
-                  <span>
-                    <svg
-                      width="18"
-                      height="8"
-                      viewBox="0 0 20 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
-                        fill="#C42C2D"
-                      />
-                    </svg>
-                  </span>
+                <div className="text-end">
+                  <Link href="#!" className="inline-flex justify-end items-center ms-auto gap-3">
+                    <span className="text-primary text-lg my-3">Register</span>
+                    <span>
+                      <svg
+                        width="18"
+                        height="8"
+                        viewBox="0 0 20 8"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
+                          fill="#C42C2D"
+                        />
+                      </svg>
+                    </span>
+                  </Link>
                 </div>
               </div>
             </div>

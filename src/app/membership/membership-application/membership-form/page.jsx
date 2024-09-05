@@ -174,11 +174,10 @@ const Page = () => {
                       </div>
                     </div>
                     <div
-                      className={`mt-1 absolute top-full transition-all ${
-                        isDropDown
+                      className={`mt-1 absolute top-full transition-all ${isDropDown
                           ? "block  w-full lg:w-[436px] translate-y-0 duration-300 opacity-100  z-50 bg-white"
                           : "opacity-0 w-full "
-                      }`}
+                        }`}
                     >
                       <ul className="space-y-2">
                         {filteredList.map((item) => (
@@ -326,36 +325,35 @@ const Page = () => {
                 </p>
               </div>
               <div className="flex items-center gap-11 mt-10">
-  <div className="flex gap-4 items-center">
-    <div>
-      <input
-        type="radio"
-        name="option"
-        id="yes"
-        className="w-4 h-4 flex items-center accent-primary"
-      />
-    </div>
-    <div>
-      <p className="text-[18px] font-normal">Yes</p>
-    </div>
-  </div>
-  <div className="flex gap-4 items-center">
-    <div>
-      <input
-        type="radio"
-        name="option"
-        id="no"
-        className="w-4 h-4 flex items-center accent-primary"
-      />
-    </div>
-    <div>
-      <p className="text-[18px] font-normal">No</p>
-    </div>
-  </div>
-</div>
-
+                <div className="flex gap-4 items-center">
+                  <div>
+                    <input
+                      type="radio"
+                      name="option"
+                      id="yes"
+                      className="w-4 h-4 flex items-center accent-primary"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-[18px] font-normal">Yes</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 items-center">
+                  <div>
+                    <input
+                      type="radio"
+                      name="option"
+                      id="no"
+                      className="w-4 h-4 flex items-center accent-primary"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-[18px] font-normal">No</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="mt-[60px] flex justify-between">
+            <div className="mt-12 mb-10 flex justify-between">
               <div>
                 <button className="border text-lg font-medium text-[#C42C2D] border-[#C8C8C8] rounded-full px-8 py-3">
                   Cancel

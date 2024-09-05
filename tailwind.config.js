@@ -67,5 +67,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tw-bootstrap-grid-optimizer')
+  ],
 };

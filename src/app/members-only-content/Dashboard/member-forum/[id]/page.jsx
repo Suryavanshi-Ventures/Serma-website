@@ -152,7 +152,7 @@ function GetTopic() {
               alt="message-icon"
             />
             <span>
-              Message <span className="underline">{"N/A"}</span>
+              Message #<span className="underline">{"N/A"}</span>
             </span>
           </div>
         </div>
