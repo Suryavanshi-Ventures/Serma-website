@@ -20,6 +20,7 @@ function GetEvent({ params }) {
   const eventId = params.id;
   const { data: session } = useSession();
   const token = session?.user?.userToken;
+  const UserMemberShipPlan = session?.user?.userMembershipPlan;
   const [email, setEmail] = useState("");
   const [emailValid, setEmailValid] = useState(false);
   const [handleVectorChange, setHandleVectorChange] = useState(false);
@@ -51,9 +52,14 @@ function GetEvent({ params }) {
     setEmail(value);
     setEmailValid(validateEmail(value) && value.trim() !== "");
   };
-
+  //userMembershipPlan
   const handleContinueClick = () => {
     if (emailValid) {
+      if (token && UserMemberShipPlan == 3) {
+        console.log("good to go for further process");
+        ///event_registration/create/42  api will call 
+      }
+
       setHandleOpenanotherPopUp(true);
     } else {
       alert("Please enter a valid email address.");

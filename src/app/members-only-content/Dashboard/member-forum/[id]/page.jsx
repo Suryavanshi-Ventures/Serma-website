@@ -2,42 +2,40 @@
 import React, { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import Image from "next/image";
-import { TOPICDETAILS } from "@/app/utils/constant/constant";
 import { useSession } from "next-auth/react";
-import axios from "axios";
+import TopicReply from "@/components/topic-reply/page";
 import { formatDate } from "@/components/date-format/page";
+import useAxiosFetch from "@/hooks/axiosFetch";
 
 function GetTopic() {
   const { id: paramdId } = useParams();
   const router = useRouter();
   const { data: session } = useSession();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [topic, setTopic] = useState(null);
+  console.log(paramdId);
   const token = session?.user?.userToken;
   const userLoginId = session?.user?.userLoginId;
+  const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic/findById/${paramdId}`;
+ 
 
-  useEffect(() => {
-    const fetchTopic = async () => {
-      try {
-        if (token) {
-          const response = await axios.get(
-            `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic/findById/${paramdId}`,
-            {
-              headers: { Authorization: `Bearer ${token}` },
-            }
-          );
-          setTopic(response.data.result);
-        }
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const {
+    data: topic,
+    loading,
+    error,
+  } = useAxiosFetch(
+    API_URL,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
+    paramdId
+  );
 
-    fetchTopic();
-  }, [token, paramdId]);
+
+
+
+  const FilteredTopic = topic?.result;
+
+
+
 
   const handleQuote = (quoteId) => {
     router.push(
@@ -81,18 +79,18 @@ function GetTopic() {
           </svg>
         </span>
         <span className="text-primary font-semibold">
-          {`${topic?.data?.user?.first_name || "Anonymous"} ${
-            topic?.data?.user?.last_name || ""
+          {`${FilteredTopic?.data?.user?.first_name || "Anonymous"} ${
+            FilteredTopic?.data?.user?.last_name || ""
           }`}
         </span>
       </div>
-      <div className="w-full my-4 bg-[#F8F8F8] shadow-sm rounded-xl p-6 space-y-4">
+      <div className="w-full my-4 bg-[#F8F8F8] shadow-sm rounded-xl p-6 space-y-4 overflow-auto">
         <div className="space-y-4">
           <div className="flex justify-between">
-            <h2 className="text-xl font-bold">{topic?.data?.title}</h2>
-            {topic?.data?.user_id == userLoginId ? (
+            <h2 className="text-xl font-bold">{FilteredTopic?.data?.title}</h2>
+            {FilteredTopic?.data?.user_id == userLoginId ? (
               <div
-                onClick={() => handleQuote(topic?.data?.id)}
+                onClick={() => handleQuote(FilteredTopic?.data?.id)}
                 className="flex border cursor-pointer border-[#C8C8C8] hover:border-primary duration-300 transition p-2 px-4 rounded-full justify-center items-center gap-2"
               >
                 <svg
@@ -125,14 +123,14 @@ function GetTopic() {
             height={64}
           />
           <p className="text-gray text-[14px]">
-            {`${topic?.data?.user?.first_name || "N/A"} ${
-              topic?.data?.user?.last_name || "N/A"
+            {`${FilteredTopic?.data?.user?.first_name || "N/A"} ${
+              FilteredTopic?.data?.user?.last_name || "N/A"
             }`}
           </p>
         </div>
         <p
           className="leading-loose w-[800px] overflow-x-auto"
-          dangerouslySetInnerHTML={{ __html: topic?.data?.content }}
+          dangerouslySetInnerHTML={{ __html: FilteredTopic?.data?.content }}
         />
         <div className="text-gray text-sm flex gap-5">
           <div className="flex gap-5">
@@ -142,7 +140,7 @@ function GetTopic() {
               width={18}
               alt="calendar-icon"
             />
-            <span>{formatDate(topic?.data?.updated_at)}</span>
+            <span>{formatDate(FilteredTopic?.data?.updated_at)}</span>
           </div>
           <div className="flex gap-5">
             <Image
@@ -157,9 +155,12 @@ function GetTopic() {
           </div>
         </div>
       </div>
+      {/* ----------------------------------comment section--------------------------------------- */}
+      <TopicReply/>
+      {/* -------------------------------------------------------------------------------- */}
       <div className="flex justify-end px-6">
         <div
-          onClick={() => handleReply(topic?.data?.id)}
+          onClick={() => handleReply(FilteredTopic?.data?.id)}
           className="flex border cursor-pointer items-center border-[#C8C8C8] hover:border-primary duration-300 transition gap-2 p-2 px-4 rounded-full"
         >
           <svg
@@ -177,6 +178,7 @@ function GetTopic() {
           <span className="text-primary">Reply</span>
         </div>
       </div>
+
     </div>
   );
 }

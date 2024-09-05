@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^4.4.0",
     "axios": "^1.7.2",
     "next": "14.2.2",
     "next-auth": "^4.24.7",
     "react": "^18",
     "react-dom": "^18",
     "react-quill": "^2.0.0",
+    "stripe": "^16.9.0",
     "swiper": "^11.1.1",
     "tw-bootstrap-grid-optimizer": "^1.0.2"
   },
