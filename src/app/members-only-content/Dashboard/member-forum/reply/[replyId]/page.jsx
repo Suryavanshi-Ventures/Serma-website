@@ -44,8 +44,7 @@ function Reply() {
     fetchTopic();
   }, [token, paramsId]);
 
-  console.log(title);
-  console.log(paramsId);
+
 
   const [AlertDetails, setAlertDetails] = useState({
     isOpen: false,
@@ -99,8 +98,9 @@ function Reply() {
   ];
 
   const handleSubmit = async () => {
-    const apiUrl = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic_reply/create/${paramsId}`;
+    const apiUrl = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic_reply/create`;
     const body = {
+      topic_id :paramsId,
       content: content,
       attachments: images,
     };
@@ -112,7 +112,8 @@ function Reply() {
           "Content-Type": "application/json",
         },
       });
-      console.log("API Response:", response.data);
+     
+     
 
       setAlertDetails({
         isOpen: true,
@@ -121,6 +122,7 @@ function Reply() {
         position: "top",
         type: "success",
       });
+      router.push(`/members-only-content/Dashboard/member-forum/${paramsId}`) 
     } catch (error) {
       setAlertDetails({
         isOpen: true,

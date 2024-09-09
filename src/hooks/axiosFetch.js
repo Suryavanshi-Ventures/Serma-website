@@ -13,6 +13,7 @@ const useAxiosFetch = (url, config = {}, propForReload) => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
+      console.log(config)
       try {
         const response = await axios.get(url, config);
         setData(response.data);
