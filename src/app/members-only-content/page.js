@@ -168,17 +168,17 @@ const Membership = () => {
           type={AlertDetails.type}
         />
       )}
-      <div className="xs:mx-5  xl:mx-10 2xl:mx-20 text-[#333333]">
-        <div>
-          <div className="hidden md:flex h-[300px] md:h-[500px] xs:max-h-[350px] w-full xs:max-w-[1351px] relative">
+      <div className="text-[#333333]">
+        <div className="text-center">
+          <div className="hidden md:flex w-full relative">
             <Image
               src="/pages/members-only-content/member-only.png"
               unoptimized
-              width={100}
-              height={100}
+              width={1351}
+              height={350}
               className="w-full h-full object-fill"
             />
-            <div className="absolute top-0 flex justify-center pb-10 items-end xs:items-center w-full h-full">
+            <div className="absolute top-0 flex justify-center items-end xs:items-center w-full h-full">
               <h2 className="heading-2 font-bold text-white">
                 Members Only Content
               </h2>
@@ -194,8 +194,8 @@ const Membership = () => {
             />
           </div>
         </div>
-        <div className="mt-[64px] mx-5">
-          <div className="flex flex-col md:flex-row gap-9 items-start md:items-center">
+        <div className="mt-8 lg:mt-[64px] md:mx-5">
+          <div className="flex flex-col md:flex-row gap-9 items-start md:items-center justify-center">
             <div>
               <div>
                 <h2 className="heading-2 font-bold">Welcome to SERMA!</h2>
@@ -234,7 +234,7 @@ const Membership = () => {
             </div>
           </div>
         </div>
-        <div className="mt-[50px] md:mt-[94px]">
+        <div className="mt-8 md:mt-[94px]">
           <div className="flex justify-center w-full">
             <div className="w-full sm:w-fit">
               <div className="">
@@ -242,7 +242,7 @@ const Membership = () => {
                   Members-Only Sign In
                 </h2>
               </div>
-              <div className="mt-[30px] md:mt-[57px] w-full px-5 md:px-0">
+              <div className="mt-[30px] md:mt-[57px] w-full px-3 md:px-0">
                 <div className="flex sm:justify-center w-full h-fit sm:w-[620px] lg:w-[791px] md:h-[605px] z-50 bg-white rounded-xl md:rounded-[36px] shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
                   <div className="w-full px-4 md:px-[60px] py-[30px] md:py-16">
                     <div>
@@ -251,7 +251,7 @@ const Membership = () => {
                           Sign in
                         </h2>
                       </div>
-                      <hr className="w-full my-[30px]" />
+                      <hr className="w-full md:my-7 my-4" />
                       <div className="space-y-4">
                         <div>
                           <h2 className="text-base"> Email Address</h2>

@@ -8,13 +8,13 @@ function AboutUs() {
     <div className="relative md:pt-[40px] pb-[14px]   mb-14 text-[#333333]">
       <div className="w-full">
         <div className=" flex justify-center md:justify-start ">
-          <div className="text-xl   text-center sm:text-left md:text-2xl xl:text-4xl font-bold w-80 text-light-black">
+          <div className="text-xl text-center md:text-left md:text-2xl xl:text-4xl font-bold w-80 text-light-black">
             What is SERMA?
           </div>
         </div>
         <div className="grid grid-flow-row-dense grid-cols-5 md:grid-cols-6 gap-2">
           <div className="col-span-0 md:col-span-2"></div>
-          <div className="paragraph text-center sm:text-left col-span-5 md:col-span-4 text-gray max-md:leading-loose">
+          <div className="paragraph text-center md:text-left col-span-5 md:col-span-4 text-gray max-md:leading-loose">
             The Sports and Entertainment Risk Management Alliance (SERMA) is the
             first risk management association devoted entirely to the sports and
             entertainment industries. It is an organization of risk managers,
@@ -65,18 +65,17 @@ function AboutUs() {
 
       <div className="w-full mt-8 md:mt-14 flex items-center">
         <div className="w-full md:w-3/5 ">
-          <div className="text-xl max-md:text-center md:text-2xl xl:text-4xl font-bold w-full md:w-80  text-light-black">
+          <div className="text-xl md:text-left text-center md:text-2xl xl:text-4xl font-bold w-full md:w-80 text-light-black">
             Our Mission
           </div>
-          <div className="text-xl text-gray mt-5 paragraph text-center sm:text-left  ">
+          <div className="text-xl text-gray mt-5 paragraph text-center md:text-left">
             To be the world's foremost resource for information and networking
             in the sports and entertainment risk industries. We strive to
             provide a respectful, transparent and inclusive dialogue where
             members can share ideas, best practices and strategies in managing
-            risk and claims.  
+            risk and claims.
           </div>
-
-          <div className=" text-[16px] md:text-lg xl:text-xl text-light-black  mt-8">
+          <div className=" text-[16px] md:text-lg xl:text-xl text-light-black md:font-normal font-bold mt-8">
             SERMA is a marketplace of ideas for those in sports & entertainment
             risk and the claims industry
           </div>
@@ -96,7 +95,7 @@ function AboutUs() {
               </li>
             </ul>
           </div>
-          <div className="mt-5 text-[16px] md:text-lg xl:text-xl light-black">
+          <div className="mt-5 text-[16px] md:text-lg xl:text-xl light-black ">
             Our goal is to be the foremost resource for sharing current trends
             and strategies as well as providing endless networking
             opportunities. These opportunities will present themselves both
@@ -126,7 +125,7 @@ function AboutUs() {
         </div>
 
         <div className="flex flex-col gap-6 mt-5 md:mt-10">
-          <div className="flex max-md:flex-col md:p-10 py-8  max-md:space-y-5 bg-[#F0F0F0] bg-opacity-50 items-center rounded-2xl">
+          <div className="flex max-md:flex-col md:p-10 sm:p-8 p-5 bg-[#F0F0F0] bg-opacity-50 items-center rounded-2xl">
             <div className="w-[233px] xl:w-[290px] ">
               <Image
                 src="/images/strategic-partner-1.png"
@@ -138,14 +137,14 @@ function AboutUs() {
                 priority
               />
             </div>
-            <div className="flex-1 md:ml-[30px] xl:ml-10 max-md:p-3">
-              <div className="text-[14px] md:text-[16px] xl:text-lg light-black max-md:my-3 leading-loose">
+            <div className="flex-1 md:ml-[30px] xl:ml-10 mt-4">
+              <div className="text-[14px] md:text-[16px] xl:text-lg light-black max-md:mb-3 leading-loose">
                 Hackney Publications delivers valuable and important information
                 about the legal side of the sports industry. Its overriding
                 mission is to maintain a narrow editorial focus on issues that
                 matter to subscribers and readers.
               </div>
-              <div className="mt-2">
+              <div className="sm:mt-2">
                 <Link
                   href={"#"}
                   className="text-[14px] xl:text-xl light-black font-bold underline"

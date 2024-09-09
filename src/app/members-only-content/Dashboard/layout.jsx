@@ -15,35 +15,35 @@ export default function Layout({ children }) {
   return (
     <ProtectRoute>
       <div
-        className={`bg-white 3xl:mx-auto max-w-screen-2xl px-3 sm:px-5 lg:px-[50px] xl:px-[85px] mt-10 relative`}
+        className={`bg-white 3xl:mx-auto max-w-screen-2xl px-3 sm:px-5 lg:px-[50px] xl:px-[85px] mt-5 md:mt-10 relative`}
       >
         <div className="flex justify-between items-center ">
           {pathname.includes("/member-forum") ? (
             <div className="sm:flex justify-between w-full">
               <div>
-                <div className=" text-[20px] text-[#333333] md:text-2xl font-semibold">
+                <div className=" text-[20px] text-[#333333] md:text-2xl font-semibold flex justify-between items-center">
                   Member Chat Forum
+                <div onClick={handlePushToCreateTopic} className=" ">
+                  {/* <LoadingButton
+                  disabledProp={() => {}}
+                  style=" hover:bg-primary md:p-[7px] w-full   transition-all  max-md:text-[12px]   duration-200 text-black rounded-3xl text-primary border hover:text-white"
+                  text="+ Create Topic"
+                  spinnerWidth="23"
+                  spinnerHeight="23"
+                  loading={false}
+                /> */}
+                  <div
+                    onClick={handlePushToCreateTopic}
+                    className="border cursor-pointer text-[14px] hover:bg-[#9b9a9a] transition duration-200 hover:text-white text-[#9b9a9a]  border-[#9b9a9a] w-[150px] py-[10px] rounded-full  flex justify-center items-center "
+                  >
+                    + Create Topic
+                  </div>
+                </div>
                 </div>
                 <p className="text-gray sm:my-5 my-3 text-[14px] md:text-[16px]">
                   Got a question, want to start a discussion? Create and post
                   for other community members to view and comment 
                 </p>
-              </div>
-              <div onClick={handlePushToCreateTopic} className=" ">
-                {/* <LoadingButton
-                disabledProp={() => {}}
-                style=" hover:bg-primary md:p-[7px] w-full   transition-all  max-md:text-[12px]   duration-200 text-black rounded-3xl text-primary border hover:text-white"
-                text="+ Create Topic"
-                spinnerWidth="23"
-                spinnerHeight="23"
-                loading={false}
-              /> */}
-                <div
-                  onClick={handlePushToCreateTopic}
-                  className="border cursor-pointer text-[14px] hover:bg-[#9b9a9a] transition duration-200 hover:text-white text-[#9b9a9a]  border-[#9b9a9a] w-[150px] py-[10px] rounded-full  flex justify-center items-center "
-                >
-                  + Create Topic
-                </div>
               </div>
             </div>
           ) : pathname.includes("/private-member") ? (
@@ -107,7 +107,7 @@ export default function Layout({ children }) {
           )}
         </div>
 
-        <div className="flex flex-col md:flex-row gap-5 my-7 ">
+        <div className="flex flex-col lg:flex-row gap-5 my-7 ">
           <div>
             <Sidebar />
             <hr className="hidden md:block text-[#9B9A9A33] my-10" />

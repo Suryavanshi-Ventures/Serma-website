@@ -250,7 +250,7 @@ const Header = () => {
         {/* --------------------------------------showMenuItems--------------------------------- */}
       </div>
       {/* ----------------------------Menu's for mobile view----------------------- */}
-      <div className="w-full px-[20px] bg-white  absolute visible lg2:hidden animate-fade-left z-50">
+      <div className="w-full px-[20px] bg-white  absolute visible lg2:hidden left-0 animate-fade-left z-50">
         {showMenuItems && (
           <ul className="space-y-3  p-3 animate-fade-right transition duration-300">
             <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:text-primary">

@@ -23,7 +23,7 @@ function SwiperSlideIncoming({ data, error }) {
   return (
     <div>
       <Swiper
-        slidesPerView={3}
+        slidesPerView={1}
         spaceBetween={30}
         freeMode={true}
         pagination={{
@@ -34,30 +34,21 @@ function SwiperSlideIncoming({ data, error }) {
         breakpoints={{
           0: {
             slidesPerView: 1,
-            spaceBetween: 10,
           },
           280: {
             slidesPerView: 1,
-            spaceBetween: 10,
           },
           390: {
             slidesPerView: 1,
-            spaceBetween: 10,
           },
           500: {
             slidesPerView: 1.5,
-            spaceBetween: 10,
           },
-
           768: {
-            slidesPerView: 3,
-            spaceBetween: 15,
+            slidesPerView: 2,
+            spaceBetween: 0,
           },
           1024: {
-            slidesPerView: 3,
-            spaceBetween: 15,
-          },
-          1280: {
             slidesPerView: 2.4,
             spaceBetween: 0,
           },
@@ -82,7 +73,7 @@ function SwiperSlideIncoming({ data, error }) {
               data.map((event, index) => (
                 <SwiperSlide key={index}>
                   <div className="rounded-2xl  flex max-md:justify-center max-md:items-center max-md:p-2 md:p-3">
-                    <div className="p-5 rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-full">
+                    <div className="lg:p-5 p-3 rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-full">
                       <div className="h-[225px]">
                         <Image
                           src={event.image_url}
@@ -93,7 +84,7 @@ function SwiperSlideIncoming({ data, error }) {
                           className="rounded-2xl h-full object-cover"
                         />
                       </div>
-                      <div className="mt-5">
+                      <div className="md:mt-5 mt-3">
                         <div className="flex lg:gap-4 gap-2 my-3">
                           <svg
                             width="17"
@@ -122,18 +113,18 @@ function SwiperSlideIncoming({ data, error }) {
                             {event.start_date_time}
                           </div>
                         </div>
-                        <div className="text-lg my-4">{event.event_type}</div>
+                        <div className="text-lg md:my-4 my-2">{event.event_type}</div>
                         <div className="text-lg font-bold text-[#525971]">
                           {event.title}
                         </div>
-                        <div className="flex items-center justify-between mt-6">
+                        <div className="flex items-center justify-between md:mt-6 mt-3">
                           <div className="underline text-[#474747] cursor-pointer">
                             Show Detail
                           </div>
                           <div className="flex cursor-pointer items-center gap-3">
                             <span
                               onClick={() => handleClick(event.id)}
-                              className="text-primary text-lg"
+                              className="text-primary xl:text-lg text-base"
                             >
                               Register
                             </span>

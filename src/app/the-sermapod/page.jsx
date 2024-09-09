@@ -42,7 +42,7 @@ const Sermapod = () => {
           <div>
             <h2 className="text-2xl sm:text-[36px] font-bold">The Sermapod</h2>
           </div>
-          <div className="flex flex-col lg:flex-row h-full xl:h-[520px] gap-[50px] mt-8 sm:mt-9">
+          <div className="flex flex-col lg:flex-row h-full xl:h-[520px] xl:gap-[50px] gap-5 mt-8 sm:mt-9">
             <div className="w-full  h-[222px] md:h-[422px] xl:h-full ">
               <iframe
                 className="rounded-2xl"
@@ -53,7 +53,7 @@ const Sermapod = () => {
                 height={"100%"}
               />
             </div>
-            <div className="border border-[#D1D1D1] rounded-md sm:h-full p-2  md:min-w-[393px]">
+            <div className="border border-[#D1D1D1] rounded-md sm:h-full p-2 xl:min-w-[393px] w-[335px]">
               <div>
                 <div className="text-center text-base sm:text-lg font-bold">
                   <h2>Mix Sermapod</h2>

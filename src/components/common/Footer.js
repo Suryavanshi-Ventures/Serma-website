@@ -9,40 +9,40 @@ const Footer = () => {
   const [insta, setInsta] = useState(false);
   return (
     <div className="bg-[#F3F3F3]">
-      <div className="grid grid-cols-1  max-md:px-[20px] md:grid-cols-4  lg:grid-cols-4 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
-        <div className="md:border-r  max-md:border-b  border-[#3333331c] py-3 md:p-5  flex sm:justify-center">
+      <div className="grid grid-cols-1 max-md:px-[20px] md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
+        <div className="md:border-r max-md:border-b border-[#3333331c] p-7 md:pt-12 flex sm:justify-center">
           <div className="">
-            <div className="flex justify-start sm:justify-center">
+            <div className="flex">
               <Image src="/logo.svg" height={60} width={135} alt="logo" />
             </div>
-            <div className="my-[20px] sm:my-[40px] xl:w-[300px]  responsive-Text-footer text-[#333333] text-left  sm:text-center">
+            <div className="my-[20px] sm:my-[40px] xl:w-[300px] responsive-Text-footer text-[#333333]">
               Sports and Entertainment Risk Management Alliance
             </div>
           </div>
         </div>
 
-        <div className="md:border-r max-md:border-b border-[#3333331c] py-3 md:p-5 sm:text-center">
+        <div className="md:border-r max-md:border-b border-[#3333331c] p-7 md:pt-12">
           <div className="font-[700] text-[20px] text-[#333333]">
             Contact Us
           </div>
 
           <div className="sm:mt-[60px] xs:space-y-8 ">
             <div className="my-3 underline responsive-Text-footer text-[#333333]">
-              info@theserma.org
+              <Link href="mailto:info@theserma.org">info@theserma.org</Link>
             </div>
             <div className="responsive-Text-footer text-[#333333]">
-              +1 (123) 456-7890
+              <Link href="tel:+1(123)456-7890">+1(123)456-7890</Link>
             </div>
           </div>
         </div>
-        <div className="md:border-r max-md:border-b   border-[#3333331c] py-3 md:p-5 text-center  max-sm:text-left ">
-          <div className=" flex sm:justify-center">
+        <div className="md:border-r max-md:border-b border-[#3333331c] p-7 md:pt-12 text-center max-sm:text-left ">
+          <div className="flex md:ms-4">
             <div>
               <div className="font-[700]  text-left text-[20px] text-[#333333]">
                 Links
               </div>
               <div className="sm:mt-[60px] space-y-5 responsive-Text-footer text-[#333333] text-left">
-                <div className="my-3   hover:text-primary  transition duration-200 ">
+                <div className="my-3 hover:text-primary transition duration-200">
                   {" "}
                   <Link href="/about-us">About</Link>
                 </div>
@@ -66,17 +66,17 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="sm:p-5 py-3">
-          <div className="sm:text-center font-[700] text-[16px] sm:text-[20px] text-[#333333]">
+        <div className="p-7 md:pt-12">
+          <div className="md:text-center font-[700] text-[16px] sm:text-[20px] text-[#333333]">
             Connect With Us
           </div>
-          <div className="flex justify-start sm:justify-center gap-3 mt-[20px] sm:mt-[60px]">
+          <div className="flex justify-start md:justify-center gap-3 mt-[20px] sm:mt-[60px]">
             <div
               onMouseEnter={() => setHandleVectorChange(true)}
               onMouseLeave={() => setHandleVectorChange(false)}
               className="cursor-pointer"
             >
-              <Link href="https://www.linkedin.com/company/the-serma/">
+              <Link href="https://www.linkedin.com/company/the-serma/" target="_blank">
                 <svg
                   width="46"
                   height="46"
@@ -124,7 +124,8 @@ const Footer = () => {
               className="cursor-pointer "
             >
               {" "}
-              <Link href="https://www.facebook.com/theserma">
+              <Link href="https://www.facebook.com/theserma" target="_blank"
+              >
                 <svg
                   width="46"
                   height="46"
@@ -196,7 +197,7 @@ const Footer = () => {
               className="cursor-pointer "
             >
               {" "}
-              <Link href="https://www.instagram.com/the.serma?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+              <Link href="https://www.instagram.com/the.serma?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
                 <Image
                   src={`${
                     insta ? "/footer/InstaNew.svg" : "/footer/Insta.svg"
@@ -211,13 +212,13 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="px-[20px] py-8 flex max-md:text-[12px]  max-md:px-[20px] gap-2  justify-between lg:justify-end md:pr-24  md:gap-16 font-semibold text-[#333333]">
-        <div className="cursor-pointer max-md:w-1/2 ">
-          Copyright 2024 © Suryavanshi Ventures- All rights reserved.
-        </div>
-        <div className="cursor-pointer max-md:w-1/2">
-          Terms & Conditions Privacy Policy
-        </div>
+      <div className="lg:p-10 p-6 md:flex justify-between md:border-t-0 border-t border-[#333333]/[20%]">
+          <div className="lg:ms-auto xl:me-16 lg:me-8 font-semibold text-[#333333] md:mb-0 mb-4">
+            Copyright 2024 © Suryavanshi Ventures- All rights reserved.
+          </div>
+          <div className="xl:mx-16 lg:mx-8 font-semibold text-[#333333]">
+            Terms & Conditions Privacy Policy
+          </div>
       </div>
     </div>
   );

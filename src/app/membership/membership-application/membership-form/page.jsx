@@ -184,12 +184,12 @@ const Page = () => {
 
   return (
     <Container>
-      <div className="mt-16 text-[#333333]">
+      <div className="mt-8 text-[#333333]">
         <div className="mb-7">
           <h2 className="heading-2 font-bold">Membership Application</h2>
-          <div className="mt-[60px] flex justify-center">
+          <div className="mt-10 flex justify-center">
             <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:gap-6 gap-5">
                 {Fields.map((field) => (
                   <div className="w-full lg:w-[436px]" key={field.name}>
                     <h2 className="font-bold text-lg">{field.label}</h2>

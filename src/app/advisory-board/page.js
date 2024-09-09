@@ -127,7 +127,7 @@ function AdvisoryBoard() {
     <Container>  
     <div className="relative md:pt-[40px] pb-[14px]   mb-14">
       <div className="w-full ">
-        <div className="text-2xl lg:text-4xl font-bold w-80 text-light-black px-2">
+        <div className="text-2xl lg:text-4xl font-bold lg:w-80 text-light-black px-2">
           Advisory Board
         </div>
 
@@ -146,7 +146,7 @@ function AdvisoryBoard() {
             </div>
             <div className="flex-1 md:ml-10">
               <div className="text-[16px] max-md:my-5  md:text-2xl text-light-black font-bold">
-                Rich Lenkov | Founder/CEO
+                Rich Lenkov | Founder / CEO
               </div>
               <div className="text-[14px]  xl:text-lg text-black mt-4 leading-loose">
                 As a Capital Member of Downey & Lenkov LLC, Rich has been
@@ -187,10 +187,10 @@ function AdvisoryBoard() {
               priority
             />
 
-            <div className="text-2xl text-secondary font-bold mt-4">
+            <div className="xl:text-2xl text-lg text-secondary font-bold mt-4">
               {member.name}
             </div>
-            <div className="text-base flex text-[14px] items-center text-gray mt-2 md:h-[40px] ">{member.position}</div>
+            <div className="xl:text-base flex text-[14px] items-center text-gray mt-2 ">{member.position}</div>
             <div className="w-full  items-center mt-2">
               <div className="flex lg:flex-row lg:justify-between  items-center  gap-4">
                 <div className="flex-1 lg:text-[14px] xl:text-[16px] text-light-black">

@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useSession } from "next-auth/react";
 import { formatDate } from "@/components/date-format/page";
 import Card_skeleton from "@/components/card-skeleton/card_skeleton";
+import Link from "next/link";
 
 function Webinar() {
   const { data: session } = useSession();
@@ -48,22 +49,22 @@ function Webinar() {
   );
 
   return (
-    <div>
+    <div className="w-full">
       {loading ? (
         <Card_skeleton width={920} />
       ) : (
-        <div className="grid sm:grid-cols-2     xl:grid-cols-3 gap-x-4 gap-y-12 ">
+        <div className="grid w-full sm:grid-cols-2 xl:grid-cols-23 gap-6">
           {currentData?.map((item, index) => (
             <div key={item?.id}>
-              <div className="  flex justify-center bg-white   ">
-                <div className="max-w-[445px] shadow-[0_3px_10px_rgb(0,0,0,0.2)]  rounded-[22px]  p-[15px]  md:p-[22px]">
-                  <div className="flex justify-center h-[150px] md:h-[160px] w-full">
+              <div className="flex justify-center bg-white">
+                <div className="w-full shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[22px] p-[15px] p-4 xl:p-[22px]">
+                  <div className="flex justify-center h-[150px] xl:h-[250px] w-full">
                     <Image
                       src={item?.image_url}
-                      width={100}
+                      width={445}
                       unoptimized
-                      height={100}
-                      className="object-fill w-full h-full rounded-lg"
+                      height={252}
+                      className="object-cover w-full h-full rounded-lg"
                     />
                   </div>
                   <div className="mt-7">
@@ -104,7 +105,7 @@ function Webinar() {
                         </p>
                       </div>
                     </div>
-                    <div className="my-[20px]">
+                    <div className="my-3 xl:my-5">
                       <p className=" responsive-Text font-normal text-[#333333]">
                         {item?.title}
                       </p>
@@ -116,11 +117,11 @@ function Webinar() {
                     </div>
                   </div>
                   <div className="flex items-center justify-end gap-3 mt-6">
-                    <div>
+                    <Link href="#!">
                       <p className=" responsive-Text font-normal text-[#C42C2D]">
                         Register
                       </p>
-                    </div>
+                    </Link>
                     <div>
                       <svg
                         width="24"

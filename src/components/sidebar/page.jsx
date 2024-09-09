@@ -108,18 +108,18 @@ function Sidebar() {
           type={AlertDetails.type}
         />
       )}
-      <div className="hidden md:block space-y-6 h-auto">
+      <div className="hidden lg:block space-y-6 h-auto">
         {sidebarItems.map((item, index) => (
           <div
             key={index}
-            className={`flex px-[10px] py-[8px] font-bold    items-center gap-5 cursor-pointer rounded-xl transition duration-200 
+            className={`flex px-[10px] py-[8px] font-bold items-center gap-5 cursor-pointer rounded-xl transition duration-200 
               ${
                 pathname.includes(item.route)
-                  ? "bg-[#F6E0E0CC] text-primary"
+                  ? "bg-[#F6E0E0CC] text-primary font-bold"
                   : ""
               } ${
               activeIndex === index
-                ? "bg-[#F6E0E0CC] text-primary font-semibold"
+                ? "bg-[#F6E0E0CC] text-primary font-bold"
                 : "text-gray"
             }`}
             onClick={() => handleNavigation(item.route, index)}
@@ -148,7 +148,7 @@ function Sidebar() {
         ))}
       </div>
 
-      <div className="md:hidden flex justify-around overflow-x-scroll md:overflow-y-scroll hideScrollbar">
+      <div className="lg:hidden flex justify-around overflow-x-scroll lg:overflow-y-scroll hideScrollbar">
         {sidebarItems.map((item, index) => (
           <div
             key={index}

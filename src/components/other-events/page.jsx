@@ -26,7 +26,7 @@ function OtherEvent() {
 
   return (
     <div>
-      <div className="flex flex-col lg:flex-row  my-5 ">
+      <div className="flex flex-col lg:flex-row my-7">
         {/* -------------------------------- */}
         <div className="lg:w-1/5  w-full">
           <div className=" text-[#333333] text-xl  sm:text-2xl lg:text-3xl  font-bold text-center lg:text-left">

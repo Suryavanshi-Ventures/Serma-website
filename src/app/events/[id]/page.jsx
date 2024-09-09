@@ -123,25 +123,24 @@ function GetEvent({ params }) {
             </div>
 
             <div className="max-md:w-full ">
-              <div className="p-4 md:p-10   bg-white  md:w-[400px] text-[20px] shadow-[-5px_6px_40px_0px_#00000024]  rounded-lg ">
-                <div className="flex my-3 gap-12  justify-start text-gray font-medium">
-                  <div className="max-sm:text-[16px]">Date :</div>
-
-                  <div className="max-sm:text-[16px]">
+              <div className="p-4 lg:p-10 bg-white md:w-[400px] text-[20px] shadow-[-5px_6px_40px_0px_#00000024] rounded-lg">
+                <div className="flex my-3 gap-12 justify-start text-gray font-medium">
+                  <div className="max-lg:text-[16px]">Date :</div>
+                  <div className="max-lg:text-[16px]">
                     {FormatDateOnly(upcomingEvents?.start_date_time)}
                   </div>
                 </div>
                 <hr className="text-gray" />
                 <div className="flex my-3 gap-12 justify-start text-gray font-medium">
-                  <div className="max-sm:text-[16px]">Time :</div>
-                  <div className="max-sm:text-[16px]">
+                  <div className="max-lg:text-[16px]">Time :</div>
+                  <div className="max-lg:text-[16px]">
                     {FormatTimeOnly(upcomingEvents?.start_date_time)}
                   </div>
                 </div>
                 <hr className="text-gray" />
                 <div className="flex mt-3 mb-6 gap-5 justify-start text-gray font-medium">
-                  <div className="max-sm:text-[16px]">Location :</div>
-                  <div className="max-sm:text-[16px]">
+                  <div className="max-lg:text-[16px]">Location :</div>
+                  <div className="max-lg:text-[16px]">
                     {upcomingEvents?.location}
                   </div>
                 </div>
@@ -149,13 +148,9 @@ function GetEvent({ params }) {
                   onClick={() => setRegister(!register)}
                   onMouseEnter={() => setHandleVectorChange(true)}
                   onMouseLeave={() => setHandleVectorChange(false)}
-                  className="flex  cursor-pointer transition duration-300 justify-center items-center gap-[10px] border border-primary hover:bg-primary   p-[7px] rounded-xl w-[150px]"
+                  className="flex cursor-pointer transition duration-300 justify-center items-center gap-[10px] border border-primary hover:bg-primary p-[7px] rounded-xl w-[150px]"
                 >
-                  <div
-                    className={`  ${
-                      handleVectorChange ? "text-white " : "text-primary"
-                    }`}
-                  >
+                  <div className={`${handleVectorChange ? "text-white " : "text-primary"}`}>
                     Register
                   </div>
 
