@@ -1,43 +1,23 @@
 "use client";
 
-import { STATE } from "@/components/constants/constants";
+import { STATE, TIME_ZONE } from "@/components/constants/constants";
 import Container from "@/components/container/page";
 import SearchDropdown from "@/components/SearchDropDown/searchDrop";
-import { loadStripe } from "@stripe/stripe-js";
-import { useSession } from "next-auth/react";
+import { useParams } from "next/navigation";
+
 import React, { useEffect, useRef, useState } from "react";
-
-let stripePromise = null;
-
-const getStripe = () => {
-  console.log(process.env.NEXT_PUBLIC_API_KEY);
-  if (!stripePromise) {
-    stripePromise = loadStripe(process.env.NEXT_PUBLIC_API_KEY);
-  }
-  return stripePromise;
-};
-
-export async function CheckIn({ lineItems }) {
-  console.log(lineItems);
-  const stripe = await getStripe();
-  if (!stripe) {
-    console.error("Stripe has not been loaded.");
-    return;
-  }
-
-  await stripe.redirectToCheckout({
-    mode: "payment",
-    lineItems,
-    successUrl: `${window.location.origin}?session_id={CHECKOUT_SESSION_ID}`,
-    cancelUrl: window.location.origin,
-  });
-}
-
-// ----------------------------------------------------------------------
+import Modal from "@/components/common-modal/modal";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import CheckoutForm from "@/hooks/chekoutForm";
 
 const Page = () => {
-  const { data: session, status } = useSession();
+ 
   const [isVisible, setIsVisible] = useState(false);
+  const { membership_form: CLIENT_SECRET } = useParams();
+  const [PopUpForPayment, setPopUpForPayment] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [StripeData, setStripeData] = useState();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -45,6 +25,8 @@ const Page = () => {
     title: "",
     email: "",
     address: "",
+    password: "",
+    confirm_password: "",
     state: "",
     city: "",
     zipCode: "",
@@ -52,9 +34,8 @@ const Page = () => {
     mobilePhone: "",
     date: "",
     volunteer: "",
+    time_zone: "",
   });
-
-  const [errors, setErrors] = useState({});
   const Fields = [
     {
       label: "First Name*",
@@ -87,6 +68,30 @@ const Page = () => {
       placeholder: "info@theserma.org",
     },
     {
+      label: "Mobile Phone*",
+      name: "mobilePhone",
+      type: "number",
+      placeholder: "Enter Your Mobile Phone",
+    },
+    {
+      label: "Business Phone",
+      name: "businessPhone",
+      type: "number",
+      placeholder: "Enter Business Phone",
+    },
+    {
+      label: "Password*",
+      name: "password",
+      type: isVisible ? "text" : "password",
+      placeholder: "Enter Password",
+    },
+    {
+      label: "Confirm Password*",
+      name: "confirm_password",
+      type: isVisible ? "text" : "password",
+      placeholder: "Enter Confirm Password",
+    },
+    {
       label: "Address*",
       name: "address",
       type: "text",
@@ -104,43 +109,36 @@ const Page = () => {
       type: "number",
       placeholder: "Enter Your Zip Code",
     },
-    {
-      label: "Mobile Phone*",
-      name: "mobilePhone",
-      type: "number",
-      placeholder: "Enter Your Mobile Phone",
-    },
-    {
-      label: "Business Phone",
-      name: "businessPhone",
-      type: "number",
-      placeholder: "Enter Business Phone",
-    },
+
     { label: "Date", name: "date", type: "date", placeholder: "Select Date" },
-    {
-      label: "Password*",
-      name: "Password",
-      type: isVisible ? "text" : "password",
-      placeholder: "Enter Password",
-    },
-    {
-      label: "Confirm Password*",
-      name: "ConfirmPassword",
-      type: isVisible ? "text" : "password",
-      placeholder: "Enter Confirm Password",
-    },
   ];
+  console.log(formData, "formData");
+  const stripePromise = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_PK_KEY}`);
+  const options = {
+    // passing the client secret obtained from the server
+    clientSecret: CLIENT_SECRET,
+  };
+
+  useEffect(() => {
+    setStripeData(JSON.parse(localStorage.getItem("selectedPlanData")));
+  }, [CLIENT_SECRET]);
 
   const validateForm = () => {
     const errors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^[0-9]{10}$/;
-
+    const phoneRegex = /^[0-9]{10}$/; // Changed to 10 digits
+  
+  
     if (!formData.firstName.trim()) errors.firstName = "First Name is required";
     if (!formData.lastName.trim()) errors.lastName = "Last Name is required";
     if (!formData.organization.trim())
       errors.organization = "Organization is required";
     if (!formData.title.trim()) errors.title = "Title is required";
+    if (!formData.time_zone.trim()) errors.time_zone = "Time zone is required";
+    if (!formData.state.trim()) errors.state = "State is required";
+    if (!formData.city.trim()) errors.city = "City is required";
+    if (!formData.volunteer.trim()) errors.volunteer = "are you interested?"; 
+    if (!formData.date.trim()) errors.date = "Select current date";
     if (!formData.email.trim() || !emailRegex.test(formData.email))
       errors.email = "A valid Email is required";
     if (!formData.address.trim()) errors.address = "Address is required";
@@ -150,19 +148,17 @@ const Page = () => {
       formData.zipCode &&
       (formData.zipCode.length < 5 || formData.zipCode.length > 10)
     )
-      errors.zipCode = "Zip Code must be between 5 and 10 digits";
-
+      errors.zipCode = "Enter Valid zip code";
+  
+    if (!formData.password.trim() || formData.password.length < 6)
+      errors.password = "Password must be at least 6 characters";
+    if (!formData.confirm_password.trim() || formData.confirm_password.length < 6)
+      errors.confirm_password = "Confirm Password must be at least 6 characters";
+    if (formData.password !== formData.confirm_password)
+      errors.confirm_password = "Passwords do not match";
     return errors;
   };
-
-  const handleCheckout = async () => {
-    try {
-      await CheckIn({ lineItems: [{ price: "132", quantity: 1 }] });
-    } catch (error) {
-      console.error("Failed to redirect to checkout:", error);
-    }
-  };
-
+  console.log(StripeData, "StripeData");
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -177,7 +173,10 @@ const Page = () => {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
+      localStorage.removeItem("Formdata");
       console.log(formData);
+      localStorage.setItem("Formdata", JSON.stringify(formData));
+      setPopUpForPayment(true);
       // proceed with form submission or other actions
     }
   };
@@ -188,7 +187,7 @@ const Page = () => {
         <div className="mb-7">
           <h2 className="heading-2 font-bold">Membership Application</h2>
           <div className="mt-10 flex justify-center">
-            <form onSubmit={handleSubmit}>
+            <form>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:gap-6 gap-5">
                 {Fields.map((field) => (
                   <div className="w-full lg:w-[436px]" key={field.name}>
@@ -223,6 +222,31 @@ const Page = () => {
                         setFormData({ ...formData, state: value });
                       }}
                     />
+                    {errors.state && (
+                      <p className="text-red-500 text-sm mt-2">
+                        {errors.state}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="w-full lg:w-[436px]">
+                  <h2 className="font-bold text-lg">Time Zone*</h2>
+                  <div className="mt-4 ">
+                    <SearchDropdown
+                      disable={false}
+                      dropDownWidth={"full"}
+                      optionList={TIME_ZONE}
+                      initial_value={formData.time_zone}
+                      placeholderProp={"Select Time Zone"}
+                      OnSelectOptionProp={(value) => {
+                        setFormData({ ...formData, time_zone: value });
+                      }}
+                    />
+                    {errors.time_zone && (
+                      <p className="text-red-500 text-sm mt-2">
+                        {errors.time_zone}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="w-full lg:w-[436px]">
@@ -232,8 +256,8 @@ const Page = () => {
                       <input
                         type="radio"
                         name="volunteer"
-                        value="yes"
-                        checked={formData.volunteer === "yes"}
+                        value="true"
+                        checked={formData.volunteer === "true"}
                         onChange={handleChange}
                         className="w-4 h-4 flex items-center accent-primary"
                       />
@@ -243,14 +267,19 @@ const Page = () => {
                       <input
                         type="radio"
                         name="volunteer"
-                        value="no"
-                        checked={formData.volunteer === "no"}
+                        value="false"
+                        checked={formData.volunteer === "false"}
                         onChange={handleChange}
                         className="w-4 h-4 flex items-center accent-primary"
                       />
                       <p className="text-[18px] font-normal">No</p>
                     </div>
                   </div>
+                  {errors.volunteer && (
+                      <p className="text-red-500 text-sm mt-2">
+                        {errors.volunteer}
+                      </p>
+                    )}
                 </div>
               </div>
               <div className="mt-[60px] flex justify-between">
@@ -261,7 +290,7 @@ const Page = () => {
                   Cancel
                 </button>
                 <button
-                  onClick={handleCheckout}
+                  onClick={handleSubmit}
                   type="submit"
                   className="border flex items-center gap-2 text-lg font-medium bg-[#C42C2D] text-white rounded-full px-8 py-3"
                 >
@@ -284,6 +313,26 @@ const Page = () => {
           </div>
         </div>
       </div>
+
+      <Modal
+        wantTocloseFromScreen={false}
+        wantCrossButton={true}
+        width="max-w-[600px]"
+        isOpen={PopUpForPayment}
+        onClose={() => setPopUpForPayment(false)}
+        className="custom-modal"
+      >
+        <div className="flex justify-center my-5 text-xl font-semibold text-[#333333] gap-4">
+          <div className=" ">{StripeData?.title} </div>
+          <div> -</div>
+          <div> ${StripeData?.price} (USD)</div>
+        </div>
+        <div className="space-y-7">
+          <Elements stripe={stripePromise} options={options}>
+            <CheckoutForm data={StripeData} />
+          </Elements>
+        </div>
+      </Modal>
     </Container>
   );
 };

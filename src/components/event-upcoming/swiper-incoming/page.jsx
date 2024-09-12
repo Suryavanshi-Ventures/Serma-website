@@ -1,14 +1,14 @@
 "use client";
-import "swiper/css";
+
 import Image from "next/image";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import React from "react";
+import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
+import React from "react";
 import { useRouter } from "next/navigation";
 import NoInfoAvailable from "@/components/no-info/page";
-
 
 function SwiperSlideIncoming({ data, error }) {
   const router = useRouter();
@@ -113,7 +113,9 @@ function SwiperSlideIncoming({ data, error }) {
                             {event.start_date_time}
                           </div>
                         </div>
-                        <div className="text-lg md:my-4 my-2">{event.event_type}</div>
+                        <div className="text-lg md:my-4 my-2">
+                          {event.event_type}
+                        </div>
                         <div className="text-lg font-bold text-[#525971]">
                           {event.title}
                         </div>
@@ -152,7 +154,7 @@ function SwiperSlideIncoming({ data, error }) {
             )
           ) : (
             <div>
-              <NoInfoAvailable/>
+              <NoInfoAvailable />
             </div>
           )}
         </div>

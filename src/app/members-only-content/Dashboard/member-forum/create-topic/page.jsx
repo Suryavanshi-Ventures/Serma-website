@@ -166,7 +166,8 @@ function CreateTopic() {
         position: "top",
         type: "success",
       });
-    } catch (error) {
+    } 
+    catch (error) {
       // Handle errors
 
       console.error("Error making API call:", error);

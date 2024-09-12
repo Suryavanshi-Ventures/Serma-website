@@ -19,9 +19,9 @@ export default function Layout({ children }) {
       >
         <div className="flex justify-between items-center ">
           {pathname.includes("/member-forum") ? (
-            <div className="sm:flex justify-between w-full">
+            <div className="sm:flex justify-between w-full ">
               <div>
-                <div className=" text-[20px] text-[#333333] md:text-2xl font-semibold flex justify-between items-center">
+                <div className=" text-[20px] w-full  text-[#333333] md:text-2xl font-semibold flex justify-between items-center">
                   Member Chat Forum
                 <div onClick={handlePushToCreateTopic} className=" ">
                   {/* <LoadingButton

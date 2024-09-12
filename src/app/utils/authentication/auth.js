@@ -67,8 +67,7 @@ export const authOptions = {
   callbacks: {
     async jwt(returnedObj) {
       const { token, user, account, trigger, session } = returnedObj;
-      console.log(trigger);
-      console.log(session);
+     
       // UPDATING SESSION IMAGE
       // if (trigger === "update") {
       //   const propertiesToCopy = [
