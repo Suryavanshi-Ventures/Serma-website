@@ -19,26 +19,19 @@ export default function Layout({ children }) {
       >
         <div className="flex justify-between items-center ">
           {pathname.includes("/member-forum") ? (
-            <div className="sm:flex justify-between w-full ">
-              <div>
+            <div className="  w-full ">
+              <div className="">
                 <div className=" text-[20px] w-full  text-[#333333] md:text-2xl font-semibold flex justify-between items-center">
                   Member Chat Forum
-                <div onClick={handlePushToCreateTopic} className=" ">
-                  {/* <LoadingButton
-                  disabledProp={() => {}}
-                  style=" hover:bg-primary md:p-[7px] w-full   transition-all  max-md:text-[12px]   duration-200 text-black rounded-3xl text-primary border hover:text-white"
-                  text="+ Create Topic"
-                  spinnerWidth="23"
-                  spinnerHeight="23"
-                  loading={false}
-                /> */}
-                  <div
-                    onClick={handlePushToCreateTopic}
-                    className="border cursor-pointer text-[14px] hover:bg-[#9b9a9a] transition duration-200 hover:text-white text-[#9b9a9a]  border-[#9b9a9a] w-[150px] py-[10px] rounded-full  flex justify-center items-center "
-                  >
-                    + Create Topic
+                  <div onClick={handlePushToCreateTopic} className=" ">
+                   
+                    <div
+                      onClick={handlePushToCreateTopic}
+                      className="border cursor-pointer text-[14px] hover:bg-primary transition duration-200 hover:text-white text-[#9b9a9a]  border-[#9b9a9a] w-[150px] py-[10px] rounded-full  flex justify-center items-center "
+                    >
+                      + Create Topic
+                    </div>
                   </div>
-                </div>
                 </div>
                 <p className="text-gray sm:my-5 my-3 text-[14px] md:text-[16px]">
                   Got a question, want to start a discussion? Create and post

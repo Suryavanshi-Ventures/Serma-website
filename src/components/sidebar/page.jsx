@@ -45,6 +45,7 @@ function Sidebar() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const { data: session } = useSession();
+  const [logoutTriggered, setLogoutTriggered] = useState(false);
   const [AlertDetails, setAlertDetails] = useState({
     isOpen: false,
     message: "",
@@ -65,14 +66,19 @@ function Sidebar() {
     }
   }, []);
 
-  // useEffect(() => {
-  //   if (token && token !== previousToken) {
-  //     onclickLogout();
-  //   }
-  //   setPreviousToken(token);
-  // }, [token]);
+  useEffect(() => {
+    if (token && token !== previousToken && !logoutTriggered) {
+      // do nothing
+      console.log("prtint")
+    } else if (logoutTriggered) {
+      // reset the logoutTriggered flag
+      setLogoutTriggered(false);
+    }
+    setPreviousToken(token);
+  }, [token]);
 
   const onclickLogout = () => {
+    setLogoutTriggered(true);
     signOut({ redirect: false });
     setAlertDetails({
       isOpen: true,

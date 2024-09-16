@@ -9,8 +9,10 @@ import { FreeMode } from "swiper/modules";
 import React from "react";
 import { useRouter } from "next/navigation";
 import NoInfoAvailable from "@/components/no-info/page";
+import Skeleton from "@/components/skeleton/skeleton";
 
-function SwiperSlideIncoming({ data, error }) {
+function SwiperSlideIncoming({ data, error, loading }) {
+  console.log(loading);
   const router = useRouter();
 
   const handleClick = (id) => {
@@ -55,10 +57,20 @@ function SwiperSlideIncoming({ data, error }) {
         }}
       >
         <div className="">
-          {error ? (
-            <div>error loading upcoming events: ${error}</div>
-          ) : data ? (
-            data.length === 0 ? (
+          {
+            error ? (
+              <div>
+                {" "}
+                <NoInfoAvailable />{" "}
+              </div>
+            ) : loading ? (
+              <div className=" flex gap-5">
+                <Skeleton
+                  item={3}
+                  style="h-[400px] w-[400px] flex flex-row rounded-lg mb-3"
+                />
+              </div>
+            ) : data?.length === 0 ? (
               <div className="">
                 <Image
                   src="/event-empty.png"
@@ -70,7 +82,7 @@ function SwiperSlideIncoming({ data, error }) {
                 />
               </div>
             ) : (
-              data.map((event, index) => (
+              data?.map((event, index) => (
                 <SwiperSlide key={index}>
                   <div className="rounded-2xl  flex max-md:justify-center max-md:items-center max-md:p-2 md:p-3">
                     <div className="lg:p-5 p-3 rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-full">
@@ -152,11 +164,8 @@ function SwiperSlideIncoming({ data, error }) {
                 </SwiperSlide>
               ))
             )
-          ) : (
-            <div>
-              <NoInfoAvailable />
-            </div>
-          )}
+            //
+          }
         </div>
       </Swiper>
     </div>

@@ -6,10 +6,26 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { formatDate } from "../date-format/page";
 import Skeleton from "../skeleton/skeleton";
-
+import Modal from "../common-modal/modal";
+import LoadingButton from "../loadingButton/page";
+import CustomAlert from "../alert/page";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 function TopicReply() {
   const { id: paramId } = useParams();
   const { data: session } = useSession();
+  const [openDeletePop, setOpenDeletePop] = useState(false);
+  const [storeTopicId, setStoreTopicId] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+  const [AlertDetails, setAlertDetails] = useState({
+    isOpen: false,
+    message: "",
+    duration: 3000,
+    position: "bottom",
+    type: "success",
+  });
+  console.log(storeTopicId, "storeTopicId");
   const token = session?.user?.userToken;
   const userLoginId = session?.user?.userLoginId;
   const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic_reply/findById/${paramId}`;
@@ -48,8 +64,49 @@ function TopicReply() {
     <Skeleton item={5} style="h-[150px] w-full rounded-lg mb-3" />
   );
 
+  const handleDelete = (id) => {
+    console.log(id, "hchc");
+    setOpenDeletePop(true);
+    setStoreTopicId(id);
+  };
+  const handleDeleteReply = async () => {
+    setIsLoading(true);
+    const API_URL_For_Delete_Reply = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic_reply/delete/${storeTopicId}`;
+
+    try {
+      const response = await axios.delete(API_URL_For_Delete_Reply, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setAlertDetails({
+        isOpen: true,
+        message: response?.data?.message || "Topic Reply deleted successfully",
+        duration: 3000,
+        position: "top",
+        type: "success",
+      });
+
+      setTimeout(() => {
+        router.push("/members-only-content/Dashboard/member-forum");
+      }, 2000);
+      setIsLoading(false);
+    } catch (error) {
+      setAlertDetails({
+        isOpen: true,
+        message: error?.response?.data?.message || "Error deleting topic",
+        duration: 3000,
+        position: "top",
+        type: "danger",
+      });
+      setIsLoading(false);
+      console.error("Error deleting topic:", error?.response?.data?.message);
+    }
+    setIsLoading(false);
+  };
+
   const renderReply = (data, index) => {
-    console.log(data?.user?.id, "dd");
+    console.log(data, "dd");
     const isExpanded = expanded[index];
 
     // Truncate content if not expanded
@@ -57,8 +114,7 @@ function TopicReply() {
       ? data?.content
       : `${data?.content?.slice(0, 70)}`; // Adjust slice length as needed
 
-
-      useEffect
+    useEffect;
     return (
       <div
         className="w-full text-[#333333] mx-auto p-4 bg-[#F8F8F8] rounded-lg"
@@ -92,7 +148,10 @@ function TopicReply() {
                     </svg>
                   </div>
                   {/* -------------delete--------------------- */}
-                  <div className="border cursor-pointer  transition duration-300 border-[#C8C8C8] hover:border-primary p-[15px] rounded-full">
+                  <div
+                    onClick={() => handleDelete(data?.id)}
+                    className="border cursor-pointer  transition duration-300 border-[#C8C8C8] hover:border-primary p-[15px] rounded-full"
+                  >
                     <svg
                       width="16"
                       height="17"
@@ -173,13 +232,72 @@ function TopicReply() {
   };
 
   return (
-    <div className="space-y-5">
-      {loadingReply
-        ? renderSkeleton()
-        : errorReply || !ReplyTopics.length
-        ? renderError()
-        : ReplyTopics.map(renderReply)}
-    </div>
+    <>
+      {AlertDetails.isOpen && (
+        <CustomAlert
+          message={AlertDetails.message}
+          duration={AlertDetails.duration}
+          onClose={() =>
+            setAlertDetails({
+              ...AlertDetails,
+              isOpen: false,
+            })
+          }
+          position={AlertDetails.position}
+          type={AlertDetails.type}
+        />
+      )}
+      <div className="space-y-5">
+        {loadingReply
+          ? renderSkeleton()
+          : errorReply || !ReplyTopics.length
+          ? renderError()
+          : ReplyTopics.map(renderReply)}
+      </div>
+
+      <Modal
+        wantTocloseFromScreen={true}
+        wantCrossButton={true}
+        isOpen={openDeletePop}
+        onClose={() => setOpenDeletePop(false)}
+        className="custom-modal"
+        width={"max-w-[500px]"}
+      >
+        <div className="flex justify-center items-center gap-2">
+          <Image
+            src="/dashboard/delete-topic.png"
+            height={50}
+            width={50}
+            alt="delete-image"
+          />
+        </div>
+        <div className="text-center font-semibold text-[#333333]  text-sm my-6">
+          Are you sure you want to delete this reply?
+        </div>
+        <div className="flex justify-center gap-6">
+          <span onClick={() => setOpenDeletePop(false)}>
+            <LoadingButton
+              disabledProp={() => {}}
+              style="hover:bg-primary  transition-all font-[700] duration-200 text-black p-[7px]  w-full xs:w-[132px]  rounded-xl text-primary border border-primary hover:text-white "
+              text="Cancel"
+              spinnerWidth="23"
+              spinnerHeight="23"
+              loading={false}
+            />
+          </span>
+          <span onClick={handleDeleteReply}>
+            <LoadingButton
+              disabledProp={() => {}}
+              style="hover:bg-primary  transition-all font-[700] duration-200 text-black p-[7px]  w-full xs:w-[132px]  rounded-xl text-primary border border-primary hover:text-white "
+              text="Delete"
+              spinnerWidth="23"
+              spinnerHeight="23"
+              loading={isLoading}
+            />
+          </span>
+        </div>
+      </Modal>
+    </>
   );
 }
 

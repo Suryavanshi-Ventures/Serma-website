@@ -15,7 +15,7 @@ function Quote() {
   const router = useRouter();
   const fileInputRef = useRef(null);
   const { data: session } = useSession();
-  // const [loading, setLoading] = useState(true);
+  const [isloading, setisLoading] = useState(false);
   // const [error, setError] = useState(null);
   // const [topic, setTopic] = useState(null);
   const [content, setContent] = useState("");
@@ -30,29 +30,6 @@ function Quote() {
   });
   const token = session?.user?.userToken;
   const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic/findById/${quoteId}`;
-  // useEffect(() => {
-  //   const fetchTopic = async () => {
-  //     if (token) {
-  //       try {
-  //         const response = await axios.get(
-  //           `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic/findById/${quoteId}`,
-  //           {
-  //             headers: { Authorization: `Bearer ${token}` },
-  //           }
-  //         );
-  //         setTopic(response.data.result);
-  //         setContent(response.data.result.data?.content);
-  //         setImages(response.data.result.data?.attachments);
-  //         setTitle(response.data.result.data?.content);
-  //       } catch (error) {
-  //         setError(error);
-  //       } finally {
-  //         setLoading(false);
-  //       }
-  //     }
-  //   };
-  //   fetchTopic();
-  // }, [token, quoteId]);
 
   const {
     data: topic,
@@ -123,6 +100,7 @@ function Quote() {
   };
 
   const handleSubmit = async () => {
+    setisLoading(true);
     const apiUrl = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic/update/${quoteId}`;
     const body = {
       // title: title,
@@ -155,6 +133,10 @@ function Quote() {
         position: "top",
         type: "success",
       });
+      setisLoading(false);
+      setTimeout(() => {
+        router.push("/members-only-content/Dashboard/member-forum");
+      }, 1000);
     } catch (error) {
       // Handle errors
       console.error("Error making API call in [quoteId]:", error);
@@ -165,7 +147,9 @@ function Quote() {
         position: "top",
         type: "danger",
       });
+      setisLoading(false);
     }
+    setisLoading(false);
   };
 
   const handleImageChange = async (event) => {
@@ -342,7 +326,7 @@ function Quote() {
               text="Save"
               spinnerWidth="23"
               spinnerHeight="23"
-              loading={false}
+              loading={isloading}
             />
           </span>
         </div>

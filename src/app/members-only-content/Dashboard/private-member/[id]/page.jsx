@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import useAxiosFetch from "@/hooks/axiosFetch";
 import { useRouter } from "next/navigation";
+import Skeleton from "@/components/skeleton/skeleton";
 
 function MemberProfile() {
   const { id } = useParams();
@@ -58,8 +59,8 @@ function MemberProfile() {
         </div>
         <div className=" mb-[100px] mt-7 relative bg-secondary h-[150px] rounded-2xl">
           <Image
-            // src={userDetailsData?.profile_url ?? "/image-not-found3.png"}
-            src="/image-not-found3.png"
+            src={userDetailsData?.profile_url ?? "/image-not-found3.png"}
+            // src="/image-not-found3.png"
             height={120}
             width={120}
             alt="user-image"
@@ -67,97 +68,112 @@ function MemberProfile() {
           />
         </div>
         <hr className="text-[#9B9A9A33] mb-5" />
-        <div className="space-y-6">
-          <div className="grid grid-col-1 md:grid-cols-3 md:px-[20px] items-center  ">
-            <div className="hidden md:flex text-gray font-semibold">Name</div>
+        {loading ? (
+          <div className="grid grid-cols-2 gap-9 ">
+            <Skeleton
+              key={10}
+              item={10}
+              style="h-[100px] w-full rounded-lg mb-3"
+            />
+            {/* <Skeleton key={10} item={10} style="h-[100px] w-full rounded-lg mb-3" /> */}
+          </div>
+        ) : (
+          <div className="space-y-6 animate-fade">
+            <div className="grid grid-col-1 md:grid-cols-3 md:px-[20px] items-center  ">
+              <div className="hidden md:flex text-gray font-semibold">Name</div>
 
-            <div className="w-full   ">
-              <div htmlFor="" className="mb-2 font-semibold max-md:text-gray">
-                First Name
+              <div className="w-full   ">
+                <div htmlFor="" className="mb-2 font-semibold max-md:text-gray">
+                  First Name
+                </div>
+                <input
+                  type="text"
+                  className="border border-gray p-2 rounded-lg w-full"
+                  value={userDetailsData?.first_name}
+                />
+              </div>
+              <div className="max-md:mt-5 md:ml-5">
+                <div htmlFor="" className="mb-2 font-semibold max-md:text-gray">
+                  Last Name
+                </div>
+                <input
+                  type="text"
+                  className="border border-gray p-2 rounded-lg w-full"
+                  value={userDetailsData?.last_name}
+                />
+              </div>
+            </div>
+
+            <hr className="text-[#9B9A9A33]" />
+            <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 items-center md:px-[20px]">
+              <div className="font-semibold text-gray my-2">
+                Membership Level
               </div>
               <input
                 type="text"
-                className="border border-gray p-2 rounded-lg w-full"
-                value={userDetailsData?.first_name}
+                className="border border-gray p-2 rounded-lg"
+                value={userDetailsData?.membership_level}
               />
             </div>
-            <div className="max-md:mt-5 md:ml-5">
-              <div htmlFor="" className="mb-2 font-semibold max-md:text-gray">
-                Last Name
-              </div>
+            <hr className="text-[#9B9A9A33]" />
+            <div className="grid grid-cols-1  sm:grid-cols-2  items-center md:grid-cols-3  md:px-[20px]">
+              <div className="font-semibold text-gray my-2">Organization</div>
               <input
                 type="text"
-                className="border border-gray p-2 rounded-lg w-full"
-                value={userDetailsData?.last_name}
+                className="border border-gray p-2 rounded-lg"
+                value={userDetailsData?.organization}
               />
             </div>
+            <hr className="text-[#9B9A9A33]" />
+            <div className="grid grid-cols-1  sm:grid-cols-2  items-center md:grid-cols-3  md:px-[20px]">
+              <div className="font-semibold text-gray my-2">Title</div>
+              <input
+                type="text"
+                className="border border-gray p-2 rounded-lg"
+                value={userDetailsData?.title}
+              />
+            </div>
+            <hr className="text-[#9B9A9A33]" />
+            <div className="grid grid-cols-1  sm:grid-cols-2  items-center md:grid-cols-3  md:px-[20px]">
+              <div className="font-semibold text-gray my-2">Email</div>
+              <input
+                type="text"
+                className="border border-gray p-2 rounded-lg"
+                value={userDetailsData?.email}
+              />
+            </div>
+            <hr className="text-[#9B9A9A33]" />
+            <div className="grid grid-cols-1  sm:grid-cols-2  items-center md:grid-cols-3  md:px-[20px]">
+              <div className="font-semibold text-gray my-2">State</div>
+              <input
+                type="text"
+                className="border border-gray p-2 rounded-lg"
+                value={userDetailsData?.state}
+              />
+            </div>
+            <hr className="text-[#9B9A9A33]" />
+            <div className="grid grid-cols-1  sm:grid-cols-2  items-center md:grid-cols-3  md:px-[20px]">
+              <div className="font-semibold text-gray my-2">Zipcode</div>
+              <input
+                type="text"
+                className="border border-gray p-2 rounded-lg"
+                value={userDetailsData?.zip_code}
+              />
+            </div>
+            <hr className="text-[#9B9A9A33]" />
+            <div className="flex flex-col 2xl:space-x-[185px] xl:space-x-[150px]  md:flex-row  md:px-[25px]  ">
+              <div className="font-semibold text-gray my-2">
+                Professional Bio
+              </div>
+              <textarea
+                type="text"
+                className="border border-gray p-2 rounded-lg md:w-1/2"
+                value={userDetailsData?.Professional ?? "N/A"}
+              />
+            </div>
+            <hr className="text-[#9B9A9A33]" />
           </div>
-
-          <hr className="text-[#9B9A9A33]" />
-          <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 items-center md:px-[20px]">
-            <div className="font-semibold text-gray my-2">Membership Level</div>
-            <input
-              type="text"
-              className="border border-gray p-2 rounded-lg"
-              value={userDetailsData?.membership_level}
-            />
-          </div>
-          <hr className="text-[#9B9A9A33]" />
-          <div className="grid grid-cols-1  sm:grid-cols-2  items-center md:grid-cols-3  md:px-[20px]">
-            <div className="font-semibold text-gray my-2">Organization</div>
-            <input
-              type="text"
-              className="border border-gray p-2 rounded-lg"
-              value={userDetailsData?.organization}
-            />
-          </div>
-          <hr className="text-[#9B9A9A33]" />
-          <div className="grid grid-cols-1  sm:grid-cols-2  items-center md:grid-cols-3  md:px-[20px]">
-            <div className="font-semibold text-gray my-2">Title</div>
-            <input
-              type="text"
-              className="border border-gray p-2 rounded-lg"
-              value={userDetailsData?.title}
-            />
-          </div>
-          <hr className="text-[#9B9A9A33]" />
-          <div className="grid grid-cols-1  sm:grid-cols-2  items-center md:grid-cols-3  md:px-[20px]">
-            <div className="font-semibold text-gray my-2">Email</div>
-            <input
-              type="text"
-              className="border border-gray p-2 rounded-lg"
-              value={userDetailsData?.email}
-            />
-          </div>
-          <hr className="text-[#9B9A9A33]" />
-          <div className="grid grid-cols-1  sm:grid-cols-2  items-center md:grid-cols-3  md:px-[20px]">
-            <div className="font-semibold text-gray my-2">State</div>
-            <input
-              type="text"
-              className="border border-gray p-2 rounded-lg"
-              value={userDetailsData?.state}
-            />
-          </div>
-          <hr className="text-[#9B9A9A33]" />
-          <div className="grid grid-cols-1  sm:grid-cols-2  items-center md:grid-cols-3  md:px-[20px]">
-            <div className="font-semibold text-gray my-2">Zipcode</div>
-            <input
-              type="text"
-              className="border border-gray p-2 rounded-lg"
-              value={userDetailsData?.zip_code}
-            />
-          </div>
-          <hr className="text-[#9B9A9A33]" />
-          <div className="flex flex-col 2xl:space-x-[185px] xl:space-x-[150px]  md:flex-row  md:px-[25px]  ">
-            <div className="font-semibold text-gray my-2">Professional Bio</div>
-            <textarea
-              type="text"
-              className="border border-gray p-2 rounded-lg md:w-1/2"
-              value={userDetailsData?.Professional ?? "N/A"}
-            />
-          </div>
-          <hr className="text-[#9B9A9A33]" />
-        </div>
+        )}
       </>
     </div>
   );

@@ -3,7 +3,7 @@ import BlueLine from "../blue-line/page";
 import { EVENT_CARD_DETAILS } from "@/app/utils/constant/constant";
 import Image from "next/image";
 import SwiperSlideIncoming from "./swiper-incoming/page";
-function EventUpcoming({ data, error }) {
+function EventUpcoming({ data, error,loading }) {
   return (
     <div>
       <div className="flex flex-col lg:flex-row max-md:px-5 px-[25px]  ">
@@ -22,7 +22,7 @@ function EventUpcoming({ data, error }) {
         {/* ------------------------ */}
 
         <div className="w-full lg:w-[80%]">
-          <SwiperSlideIncoming data={data} error={error} />
+          <SwiperSlideIncoming data={data} error={error} loading={loading}  />
         </div>
       </div>
     </div>

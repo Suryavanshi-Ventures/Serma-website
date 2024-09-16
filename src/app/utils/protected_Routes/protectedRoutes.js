@@ -5,12 +5,11 @@ import { useEffect } from "react";
 const ProtectRoute = ({children}) => {
     const router = useRouter();
     const { data: session, status } = useSession();
+    const token = session?.user?.userToken;
     console.log(status)
+    console.log(token)
     useEffect(() =>{
-        if(status === "authenticated"){
-            router.push("/members-only-content/Dashboard/member-forum")
-        }
-        else{
+       if ( status === "unauthenticated") {
             router.push("/")
         }
     },[status]);

@@ -111,7 +111,7 @@ function CreateTopic() {
     }
   };
 
-  console.log(showImageForUser);
+ 
 
   const handleButtonClick = () => {
     fileInputRef.current.click();
@@ -166,6 +166,9 @@ function CreateTopic() {
         position: "top",
         type: "success",
       });
+      setTimeout(() => {
+        router.push("/members-only-content/Dashboard/member-forum")
+      }, 2000);
     } 
     catch (error) {
       // Handle errors
@@ -173,7 +176,7 @@ function CreateTopic() {
       console.error("Error making API call:", error);
     }
   };
-  console.log(image);
+
 
   return (
     <>

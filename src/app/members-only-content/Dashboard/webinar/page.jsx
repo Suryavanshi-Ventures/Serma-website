@@ -111,8 +111,11 @@ function Webinar() {
                       </p>
                     </div>
                     <div className=" ">
-                      <p className="responsive-Text font-bold text-[#525971] ">
-                        {item?.description}
+                      <p
+                        className="responsive-Text font-bold text-[#525971]"
+                        dangerouslySetInnerHTML={{ __html: item?.description }}
+                      >
+                        {/* {item?.description} */}
                       </p>
                     </div>
                   </div>

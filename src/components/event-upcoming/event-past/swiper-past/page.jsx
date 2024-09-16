@@ -6,9 +6,16 @@ import "swiper/css/pagination";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
+import { useRouter } from "next/navigation";
 
 
 function SwiperSlideIncoming({ data, error }) {
+  const router = useRouter();
+  const handleClick = (id) => {
+    console.log(id);
+    router.push(`/events/${id}`);
+  };
+
   return (
     <div className="">
       <Swiper

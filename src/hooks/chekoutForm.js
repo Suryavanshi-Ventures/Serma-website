@@ -7,7 +7,6 @@ import {
   PaymentElement,
 } from "@stripe/react-stripe-js";
 import { useRouter } from "next/navigation";
-import AxiosPost from "./axiosPost";
 
 const CheckoutForm = ({ data, returnUrl, loadingText = "Processing..." }) => {
   const stripe = useStripe();

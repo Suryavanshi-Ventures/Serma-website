@@ -7,22 +7,49 @@ import React from "react";
 import LoadingButton from "../loadingButton/page";
 import Button from "../button/page";
 import Link from "next/link";
-
+import { useSession } from "next-auth/react";
+import useAxiosFetch from "@/hooks/axiosFetch";
+import { useRouter } from "next/navigation";
 function DashboardEvents() {
+const router = useRouter();
+  const { data: session } = useSession();
+  const token = session?.user?.userToken;
+  const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/upcoming_events`;
+  const {
+    data: upcoming_events,
+    loading,
+    error,
+  } = useAxiosFetch(
+    token ? API_URL : null,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
+    token
+  );
+
+  const handleClick = (id) => {
+    console.log(id);
+    router.push(`/events/${id}`);
+  };
+
+
+
   return (
     <div className="">
       <div className="text-xl font-semibold text-center text-[#111111]">
         Events
       </div>
-      {EVENT_CARD_DESHBOARD.map((event, index) => (
+      { upcoming_events && upcoming_events?.result .slice(0,2) .map((event, index) => (
+       
         <div
-          key={index}
+          key={event?.id}
           className="w-full md:w-[300px]   rounded-2xl  flex max-md:justify-center max-md:items-center max-sm:p-0  "
         >
+        {   console.log(event.id)}
           <div className="md:py-3  shadow-xl my-2 py-4 px-3 rounded-xl ">
             <div className="">
               <Image
-                src={event.imageSrc}
+                src={event.image_url || "/event-empty.png"}
                 height={225}
                 width={396}
                 alt="image"
@@ -54,16 +81,18 @@ function DashboardEvents() {
                     </clipPath>
                   </defs>
                 </svg>
-                <div className="text-gray text-sm">{event.date}</div>
+                <div className="text-gray text-sm">{event.start_date_time}</div>
               </div>
-              <div className="text-lg my-2">{event.type}</div>
+              <div className="text-lg my-2">{event.event_type}</div>
               <div className="font-semibold text-[#525971]">{event.title}</div>
               <div className="flex items-center justify-between">
                 <div className="underline text-[#474747] text-[16px] cursor-pointer">
                   Show Detail
                 </div>
-                <div className="flex cursor-pointer items-center gap-3">
-                  <span className="text-primary text-[16px] my-3">
+                <div className="flex cursor-pointer items-center gap-3 ">
+                  <span
+                  onClick={()=>handleClick(event.id)}
+                  className="text-primary text-[16px] my-3">
                     Register
                   </span>
                   <span>

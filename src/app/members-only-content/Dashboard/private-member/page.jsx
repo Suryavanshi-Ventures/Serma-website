@@ -30,7 +30,10 @@ const ContactRow = ({ data, onClick }) => (
           className="rounded-full w-[40px] h-[40px]"
         />
       </div>
-      <div onClick={() => onClick(data?.id)} className="cursor-pointer underline">
+      <div
+        onClick={() => onClick(data?.id)}
+        className="cursor-pointer underline"
+      >
         {data?.first_name ?? "N/A"} {data?.last_name ?? "N/A"}
       </div>
       <div>{data?.organization ?? "N/A"}</div>
@@ -39,8 +42,6 @@ const ContactRow = ({ data, onClick }) => (
     <hr className="text-[#D9D9D9]" />
   </>
 );
-
-
 
 const PrivateMember = () => {
   const router = useRouter();
