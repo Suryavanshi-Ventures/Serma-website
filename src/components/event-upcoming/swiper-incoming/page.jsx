@@ -57,6 +57,7 @@ function SwiperSlideIncoming({ data, error, loading }) {
         }}
       >
         <div className="">
+          
           {
             error ? (
               <div>

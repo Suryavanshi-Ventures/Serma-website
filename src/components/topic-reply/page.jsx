@@ -40,10 +40,16 @@ function TopicReply() {
     },
     paramId
   );
-
+  console.log(topicReply, "topicReply");
   const ReplyTopics = topicReply?.result || [];
 
   const [expanded, setExpanded] = useState({}); // State to manage expanded content
+
+  const handleEditReply = (topicEdit) => {
+    router.push(
+      `/members-only-content/Dashboard/member-forum/topic_edit/${topicEdit}`
+    );
+  };
 
   const handleToggle = (index) => {
     setExpanded((prev) => ({ ...prev, [index]: !prev[index] }));
@@ -133,7 +139,10 @@ function TopicReply() {
               <div className="space-x-4">
                 <span className="flex gap-4">
                   {/* -----------------------------edit------------------------------------ */}
-                  <div className="border cursor-pointer transition duration-300 border-[#C8C8C8] hover:border-primary p-[15px] rounded-full">
+                  <div
+                    onClick={() => handleEditReply(data?.id)}
+                    className="border cursor-pointer transition duration-300 border-[#C8C8C8] hover:border-primary p-[15px] rounded-full"
+                  >
                     <svg
                       width="16"
                       height="15"

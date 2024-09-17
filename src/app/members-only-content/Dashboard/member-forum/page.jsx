@@ -13,7 +13,7 @@ const TopicItem = ({ post, handleSeePost }) => {
       <div className="flex items-start space-x-4">
         <div
           onClick={() => handleSeePost(post.id)}
-          className="w-10 h-10 relative cursor-pointer"
+          className="w-10 p-5 h-10 relative cursor-pointer "
         >
           <Image
             src={
@@ -35,7 +35,7 @@ const TopicItem = ({ post, handleSeePost }) => {
               {post.title}
             </span>
           </div>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center md:pr-10">
             <div className="flex items-center gap-3 md:gap-5 my-1">
               <h2
                 onClick={() => handleSeePost(post.id)}

@@ -44,8 +44,6 @@ function Reply() {
     fetchTopic();
   }, [token, paramsId]);
 
-
-
   const [AlertDetails, setAlertDetails] = useState({
     isOpen: false,
     message: "",
@@ -100,7 +98,7 @@ function Reply() {
   const handleSubmit = async () => {
     const apiUrl = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic_reply/create`;
     const body = {
-      topic_id :paramsId,
+      topic_id: paramsId,
       content: content,
       attachments: images,
     };
@@ -112,8 +110,6 @@ function Reply() {
           "Content-Type": "application/json",
         },
       });
-     
-     
 
       setAlertDetails({
         isOpen: true,
@@ -122,7 +118,9 @@ function Reply() {
         position: "top",
         type: "success",
       });
-      router.push(`/members-only-content/Dashboard/member-forum/${paramsId}`) 
+      setTimeout(() => {
+        router.push(`/members-only-content/Dashboard/member-forum/${paramsId}`);
+      }, 2000);
     } catch (error) {
       setAlertDetails({
         isOpen: true,
@@ -133,8 +131,6 @@ function Reply() {
       });
       console.error("Error making API call:", error);
     }
-
-    // console.log({ subject, content, images });
   };
   const SaymanGoBack = () => {
     router.push(`/members-only-content/Dashboard/member-forum/${paramsId}`);
