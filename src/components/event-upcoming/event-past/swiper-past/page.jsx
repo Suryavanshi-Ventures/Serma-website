@@ -7,9 +7,11 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 import { useRouter } from "next/navigation";
-
+import { FormatDateOnly } from "@/components/date-format/date-only/pae";
+import { FormatTimeOnly } from "@/components/date-format/time-only/page";
 
 function SwiperSlideIncoming({ data, error }) {
+  console.log(data);
   const router = useRouter();
   const handleClick = (id) => {
     console.log(id);
@@ -74,8 +76,18 @@ function SwiperSlideIncoming({ data, error }) {
                   className="rounded-2xl object-fill w-full h-full"
                 />
               </div>
+            ) : data.result.length === 0 ? (
+              <div className="flex justify-center items-center ">
+                <Image
+                  src="/past-events/past_event.png"
+                  alt=""
+                  height={400}
+                  width={400}
+                />
+              </div>
             ) : (
-              data.map((event, index) => (
+              data &&
+              data.result.map((event, index) => (
                 <SwiperSlide key={index}>
                   <div className="rounded-2xl  flex max-md:justify-center max-md:items-center max-md:p-2 md:p-3">
                     <div className="p-5 rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-full">
@@ -115,7 +127,8 @@ function SwiperSlideIncoming({ data, error }) {
                             </defs>
                           </svg>
                           <div className="text-gray text-sm">
-                            {event.start_date_time}
+                            {FormatDateOnly(event.start_date_time)},{" "}
+                            {FormatTimeOnly(event.start_date_time)}
                           </div>
                         </div>
                         <div className="text-lg my-4">{event.event_type}</div>

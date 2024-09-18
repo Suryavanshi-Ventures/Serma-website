@@ -5,10 +5,36 @@ import BlueLine from "@/components/blue-line/page";
 import Image from "next/image";
 import React, { useState } from "react";
 import SwiperSlidePast from "./swiper-past/page";
-
-function EventPast({ data, error }) {
+import { useSession } from "next-auth/react";
+import useAxiosFetch from "@/hooks/axiosFetch";
+function EventPast() {
   const [selectedMonth, setSelectedMonth] = useState(0);
-  const handleSelectMonth = (i) => {
+  const [filteredMonth, setFilteredMonth] = useState("");
+
+  const { data: session } = useSession();
+  const token = session?.user?.userToken;
+  const API_URL2 = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/past_events?search_month=${filteredMonth}`;
+  const {
+    data: data,
+    loading2,
+    error2: error,
+  } = useAxiosFetch(
+    // token ? API_URL2 : null,
+    API_URL2,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
+    token
+  );
+  console.log(data);
+
+  const handleSelectMonth = (month, i) => {
+    console.log(month);
+
+    const toLowerCaseMonth = month.toLowerCase();
+
+    setFilteredMonth(i === 0 ? "" : toLowerCaseMonth);
+
     setSelectedMonth(i);
   };
   const handlePrevMonth = () => {
@@ -64,8 +90,9 @@ function EventPast({ data, error }) {
                       className="h-[14px] w-[14px]"
                     />
                   </div>
+
                   <div
-                    onClick={() => handleSelectMonth(i)}
+                    onClick={() => handleSelectMonth(month, i)}
                     className={`cursor-pointer text-[18px] ${
                       selectedMonth === i ? "text-[#13A6AC] underline" : ""
                     }`}
@@ -138,7 +165,7 @@ function EventPast({ data, error }) {
           {/* ------------------------ */}
 
           <div className="w-full lg:w-[80%]">
-            <SwiperSlidePast data={data} error={error} />
+            <SwiperSlidePast data={data && data} error={error} />
           </div>
         </div>
       </div>

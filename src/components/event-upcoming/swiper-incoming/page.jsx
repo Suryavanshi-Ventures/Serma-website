@@ -10,9 +10,11 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import NoInfoAvailable from "@/components/no-info/page";
 import Skeleton from "@/components/skeleton/skeleton";
+import { FormatDateOnly } from "@/components/date-format/date-only/pae";
+import { FormatTimeOnly } from "@/components/date-format/time-only/page";
 
 function SwiperSlideIncoming({ data, error, loading }) {
-  console.log(loading);
+ 
   const router = useRouter();
 
   const handleClick = (id) => {
@@ -123,7 +125,9 @@ function SwiperSlideIncoming({ data, error, loading }) {
                             </defs>
                           </svg>
                           <div className="text-gray text-sm">
-                            {event.start_date_time}
+                            {}
+                            {FormatDateOnly(event.start_date_time)},  {" "}{FormatTimeOnly(event.start_date_time)}
+                              
                           </div>
                         </div>
                         <div className="text-lg md:my-4 my-2">

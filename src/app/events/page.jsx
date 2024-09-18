@@ -13,35 +13,25 @@ export default function Events() {
   // );
   const { data: session } = useSession();
   const token = session?.user?.userToken;
+ 
   const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/upcoming_events`;
   const {
     data: upcoming_events,
     loading,
     error,
   } = useAxiosFetch(
-    token ? API_URL : null,
+    API_URL ,
     {
       headers: { Authorization: `Bearer ${token}` },
     },
     token
   );
-
+ 
   // const past_events = await fetchData(
   //   `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/past_events`
   // );
 
-  const API_URL2 = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/past_events`;
-  const {
-    data: past_events,
-    loading2,
-    error2,
-  } = useAxiosFetch(
-    token ? API_URL2 : null,
-    {
-      headers: { Authorization: `Bearer ${token}` },
-    },
-    token
-  );
+
 
 
 
@@ -71,6 +61,7 @@ export default function Events() {
       </Container>
       {/* </div> */}
       <div className="my-[40px] lg:pl-[10px] xl:pl-[62px]  ">
+      
         <EventUpcoming
           data={upcoming_events && upcoming_events?.result}
           error={error}
@@ -79,8 +70,8 @@ export default function Events() {
       </div>
       <div className="my-[40px] lg:pl-[10px] xl:pl-[62px]">
         <EventPast
-          data={past_events && past_events?.result}
-          error={ past_events?.error}
+          // data={past_events && past_events?.result}
+          // error={ past_events?.error}
         />
       </div>
     </div>

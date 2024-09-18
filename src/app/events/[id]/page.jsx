@@ -57,7 +57,7 @@ function GetEvent({ params }) {
     if (emailValid) {
       if (token && UserMemberShipPlan == 3) {
         console.log("good to go for further process");
-        ///event_registration/create/42  api will call 
+      //event_registration/create/42  api will call 
       }
 
       setHandleOpenanotherPopUp(true);
@@ -245,7 +245,7 @@ function GetEvent({ params }) {
           <input
             type="email"
             placeholder="Enter Your Email"
-            className="border border-gray outline-none mt-4 rounded-lg p-2 w-full"
+            className="border border-gray outline-none mt-4 rounded-lg p-2 w-full focus:border-primary"
             value={email}
             onChange={handleEmailChange}
           />

@@ -67,14 +67,14 @@ function Sidebar() {
   }, []);
 
   useEffect(() => {
-    if (token && token !== previousToken && !logoutTriggered) {
-      // do nothing
-      console.log("prtint")
-    } else if (logoutTriggered) {
-      // reset the logoutTriggered flag
-      setLogoutTriggered(false);
+    if ((token, previousToken)) {
+      if (token !== previousToken && !logoutTriggered) {
+        onclickLogout();
+      } else if (logoutTriggered) {
+        setLogoutTriggered(false);
+      }
+      setPreviousToken(token);
     }
-    setPreviousToken(token);
   }, [token]);
 
   const onclickLogout = () => {

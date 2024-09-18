@@ -22,6 +22,7 @@ function EventUpcoming({ data, error,loading }) {
         {/* ------------------------ */}
 
         <div className="w-full lg:w-[80%]">
+         
           <SwiperSlideIncoming data={data} error={error} loading={loading}  />
         </div>
       </div>
