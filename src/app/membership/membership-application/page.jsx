@@ -14,9 +14,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import Skeleton from "@/components/skeleton/skeleton";
 import AxiosPost from "@/hooks/axiosPost";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from "@/hooks/chekoutForm";
 
 const MemberShip = () => {
   const [popUp, setPopUp] = useState(false);
@@ -32,7 +29,7 @@ const MemberShip = () => {
   const token = session?.user?.userToken;
   const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/membership/plan/find`;
   const API_URL_POST = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/payment/payment-intent`;
- 
+
   const { data: apiData, loading: isLoading } = useAxiosFetch(
     API_URL,
     { headers: { Authorization: `Bearer ${token}` } },
@@ -79,8 +76,8 @@ const MemberShip = () => {
       const result = await postData(BodyData);
       if (result && result?.paymentIntent?.client_secret) {
         // Set the clientSecret after successfully receiving it
-        const  membership_form = result?.paymentIntent?.client_secret;
-        localStorage.setItem('selectedPlanData', JSON.stringify(StripeData));
+        const membership_form = result?.paymentIntent?.client_secret;
+        localStorage.setItem("selectedPlanData", JSON.stringify(StripeData));
         router.push(`/membership/membership-application/${membership_form}`);
         setClientSecret(result.paymentIntent.client_secret);
         // setPopUpForPayment(true);
@@ -98,7 +95,6 @@ const MemberShip = () => {
     if (isSelectedCard?.id) {
       setPopUp(true);
     } else {
-     
       alert("Please select a membership plan");
     }
   };
@@ -241,8 +237,6 @@ const MemberShip = () => {
           </div>
         </div>
       </Modal>
-
-     
     </div>
   );
 };

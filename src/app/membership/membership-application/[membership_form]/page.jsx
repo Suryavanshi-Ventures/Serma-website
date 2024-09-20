@@ -112,7 +112,7 @@ const Page = () => {
 
     { label: "Date", name: "date", type: "date", placeholder: "Select Date" },
   ];
-  console.log(formData, "formData");
+
   const stripePromise = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_PK_KEY}`);
   const options = {
     // passing the client secret obtained from the server

@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import CustomAlert from "@/components/alert/page";
+import useAxiosFetch from "@/hooks/axiosFetch";
 
 const ContactDetails = () => {
   const { data: session } = useSession();
@@ -18,22 +19,51 @@ const ContactDetails = () => {
     position: "bottom",
     type: "success",
   });
-  const Api_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/auth/update/profile`;
   const router = useRouter();
+  const Api_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/auth/update/profile`;
+  const Api_URL_GET_PROFILE = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/auth/me`;
+
+  const { data: ProfileData, loading: isLoading } = useAxiosFetch(
+    Api_URL_GET_PROFILE,
+    { headers: { Authorization: `Bearer ${token}` } },
+    token
+  );
+
+
   const [details, setDetails] = useState({
-    first_name: session?.user?.userFirstName ?? "N/A",
-    last_name: session?.user?.userLastName ?? "N/A",
-    memberShipLevel: session?.user?.userMembershipLevel ?? "N/A",
-    organization: session?.user?.userOrganization ?? "N/A",
-    title: session?.user?.userTitle ?? "N/A",
-    email: session?.user?.userEmail ?? "N/A",
-    state: session?.user?.state ?? "N/A",
-    city: session?.user?.city ?? "N/A",
-    zipcode: session?.user?.zipCode ?? "N/A",
-    mobile: session?.user?.mobile ?? "N/A",
+    first_name: '',
+    last_name: '',
+    memberShipLevel: '',
+    organization: '',
+    title: '',
+    email: '',
+    state: '',
+    city: '',
+    zipcode: '',
+    mobile: '',
     bio: "N/A",
   });
 
+  useEffect(() => {
+    if (ProfileData?.result?.data) {
+      setDetails({
+        first_name: ProfileData?.result?.data.first_name,
+        last_name: ProfileData?.result?.data.last_name,
+        memberShipLevel: ProfileData?.result?.data.membership_level,
+        organization: ProfileData?.result?.data.organization,
+        title: ProfileData?.result?.data.title,
+        email: ProfileData?.result?.data.email,
+        state: ProfileData?.result?.data.state,
+        city: ProfileData?.result?.data.city,
+        zipcode: ProfileData?.result?.data.zip_code,
+        mobile: ProfileData?.result?.data.mobile_number,
+        bio: "N/A",
+      });
+    }
+  }, [ProfileData]);
+
+
+console.log(details)
   const handleChangePassword = () => {
     router.push(`/members-only-content/Dashboard/profile/${1}`);
   };

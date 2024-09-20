@@ -15,6 +15,7 @@ import { formatDate } from "@/components/date-format/page";
 import Skeleton from "@/components/skeleton/skeleton";
 import OopsSomeThingWrong from "@/components/oops-something-wrong/page";
 import Container from "@/components/container/page";
+import TicketSlider from "@/components/ticket_slider/page";
 function GetEvent({ params }) {
   const router = useRouter();
   const eventId = params.id;
@@ -40,9 +41,10 @@ function GetEvent({ params }) {
     },
     token
   );
-
   const upcomingEvents = ApiData?.result?.data;
-
+  const isEventIsAdvance = upcomingEvents?.event_type;
+  console.log(ApiData);
+  console.log(upcomingEvents?.ticket_types);
   const validateEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
@@ -57,7 +59,7 @@ function GetEvent({ params }) {
     if (emailValid) {
       if (token && UserMemberShipPlan == 3) {
         console.log("good to go for further process");
-      //event_registration/create/42  api will call 
+        //event_registration/create/42  api will call
       }
 
       setHandleOpenanotherPopUp(true);
@@ -101,7 +103,7 @@ function GetEvent({ params }) {
         <OopsSomeThingWrong />
       ) : (
         <div>
-          <div className="flex md:justify-between  max-md:flex-col   ">
+          <div className="flex md:justify-between  max-md:flex-col ">
             <div className="">
               <div>
                 <h2 className="text-[#333333] text-xl  sm:text-2xl lg:text-3xl font-bold">
@@ -122,7 +124,7 @@ function GetEvent({ params }) {
               </div>
             </div>
 
-            <div className="max-md:w-full ">
+            <div className="max-md:w-full  ">
               <div className="p-4 lg:p-10 bg-white md:w-[400px] text-[20px] shadow-[-5px_6px_40px_0px_#00000024] rounded-lg">
                 <div className="flex my-3 gap-12 justify-start text-gray font-medium">
                   <div className="max-lg:text-[16px]">Date :</div>
@@ -150,7 +152,11 @@ function GetEvent({ params }) {
                   onMouseLeave={() => setHandleVectorChange(false)}
                   className="flex cursor-pointer transition duration-300 justify-center items-center gap-[10px] border border-primary hover:bg-primary p-[7px] rounded-xl w-[150px]"
                 >
-                  <div className={`${handleVectorChange ? "text-white " : "text-primary"}`}>
+                  <div
+                    className={`${
+                      handleVectorChange ? "text-white " : "text-primary"
+                    }`}
+                  >
                     Register
                   </div>
 
@@ -185,6 +191,17 @@ function GetEvent({ params }) {
               </div>
             </div>
           </div>
+          {/* ---------------------------------------------------------- */}
+          {isEventIsAdvance ? (
+            <TicketSlider
+              data={upcomingEvents && upcomingEvents}
+              error={error}
+              loading={loading}
+            />
+          ) : (
+            ""
+          )}
+
           <div className="my-4 md:my-8 ">
             <Image
               src={upcomingEvents?.image_url ?? "/events/bg-image.png"}
