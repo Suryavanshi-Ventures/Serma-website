@@ -84,7 +84,8 @@ function GetEvent({ params }) {
   };
 
   const handleOpenForm = () => {
-    router.push("/events/dynamicRout/registration-form");
+    const registration_form = eventId
+    router.push(`/events/registration_form/${registration_form}`);
     console.log("Opening form for non-member...");
   };
 
@@ -125,7 +126,7 @@ function GetEvent({ params }) {
             </div>
 
             <div className="max-md:w-full  ">
-              <div className="p-4 lg:p-10 bg-white md:w-[400px] text-[20px] shadow-[-5px_6px_40px_0px_#00000024] rounded-lg">
+              <div className="p-4 lg:p-10 bg-white md:w-[400px] text-[20px] shadow-[-5px_6px_40px_0px_#00000024] rounded-2xl">
                 <div className="flex my-3 gap-12 justify-start text-gray font-medium">
                   <div className="max-lg:text-[16px]">Date :</div>
                   <div className="max-lg:text-[16px]">
@@ -146,48 +147,54 @@ function GetEvent({ params }) {
                     {upcomingEvents?.location}
                   </div>
                 </div>
-                <div
-                  onClick={() => setRegister(!register)}
-                  onMouseEnter={() => setHandleVectorChange(true)}
-                  onMouseLeave={() => setHandleVectorChange(false)}
-                  className="flex cursor-pointer transition duration-300 justify-center items-center gap-[10px] border border-primary hover:bg-primary p-[7px] rounded-xl w-[150px]"
-                >
+                {console.log(isEventIsAdvance)}
+                {isEventIsAdvance !== "advance" ? (
                   <div
-                    className={`${
-                      handleVectorChange ? "text-white " : "text-primary"
-                    }`}
+                    // onClick={() => setRegister(!register)}
+                    onClick={() => setHandleOpenanotherPopUp(!handleOpenanotherPopUp)}
+                    onMouseEnter={() => setHandleVectorChange(true)}
+                    onMouseLeave={() => setHandleVectorChange(false)}
+                    className="flex cursor-pointer transition duration-300 justify-center items-center gap-[10px] border border-primary hover:bg-primary p-[7px] rounded-xl w-[150px]"
                   >
-                    Register
-                  </div>
+                    <div
+                      className={`${
+                        handleVectorChange ? "text-white " : "text-primary"
+                      }`}
+                    >
+                      Register
+                    </div>
 
-                  {handleVectorChange ? (
-                    <svg
-                      width="18"
-                      height="8"
-                      viewBox="0 0 20 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
-                        fill="white"
-                      />
-                    </svg>
-                  ) : (
-                    <svg
-                      width="18"
-                      height="8"
-                      viewBox="0 0 20 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
-                        fill="#C42C2D"
-                      />
-                    </svg>
-                  )}
-                </div>
+                    {handleVectorChange ? (
+                      <svg
+                        width="18"
+                        height="8"
+                        viewBox="0 0 20 8"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
+                          fill="white"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        width="18"
+                        height="8"
+                        viewBox="0 0 20 8"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
+                          fill="#C42C2D"
+                        />
+                      </svg>
+                    )}
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
@@ -332,7 +339,7 @@ function GetEvent({ params }) {
                       checked={selectedOption === "Non-Member"}
                       onChange={handleRadioChange}
                     />
-                    <label>Non-Member – $15.00</label>
+                    <label>Non-Member </label>
                   </div>
                   <div className="flex gap-3 my-3">
                     <input

@@ -1,10 +1,8 @@
 "use client";
-
 import { STATE, TIME_ZONE } from "@/components/constants/constants";
 import Container from "@/components/container/page";
 import SearchDropdown from "@/components/SearchDropDown/searchDrop";
 import { useParams } from "next/navigation";
-
 import React, { useEffect, useRef, useState } from "react";
 import Modal from "@/components/common-modal/modal";
 import { Elements } from "@stripe/react-stripe-js";
@@ -12,7 +10,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "@/hooks/chekoutForm";
 
 const Page = () => {
- 
   const [isVisible, setIsVisible] = useState(false);
   const { membership_form: CLIENT_SECRET } = useParams();
   const [PopUpForPayment, setPopUpForPayment] = useState(false);
@@ -127,8 +124,7 @@ const Page = () => {
     const errors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^[0-9]{10}$/; // Changed to 10 digits
-  
-  
+
     if (!formData.firstName.trim()) errors.firstName = "First Name is required";
     if (!formData.lastName.trim()) errors.lastName = "Last Name is required";
     if (!formData.organization.trim())
@@ -137,7 +133,7 @@ const Page = () => {
     if (!formData.time_zone.trim()) errors.time_zone = "Time zone is required";
     if (!formData.state.trim()) errors.state = "State is required";
     if (!formData.city.trim()) errors.city = "City is required";
-    if (!formData.volunteer.trim()) errors.volunteer = "are you interested?"; 
+    if (!formData.volunteer.trim()) errors.volunteer = "are you interested?";
     if (!formData.date.trim()) errors.date = "Select current date";
     if (!formData.email.trim() || !emailRegex.test(formData.email))
       errors.email = "A valid Email is required";
@@ -149,11 +145,15 @@ const Page = () => {
       (formData.zipCode.length < 5 || formData.zipCode.length > 10)
     )
       errors.zipCode = "Enter Valid zip code";
-  
+
     if (!formData.password.trim() || formData.password.length < 6)
       errors.password = "Password must be at least 6 characters";
-    if (!formData.confirm_password.trim() || formData.confirm_password.length < 6)
-      errors.confirm_password = "Confirm Password must be at least 6 characters";
+    if (
+      !formData.confirm_password.trim() ||
+      formData.confirm_password.length < 6
+    )
+      errors.confirm_password =
+        "Confirm Password must be at least 6 characters";
     if (formData.password !== formData.confirm_password)
       errors.confirm_password = "Passwords do not match";
     return errors;
@@ -276,10 +276,10 @@ const Page = () => {
                     </div>
                   </div>
                   {errors.volunteer && (
-                      <p className="text-red-500 text-sm mt-2">
-                        {errors.volunteer}
-                      </p>
-                    )}
+                    <p className="text-red-500 text-sm mt-2">
+                      {errors.volunteer}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="mt-[60px] flex justify-between">

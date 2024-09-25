@@ -5,6 +5,7 @@ import {
   useStripe,
   useElements,
   PaymentElement,
+ 
 } from "@stripe/react-stripe-js";
 import { useRouter } from "next/navigation";
 
@@ -35,7 +36,10 @@ const CheckoutForm = ({ data, returnUrl, loadingText = "Processing..." }) => {
       if (result.error) {
         setErrorMessage(result.error.message);
       } else if (result.paymentIntent?.status === "succeeded") {
-        localStorage.setItem("Payment_Data", JSON.stringify(result));
+        localStorage.setItem(
+          "Payment_Data",
+          JSON.stringify(result)
+        );
         const payment_success = result.paymentIntent.id;
         router.push(`/payment/${payment_success}`);
       } else {
@@ -51,6 +55,7 @@ const CheckoutForm = ({ data, returnUrl, loadingText = "Processing..." }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+     
       <PaymentElement />
       {errorMessage && (
         <p className="error-message text-red-500">{errorMessage}</p>

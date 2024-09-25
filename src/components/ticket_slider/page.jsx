@@ -21,6 +21,7 @@ function TicketSlider({ data, error, loading }) {
   const router = useRouter();
   const [selectedTicket, setSelectedTicket] = useState(null);
   const [OpenSlotPopUp, setOpenSlotPopUp] = useState(false);
+  const [TicketSlotId, setTicketSlotId] = useState(null);
   const [OpenCalculatePopUp, setOpenCalculatePopUp] = useState(false);
   const [count, setCount] = useState(1);
   const ticket_price =
@@ -29,13 +30,13 @@ function TicketSlider({ data, error, loading }) {
       .filter((data) => data.id === selectedTicket?.id)
       .map((data) => data.base_price);
   const total_price = ticket_price * count;
-
-  console.log(ticket_price);
+  console.log(total_price);
   const handleSelectTicket = (event) => {
     console.log(event);
+
     setSelectedTicket(event);
   };
-  console.log(data);
+
   const handleOpenSlotPopUp = () => {
     if (selectedTicket && data.ticket_slots.length > 0) {
       setOpenSlotPopUp(true);
@@ -44,6 +45,7 @@ function TicketSlider({ data, error, loading }) {
     }
   };
   const handleSelectSlot = (id) => {
+    setTicketSlotId(id);
     setOpenCalculatePopUp(true);
     console.log(id);
   };
@@ -54,6 +56,30 @@ function TicketSlider({ data, error, loading }) {
     if (count > 1) {
       setCount(count - 1);
     }
+  };
+  console.log(data?.id, `data.id`);
+
+  const handldeConntinueToForm = () => {
+    console.log(selectedTicket);
+
+    const ticket_details = {
+      event_id:data?.id,
+      event_name: data?.title,
+      ticket_id: selectedTicket.id,
+      ticket_name: selectedTicket.name,
+      base_price: selectedTicket.base_price,
+      total_price: total_price,
+      event_slot: TicketSlotId,
+      quantity: count,
+    };
+
+    localStorage.setItem("ticket_details", JSON.stringify(ticket_details));
+
+    const advance_registration_form = data.id;
+    router.push(
+      `/events/advance_registration_form/${advance_registration_form}`
+    );
+    console.log("hell yeah");
   };
   console.log(selectedTicket, "selectedTicket");
 
@@ -325,7 +351,7 @@ function TicketSlider({ data, error, loading }) {
           <div className="border border-[#9B9A9A] text-primary font-semibold p-2 rounded-full text-center text-lg">
             Pay $ {total_price && total_price}
           </div>
-          <span>
+          <span onClick={handldeConntinueToForm}>
             <Button
               content={"Continue"}
               px={"px-3"}
