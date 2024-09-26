@@ -84,7 +84,7 @@ function GetEvent({ params }) {
   };
 
   const handleOpenForm = () => {
-    const registration_form = eventId
+    const registration_form = eventId;
     router.push(`/events/registration_form/${registration_form}`);
     console.log("Opening form for non-member...");
   };
@@ -151,7 +151,9 @@ function GetEvent({ params }) {
                 {isEventIsAdvance !== "advance" ? (
                   <div
                     // onClick={() => setRegister(!register)}
-                    onClick={() => setHandleOpenanotherPopUp(!handleOpenanotherPopUp)}
+                    onClick={() =>
+                      setHandleOpenanotherPopUp(!handleOpenanotherPopUp)
+                    }
                     onMouseEnter={() => setHandleVectorChange(true)}
                     onMouseLeave={() => setHandleVectorChange(false)}
                     className="flex cursor-pointer transition duration-300 justify-center items-center gap-[10px] border border-primary hover:bg-primary p-[7px] rounded-xl w-[150px]"
@@ -199,15 +201,25 @@ function GetEvent({ params }) {
             </div>
           </div>
           {/* ---------------------------------------------------------- */}
-          {isEventIsAdvance ? (
+          {console.log(isEventIsAdvance)}
+          
+
+          {isEventIsAdvance === "advance" && upcomingEvents.ticket_types ?
+          (upcomingEvents.ticket_types.length > 0 ? (
             <TicketSlider
               data={upcomingEvents && upcomingEvents}
               error={error}
               loading={loading}
             />
           ) : (
-            ""
-          )}
+            <div className="flex justify-center my-10">
+              <div className="text-2xl text-primary font-semibold animate-bounce">
+                Tickets Not Available For This Event
+              </div>
+            </div>
+          ))
+          :""
+          }
 
           <div className="my-4 md:my-8 ">
             <Image

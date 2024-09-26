@@ -91,14 +91,15 @@ function SwiperSlideIncoming({ data, error }) {
                 <SwiperSlide key={index}>
                   <div className="rounded-2xl  flex max-md:justify-center max-md:items-center max-md:p-2 md:p-3">
                     <div className="p-5 rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-full">
-                      <div className="h-[225px]">
+                      <div className="">
                         <Image
                           src={event.image_url}
+                          // layout="intrinsic"
                           height={225}
                           width={396}
                           alt="image"
                           unoptimized
-                          className="rounded-2xl object-fill"
+                          className="rounded-2xl h-[300px] "
                         />
                       </div>
                       <div className="max-lg:px-2 lg:px-1">

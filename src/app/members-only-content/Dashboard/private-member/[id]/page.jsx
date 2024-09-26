@@ -24,7 +24,7 @@ function MemberProfile() {
     },
     id
   );
-  const userDetailsData = userDetail?.result?.data;
+  const userDetailsData = userDetail &&  userDetail?.result?.data;
   const handleGoBack = () => {
     router.push("/members-only-content/Dashboard/private-member");
   };
@@ -57,6 +57,7 @@ function MemberProfile() {
             {userDetailsData?.first_name} {userDetailsData?.last_name}
           </div>
         </div>
+       
         <div className=" mb-[100px] mt-7 relative bg-secondary h-[150px] rounded-2xl">
           <Image
             src={userDetailsData?.profile_url ?? "/image-not-found3.png"}
@@ -78,7 +79,7 @@ function MemberProfile() {
             {/* <Skeleton key={10} item={10} style="h-[100px] w-full rounded-lg mb-3" /> */}
           </div>
         ) : (
-          <div className="space-y-6 animate-fade">
+          <div className="space-y-6 animate-fade" >
             <div className="grid grid-col-1 md:grid-cols-3 md:px-[20px] items-center  ">
               <div className="hidden md:flex text-gray font-semibold">Name</div>
 
@@ -88,6 +89,7 @@ function MemberProfile() {
                 </div>
                 <input
                   type="text"
+                  disabled={true}
                   className="border border-gray p-2 rounded-lg w-full"
                   value={userDetailsData?.first_name}
                 />
@@ -97,6 +99,7 @@ function MemberProfile() {
                   Last Name
                 </div>
                 <input
+                 disabled={true}
                   type="text"
                   className="border border-gray p-2 rounded-lg w-full"
                   value={userDetailsData?.last_name}
@@ -110,6 +113,7 @@ function MemberProfile() {
                 Membership Level
               </div>
               <input
+               disabled={true}
                 type="text"
                 className="border border-gray p-2 rounded-lg"
                 value={userDetailsData?.membership_level}
@@ -119,6 +123,7 @@ function MemberProfile() {
             <div className="grid grid-cols-1  sm:grid-cols-2  items-center md:grid-cols-3  md:px-[20px]">
               <div className="font-semibold text-gray my-2">Organization</div>
               <input
+               disabled={true}
                 type="text"
                 className="border border-gray p-2 rounded-lg"
                 value={userDetailsData?.organization}
@@ -128,6 +133,7 @@ function MemberProfile() {
             <div className="grid grid-cols-1  sm:grid-cols-2  items-center md:grid-cols-3  md:px-[20px]">
               <div className="font-semibold text-gray my-2">Title</div>
               <input
+               disabled={true}
                 type="text"
                 className="border border-gray p-2 rounded-lg"
                 value={userDetailsData?.title}
@@ -137,6 +143,7 @@ function MemberProfile() {
             <div className="grid grid-cols-1  sm:grid-cols-2  items-center md:grid-cols-3  md:px-[20px]">
               <div className="font-semibold text-gray my-2">Email</div>
               <input
+               disabled={true}
                 type="text"
                 className="border border-gray p-2 rounded-lg"
                 value={userDetailsData?.email}
@@ -146,6 +153,7 @@ function MemberProfile() {
             <div className="grid grid-cols-1  sm:grid-cols-2  items-center md:grid-cols-3  md:px-[20px]">
               <div className="font-semibold text-gray my-2">State</div>
               <input
+               disabled={true}
                 type="text"
                 className="border border-gray p-2 rounded-lg"
                 value={userDetailsData?.state}
@@ -155,6 +163,7 @@ function MemberProfile() {
             <div className="grid grid-cols-1  sm:grid-cols-2  items-center md:grid-cols-3  md:px-[20px]">
               <div className="font-semibold text-gray my-2">Zipcode</div>
               <input
+               disabled={true}
                 type="text"
                 className="border border-gray p-2 rounded-lg"
                 value={userDetailsData?.zip_code}
@@ -166,6 +175,7 @@ function MemberProfile() {
                 Professional Bio
               </div>
               <textarea
+               disabled={true}
                 type="text"
                 className="border border-gray p-2 rounded-lg md:w-1/2"
                 value={userDetailsData?.Professional ?? "N/A"}

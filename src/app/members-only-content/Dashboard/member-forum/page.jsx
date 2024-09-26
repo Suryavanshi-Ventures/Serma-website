@@ -9,15 +9,15 @@ import useAxiosFetch from "@/hooks/axiosFetch";
 
 const TopicItem = ({ post, handleSeePost }) => {
   return (
-    <div className="bg-white p-4 animate-fade">
-      <div className="flex items-start space-x-4">
+    <div className="bg-white p-4 animate-fade  border-b border-[#D9D9D9] ">
+      <div className="flex items-start space-x-4  ">
         <div
           onClick={() => handleSeePost(post.id)}
           className="w-10 p-5 h-10 relative cursor-pointer "
         >
           <Image
             src={
-              post.attachments && post.attachments.length > 0
+              post && post.attachments && post.attachments.length > 0
                 ? post.attachments[0]
                 : "/dashboard/profile-pic.png"
             }
@@ -32,7 +32,7 @@ const TopicItem = ({ post, handleSeePost }) => {
               className="cursor-pointer"
               onClick={() => handleSeePost(post.id)}
             >
-              {post.title}
+              {post && post.title}
             </span>
           </div>
           <div className="flex justify-between items-center md:pr-10">
@@ -41,7 +41,8 @@ const TopicItem = ({ post, handleSeePost }) => {
                 onClick={() => handleSeePost(post.id)}
                 className="max-md:text-[12px] text-gray cursor-pointer"
               >
-                {post.user.first_name} {post.user.last_name}
+                {post.user && post?.user?.first_name}{" "}
+                {post.user && post.user.last_name}
               </h2>
               <p className="text-[12px] text-gray md:text-sm">
                 {formatDate(post.updated_at)}
@@ -81,7 +82,7 @@ const TopicItem = ({ post, handleSeePost }) => {
 
 const TopicList = ({ posts = [], handleSeePost }) => {
   return (
-    <div>
+    <div className="">
       {posts &&
         posts.map((post, index) => (
           <TopicItem key={index} post={post} handleSeePost={handleSeePost} />
@@ -120,7 +121,7 @@ const MemberForum = () => {
 
   return (
     <div className="w-full rounded-lg border border-[#D9D9D980] overflow-hidden">
-      <div className="flex justify-between rounded-lg items-center pt-2 px-4 bg-[#F5F6F8]">
+      <div className="flex justify-between rounded-lg items-center pt-2 px-4 bg-[#F5F6F8] ">
         <h1 className="text-[16px] font-[600] mb-4">Topic</h1>
         <h2 className="text-[16px] font-[600] mb-4">Replies</h2>
       </div>
