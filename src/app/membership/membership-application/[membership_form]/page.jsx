@@ -15,12 +15,13 @@ const Page = () => {
   const [PopUpForPayment, setPopUpForPayment] = useState(false);
   const [errors, setErrors] = useState({});
   const [StripeData, setStripeData] = useState();
+  console.log(StripeData);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     organization: "",
     title: "",
-    email: "",
+    email: (StripeData && StripeData.email) || "",
     address: "",
     password: "",
     confirm_password: "",
@@ -28,7 +29,7 @@ const Page = () => {
     city: "",
     zipCode: "",
     businessPhone: "",
-    mobilePhone: "",
+    mobilePhone: (StripeData && StripeData.mobile) || "",
     date: "",
     volunteer: "",
     time_zone: "",
@@ -117,8 +118,18 @@ const Page = () => {
   };
 
   useEffect(() => {
-    setStripeData(JSON.parse(localStorage.getItem("selectedPlanData")));
+    const storedData = JSON.parse(localStorage.getItem("selectedPlanData"));
+    setStripeData(storedData);
+  
+    if (storedData) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        email: storedData.email || "",
+        mobilePhone: storedData.mobile || "",
+      }));
+    }
   }, [CLIENT_SECRET]);
+  
 
   const validateForm = () => {
     const errors = {};

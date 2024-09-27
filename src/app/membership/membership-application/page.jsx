@@ -36,7 +36,7 @@ const MemberShip = () => {
     position: "bottom",
     type: "success",
   });
-  const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/membership/plan/find`;
+  const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/membership/plan/find?limit=50`;
   const API_URL_POST = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/payment/payment-intent`;
   const Validation_Api = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/auth/pre_register`;
   const { data: apiData, loading: isLoading } = useAxiosFetch(
@@ -86,7 +86,7 @@ const MemberShip = () => {
       const validation_data = {
         email: email,
         mobile_number: phone,
-        membership_plan: isSelectedCard && isSelectedCard?.id,
+        membership_plan_id: isSelectedCard && String(isSelectedCard?.id),
       };
 
       try {
@@ -95,8 +95,7 @@ const MemberShip = () => {
           validation_data
         );
 
-        if (result_validation?.status === "success") {
-          console.log("is it running here");
+        if (result_validation.data.status === "success") {
           const result = await postData(BodyData);
           if (result && result?.paymentIntent?.client_secret) {
             const membership_form = result?.paymentIntent?.client_secret;

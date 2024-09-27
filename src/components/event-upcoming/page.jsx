@@ -1,6 +1,6 @@
 import React from "react";
 import BlueLine from "../blue-line/page";
-import { EVENT_CARD_DETAILS } from "@/app/utils/constant/constant";
+
 import Image from "next/image";
 import SwiperSlideIncoming from "./swiper-incoming/page";
 function EventUpcoming({ data, error,loading }) {

@@ -13,7 +13,7 @@ export default function Events() {
   const { data: session } = useSession();
   const token = session?.user?.userToken;
 
-  const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/upcoming_events`;
+  const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/upcoming_events?limit=50`;
   const {
     data: upcoming_events,
     loading,

@@ -17,6 +17,7 @@ const PymentSucess = () => {
   const [userData, setUserData] = useState(null);
   const [paymentData, setPaymentData] = useState(null);
   const [planData, setPlanData] = useState(null);
+  const [isRegister ,   setIsRegistered] = useState(false);
   const [AlertDetails, setAlertDetails] = useState({
     isOpen: false,
     message: "",
@@ -44,22 +45,22 @@ const PymentSucess = () => {
       password: userData?.password,
       membership_plan_id: 3,
       payment_id: clientSecret,
-      payment_status:
-        paymentData?.paymentIntent?.status === "succeeded"
-          ? "success"
-          : paymentData?.paymentIntent?.status === "processing"
-          ? "pending"
-          : paymentData?.paymentIntent?.status === "requires_payment_method"
-          ? "fail"
-          : paymentData?.paymentIntent?.status === "requires_action"
-          ? "pending"
-          : paymentData?.paymentIntent?.status === "requires_confirmation"
-          ? "pending"
-          : paymentData?.paymentIntent?.status === "canceled"
-          ? "fail"
-          : paymentData?.paymentIntent?.status === "requires_capture"
-          ? "pending"
-          : "fail",
+      // payment_status:
+      //   paymentData?.paymentIntent?.status === "succeeded"
+      //     ? "success"
+      //     : paymentData?.paymentIntent?.status === "processing"
+      //     ? "pending"
+      //     : paymentData?.paymentIntent?.status === "requires_payment_method"
+      //     ? "fail"
+      //     : paymentData?.paymentIntent?.status === "requires_action"
+      //     ? "pending"
+      //     : paymentData?.paymentIntent?.status === "requires_confirmation"
+      //     ? "pending"
+      //     : paymentData?.paymentIntent?.status === "canceled"
+      //     ? "fail"
+      //     : paymentData?.paymentIntent?.status === "requires_capture"
+      //     ? "pending"
+      //     : "fail",
       time_zone: userData?.time_zone,
     };
     console.log(BodyData);
@@ -69,6 +70,7 @@ const PymentSucess = () => {
       console.log(response.data.status);
       console.log(response.status);
       if (response.data.status === "success") {
+        setIsRegistered(true);
         setAlertDetails({
           isOpen: true,
           message: "Plan Purchased Successfully",
@@ -146,15 +148,21 @@ const PymentSucess = () => {
       )}
       <div className="flex justify-center my-10 ">
         <div>
-          <h1 className="text-center font-bold text-xl">Payment successful</h1>
-          <div className="flex justify-center">
-            <Image
-              src="/payment-success/success.gif"
-              alt="payment-success image"
-              height={200}
-              width={200}
-            />
-          </div>
+         
+            {isRegister ? (
+                   <div>
+                   <h1 className="text-center font-bold text-xl">Payment successful</h1>
+                   <div className="flex justify-center">
+                     <Image
+                       src="/payment-success/success.gif"
+                       alt="payment-success image"
+                       height={200}
+                       width={200}
+                     />
+                   </div>
+                   </div>
+            ) : ""}
+        
           {paymentData && planData && userData ? (
             <div className="space-y-6">
               <div className="grid grid-cols-2 gap-7 ">
