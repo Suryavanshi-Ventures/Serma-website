@@ -68,6 +68,7 @@ function TopSection() {
     const interval = setInterval(() => {
       if (!isFading) {
         setIsFading(true);
+
         setFade(false);
         setTimeout(() => {
           setCurrentImageIndex(
@@ -103,13 +104,19 @@ function TopSection() {
   const getPositionClasses = () => {
     const { id, position } = currentImage;
 
-    return `
-      ${id === 1 || id === 4 || id === 6 ? "md:left-[22%]" : "md:left-[40%]"}
-      ${id === 1 || id === 6 ? "left-[-10%]" : "left-[20%]"}
-      ${id === 1 ? "lg:left-[35%]" : "lg:left-[45%]"}
-      ${id === 2 ? "lg:left-[50%]" : ""}
-      ${position.bottom === "0" ? "bottom-[0.2%]" : ""}
-    `;
+    return (
+      console.log("jksfsd")
+    )
+    // `
+    //   // ${id === 1 || id === 4 || id === 6 ? "md:left-[22%]" : "md:left-[40%]"}
+    //   // ${id === 1 || id === 6 ? "left-[-10%]" : "left-[20%]"}
+    //   // ${id === 1 ? "lg:left-[35%]" : "lg:left-[45%]"}
+    //   // ${id === 2 ? "lg:left-[50%]" : ""}
+    //   // ${position.bottom === "0" ? "bottom-[0.2%]" : ""}
+      
+    
+    // `
+    ;
   };
 
   return (
@@ -160,14 +167,12 @@ function TopSection() {
             fade ? "animate-fade" : "opacity-0 "
           } ${getPositionClasses()}`}
         >
-          {fade && (
-            <Image
-              src={currentImage.path}
-              height={currentImage.dimensionsForLg2.height}
-              width={currentImage.dimensionsForLg2.width}
-              alt="image"
-            />
-          )}
+          <Image
+            src={currentImage.path}
+            height={currentImage.dimensionsForLg2.height}
+            width={currentImage.dimensionsForLg2.width}
+            alt="image"
+          />
         </div>
         {/* ----------------------rotate content----------------------- */}
         <div className="overflow-hidden max-lg:mt-[-400px] lg:pr-3 xl:pr-20">
@@ -235,6 +240,7 @@ function TopSection() {
             alt="image"
           />
         </div>
+
         {/* ----------------------rotate content----------------------- */}
         <div className="overflow-hidden max-lg:mt-[-400px] lg:pr-10 xl:pr-20">
           <Image
@@ -300,6 +306,7 @@ function TopSection() {
             alt="image"
           />
         </div>
+
         {/* ----------------------rotate content----------------------- */}
         <div className="overflow-hidden max-xxl:mt-[-400px] xxl:pr-10 xl:pr-20">
           <Image
