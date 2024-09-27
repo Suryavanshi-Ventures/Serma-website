@@ -76,7 +76,7 @@ function TopSection() {
           );
           setFade(true); // Start fade-in
           setIsFading(false);
-        }, 1000); // fade in time
+        }, 500); // fade in time
       }
     }, 6000);
 
@@ -104,19 +104,13 @@ function TopSection() {
   const getPositionClasses = () => {
     const { id, position } = currentImage;
 
-    return (
-      console.log("jksfsd")
-    )
-    // `
-    //   // ${id === 1 || id === 4 || id === 6 ? "md:left-[22%]" : "md:left-[40%]"}
-    //   // ${id === 1 || id === 6 ? "left-[-10%]" : "left-[20%]"}
-    //   // ${id === 1 ? "lg:left-[35%]" : "lg:left-[45%]"}
-    //   // ${id === 2 ? "lg:left-[50%]" : ""}
-    //   // ${position.bottom === "0" ? "bottom-[0.2%]" : ""}
-      
-    
-    // `
-    ;
+    return `
+      ${id === 1 || id === 4 || id === 6 ? "md:left-[22%]" : "md:left-[40%]"}
+      ${id === 1 || id === 6 ? "left-[-10%]" : "left-[20%]"}
+      ${id === 1 ? "lg:left-[35%]" : "lg:left-[45%]"}
+      ${id === 2 ? "lg:left-[50%]" : ""}
+      ${position.bottom === "0" ? "bottom-[0.2%]" : ""}
+    `;
   };
 
   return (
