@@ -63,17 +63,20 @@ const imagesData = [
 function TopSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fade, setFade] = useState(true);
-
+  const [isFading, setIsFading] = useState(false);
   useEffect(() => {
     const interval = setInterval(() => {
-      setFade(false);
-      setTimeout(() => {
-        setCurrentImageIndex(
-          (prevIndex) => (prevIndex + 1) % imagesData.length
-        );
-        setFade(true); // Start fade-in
-        // }, 500); //fade in time
-      }, 1000); //fade in time
+      if (!isFading) {
+        setIsFading(true);
+        setFade(false);
+        setTimeout(() => {
+          setCurrentImageIndex(
+            (prevIndex) => (prevIndex + 1) % imagesData.length
+          );
+          setFade(true); // Start fade-in
+          setIsFading(false);
+        }, 1000); // fade in time
+      }
     }, 6000);
 
     return () => clearInterval(interval);
@@ -84,10 +87,13 @@ function TopSection() {
   //   const interval = setInterval(() => {
   //     setFade(false);
   //     setTimeout(() => {
-  //       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imagesData.length);
-  //       setFade(true);
-  //     }, 500);
-  //   }, 5000);
+  //       setCurrentImageIndex(
+  //         (prevIndex) => (prevIndex + 1) % imagesData.length
+  //       );
+  //       setFade(true); // Start fade-in
+  //       // }, 500); //fade in time
+  //     }, 1000); //fade in time
+  //   }, 6000);
 
   //   return () => clearInterval(interval);
   // }, []);
@@ -96,7 +102,7 @@ function TopSection() {
 
   const getPositionClasses = () => {
     const { id, position } = currentImage;
-    console.log(id);
+
     return `
       ${id === 1 || id === 4 || id === 6 ? "md:left-[22%]" : "md:left-[40%]"}
       ${id === 1 || id === 6 ? "left-[-10%]" : "left-[20%]"}
@@ -154,12 +160,14 @@ function TopSection() {
             fade ? "animate-fade" : "opacity-0 "
           } ${getPositionClasses()}`}
         >
-          <Image
-            src={currentImage.path}
-            height={currentImage.dimensionsForLg2.height}
-            width={currentImage.dimensionsForLg2.width}
-            alt="image"
-          />
+          {fade && (
+            <Image
+              src={currentImage.path}
+              height={currentImage.dimensionsForLg2.height}
+              width={currentImage.dimensionsForLg2.width}
+              alt="image"
+            />
+          )}
         </div>
         {/* ----------------------rotate content----------------------- */}
         <div className="overflow-hidden max-lg:mt-[-400px] lg:pr-3 xl:pr-20">
