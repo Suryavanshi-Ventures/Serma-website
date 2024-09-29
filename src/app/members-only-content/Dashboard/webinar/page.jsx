@@ -112,7 +112,7 @@ function Webinar() {
                     </div>
                     <div className=" ">
                       <p
-                        className="responsive-Text font-bold text-[#525971]"
+                        className="responsive-Text font-bold text-[#525971] overflow-auto"
                         dangerouslySetInnerHTML={{ __html: item?.description }}
                       >
                         {/* {item?.description} */}
