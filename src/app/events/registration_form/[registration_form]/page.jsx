@@ -138,12 +138,13 @@ const RegistrationForm = ({ params }) => {
   const renderInputField = (
     label,
     name,
-    type = "text",
+    type ,
     placeholder = "",
     required = false
   ) => (
     <div>
       <label className="block font-bold text-[#333333] mb-2">
+        {console.log(name,"name")}
         {label}
         {required && "*"}
       </label>
@@ -152,7 +153,7 @@ const RegistrationForm = ({ params }) => {
         name={name}
         value={formData[name]}
         onChange={handleChange}
-        className="mt-1 block w-full border border-[#D7D7D7] outline-primary rounded-md p-2"
+        className={`mt-1 block w-full border  border-[#D7D7D7] outline-primary rounded-md p-2  ${type === "number" ? "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" : ""}  `}
         placeholder={placeholder}
         required={required}
       />
@@ -240,21 +241,21 @@ const RegistrationForm = ({ params }) => {
             {renderInputField(
               "Zip Code",
               "zipCode",
-              "text",
+              "number",
               "Enter Your Zip Code",
               true
             )}
             {renderInputField(
               "Business Phone",
               "businessPhone",
-              "tel",
+              "number",
               "Enter Your Business Phone",
               true
             )}
             {renderInputField(
               "Mobile Phone",
               "mobilePhone",
-              "tel",
+              "number",
               "Enter Your Mobile Phone"
             )}
             {renderInputField("Date", "date", "date", "")}

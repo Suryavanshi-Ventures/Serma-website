@@ -29,18 +29,17 @@ const ContactDetails = () => {
     token
   );
 
-
   const [details, setDetails] = useState({
-    first_name: '',
-    last_name: '',
-    memberShipLevel: '',
-    organization: '',
-    title: '',
-    email: '',
-    state: '',
-    city: '',
-    zipcode: '',
-    mobile: '',
+    first_name: "",
+    last_name: "",
+    memberShipLevel: "",
+    organization: "",
+    title: "",
+    email: "",
+    state: "",
+    city: "",
+    zipcode: "",
+    mobile: "",
     bio: "N/A",
   });
 
@@ -62,8 +61,7 @@ const ContactDetails = () => {
     }
   }, [ProfileData]);
 
-
-console.log(details)
+  console.log(details);
   const handleChangePassword = () => {
     router.push(`/members-only-content/Dashboard/profile/${1}`);
   };
@@ -89,9 +87,6 @@ console.log(details)
       });
 
       if (response.status === 200) {
-        console.log(response);
-        console.log(response.data.message);
-        console.log(response.data.message || "user update successfully");
         setAlertDetails({
           isOpen: true,
           message: response.data.message || "user update successfully",
@@ -112,7 +107,7 @@ console.log(details)
       [name]: value,
     });
   };
-  console.log(details);
+
   return (
     <>
       {AlertDetails.isOpen && (
@@ -143,10 +138,10 @@ console.log(details)
             </div>
           </div>
           <div className="flex items-center gap-10 absolute right-4 top-2 cursor-pointer ">
-            <div className="hidden xl:flex">
+            <div onClick={handleChangePassword} className="hidden xl:flex">
               <svg
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -199,7 +194,7 @@ console.log(details)
             <div className="hidden xl:flex">
               <p
                 onClick={() => handleChangePassword(1)}
-                className="text-[16px] text-[#C42C2D] font-bold"
+                className="text-[16px] underline text-[#C42C2D] font-bold"
               >
                 Change Password
               </p>
@@ -211,22 +206,24 @@ console.log(details)
            duration-300 hover:text-[#C42C2D] font-semibold "
             >
               {edit ? (
-                <div onClick={handleSubmit} className="text-lg">
+                <div onClick={handleSubmit} className="text-[16px]">
                   Save
                 </div>
               ) : (
-                <svg
-                  width="25"
-                  height="25"
-                  viewBox="0 0 25 25"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5.95 23.5125C5.95 23.5125 6.05 23.5125 6.0875 23.5125L9.75 23.175C10.2625 23.125 10.7375 22.9 11.1 22.5375L24.925 8.7125C25.575 8.0625 25.9375 7.2 25.9375 6.2875C25.9375 5.375 25.575 4.5125 24.925 3.8625L24.0375 2.975C22.7375 1.675 20.475 1.675 19.175 2.975L17.4125 4.7375L5.3625 16.7875C5 17.15 4.775 17.625 4.7375 18.1375L4.4 21.8C4.3625 22.2625 4.525 22.7125 4.85 23.05C5.15 23.35 5.5375 23.5125 5.95 23.5125ZM21.6125 3.8375C22.0125 3.8375 22.4125 3.9875 22.7125 4.3L23.6 5.1875C23.9 5.4875 24.0625 5.875 24.0625 6.2875C24.0625 6.7 23.9 7.1 23.6 7.3875L22.5 8.4875L19.4125 5.4L20.5125 4.3C20.8125 4 21.2125 3.8375 21.6125 3.8375ZM6.6 18.3125C6.6 18.2375 6.6375 18.175 6.6875 18.125L18.075 6.725L21.1625 9.8125L9.775 21.2C9.775 21.2 9.65 21.2875 9.5875 21.2875L6.3 21.5875L6.6 18.3V18.3125ZM28.4375 27.5C28.4375 28.0125 28.0125 28.4375 27.5 28.4375H2.5C1.9875 28.4375 1.5625 28.0125 1.5625 27.5C1.5625 26.9875 1.9875 26.5625 2.5 26.5625H27.5C28.0125 26.5625 28.4375 26.9875 28.4375 27.5Z"
-                    fill="#C42C2D"
-                  />
-                </svg>
+                <div className="mr-2">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 25 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5.95 23.5125C5.95 23.5125 6.05 23.5125 6.0875 23.5125L9.75 23.175C10.2625 23.125 10.7375 22.9 11.1 22.5375L24.925 8.7125C25.575 8.0625 25.9375 7.2 25.9375 6.2875C25.9375 5.375 25.575 4.5125 24.925 3.8625L24.0375 2.975C22.7375 1.675 20.475 1.675 19.175 2.975L17.4125 4.7375L5.3625 16.7875C5 17.15 4.775 17.625 4.7375 18.1375L4.4 21.8C4.3625 22.2625 4.525 22.7125 4.85 23.05C5.15 23.35 5.5375 23.5125 5.95 23.5125ZM21.6125 3.8375C22.0125 3.8375 22.4125 3.9875 22.7125 4.3L23.6 5.1875C23.9 5.4875 24.0625 5.875 24.0625 6.2875C24.0625 6.7 23.9 7.1 23.6 7.3875L22.5 8.4875L19.4125 5.4L20.5125 4.3C20.8125 4 21.2125 3.8375 21.6125 3.8375ZM6.6 18.3125C6.6 18.2375 6.6375 18.175 6.6875 18.125L18.075 6.725L21.1625 9.8125L9.775 21.2C9.775 21.2 9.65 21.2875 9.5875 21.2875L6.3 21.5875L6.6 18.3V18.3125ZM28.4375 27.5C28.4375 28.0125 28.0125 28.4375 27.5 28.4375H2.5C1.9875 28.4375 1.5625 28.0125 1.5625 27.5C1.5625 26.9875 1.9875 26.5625 2.5 26.5625H27.5C28.0125 26.5625 28.4375 26.9875 28.4375 27.5Z"
+                      fill="#C42C2D"
+                    />
+                  </svg>
+                </div>
               )}
             </div>
           </div>

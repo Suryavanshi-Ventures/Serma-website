@@ -5,11 +5,13 @@ import React, { useState } from "react";
 import { useSession } from "next-auth/react";
 import { formatDate } from "@/components/date-format/page";
 import Card_skeleton from "@/components/card-skeleton/card_skeleton";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 function Webinar() {
   const { data: session } = useSession();
   const token = session?.user?.userToken;
+  const router = useRouter();
   const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/event/upcoming_events`;
 
   const {
@@ -47,6 +49,10 @@ function Webinar() {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
+  const handleGotoEvent = (id) => {
+    console.log(id);
+    router.push(`/events/${id}`);
+  };
 
   return (
     <div className="w-full">
@@ -120,11 +126,15 @@ function Webinar() {
                     </div>
                   </div>
                   <div className="flex items-center justify-end gap-3 mt-6">
-                    <Link href="#!">
+                    {console.log(item.id)}
+                    <div
+                      className="cursor-pointer"
+                      onClick={() => handleGotoEvent(item.id)}
+                    >
                       <p className=" responsive-Text font-normal text-[#C42C2D]">
                         Register
                       </p>
-                    </Link>
+                    </div>
                     <div>
                       <svg
                         width="24"

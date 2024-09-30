@@ -31,6 +31,7 @@ function TicketSlider({ data, error, loading }) {
     position: "bottom",
     type: "success",
   });
+  console.log(data.allow_registration);
   const [count, setCount] = useState(1);
   const ticket_price =
     data?.ticket_types &&
@@ -50,6 +51,15 @@ function TicketSlider({ data, error, loading }) {
       setAlertDetails({
         isOpen: true,
         message: "Ticket is not available",
+        duration: 3000,
+        position: "top",
+        type: "info",
+      });
+    }
+    if(!data.allow_registration){
+      setAlertDetails({
+        isOpen: true,
+        message: "Registration is not allowed",
         duration: 3000,
         position: "top",
         type: "info",
@@ -92,6 +102,8 @@ function TicketSlider({ data, error, loading }) {
       total_price: total_price,
       event_slot: TicketSlotId,
       quantity: count,
+      require_field:
+        data?.registration_form_setting && data?.registration_form_setting,
     };
 
     localStorage.setItem("ticket_details", JSON.stringify(ticket_details));
@@ -138,7 +150,7 @@ function TicketSlider({ data, error, loading }) {
               slidesPerView: 1,
             },
             390: {
-              slidesPerView: 1,
+              slidesPerView: 1.5,
             },
             500: {
               slidesPerView: 1.5,
@@ -184,7 +196,7 @@ function TicketSlider({ data, error, loading }) {
                   <div className="rounded-2xl mt-5  p-4 min-h-[350px] h-auto flex max-md:justify-center max-md:items-center max-md:p-2  ">
                     <div
                       onClick={() => handleSelectTicket(event)}
-                      className={`lg:p-3 w-[300px] space-y-6 ${
+                      className={`lg:p-3 w-[300px] xl:relative space-y-6 ${
                         selectedTicket?.id === event?.id
                           ? "border border-primary"
                           : "bg-white"
@@ -233,6 +245,27 @@ function TicketSlider({ data, error, loading }) {
                       "
                       >
                         Price : {event?.base_price} {event?.currency_type}
+                      </div>
+                      <div className=" flex items-center  xl:absolute bottom-5  ">
+                        {/* {data.allow_registration} */}
+                        <span className="text-primary">
+                          {" "}
+                          Registration: {"  "}{" "}
+                          {console.log(data.allow_registration)}
+                        </span>{" "}
+                        <span
+                          className={ ` p-1 px-2 rounded-full ml-2 font-semibold ${
+                            data.allow_registration &&
+                            data.allow_registration == true
+                              ? "bg-green-100   text-green-700"
+                              : "text-red-800 bg-red-100 "
+                          }`}
+                        >
+                          {" "}
+                          {data.allow_registration && data.allow_registration
+                            ? "   Open"
+                            : "   Close"}
+                        </span>
                       </div>
                     </div>
                   </div>

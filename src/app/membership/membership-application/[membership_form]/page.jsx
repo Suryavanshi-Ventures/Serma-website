@@ -8,10 +8,12 @@ import Modal from "@/components/common-modal/modal";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "@/hooks/chekoutForm";
+import Image from "next/image";
 
 const Page = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { membership_form: CLIENT_SECRET } = useParams();
+  const [profileImage, setProfileImage] = useState("/oops.png");
   const [PopUpForPayment, setPopUpForPayment] = useState(false);
   const [errors, setErrors] = useState({});
   const [StripeData, setStripeData] = useState();
@@ -120,7 +122,7 @@ const Page = () => {
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("selectedPlanData"));
     setStripeData(storedData);
-  
+
     if (storedData) {
       setFormData((prevFormData) => ({
         ...prevFormData,
@@ -129,7 +131,6 @@ const Page = () => {
       }));
     }
   }, [CLIENT_SECRET]);
-  
 
   const validateForm = () => {
     const errors = {};
@@ -191,12 +192,55 @@ const Page = () => {
       // proceed with form submission or other actions
     }
   };
-
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setProfileImage(imageUrl);
+    }
+  };
+  console.log(profileImage);
   return (
     <Container>
       <div className="mt-8 text-[#333333]">
         <div className="mb-7">
           <h2 className="heading-2 font-bold">Membership Application</h2>
+          <div className="flex justify-center  my-5">
+            <label className="relative  block">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="absolute opacity-0"
+              />
+              <div className="border group cursor-pointer  p-2 border-dashed border-[#D7D7D7] rounded-full w-[150px] h-[150px]">
+                <Image
+                  src={profileImage}
+                  height={150}
+                  width={150}
+                  style={{ objectFit: "cover" }}
+                  className="rounded-full "
+                  alt="Profile"
+                />
+                <div className="  absolute top-[40%] right-12  p-2  ">
+                  <div className="hidden group-hover:block transition duration-300">
+                    <svg
+                      width="28"
+                      height="27"
+                      viewBox="0 0 28 27"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4.95 21.5125C4.95 21.5125 5.05 21.5125 5.0875 21.5125L8.75 21.175C9.2625 21.125 9.7375 20.9 10.1 20.5375L23.925 6.7125C24.575 6.0625 24.9375 5.2 24.9375 4.2875C24.9375 3.375 24.575 2.5125 23.925 1.8625L23.0375 0.975C21.7375 -0.325 19.475 -0.325 18.175 0.975L16.4125 2.7375L4.3625 14.7875C4 15.15 3.775 15.625 3.7375 16.1375L3.4 19.8C3.3625 20.2625 3.525 20.7125 3.85 21.05C4.15 21.35 4.5375 21.5125 4.95 21.5125ZM20.6125 1.8375C21.0125 1.8375 21.4125 1.9875 21.7125 2.3L22.6 3.1875C22.9 3.4875 23.0625 3.875 23.0625 4.2875C23.0625 4.7 22.9 5.1 22.6 5.3875L21.5 6.4875L18.4125 3.4L19.5125 2.3C19.8125 2 20.2125 1.8375 20.6125 1.8375ZM5.6 16.3125C5.6 16.2375 5.6375 16.175 5.6875 16.125L17.075 4.725L20.1625 7.8125L8.775 19.2C8.775 19.2 8.65 19.2875 8.5875 19.2875L5.3 19.5875L5.6 16.3V16.3125ZM27.4375 25.5C27.4375 26.0125 27.0125 26.4375 26.5 26.4375H1.5C0.9875 26.4375 0.5625 26.0125 0.5625 25.5C0.5625 24.9875 0.9875 24.5625 1.5 24.5625H26.5C27.0125 24.5625 27.4375 24.9875 27.4375 25.5Z"
+                        fill="#C42C2D"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
           <div className="mt-10 flex justify-center">
             <form>
               {console.log(StripeData)}

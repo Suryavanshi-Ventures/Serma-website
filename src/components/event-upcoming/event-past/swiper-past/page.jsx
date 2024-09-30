@@ -9,6 +9,7 @@ import { FreeMode, Pagination } from "swiper/modules";
 import { useRouter } from "next/navigation";
 import { FormatDateOnly } from "@/components/date-format/date-only/pae";
 import { FormatTimeOnly } from "@/components/date-format/time-only/page";
+import Skeleton from "@/components/skeleton/skeleton";
 
 function SwiperSlideIncoming({ data, error }) {
   console.log(data);
@@ -170,7 +171,14 @@ function SwiperSlideIncoming({ data, error }) {
               ))
             )
           ) : (
-            <div>Loading...</div>
+            <div>
+              <div className=" flex gap-5">
+                <Skeleton
+                  item={3}
+                  style="h-[400px] w-[400px] flex flex-row rounded-lg mb-3"
+                />
+              </div>
+            </div>
           )}
         </div>
       </Swiper>

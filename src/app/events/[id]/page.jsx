@@ -43,8 +43,7 @@ function GetEvent({ params }) {
   );
   const upcomingEvents = ApiData?.result?.data;
   const isEventIsAdvance = upcomingEvents?.event_type;
-  console.log(ApiData);
-  console.log(upcomingEvents?.ticket_types);
+
   const validateEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
@@ -202,24 +201,24 @@ function GetEvent({ params }) {
           </div>
           {/* ---------------------------------------------------------- */}
           {console.log(isEventIsAdvance)}
-          
 
-          {isEventIsAdvance === "advance" && upcomingEvents.ticket_types ?
-          (upcomingEvents.ticket_types.length > 0 ? (
-            <TicketSlider
-              data={upcomingEvents && upcomingEvents}
-              error={error}
-              loading={loading}
-            />
-          ) : (
-            <div className="flex justify-center my-10">
-              <div className="text-2xl text-primary font-semibold animate-bounce">
-                Tickets Not Available For This Event
+          {isEventIsAdvance === "advance" && upcomingEvents.ticket_types ? (
+            upcomingEvents.ticket_types.length > 0 ? (
+              <TicketSlider
+                data={upcomingEvents && upcomingEvents}
+                error={error}
+                loading={loading}
+              />
+            ) : (
+              <div className="flex justify-center my-10">
+                <div className="text-2xl text-primary font-semibold animate-bounce">
+                  Tickets Not Available For This Event
+                </div>
               </div>
-            </div>
-          ))
-          :""
-          }
+            )
+          ) : (
+            ""
+          )}
 
           <div className="my-4 md:my-8 ">
             <Image

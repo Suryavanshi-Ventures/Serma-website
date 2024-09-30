@@ -26,7 +26,6 @@ const AdvanceRegistrationForm = ({ params }) => {
       setDetails(JSON.parse(storedDetails));
     }
   }, []);
-  console.log(details);
 
   const eventId = params.advance_registration_form;
 
@@ -35,18 +34,18 @@ const AdvanceRegistrationForm = ({ params }) => {
 
   // Form state initialization
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     organization: "",
     title: "",
     email: "",
     address: "",
     city: "",
     state: "",
-    zipCode: "",
-    businessPhone: "",
-    mobilePhone: "",
-    date: "",
+    zip_code: "",
+    business_phone: "",
+    mobile_number: "",
+    registration_date: "",
     volunteer: "",
   });
   const [errors, setErrors] = useState({});
@@ -63,21 +62,33 @@ const AdvanceRegistrationForm = ({ params }) => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const required_fields =
+    details.require_field &&
+    details.require_field?.filter((data) =>
+      data.required === true ? data.name : null
+    );
+  // const required_fields_names = required_fields && required_fields.map((data) => data.name);
+  const required_fields_names =
+    required_fields &&
+    required_fields
+      .map((data) => data.name)
+      .filter((field) => Object.keys(formData).includes(field));
+
   const validate = () => {
     const newErrors = {};
-    const requiredFields = [
-      "firstName",
-      "lastName",
+    const requiredFields = required_fields_names || [
+      "first_name",
+      "last_name",
       "organization",
       "title",
       "email",
       "address",
       "state",
       "city",
-      "zipCode",
-      "businessPhone",
-      "mobilePhone",
-      "date",       
+      "zip_code",
+      "business_phone",
+      "mobile_number",
+      "registration_date",
     ];
 
     requiredFields.forEach((field) => {
@@ -88,12 +99,12 @@ const AdvanceRegistrationForm = ({ params }) => {
       newErrors.email = "Email is invalid";
     }
 
-    if (formData.businessPhone && !/^\d{10}$/.test(formData.businessPhone)) {
-      newErrors.businessPhone = "Business phone must be exactly 10 digits";
+    if (formData.business_phone && !/^\d{10}$/.test(formData.business_phone)) {
+      newErrors.business_phone = "Business phone must be exactly 10 digits";
     }
 
-    if (formData.mobilePhone && !/^\d{10}$/.test(formData.mobilePhone)) {
-      newErrors.mobilePhone = "Mobile phone must be 10 digits";
+    if (formData.mobile_number && !/^\d{10}$/.test(formData.mobile_number)) {
+      newErrors.mobile_number = "Mobile phone must be 10 digits";
     }
 
     setErrors(newErrors);
@@ -107,18 +118,18 @@ const AdvanceRegistrationForm = ({ params }) => {
     }
 
     const body = {
-      first_name: formData.firstName,
-      last_name: formData.lastName,
+      first_name: formData.first_name,
+      last_name: formData.last_name,
       organization: formData.organization,
       title: formData.title,
       email: formData.email,
       address: formData.address,
       city: formData.city,
       state: formData.state,
-      zip_code: formData.zipCode,
-      business_phone: formData.businessPhone,
-      mobile_number: formData.mobilePhone,
-      registration_date: formData.date,
+      zip_code: formData.zip_code,
+      business_phone: formData.business_phone,
+      mobile_number: formData.mobile_number,
+      registration_date: formData.registration_date,
       interested: formData.volunteer === "yes",
       //   event_slot_id: details && details.event_slot,
       ticket_registration: [
@@ -141,13 +152,13 @@ const AdvanceRegistrationForm = ({ params }) => {
         setPopUpForPayment(true);
       }
     } catch (error) {
-        setAlertDetails({
-            isOpen: true,
-            message: error.response?.data?.message || "failed to register" ,
-            duration: 3000,
-            position: "top",
-            type: "danger",
-          });
+      setAlertDetails({
+        isOpen: true,
+        message: error.response?.data?.message || "failed to register",
+        duration: 3000,
+        position: "top",
+        type: "danger",
+      });
       localStorage.removeItem("form_data_event_details");
       console.log(error, "Payment intent error");
     }
@@ -200,14 +211,14 @@ const AdvanceRegistrationForm = ({ params }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-5 w-full">
             {renderInputField(
               "First name",
-              "firstName",
+              "first_name",
               "text",
               "Enter Your First Name",
               true
             )}
             {renderInputField(
               "Last name",
-              "lastName",
+              "last_name",
               "text",
               "Enter Your Last Name",
               true
@@ -216,7 +227,7 @@ const AdvanceRegistrationForm = ({ params }) => {
               "Organization",
               "organization",
               "text",
-              "Enter Your Organization Name",
+              "Enter Your organization Name",
               true
             )}
             {renderInputField(
@@ -259,25 +270,25 @@ const AdvanceRegistrationForm = ({ params }) => {
             </div>
             {renderInputField(
               "Zip Code",
-              "zipCode",
+              "zip_code",
               "text",
               "Enter Your Zip Code",
               true
             )}
             {renderInputField(
               "Business Phone",
-              "businessPhone",
+              "business_phone",
               "tel",
               "Enter Your Business Phone",
               true
             )}
             {renderInputField(
               "Mobile Phone",
-              "mobilePhone",
+              "mobile_number",
               "tel",
               "Enter Your Mobile Phone"
             )}
-            {renderInputField("Date", "date", "date", "")}
+            {renderInputField("Date", "registration_date", "date", "")}
           </div>
 
           <div className="mb-5">
