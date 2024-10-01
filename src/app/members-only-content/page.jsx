@@ -6,6 +6,7 @@ import LoadingButton from "@/components/loadingButton/page";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import CustomAlert from "@/components/alert/page";
+import AxiosPost from "@/hooks/axiosPost";
 const Membership = () => {
   const [errors, setErrors] = useState({ emailError: "", passwordError: "" });
   const [isLoading, setIsloading] = useState(false);
@@ -30,8 +31,32 @@ const Membership = () => {
     position: "bottom",
     type: "success",
   });
+
+  const API_URL_POST = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/forgot-password/send-otp`;
+  const API_URL_OTP_VALIDATE = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/forgot-password/verify-otp`;
+  const API_URL_RESET_PASS = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/forgot-password/reset-password`;
   const { data: session, status } = useSession();
   const token = session?.user?.userToken;
+  const {
+    data: data,
+    loading: loading,
+    error: error,
+    postData: postData,
+  } = AxiosPost(API_URL_POST, token);
+
+  const {
+    data: optData,
+    loading: otpLoading,
+    error: otpError,
+    postData: validateOtp,
+  } = AxiosPost(API_URL_OTP_VALIDATE, token);
+
+  const {
+    data: resetData,
+    loading: resetLoading,
+    error: resetError,
+    postData: resetPassWordPostData,
+  } = AxiosPost(API_URL_RESET_PASS, token);
 
   const router = useRouter();
   const handlePasswordChange = (e) => {
@@ -57,7 +82,7 @@ const Membership = () => {
   const handlePassVisible3 = () => {
     setisPassVisible3(!isPassVisible3);
   };
-  
+
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     setIsEmailValid(emailRegex.test(email));
@@ -67,12 +92,36 @@ const Membership = () => {
   //   router.push("/members-only-content/Dashboard/member-forum");
   // };
 
-  const handleResetPassword = () => {
-    if (isEmailValid) {
-      console.log("Email:", email);
-      setOpenOtpBox(true);
+ 
+  const handleResetPassword = async () => {
+    if (isEmailValid && email) {
+      const body = {
+        email: email,
+      };
+
+      const result = await postData(body);
+
+      if (result && result.status === "success") {
+        setAlertDetails({
+          isOpen: true,
+          message: result?.message || "OTP sent successfully",
+          duration: 3000,
+          position: "top",
+          type: "success",
+        });
+        setOpenOtpBox(true);
+        setForgetPassPop(false);
+      } else {
+        setAlertDetails({
+          isOpen: true,
+          message: error?.message || "Invalid email address",
+          duration: 3000,
+          position: "top",
+          type: "danger",
+        });
+      }
     } else {
-      console.error("Invalid email address");
+      
     }
   };
 
@@ -91,10 +140,36 @@ const Membership = () => {
 
   const isOtpComplete = otp.every((digit) => digit !== "");
 
-  const handleOtpSubmit = () => {
-    console.log("OTP Entered:", otp.join(""));
-    // Handle OTP submission logic here
-    setSetupPasswd(true);
+  const handleOtpSubmit = async () => {
+    const final_otp = otp.join("");
+
+    const number_otp = Number(final_otp);
+    if (number_otp) {
+      const BodyData = {
+        email: email,
+        otp: number_otp,
+      };
+      const result = await validateOtp(BodyData);
+      if (result && result.status === "success") {
+        setAlertDetails({
+          isOpen: true,
+          message: result?.message || "OTP validated successfully",
+          duration: 3000,
+          position: "top",
+          type: "success",
+        });
+        setSetupPasswd(true);
+      } else {
+        setAlertDetails({
+          isOpen: true,
+          message: otpError?.message || "Invalid OTP",
+          duration: 3000,
+          position: "top",
+          type: "danger",
+        });
+      }
+    }
+    //
   };
 
   const HandleForgetPass1 = () => {
@@ -148,6 +223,36 @@ const Membership = () => {
       });
       setIsloading(false);
       router.push("/members-only-content/Dashboard/member-forum");
+    }
+  };
+
+  const handleResetFinal = async () => {
+    if (isPasswordMatch && isEmailValid) {
+      const BodyData = {
+        email: email,
+        password: confirmPassword,
+      };
+      const result = await resetPassWordPostData(BodyData);
+      if (result && result.status === "success") {
+        setAlertDetails({
+          isOpen: true,
+          message: result?.message || "Password changed successfully",
+          duration: 3000,
+          position: "top",
+          type: "success",
+        });
+        setSetupPasswd(false);
+        setOpenOtpBox(false);
+        setEmail("");
+      } else {
+        setAlertDetails({
+          isOpen: true,
+          message: resetError?.message || "Failed to change password",
+          duration: 3000,
+          position: "top",
+          type: "danger",
+        });
+      }
     }
   };
 
@@ -401,11 +506,11 @@ const Membership = () => {
             className="w-full flex justify-center"
           >
             <LoadingButton
-              disabledProp={!isEmailValid}
+              disabledProp={!isEmailValid && email !== ""}
               style={`hover:bg-primary my-5 transition-all font-[700] duration-200 text-black p-[9px] w-full rounded text-primary border border-primary hover:text-white ${
                 !isEmailValid ? "cursor-not-allowed" : ""
               }`}
-              text="Reset Password"
+              text="Send OTP"
               spinnerWidth="23"
               spinnerHeight="23"
               loading={false}
@@ -424,7 +529,7 @@ const Membership = () => {
         <div className="px-2">
           <h2 className="text-xl">Password Reset?</h2>
           <div className="my-5 text-sm text-gray">
-            We Sent a code to Demo@gmail.com
+            We Sent a code to {email}
           </div>
           <div className="my-5">
             <hr className="text-[#B3B3B380]" />
@@ -450,7 +555,7 @@ const Membership = () => {
               style={`hover:bg-primary my-5 transition-all font-[700] duration-200 text-black p-[9px] w-full rounded text-primary border border-primary hover:text-white ${
                 !isOtpComplete ? "cursor-not-allowed" : ""
               }`}
-              text="Reset Password"
+              text="Validate OTP"
               spinnerWidth="23"
               spinnerHeight="23"
               loading={false}
@@ -549,7 +654,11 @@ const Membership = () => {
           {!isPasswordMatch && (
             <div className="text-red-500 text-xs">Passwords do not match.</div>
           )}
-          <span className="w-full flex justify-center">
+          <span
+            onClick={handleResetFinal}
+            className="w-full flex justify-center"
+          >
+            
             <LoadingButton
               disabledProp={!isEmailValid || !isPasswordMatch}
               style={`hover:bg-primary my-5 transition-all font-[700] duration-200 text-black p-[9px] w-full rounded text-primary border border-primary hover:text-white ${

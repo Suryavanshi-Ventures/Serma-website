@@ -7,11 +7,18 @@ import { useSession } from "next-auth/react";
 import axios from "axios";
 import CustomAlert from "@/components/alert/page";
 import useAxiosFetch from "@/hooks/axiosFetch";
+import Button from "@/components/button/page";
+import LoadingButton from "@/components/loadingButton/page";
 
 const ContactDetails = () => {
   const { data: session } = useSession();
   const token = session?.user?.userToken;
   const [edit, setEdit] = useState(false);
+  const [profileImage, setProfileImage] = useState({
+    url: "",
+    raw: "",
+  });
+  const [isImageChange, setIsImageChange] = useState(false);
   const [AlertDetails, setAlertDetails] = useState({
     isOpen: false,
     message: "",
@@ -30,6 +37,7 @@ const ContactDetails = () => {
   );
 
   const [details, setDetails] = useState({
+    // profile_url:"",
     first_name: "",
     last_name: "",
     memberShipLevel: "",
@@ -46,6 +54,7 @@ const ContactDetails = () => {
   useEffect(() => {
     if (ProfileData?.result?.data) {
       setDetails({
+        // profile_url: ProfileData?.result?.data.profile_url,
         first_name: ProfileData?.result?.data.first_name,
         last_name: ProfileData?.result?.data.last_name,
         memberShipLevel: ProfileData?.result?.data.membership_level,
@@ -58,10 +67,10 @@ const ContactDetails = () => {
         mobile: ProfileData?.result?.data.mobile_number,
         bio: "N/A",
       });
+      setProfileImage(ProfileData?.result?.data.profile_url);
     }
   }, [ProfileData]);
 
-  console.log(details);
   const handleChangePassword = () => {
     router.push(`/members-only-content/Dashboard/profile/${1}`);
   };
@@ -107,7 +116,64 @@ const ContactDetails = () => {
       [name]: value,
     });
   };
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setProfileImage({
+        raw: file,
+        url: imageUrl,
+      });
+      setIsImageChange(true);
+    }
+  };
 
+  const handleUploadImage = async (e) => {
+    if (profileImage) {
+      const formData = new FormData();
+
+      formData.append("file", profileImage.raw);
+
+      try {
+        const response = await axios.post(Api_URL, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.status === 200) {
+          setAlertDetails({
+            isOpen: true,
+            message: response.data.message || "user update successfully",
+            duration: 3000,
+            position: "top",
+            type: "success",
+          });
+          setIsImageChange(false);
+          console.log("File uploaded successfully:", response.data);
+        }
+      } catch (error) {
+        setAlertDetails({
+          isOpen: true,
+          message: error.response?.data.message || "failed to upload file",
+          duration: 3000,
+          position: "top",
+          type: "danger",
+        });
+
+        console.error(
+          "Error uploading file:",
+          error.response?.data.message || error.message
+        );
+      }
+    }
+  };
+
+  const handleImageRemove = () => {
+    setProfileImage({});
+    setIsImageChange(false);
+  };
   return (
     <>
       {AlertDetails.isOpen && (
@@ -125,16 +191,82 @@ const ContactDetails = () => {
         />
       )}
       <div className="mx-5 text-[#333333]">
-        <div className="flex  items-start relative">
-          <div className="mx-auto">
-            <div className="w-[140px] h-[140px]  ">
+        <div className="flex   items-start relative">
+          <div className="mx-auto ">
+            <div className="w-[140px] relative group h-[140px] cursor-pointer  rounded-full">
               <Image
                 unoptimized
-                src="/dashboard/profile/profile-img.png"
+                src={
+                  profileImage.url || profileImage || "/image-not-found3.png"
+                }
                 width={100}
                 height={100}
-                className="w-full h-full object-fill"
+                className="w-full rounded-full   h-full    object-fill"
+                alt="Profile Picture"
               />
+              <div
+                className={`absolute  ${
+                  isImageChange
+                    ? "top-[65%] left-[25%]"
+                    : "top-[50%] left-[40%]"
+                }  `}
+              >
+                {isImageChange ? (
+                  <span onClick={handleUploadImage}>
+                    <LoadingButton
+                      disabledProp={() => {}}
+                      style="hover:bg-primary transition-all font-[700] duration-200 text-black px-[10px] py-[5px] w-full  rounded-3xl text-primary border border-gray hover:text-white"
+                      text="Upload"
+                      spinnerWidth="23"
+                      spinnerHeight="23"
+                      loading={false}
+                    />
+                  </span>
+                ) : (
+                  <div>
+                    <input
+                      disabled={edit ? false : true}
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      className="absolute top-[30%] opacity-0 left-[-100%] cursor-pointer "
+                    />
+
+                    <svg
+                      width="28"
+                      height="27"
+                      viewBox="0 0 28 27"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="hidden  group-hover:block transition duration-300 cursor-pointer"
+                    >
+                      <path
+                        d="M4.95 21.5125C4.95 21.5125 5.05 21.5125 5.0875 21.5125L8.75 21.175C9.2625 21.125 9.7375 20.9 10.1 20.5375L23.925 6.7125C24.575 6.0625 24.9375 5.2 24.9375 4.2875C24.9375 3.375 24.575 2.5125 23.925 1.8625L23.0375 0.975C21.7375 -0.325 19.475 -0.325 18.175 0.975L16.4125 2.7375L4.3625 14.7875C4 15.15 3.775 15.625 3.7375 16.1375L3.4 19.8C3.3625 20.2625 3.525 20.7125 3.85 21.05C4.15 21.35 4.5375 21.5125 4.95 21.5125ZM20.6125 1.8375C21.0125 1.8375 21.4125 1.9875 21.7125 2.3L22.6 3.1875C22.9 3.4875 23.0625 3.875 23.0625 4.2875C23.0625 4.7 22.9 5.1 22.6 5.3875L21.5 6.4875L18.4125 3.4L19.5125 2.3C19.8125 2 20.2125 1.8375 20.6125 1.8375ZM5.6 16.3125C5.6 16.2375 5.6375 16.175 5.6875 16.125L17.075 4.725L20.1625 7.8125L8.775 19.2C8.775 19.2 8.65 19.2875 8.5875 19.2875L5.3 19.5875L5.6 16.3V16.3125ZM27.4375 25.5C27.4375 26.0125 27.0125 26.4375 26.5 26.4375H1.5C0.9875 26.4375 0.5625 26.0125 0.5625 25.5C0.5625 24.9875 0.9875 24.5625 1.5 24.5625H26.5C27.0125 24.5625 27.4375 24.9875 27.4375 25.5Z"
+                        fill={`${edit ? "#C42C2D" : "#9B9A9A"}`}
+                      />
+                    </svg>
+                  </div>
+                )}
+              </div>
+              {isImageChange ? (
+                <div
+                  onClick={handleImageRemove}
+                  className="absolute top-2 right-2"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.6491 9.01484L17.6579 2.00579C18.114 1.54988 18.114 0.812735 17.6579 0.356825C17.202 -0.0990849 16.4649 -0.0990849 16.009 0.356825L8.9999 7.36588L1.99106 0.356825C1.53493 -0.0990849 0.798003 -0.0990849 0.342093 0.356825C-0.114031 0.812735 -0.114031 1.54988 0.342093 2.00579L7.35094 9.01484L0.342093 16.0239C-0.114031 16.4798 -0.114031 17.217 0.342093 17.6729C0.5693 17.9003 0.868044 18.0145 1.16657 18.0145C1.4651 18.0145 1.76364 17.9003 1.99106 17.6729L8.9999 10.6638L16.009 17.6729C16.2364 17.9003 16.5349 18.0145 16.8334 18.0145C17.132 18.0145 17.4305 17.9003 17.6579 17.6729C18.114 17.217 18.114 16.4798 17.6579 16.0239L10.6491 9.01484Z"
+                      fill="black"
+                    />
+                  </svg>
+                </div>
+              ) : null}
             </div>
           </div>
           <div className="flex items-center gap-10 absolute right-4 top-2 cursor-pointer ">
@@ -210,7 +342,7 @@ const ContactDetails = () => {
                   Save
                 </div>
               ) : (
-                <div className="mr-2">
+                <div className="mr-2 ">
                   <svg
                     width="20"
                     height="20"

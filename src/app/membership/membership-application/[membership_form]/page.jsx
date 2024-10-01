@@ -13,7 +13,7 @@ import Image from "next/image";
 const Page = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { membership_form: CLIENT_SECRET } = useParams();
-  const [profileImage, setProfileImage] = useState("/oops.png");
+  const [profileImage, setProfileImage] = useState("");
   const [PopUpForPayment, setPopUpForPayment] = useState(false);
   const [errors, setErrors] = useState({});
   const [StripeData, setStripeData] = useState();
@@ -215,7 +215,7 @@ const Page = () => {
               />
               <div className="border group cursor-pointer  p-2 border-dashed border-[#D7D7D7] rounded-full w-[150px] h-[150px]">
                 <Image
-                  src={profileImage}
+                  src={profileImage || "/oops.png"}
                   height={150}
                   width={150}
                   style={{ objectFit: "cover" }}
