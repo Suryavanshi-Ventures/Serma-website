@@ -64,6 +64,8 @@ function TopSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fade, setFade] = useState(true);
   const [isFading, setIsFading] = useState(false);
+
+  
   useEffect(() => {
     console.log("run");
     const interval = setInterval(() => {
@@ -82,7 +84,7 @@ function TopSection() {
     }, 6000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [fade]);
 
   //------------before------------------
   // useEffect(() => {
@@ -297,9 +299,13 @@ function TopSection() {
           } ${getPositionClasses()}`}
         >
           <Image
-            src={currentImage.path  && currentImage.path}
-            height={currentImage.dimensions.height && currentImage.dimensions.height}
-            width={currentImage.dimensions.width && currentImage.dimensions.width}
+            src={currentImage.path && currentImage.path}
+            height={
+              currentImage.dimensions.height && currentImage.dimensions.height
+            }
+            width={
+              currentImage.dimensions.width && currentImage.dimensions.width
+            }
             alt="image"
           />
         </div>
