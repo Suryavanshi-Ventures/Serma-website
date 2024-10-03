@@ -10,7 +10,7 @@ const imagesData = [
     dimensions: { height: 776, width: 850 },
     dimensionsForLg2: { height: 650, width: 550 },
     dimensionsForXl: { height: 700, width: 650 },
-    responsive: { height: 400, width: 400, left: 30 },
+    responsive: { height: 776, width: 850, left: 30 },
     position: { left: 45, bottom: "" },
   },
   {
