@@ -78,7 +78,7 @@ function TopSection() {
           );
           setFade(true); // Start fade-in
           setIsFading(false);
-        }, 500); // fade in time
+        }, 1500); // fade in time
       }
     }, 6000);
 
@@ -286,8 +286,10 @@ function TopSection() {
             width={
               currentImage.dimensions.width && currentImage.dimensions.width
             }
+            onLoadingComplete={() => setIsFading(false)}
             priority={true}
             alt="image"
+            
           />
         </div>
 

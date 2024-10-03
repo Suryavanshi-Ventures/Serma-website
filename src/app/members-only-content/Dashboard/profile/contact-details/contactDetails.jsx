@@ -197,7 +197,9 @@ const ContactDetails = () => {
               <Image
                 unoptimized
                 src={
-                  profileImage.url || profileImage || "/image-not-found3.png"
+                  (profileImage && profileImage.url) ||
+                  profileImage ||
+                  "/image-not-found3.png"
                 }
                 width={100}
                 height={100}
