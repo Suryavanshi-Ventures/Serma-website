@@ -92,7 +92,6 @@ const Membership = () => {
   //   router.push("/members-only-content/Dashboard/member-forum");
   // };
 
- 
   const handleResetPassword = async () => {
     if (isEmailValid && email) {
       const body = {
@@ -121,7 +120,6 @@ const Membership = () => {
         });
       }
     } else {
-      
     }
   };
 
@@ -658,7 +656,6 @@ const Membership = () => {
             onClick={handleResetFinal}
             className="w-full flex justify-center"
           >
-            
             <LoadingButton
               disabledProp={!isEmailValid || !isPasswordMatch}
               style={`hover:bg-primary my-5 transition-all font-[700] duration-200 text-black p-[9px] w-full rounded text-primary border border-primary hover:text-white ${

@@ -206,7 +206,7 @@ const Page = () => {
         <div className="mb-7">
           <h2 className="heading-2 font-bold">Membership Application</h2>
           <div className="flex justify-center  my-5">
-            <label className="relative  block">
+            {/* <label className="relative  block">
               <input
                 type="file"
                 accept="image/*"
@@ -239,7 +239,7 @@ const Page = () => {
                   </div>
                 </div>
               </div>
-            </label>
+            </label> */}
           </div>
           <div className="mt-10 flex justify-center">
             <form>

@@ -2,7 +2,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
+// import './styles.css';
+import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 const imagesData = [
   {
     id: 1,
@@ -65,10 +72,11 @@ function TopSection() {
   const [fade, setFade] = useState(true);
   const [isFading, setIsFading] = useState(false);
   useEffect(() => {
+    console.log("run");
     const interval = setInterval(() => {
       if (!isFading) {
         setIsFading(true);
-
+        console.log("run");
         setFade(false);
         setTimeout(() => {
           setCurrentImageIndex(
@@ -247,7 +255,7 @@ function TopSection() {
         </div>
       </div>
 
-      {/* xxl */}
+      {/* --------------------------------------------------XXL------------------------------------------------------- */}
       <div className="hidden xxl:flex relative justify-between items-center">
         <div className="xxl:w-[55%] xxl:h-[800px] xxl:bg-primaryBlue flex justify-center xxl:pt-[158px] pt-[400px] rounded-r-3xl">
           <div className="xl:w-2/3 max-xl:w-[500px] max-xl:px-[20px]">
@@ -293,12 +301,26 @@ function TopSection() {
             fade ? "animate-fade" : "opacity-0 "
           } ${getPositionClasses()}`}
         >
-          <Image
-            src={currentImage.path}
-            height={currentImage.dimensions.height}
-            width={currentImage.dimensions.width}
-            alt="image"
-          />
+          <Swiper
+            spaceBetween={30}
+            effect={"fade"}
+            // navigation={true}
+            // pagination={{
+            //   clickable: true,
+            // }}
+            modules={[EffectFade]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              {console.log("is it run ")}
+              <Image
+                src={currentImage.path}
+                height={currentImage.dimensions.height}
+                width={currentImage.dimensions.width}
+                alt="image"
+              />
+            </SwiperSlide>
+          </Swiper>
         </div>
 
         {/* ----------------------rotate content----------------------- */}
