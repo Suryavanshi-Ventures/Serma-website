@@ -10,7 +10,7 @@ const imagesData = [
     dimensions: { height: 776, width: 850 },
     dimensionsForLg2: { height: 650, width: 550 },
     dimensionsForXl: { height: 700, width: 650 },
-    responsive: { height: 776, width: 850, left: 30 },
+    responsive: { height: 400, width: 400, left: 30 },
     position: { left: 45, bottom: "" },
   },
   {
@@ -318,7 +318,7 @@ function TopSection() {
 
       {/* -------------------------------Mobile view-------------------------------------- */}
       {/* Mobile View */}
-      <div className="visible relative lg:hidden bg-[#03989E] w-full px-[20px]">
+      <div className=" relative lg:hidden bg-[#03989E] w-full px-[20px]">
         <div
           className={`flex justify-center items-center h-[400px] transition-opacity duration-500 ease-in-out ${
             fade && fade ? "opacity-100" : "opacity-0"
