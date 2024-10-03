@@ -2,14 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide, } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
-// import './styles.css';
-import { EffectFade, Navigation, Pagination,Autoplay } from 'swiper/modules';
 const imagesData = [
   {
     id: 1,
@@ -106,9 +99,11 @@ function TopSection() {
 
   //   return () => clearInterval(interval);
   // }, []);
+  console.log(imagesData[currentImageIndex], "yo check");
+  console.log( fade &&  fade ? "animate-fade" : "opacity-0 ");
+  console.log(isFading);
 
   const currentImage = imagesData[currentImageIndex];
-
   const getPositionClasses = () => {
     const { id, position } = currentImage;
 
@@ -166,7 +161,7 @@ function TopSection() {
         {/* Image Zone */}
         <div
           className={`absolute max-lg:top-3 transition-opacity duration-500 ease-in-out   ${
-            fade ? "animate-fade" : "opacity-0 "
+            fade &&  fade ? "animate-fade" : "opacity-0 "
           } ${getPositionClasses()}`}
         >
           <Image
@@ -232,7 +227,7 @@ function TopSection() {
         {/* Image Zone */}
         <div
           className={`absolute max-xl:top-3 transition-opacity duration-500 ease-in-out   ${
-            fade ? "animate-fade" : "opacity-0 "
+            fade &&  fade ? "animate-fade" : "opacity-0 "
           } ${getPositionClasses()}`}
         >
           <Image
@@ -255,7 +250,7 @@ function TopSection() {
         </div>
       </div>
 
-      {/* --------------------------------------------------XXL------------------------------------------------------- */}
+      {/* xxl */}
       <div className="hidden xxl:flex relative justify-between items-center">
         <div className="xxl:w-[55%] xxl:h-[800px] xxl:bg-primaryBlue flex justify-center xxl:pt-[158px] pt-[400px] rounded-r-3xl">
           <div className="xl:w-2/3 max-xl:w-[500px] max-xl:px-[20px]">
@@ -297,44 +292,18 @@ function TopSection() {
 
         {/* Image Zone */}
         <div
-          className={`absolute border max-xxl:top-3 transition-opacity duration-500 ease-in-out   ${
-            fade ? "animate-fade" : "opacity-0 "
-          } ${getPositionClasses()}`}
-        >
-          <Swiper
-            spaceBetween={30}
-            effect={"fade"}
-            // navigation={true}
-            // pagination={{
-            //   clickable: true,
-            // }}
-            centeredSlides={true}
-            autoplay={{
-              delay: 1000,
-              disableOnInteraction: false,
-            }}
-            modules={[EffectFade,Autoplay]}
-            className="mySwiper"
-          >
-            <SwiperSlide>
-             
-              {/* <Image
-                src={currentImage.path}
-                height={currentImage.dimensions.height}
-                width={currentImage.dimensions.width}
-                alt="image"
-              /> */}
-              {imagesData.filter((imagesData)=>imagesData.id===currentImageIndex).map((imagesData)=><div>
-               <Image
-                src={imagesData.path}
-                height={imagesData.dimensions.height}
-                width={imagesData.dimensions.width}
-                alt="image"
-               />
-              </div>)}
-            </SwiperSlide>
-          </Swiper>
-        </div>
+  className={`absolute max-xxl:top-3 border transition-opacity duration-500 ease-in-out ${
+    fade ? "opacity-100" : "opacity-0"
+  } ${getPositionClasses()}`}
+>
+  <Image
+    src={currentImage.path}
+    height={currentImage.dimensions.height}
+    width={currentImage.dimensions.width}
+    alt="image"
+  />
+</div>
+
 
         {/* ----------------------rotate content----------------------- */}
         <div className="overflow-hidden max-xxl:mt-[-400px] xxl:pr-10 xl:pr-20">
@@ -353,7 +322,7 @@ function TopSection() {
       <div className="visible relative lg:hidden bg-[#03989E] w-full px-[20px]">
         <div
           className={`flex justify-center items-center h-[400px] transition-opacity duration-500 ease-in-out ${
-            fade ? "opacity-100" : "opacity-0"
+            fade && fade ? "opacity-100" : "opacity-0"
           }`}
         >
           <Image
