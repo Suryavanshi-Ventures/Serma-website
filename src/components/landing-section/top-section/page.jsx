@@ -65,7 +65,6 @@ function TopSection() {
   const [fade, setFade] = useState(true);
   const [isFading, setIsFading] = useState(false);
 
-  
   useEffect(() => {
     console.log("run");
     const interval = setInterval(() => {
@@ -84,26 +83,7 @@ function TopSection() {
     }, 6000);
 
     return () => clearInterval(interval);
-  }, [fade]);
-
-  //------------before------------------
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setFade(false);
-  //     setTimeout(() => {
-  //       setCurrentImageIndex(
-  //         (prevIndex) => (prevIndex + 1) % imagesData.length
-  //       );
-  //       setFade(true); // Start fade-in
-  //       // }, 500); //fade in time
-  //     }, 1000); //fade in time
-  //   }, 6000);
-
-  //   return () => clearInterval(interval);
-  // }, []);
-  console.log(imagesData[currentImageIndex], "yo check");
-  console.log(fade && fade ? "animate-fade" : "opacity-0 ");
-  console.log(isFading);
+  }, [[]]);
 
   const currentImage = imagesData[currentImageIndex];
   const getPositionClasses = () => {
@@ -306,6 +286,7 @@ function TopSection() {
             width={
               currentImage.dimensions.width && currentImage.dimensions.width
             }
+            priority={true}
             alt="image"
           />
         </div>
