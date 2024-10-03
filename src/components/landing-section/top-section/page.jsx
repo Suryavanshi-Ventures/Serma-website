@@ -2,14 +2,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 // import './styles.css';
-import { EffectFade, Navigation, Pagination } from 'swiper/modules';
+import { EffectFade, Navigation, Pagination,Autoplay } from 'swiper/modules';
 const imagesData = [
   {
     id: 1,
@@ -297,7 +297,7 @@ function TopSection() {
 
         {/* Image Zone */}
         <div
-          className={`absolute max-xxl:top-3 transition-opacity duration-500 ease-in-out   ${
+          className={`absolute border max-xxl:top-3 transition-opacity duration-500 ease-in-out   ${
             fade ? "animate-fade" : "opacity-0 "
           } ${getPositionClasses()}`}
         >
@@ -308,17 +308,30 @@ function TopSection() {
             // pagination={{
             //   clickable: true,
             // }}
-            modules={[EffectFade]}
+            centeredSlides={true}
+            autoplay={{
+              delay: 1000,
+              disableOnInteraction: false,
+            }}
+            modules={[EffectFade,Autoplay]}
             className="mySwiper"
           >
             <SwiperSlide>
-              {console.log("is it run ")}
-              <Image
+             
+              {/* <Image
                 src={currentImage.path}
                 height={currentImage.dimensions.height}
                 width={currentImage.dimensions.width}
                 alt="image"
-              />
+              /> */}
+              {imagesData.filter((imagesData)=>imagesData.id===currentImageIndex).map((imagesData)=><div>
+               <Image
+                src={imagesData.path}
+                height={imagesData.dimensions.height}
+                width={imagesData.dimensions.width}
+                alt="image"
+               />
+              </div>)}
             </SwiperSlide>
           </Swiper>
         </div>
