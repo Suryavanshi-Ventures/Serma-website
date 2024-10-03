@@ -83,7 +83,7 @@ function TopSection() {
     }, 6000);
 
     return () => clearInterval(interval);
-  }, [[]]);
+  }, []);
 
   const currentImage = imagesData[currentImageIndex];
   const getPositionClasses = () => {
@@ -286,10 +286,9 @@ function TopSection() {
             width={
               currentImage.dimensions.width && currentImage.dimensions.width
             }
-            onLoadingComplete={() => setIsFading(false)}
-            priority={true}
+            // onLoadingComplete={() => setIsFading(false)}
+            priority
             alt="image"
-            
           />
         </div>
 
