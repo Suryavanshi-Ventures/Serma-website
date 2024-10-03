@@ -69,7 +69,7 @@ function TopSection() {
     const interval = setInterval(() => {
       if (!isFading) {
         setIsFading(true);
-        console.log("run");
+
         setFade(false);
         setTimeout(() => {
           setCurrentImageIndex(
@@ -100,7 +100,7 @@ function TopSection() {
   //   return () => clearInterval(interval);
   // }, []);
   console.log(imagesData[currentImageIndex], "yo check");
-  console.log( fade &&  fade ? "animate-fade" : "opacity-0 ");
+  console.log(fade && fade ? "animate-fade" : "opacity-0 ");
   console.log(isFading);
 
   const currentImage = imagesData[currentImageIndex];
@@ -161,7 +161,7 @@ function TopSection() {
         {/* Image Zone */}
         <div
           className={`absolute max-lg:top-3 transition-opacity duration-500 ease-in-out   ${
-            fade &&  fade ? "animate-fade" : "opacity-0 "
+            fade && fade ? "animate-fade" : "opacity-0 "
           } ${getPositionClasses()}`}
         >
           <Image
@@ -227,7 +227,7 @@ function TopSection() {
         {/* Image Zone */}
         <div
           className={`absolute max-xl:top-3 transition-opacity duration-500 ease-in-out   ${
-            fade &&  fade ? "animate-fade" : "opacity-0 "
+            fade && fade ? "animate-fade" : "opacity-0 "
           } ${getPositionClasses()}`}
         >
           <Image
@@ -250,7 +250,7 @@ function TopSection() {
         </div>
       </div>
 
-      {/* xxl */}
+      {/* xxl-------------------------------------------xxl------------------------------------ */}
       <div className="hidden xxl:flex relative justify-between items-center">
         <div className="xxl:w-[55%] xxl:h-[800px] xxl:bg-primaryBlue flex justify-center xxl:pt-[158px] pt-[400px] rounded-r-3xl">
           <div className="xl:w-2/3 max-xl:w-[500px] max-xl:px-[20px]">
@@ -292,18 +292,17 @@ function TopSection() {
 
         {/* Image Zone */}
         <div
-  className={`absolute max-xxl:top-3 border transition-opacity duration-500 ease-in-out ${
-    fade ? "opacity-100" : "opacity-0"
-  } ${getPositionClasses()}`}
->
-  <Image
-    src={currentImage.path}
-    height={currentImage.dimensions.height}
-    width={currentImage.dimensions.width}
-    alt="image"
-  />
-</div>
-
+          className={`absolute max-xxl:top-3  animate-fade transition-opacity duration-500 ease-in-out ${
+            fade ? "opacity-100" : "opacity-0"
+          } ${getPositionClasses()}`}
+        >
+          <Image
+            src={currentImage.path  && currentImage.path}
+            height={currentImage.dimensions.height && currentImage.dimensions.height}
+            width={currentImage.dimensions.width && currentImage.dimensions.width}
+            alt="image"
+          />
+        </div>
 
         {/* ----------------------rotate content----------------------- */}
         <div className="overflow-hidden max-xxl:mt-[-400px] xxl:pr-10 xl:pr-20">
