@@ -2,11 +2,8 @@
 import Image from "next/image";
 import Button from "@/components/button/page";
 import { useRouter } from "next/navigation";
-import { EVENT_CARD_DETAILS } from "@/app/utils/constant/constant";
-import Link from "next/link";
 import { useSession } from "next-auth/react";
 import useAxiosFetch from "@/hooks/axiosFetch";
-import { formatDate } from "@/components/date-format/page";
 import { FormatDateOnly } from "@/components/date-format/date-only/pae";
 import { FormatTimeOnly } from "@/components/date-format/time-only/page";
 function UpcomingEvent() {
@@ -26,16 +23,16 @@ function UpcomingEvent() {
     },
     token
   );
-  console.log(upcoming_events, "ftu");
+
   const handlePush = () => {
     router.push("/events");
   };
   return (
     <div>
-      <div className="text-center text-xl md:text-[36px] font-semibold text-[#333333] ">
+      <div className="text-center max-md:mt-[50px] text-xl md:text-[36px] font-semibold text-[#333333] ">
         Upcoming Events
       </div>
-      <div className="text-center text-xl text-gray my-6 xl:my-8">
+      <div className="text-center text-[14px] md:text-[16px] lg:text-[17px] xl:text-[18px]  text-gray my-6 xl:my-8">
         <p className="leading-loose">
           The Sports and Entertainment Risk Management Alliance (SERMA) is the
           first risk management association devoted entirely to the sports and
@@ -43,12 +40,12 @@ function UpcomingEvent() {
         </p>
         {/* <p>entertainment industries.</p>{" "} */}
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 gap-x-3 gap-y-3 max-sm:space-y-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg2:grid-cols-3 grid-rows-1 gap-x-3 gap-y-5 max-sm:space-y-5">
         {upcoming_events &&
           upcoming_events.result.slice(0, 6).map((event, index) => (
             <div
               key={index}
-              className="rounded-2xl shadow-xl flex max-sm:justify-center max-sm:p-0 md:p-3"
+              className="rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] flex max-sm:justify-center max-sm:p-0 md:p-3"
             >
               <div className="max-md:p-3">
                 <div className=" min-h-[225px] h-auto  w-full">

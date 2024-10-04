@@ -12,7 +12,7 @@ import { FormatTimeOnly } from "@/components/date-format/time-only/page";
 import Skeleton from "@/components/skeleton/skeleton";
 
 function SwiperSlideIncoming({ data, error }) {
-  console.log(data);
+  
   const router = useRouter();
   const handleClick = (id) => {
     console.log(id);
@@ -62,7 +62,7 @@ function SwiperSlideIncoming({ data, error }) {
           },
         }}
       >
-        <div className="">
+        <div className=" ">
           {error ? (
             <div>`error loading PAST events: ${error}`</div>
           ) : data ? (
@@ -78,12 +78,14 @@ function SwiperSlideIncoming({ data, error }) {
                 />
               </div>
             ) : data.result.length === 0 ? (
-              <div className="flex justify-center items-center ">
+              <div className="flex justify-center  lg:h-[800px]   items-center animate-fade">
                 <Image
                   src="/past-events/past_event.png"
                   alt=""
                   height={400}
                   width={400}
+                  className="
+                  rounded-3xl"
                 />
               </div>
             ) : (
@@ -175,7 +177,7 @@ function SwiperSlideIncoming({ data, error }) {
               <div className=" flex gap-5">
                 <Skeleton
                   item={3}
-                  style="h-[400px] w-[400px] flex flex-row rounded-lg mb-3"
+                  style="h-[200px] md:h-[400px] w-[400px] flex flex-row rounded-lg mb-3"
                 />
               </div>
             </div>

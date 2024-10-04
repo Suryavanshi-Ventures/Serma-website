@@ -5,11 +5,11 @@ import React from "react";
 
 function Podcast() {
   return (
-    <div className="">
-      <div className="md:text-[36px] text-xl font-bold text-center text-[#333333]">
+    <div className="pt-16">
+      <div className="md:text-[36px]   text-xl font-bold text-center text-[#333333]   ">
         Listen To Podcast
       </div>
-      <div className="flex justify-center items-center gap-5 my-5 md:my-12 ">
+      <div className="flex justify-center items-center gap-5 my-5 md:my-16 ">
         <div>
           <Image
             src="/podcast/youtube.svg"
@@ -20,7 +20,7 @@ function Podcast() {
         </div>
 
         <div className="font-semibold md:text-[20px] hover:underline text-[#333333]">
-          <Link href="https://www.youtube.com/@serma8148" target="_blank"> 
+          <Link href="https://www.youtube.com/@serma8148" target="_blank">
             Subscribe on YouTube
           </Link>
         </div>

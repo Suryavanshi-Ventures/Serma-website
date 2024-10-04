@@ -9,8 +9,8 @@ const Footer = () => {
   const [insta, setInsta] = useState(false);
   return (
     <div className="bg-[#F3F3F3]">
-      <div className="grid grid-cols-1 max-md:px-[20px] md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
-        <div className="md:border-r max-md:border-b border-[#3333331c] p-7 md:pt-12 flex sm:justify-center">
+      <div className="grid grid-cols-1  max-md:px-[15px] md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
+        <div className="md:border-r max-md:border-b border-[#3333331c] p-7 md:pt-12 flex md:justify-center">
           <div className="">
             <div className="flex">
               <Image src="/logo.svg" height={60} width={135} alt="logo" />
@@ -70,7 +70,7 @@ const Footer = () => {
           <div className="md:text-center font-[700] text-[16px] sm:text-[20px] text-[#333333]">
             Connect With Us
           </div>
-          <div className="flex justify-start md:justify-center gap-3 mt-[20px] sm:mt-[60px]">
+          <div className="flex flex-wrap max-md:justify-start md:justify-center gap-3 mt-[20px] sm:mt-[60px]">
             <div
               onMouseEnter={() => setHandleVectorChange(true)}
               onMouseLeave={() => setHandleVectorChange(false)}
@@ -194,7 +194,7 @@ const Footer = () => {
             <div
               onMouseEnter={() => setInsta(true)}
               onMouseLeave={() => setInsta(false)}
-              className="cursor-pointer "
+              className="cursor-pointer  h-[48px] w-[48px]"
             >
               {" "}
               <Link href="https://www.instagram.com/the.serma?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
@@ -205,7 +205,7 @@ const Footer = () => {
                   height={48}
                   width={48}
                   alt="logo"
-                  className="transition duration-300"
+                  className="transition duration-300  h-[48px] w-[48px]"
                 />
               </Link>
             </div>

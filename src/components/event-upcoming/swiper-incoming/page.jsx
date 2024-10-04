@@ -74,14 +74,14 @@ function SwiperSlideIncoming({ data, error, loading }) {
                 />
               </div>
             ) : data?.length === 0 ? (
-              <div className="">
+              <div className="flex justify-center">
                 <Image
                   src="/event-empty.png"
-                  height={225}
-                  width={396}
+                  height={200}
+                  width={300}
                   alt="image"
                   unoptimized
-                  className="rounded-2xl object-fill w-full h-full"
+                  className="rounded-2xl object-fill w-1/2 h-1/2"
                 />
               </div>
             ) : (

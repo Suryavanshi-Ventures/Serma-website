@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const imagesData = [
   {
@@ -64,27 +64,24 @@ function TopSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fade, setFade] = useState(true);
   const [isFading, setIsFading] = useState(false);
-  const hasRun = useRef(false);
+
   useEffect(() => {
-    if (!hasRun.current) {
-      hasRun.current = true;
-      const interval = setInterval(() => {
-        if (!isFading) {
-          setIsFading(true);
+    const interval = setInterval(() => {
+      if (!isFading) {
+        setIsFading(true);
 
-          setFade(false);
-          setTimeout(() => {
-            setCurrentImageIndex(
-              (prevIndex) => (prevIndex + 1) % imagesData.length
-            );
-            setFade(true); // Start fade-in
-            setIsFading(false);
-          }, 800); // fade in time
-        }
-      }, 6000);
+        setFade(false);
+        setTimeout(() => {
+          setCurrentImageIndex(
+            (prevIndex) => (prevIndex + 1) % imagesData.length
+          );
+          setFade(true); // Start fade-in
+          setIsFading(false);
+        }, 800); // fade in time
+      }
+    }, 6000);
 
-      return () => clearInterval(interval);
-    }
+    return () => clearInterval(interval);
   }, []);
 
   const currentImage = imagesData[currentImageIndex];
@@ -345,7 +342,7 @@ function TopSection() {
             </p>
 
             <div className="my-3">
-              <Link href="/membership" className="my-3 flex md:justify-center">
+              <Link href="/membership" className="my-8 flex md:justify-center">
                 <button className="flex group max-md:w-full px-5 transition duration-500 text-[#DDDDDD] font-normal justify-center items-center gap-2 text-lg tracking-wider py-2 border border-[#C8C8C8] rounded-full">
                   Membership
                   <span className="group-hover:translate-x-1 duration-200">
