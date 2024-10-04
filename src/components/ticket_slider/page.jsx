@@ -41,11 +41,9 @@ function TicketSlider({ data, error, loading }) {
   const total_price = ticket_price * count;
   console.log(total_price);
   const handleSelectTicket = (event) => {
-    console.log(event);
-
     setSelectedTicket(event);
   };
-  console.log(selectedTicket && selectedTicket.remain_tickets);
+
   const handleOpenSlotPopUp = () => {
     if (selectedTicket && selectedTicket.remain_tickets == 0) {
       setAlertDetails({
@@ -56,7 +54,7 @@ function TicketSlider({ data, error, loading }) {
         type: "info",
       });
     }
-    if(!data.allow_registration){
+    if (!data.allow_registration) {
       setAlertDetails({
         isOpen: true,
         message: "Registration is not allowed",
@@ -67,7 +65,7 @@ function TicketSlider({ data, error, loading }) {
     }
     if (
       selectedTicket &&
-      data.ticket_slots.length > 0 &&
+      data.event_slots.length > 0 &&
       selectedTicket.remain_tickets > 0
     ) {
       setOpenSlotPopUp(true);
@@ -114,7 +112,6 @@ function TicketSlider({ data, error, loading }) {
     );
     console.log("hell yeah");
   };
-  console.log(selectedTicket, "selectedTicket");
 
   return (
     <>
@@ -254,7 +251,7 @@ function TicketSlider({ data, error, loading }) {
                           {console.log(data.allow_registration)}
                         </span>{" "}
                         <span
-                          className={ ` p-1 px-2 rounded-full ml-2 font-semibold ${
+                          className={` p-1 px-2 rounded-full ml-2 font-semibold ${
                             data.allow_registration &&
                             data.allow_registration == true
                               ? "bg-green-100   text-green-700"
@@ -301,8 +298,8 @@ function TicketSlider({ data, error, loading }) {
               Please Select Slot
             </div>
 
-            {data.ticket_slots &&
-              data.ticket_slots.map((data, i) => {
+            {data.event_slots &&
+              data.event_slots.map((data, i) => {
                 return (
                   <div className="my-5">
                     <button

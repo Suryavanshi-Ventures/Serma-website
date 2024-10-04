@@ -94,7 +94,8 @@ function GetEvent({ params }) {
 
   return (
     <Container>
-      <div className="md:hidden text-[14px] mb-5">
+ <div className="mt-5">
+ <div className="md:hidden text-[14px] mb-5 ">
         View our Recent events and register for the Event
       </div>
       {loading ? (
@@ -388,6 +389,7 @@ function GetEvent({ params }) {
           </div>
         </div>
       </Modal>
+ </div>
     </Container>
   );
 }

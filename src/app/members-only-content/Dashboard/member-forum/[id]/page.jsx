@@ -117,14 +117,14 @@ function GetTopic() {
       )}
       <div className="w-full bg-gray-100">
         <div className="flex text-[16px] justify-between items-center gap-5">
-          <div className="flex text-[16px] justify-start items-center gap-5">
+          <div className="flex text-[16px] justify-start items-center gap-[3px] xs:gap-5">
             <div
               onClick={goBack}
-              className="text-gray font-semibold cursor-pointer transition hover:text-primary"
+              className="text-gray hidden xs:block text-[12px] xs:text-[16px]  font-semibold cursor-pointer transition hover:text-primary"
             >
               Member Chat Forum
             </div>
-            <span>
+            <span className=" hidden xs:block">
               <svg
                 width="9"
                 height="16"
@@ -140,7 +140,7 @@ function GetTopic() {
                 />
               </svg>
             </span>
-            <span className="text-primary font-semibold">
+            <span className="text-primary font-semibold ">
               {`${FilteredTopic?.data?.user?.first_name || "Anonymous"} ${
                 FilteredTopic?.data?.user?.last_name || ""
               }`}
@@ -245,11 +245,11 @@ function GetTopic() {
             </p>
           </div>
           <p
-            className="leading-loose w-[800px] overflow-x-auto"
+            className="leading-loose w-auto lg:w-[800px] overflow-x-auto"
             dangerouslySetInnerHTML={{ __html: FilteredTopic?.data?.content }}
           />
           <div className="flex justify-between">
-            <div className="text-gray text-sm flex items-center gap-5">
+            <div className="text-gray text-sm flex max-xs:flex-col xs:items-center gap-5">
               <div className="flex gap-5">
                 <Image
                   src="/dashboard/calender.svg"
@@ -275,7 +275,7 @@ function GetTopic() {
             {FilteredTopic?.data?.user_id == userLoginId ? (
               <div
                 onClick={() => handleQuote(FilteredTopic?.data?.id)}
-                className="flex border cursor-pointer border-[#C8C8C8] hover:border-primary duration-300 transition p-2 px-4 rounded-full justify-center items-center gap-2"
+                className=" hidden md:flex  border cursor-pointer border-[#C8C8C8] hover:border-primary duration-300 transition p-2 px-4 rounded-full justify-center items-center gap-2"
               >
                 <svg
                   width="22"

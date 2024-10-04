@@ -21,10 +21,9 @@ export default function Layout({ children }) {
           {pathname.includes("/member-forum") ? (
             <div className="  w-full ">
               <div className="">
-                <div className=" text-[20px] w-full  text-[#333333] md:text-2xl font-semibold flex justify-between items-center">
+                <div className=" xs:text-[20px] w-full  text-[#333333] md:text-2xl font-semibold flex    justify-between items-center">
                   Member Chat Forum
                   <div onClick={handlePushToCreateTopic} className=" ">
-                   
                     <div
                       onClick={handlePushToCreateTopic}
                       className="border cursor-pointer text-[14px] hover:bg-primary transition duration-200 hover:text-white text-[#9b9a9a]  border-[#9b9a9a] w-[150px] py-[10px] rounded-full  flex justify-center items-center "
@@ -41,10 +40,10 @@ export default function Layout({ children }) {
             </div>
           ) : pathname.includes("/private-member") ? (
             <div className="sm:flex justify-between w-full">
-              <h2 className="text-[#333333] text-[20px] md:text-2xl font-semibold sm:mb-0 mb-3">
+              <h2 className="text-[#333333]  xs:text-[20px] md:text-2xl font-semibold sm:mb-0 mb-3">
                 Members-only Directory
               </h2>
-              <div className="flex gap-8 items-center sm:w-auto w-full">
+              <div className="flex gap-8 items-center sm:w-auto  w-full">
                 <div className="relative w-full">
                   <input
                     type="text"
@@ -88,11 +87,11 @@ export default function Layout({ children }) {
               </div>
             </div>
           ) : pathname.includes("/profile") ? (
-            <div className="text-[20px] text-[#333333]   md:text-2xl font-semibold">
+            <div className="xs:text-[20px] text-[#333333]   md:text-2xl font-semibold">
               <h2>Profile</h2>
             </div>
           ) : pathname.includes("/webinar") ? (
-            <div className="text-[20px]  text-[#333333] md:text-2xl font-semibold">
+            <div className="xs:text-[20px]  text-[#333333] md:text-2xl font-semibold">
               <h2>Webinars</h2>
             </div>
           ) : (
@@ -103,11 +102,11 @@ export default function Layout({ children }) {
         <div className="flex flex-col lg:flex-row gap-5 my-7 ">
           <div>
             <Sidebar />
-            <hr className="hidden md:block text-[#9B9A9A33] my-10" />
-            <span className=" hidden md:block">
+            <hr className="hidden lg:block text-[#9B9A9A33] my-10" />
+            <span className=" hidden lg:block">
               {pathname.includes("/webinar") ||
               pathname.includes("/profile") ? (
-                <div className="md:w-[300px]"></div>
+                <div className="lg:w-[300px]"></div>
               ) : (
                 <DashboardEvents />
               )}
@@ -115,9 +114,9 @@ export default function Layout({ children }) {
           </div>
           {children}
           {/* </div> */}
-          <span className=" block md:hidden">
+          <span className=" block lg:hidden">
             {pathname.includes("/webinar") || pathname.includes("/profile") ? (
-              <div className="md:w-[300px]"></div>
+              <div className="lg:w-[300px]"></div>
             ) : (
               <DashboardEvents />
             )}

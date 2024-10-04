@@ -128,7 +128,14 @@ const MemberForum = () => {
       {loading ? (
         <Skeleton item={10} style={`h-[100px] w-full rounded-lg mb-3`} />
       ) : posts?.result.length < 1 ? (
-        "No Topic Added yet"
+        <div className="flex justify-center items-center  lg:h-[800px]">
+          <Image
+            src="/no-topic-added.png"
+            height={600}
+            width={600}
+            alt="Image"
+          />
+        </div>
       ) : (
         <TopicList posts={posts?.result} handleSeePost={handleSeePost} />
       )}

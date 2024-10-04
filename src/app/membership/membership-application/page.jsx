@@ -39,7 +39,11 @@ const MemberShip = () => {
   const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/membership/plan/find?limit=50`;
   const API_URL_POST = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/payment/payment-intent`;
   const Validation_Api = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/auth/pre_register`;
-  const { data: apiData, loading: isLoading } = useAxiosFetch(
+  const {
+    data: apiData,
+    loading: isLoading,
+    error: apiError,
+  } = useAxiosFetch(
     API_URL,
     { headers: { Authorization: `Bearer ${token}` } },
     token
@@ -49,7 +53,8 @@ const MemberShip = () => {
   const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const validateFullName = (name) => name.trim().length > 0;
   const validatePhone = (phone) => /^[0-9]{10}$/.test(phone);
-
+  console.log(apiError);
+  console.log(apiData);
   const handleInputChange = (setter, validator, field) => (e) => {
     const { value } = e.target;
     setter(value);
@@ -169,9 +174,19 @@ const MemberShip = () => {
               </h2>
             </div>
           </div>
+         
           <div className="mt-[50px] flex lg:flex-row flex-col items-center gap-10 lg:gap-[105px] lg:justify-between">
             {isLoading ? (
               <Skeleton item={3} style="h-[330px] w-[375px] rounded-3xl mb-3" />
+            ) : apiData?.result.length === 0 ? (
+              <div className="flex justify-center  w-full">
+                <Image
+                  src="/no-membership-found.png"
+                  height={500}
+                  width={550}
+                  alt="no-membership-plan-image"
+                />
+              </div>
             ) : (
               <Swiper
                 slidesPerView={3}
@@ -223,14 +238,17 @@ const MemberShip = () => {
               </Swiper>
             )}
           </div>
-          {formErrors.plan && (
+          {formErrors.plan  && (
             <p className="text-red-500 mt-2">{formErrors.plan}</p>
           )}
-          <div className="mt-[30px] flex justify-center">
-            <span onClick={handleOpenPopForEmail} className="cursor-pointer">
-              <Button content="Next" px="px-6" py="py-2" />
-            </span>
-          </div>
+          {apiData?.result.length > 0 && (
+                <div className="mt-[30px] flex justify-center">
+                <span onClick={handleOpenPopForEmail} className="cursor-pointer">
+                  <Button content="Next" px="px-6" py="py-2" />
+                </span>
+              </div>
+          )}
+      
         </div>
         <Modal
           wantTocloseFromScreen={false}

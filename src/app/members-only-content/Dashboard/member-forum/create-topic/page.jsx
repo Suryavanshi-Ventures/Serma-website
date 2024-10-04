@@ -234,17 +234,18 @@ function CreateTopic() {
             value={subject}
             placeholder="Enter Title"
             onChange={(e) => setSubject(e.target.value)}
-            className="mt-1 block w-full md:w-1/2   px-3 py-2 border border-gray rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+            className="mt-1 block w-full lg2:w-1/2   px-3 py-2 border border-gray rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
           />
         </div>
-        <div className="overflow-hidden">
+        <div className="overflow-hidden  ">
           <ReactQuill
+            // style={{ height: "300px" }} 
             modules={modules}
             theme="snow"
             value={content}
             onChange={setContent}
             formats={formats}
-            // className=""
+            className=""
           />
         </div>
 
