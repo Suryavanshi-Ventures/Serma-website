@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const imagesData = [
   {
@@ -64,25 +64,27 @@ function TopSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fade, setFade] = useState(true);
   const [isFading, setIsFading] = useState(false);
-
+  const hasRun = useRef(false);
   useEffect(() => {
-    console.log("run");
-    const interval = setInterval(() => {
-      if (!isFading) {
-        setIsFading(true);
+    if (!hasRun.current) {
+      hasRun.current = true;
+      const interval = setInterval(() => {
+        if (!isFading) {
+          setIsFading(true);
 
-        setFade(false);
-        setTimeout(() => {
-          setCurrentImageIndex(
-            (prevIndex) => (prevIndex + 1) % imagesData.length
-          );
-          setFade(true); // Start fade-in
-          setIsFading(false);
-        }, 1500); // fade in time
-      }
-    }, 6000);
+          setFade(false);
+          setTimeout(() => {
+            setCurrentImageIndex(
+              (prevIndex) => (prevIndex + 1) % imagesData.length
+            );
+            setFade(true); // Start fade-in
+            setIsFading(false);
+          }, 800); // fade in time
+        }
+      }, 6000);
 
-    return () => clearInterval(interval);
+      return () => clearInterval(interval);
+    }
   }, []);
 
   const currentImage = imagesData[currentImageIndex];
