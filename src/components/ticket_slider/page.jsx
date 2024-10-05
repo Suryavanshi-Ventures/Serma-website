@@ -45,7 +45,8 @@ function TicketSlider({ data, error, loading }) {
   };
 
   const handleOpenSlotPopUp = () => {
-    console.log(selectedTicket?.remain_tickets)
+    console.log(selectedTicket);
+  
     if (selectedTicket && selectedTicket?.remain_tickets == 0) {
       setAlertDetails({
         isOpen: true,
@@ -54,7 +55,9 @@ function TicketSlider({ data, error, loading }) {
         position: "top",
         type: "info",
       });
+      return;
     }
+  
     if (!data.allow_registration) {
       setAlertDetails({
         isOpen: true,
@@ -63,12 +66,14 @@ function TicketSlider({ data, error, loading }) {
         position: "top",
         type: "info",
       });
+      return;
     }
-   
+  
     if (
       selectedTicket &&
-      data?.event_slots?.length > 0 &&
-      selectedTicket?.remain_tickets > 0
+      Array.isArray(data?.event_slots) &&
+      data.event_slots.length > 0 &&
+      selectedTicket.remain_tickets > 0
     ) {
       console.log("slot hai bhai");
       setOpenSlotPopUp(true);
@@ -76,6 +81,7 @@ function TicketSlider({ data, error, loading }) {
       console.log("slot ni hai bhai");
     }
   };
+  
   const handleSelectSlot = (id) => {
     setTicketSlotId(id);
     setOpenCalculatePopUp(true);
