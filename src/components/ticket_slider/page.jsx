@@ -63,6 +63,7 @@ function TicketSlider({ data, error, loading }) {
         type: "info",
       });
     }
+   
     if (
       selectedTicket &&
       data.event_slots.length > 0 &&
@@ -272,6 +273,7 @@ function TicketSlider({ data, error, loading }) {
           </div>
         </Swiper>
         <div className="flex justify-center my-5">
+          {console.log(selectedTicket)}
           {selectedTicket && (
             <span onClick={handleOpenSlotPopUp}>
               <Button
