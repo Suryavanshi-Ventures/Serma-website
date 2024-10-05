@@ -45,7 +45,8 @@ function TicketSlider({ data, error, loading }) {
   };
 
   const handleOpenSlotPopUp = () => {
-    if (selectedTicket && selectedTicket.remain_tickets == 0) {
+    console.log(selectedTicket?.remain_tickets)
+    if (selectedTicket && selectedTicket?.remain_tickets == 0) {
       setAlertDetails({
         isOpen: true,
         message: "Ticket is not available",
@@ -66,8 +67,8 @@ function TicketSlider({ data, error, loading }) {
    
     if (
       selectedTicket &&
-      data.event_slots.length > 0 &&
-      selectedTicket.remain_tickets > 0
+      data?.event_slots?.length > 0 &&
+      selectedTicket?.remain_tickets > 0
     ) {
       console.log("slot hai bhai");
       setOpenSlotPopUp(true);
