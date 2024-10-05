@@ -69,6 +69,7 @@ function TicketSlider({ data, error, loading }) {
       data.event_slots.length > 0 &&
       selectedTicket.remain_tickets > 0
     ) {
+      console.log("slot hai bhai");
       setOpenSlotPopUp(true);
     } else {
       console.log("slot ni hai bhai");
