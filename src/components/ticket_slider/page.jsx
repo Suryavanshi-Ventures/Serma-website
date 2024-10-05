@@ -72,7 +72,7 @@ function TicketSlider({ data, error, loading }) {
     if (
       selectedTicket &&
       Array.isArray(data?.event_slots) &&
-      data.event_slots.length > 0 &&
+      data?.event_slots?.length > 0 &&
       selectedTicket.remain_tickets > 0
     ) {
       console.log("slot hai bhai");
@@ -285,7 +285,7 @@ function TicketSlider({ data, error, loading }) {
           {selectedTicket && (
             <span onClick={handleOpenSlotPopUp}>
               <Button
-                content={"Continue"}
+                content={"Continuee"}
                 px={"px-5"}
                 py={"py-2"}
                 width={"full"}
@@ -307,7 +307,7 @@ function TicketSlider({ data, error, loading }) {
             <div className="font-semibold text-lg text-center ">
               Please Select Slot
             </div>
-
+{console.log(data.event_slots)}
             {data.event_slots &&
               data.event_slots.map((data, i) => {
                 return (
