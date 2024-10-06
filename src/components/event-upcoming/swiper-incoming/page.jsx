@@ -137,7 +137,9 @@ function SwiperSlideIncoming({ data, error, loading }) {
                           {event.title}
                         </div>
                         <div className="flex items-center justify-between md:mt-6 mt-3">
-                          <div className="underline text-[#474747] cursor-pointer">
+                          <div 
+                          onClick={() => handleClick(event.id)}
+                          className="underline text-[#474747] cursor-pointer">
                             Show Detail
                           </div>
                           <div className="flex cursor-pointer items-center gap-3">

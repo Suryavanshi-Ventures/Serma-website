@@ -8,7 +8,6 @@ import Card_skeleton from "@/components/card-skeleton/card_skeleton";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-
 function Webinar() {
   const { data: session } = useSession();
   const token = session?.user?.userToken;
@@ -72,14 +71,14 @@ function Webinar() {
         <div className="grid w-full sm:grid-cols-2 xl:grid-cols-23 gap-6">
           {currentData?.map((item) => {
             const isExpanded = expanded[item.id]; // Check if the current item is expanded
-            const shouldShowReadMore = item?.description?.length > 40; // Show "Read More" if length is > 20
+            const shouldShowReadMore = item?.description?.length > 50; // Show "Read More" if length is > 20
             const descriptionPreview = isExpanded
               ? item?.description
-              : `${item?.description?.substring(0, 100)}`; // Show full or partial description
+              : `${item?.description?.substring(0, 50)}`; // Show full or partial description
 
             return (
               <div key={item?.id}>
-                <div className="flex justify-center  min-h-[550px]  bg-white">
+                <div className="flex justify-center   bg-white">
                   <div className="w-full shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[22px]   p-4 xl:p-[22px]">
                     <div className="flex justify-center h-[150px] xl:h-[250px] w-full">
                       <Image
@@ -87,7 +86,7 @@ function Webinar() {
                         width={445}
                         unoptimized
                         height={252}
-                        className="object-cover w-full h-full rounded-lg"
+                        className="max-sm:object-contain w-full h-full rounded-lg"
                       />
                     </div>
                     <div className="mt-4">
@@ -133,17 +132,19 @@ function Webinar() {
                           {item?.title}
                         </p>
                       </div>
-                      <div className="">
+                      <div className={`${!isExpanded ? "flex" : ""} items-center`}>
                         <p
-                          className="responsive-Text font-bold text-[#525971] overflow-y-auto"
-                          dangerouslySetInnerHTML={{ __html: descriptionPreview }}
+                          className="responsive-Text font-semibold text-[#525971] overflow-y-auto"
+                          dangerouslySetInnerHTML={{
+                            __html: descriptionPreview,
+                          }}
                         ></p>
                         {shouldShowReadMore && (
                           <span
-                            className="text-primary text-sm cursor-pointer"
+                            className="text-primary text-xs cursor-pointer"
                             onClick={() => handleToggleExpand(item.id)}
                           >
-                            {isExpanded ? "Read Less" : "Read More"}
+                            {isExpanded ? "Read Less" : "...Read More"}
                           </span>
                         )}
                       </div>
@@ -180,7 +181,7 @@ function Webinar() {
         </div>
       )}
 
-<div className="flex justify-center mt-9 gap-1.5">
+      <div className="flex justify-center mt-9 gap-1.5">
         <button
           onClick={handlePrevPage}
           disabled={currentPage === 1}
