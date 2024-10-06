@@ -71,7 +71,7 @@ const TopicItem = ({ post, handleSeePost }) => {
             </div>
           </div>
           <p
-            className="mt-2 text-[#333333] text-[14px] w-[850px] overflow-hidden"
+            className="mt-2 text-[#333333] text-[14px] w-[850px] overflow-y-scroll hideScrollbar"
             dangerouslySetInnerHTML={{ __html: post.content }}
           ></p>
         </div>

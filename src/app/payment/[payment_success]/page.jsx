@@ -17,7 +17,7 @@ const PymentSucess = () => {
   const [userData, setUserData] = useState(null);
   const [paymentData, setPaymentData] = useState(null);
   const [planData, setPlanData] = useState(null);
-  const [isRegister ,   setIsRegistered] = useState(false);
+  const [isRegister, setIsRegistered] = useState(false);
   const [AlertDetails, setAlertDetails] = useState({
     isOpen: false,
     message: "",
@@ -148,21 +148,24 @@ const PymentSucess = () => {
       )}
       <div className="flex justify-center my-10 ">
         <div>
-         
-            {isRegister ? (
-                   <div>
-                   <h1 className="text-center font-bold text-xl">Payment successful</h1>
-                   <div className="flex justify-center">
-                     <Image
-                       src="/payment-success/success.gif"
-                       alt="payment-success image"
-                       height={200}
-                       width={200}
-                     />
-                   </div>
-                   </div>
-            ) : ""}
-        
+          {isRegister ? (
+            <div>
+              <h1 className="text-center font-bold text-xl">
+                Payment successful
+              </h1>
+              <div className="flex justify-center">
+                <Image
+                  src="/payment-success/Success.gif"
+                  alt="payment-success image"
+                  height={200}
+                  width={200}
+                />
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+
           {paymentData && planData && userData ? (
             <div className="space-y-6">
               <div className="grid grid-cols-2 gap-7 ">
