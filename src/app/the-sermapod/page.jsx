@@ -73,13 +73,13 @@ const Sermapod = () => {
                             allowfullscreen
                           />
                         </div>
-                        <div className="max-w-[183px]">
+                        <div className="w-1/2 lg2:max-w-[183px]">
                           <div>
                             <p className="text-xs sm:text-base text-nowrap">
                               {item.title}
                             </p>
                           </div>
-                          <div>
+                          <div className=" w-full">
                             <p className="text-[9px] mt-4">{item.desc}</p>
                           </div>
                         </div>
