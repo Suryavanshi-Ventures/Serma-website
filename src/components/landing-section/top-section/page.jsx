@@ -227,7 +227,7 @@ function TopSection() {
 
         {/* Image Zone */}
         <div
-          className={`absolute  max-xxl:top-3  animate-fade transition-opacity duration-500 ease-in-out ${
+          className={`absolute border  max-xxl:top-3  animate-fade transition-opacity duration-500 ease-in-out ${
             fade ? "opacity-100" : "opacity-0"
           } ${getPositionClasses()}`}
         >
