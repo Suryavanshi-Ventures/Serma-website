@@ -243,12 +243,12 @@ const Page = () => {
           </div>
           <div className="mt-10 flex justify-center">
             <form>
-              {console.log(StripeData)}
+            
               <div className="grid grid-cols-1 sm:grid-cols-2 md:gap-6 gap-5">
                 {Fields.map((field) => (
                   <div className="w-full lg:w-[436px]" key={field.name}>
                     <h2 className="font-bold text-lg">{field.label}</h2>
-                    <div className="mt-4">
+                    <div className="mt-4 ">
                       <input
                         disabled={
                           field.name === "email" || field.name === "mobilePhone"
@@ -267,7 +267,7 @@ const Page = () => {
                         }
                         onChange={handleChange}
                         placeholder={field.placeholder}
-                        className="outline-primary w-full border placeholder:text-[#939393] placeholder:text-base text-lg pl-5 py-[10px] rounded-[10px] border-[#D7D7D7] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                        className="outline-primary pr-5 w-full border placeholder:text-[#939393] placeholder:text-base text-lg pl-5 py-[10px] rounded-[10px] border-[#D7D7D7] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
                       {errors[field.name] && (
                         <p className="text-red-500 text-sm mt-2">

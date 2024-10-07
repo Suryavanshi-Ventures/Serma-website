@@ -3,7 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { IMAGES_DATA } from "@/components/constants/constants";
+import { Swiper, SwiperSlide } from "swiper/react";
 
+// Import Swiper styles
+// import 'swiper/css';
+import "swiper/css/effect-fade";
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
+
+// import './styles.css';
+import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 function TopSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fade, setFade] = useState(true);
@@ -222,18 +231,32 @@ function TopSection() {
             fade ? "opacity-100" : "opacity-0"
           } ${getPositionClasses()}`}
         >
-          <Image
-            src={currentImage.path && currentImage.path}
-            height={
-              currentImage.dimensions.height && currentImage.dimensions.height
-            }
-            width={
-              currentImage.dimensions.width && currentImage.dimensions.width
-            }
-            // onLoadingComplete={() => setIsFading(false)}
-            priority
-            alt="image"
-          />
+          <Swiper
+            // spaceBetween={30}
+            effect={"fade"}
+            navigation={false}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[EffectFade, Pagination, Autoplay]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <Image
+                src={currentImage.path && currentImage.path}
+                height={
+                  currentImage.dimensions.height &&
+                  currentImage.dimensions.height
+                }
+                width={
+                  currentImage.dimensions.width && currentImage.dimensions.width
+                }
+                // onLoadingComplete={() => setIsFading(false)}
+                priority
+                alt="image"
+              />
+            </SwiperSlide>
+          </Swiper>
         </div>
 
         {/* ----------------------rotate content----------------------- */}
