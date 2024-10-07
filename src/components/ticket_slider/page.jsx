@@ -285,7 +285,7 @@ function TicketSlider({ data, error, loading }) {
           {selectedTicket && (
             <span onClick={handleOpenSlotPopUp}>
               <Button
-                content={"Continuee"}
+                content={"Continue"}
                 px={"px-5"}
                 py={"py-2"}
                 width={"full"}

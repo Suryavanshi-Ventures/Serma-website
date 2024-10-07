@@ -2,63 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-
-const imagesData = [
-  {
-    id: 1,
-    path: "/hero-section/changing-image/runner.svg",
-    dimensions: { height: 776, width: 850 },
-    dimensionsForLg2: { height: 650, width: 550 },
-    dimensionsForXl: { height: 700, width: 650 },
-    responsive: { height: 400, width: 400, left: 30 },
-    position: { left: 45, bottom: "" },
-  },
-  {
-    id: 2,
-    path: "/hero-section/changing-image/female-singer-new.png",
-    dimensions: { height: 500, width: 400 },
-    dimensionsForLg2: { height: 300, width: 300 },
-    dimensionsForXl: { height: 400, width: 350 },
-    responsive: { height: 150, width: 200, left: 24 },
-    position: { left: 45, bottom: "" },
-  },
-  {
-    id: 3,
-    path: "/hero-section/changing-image/basketball-player-new.png",
-    dimensions: { height: 766, width: 502 },
-    dimensionsForLg2: { height: 550, width: 350 },
-    dimensionsForXl: { height: 600, width: 400 },
-    responsive: { height: 260, width: 260, left: 45 },
-    position: { left: 45, bottom: "" },
-  },
-  {
-    id: 4,
-    path: "/hero-section/changing-image/drms.svg",
-    dimensions: { height: 630, width: 620 },
-    dimensionsForLg2: { height: 400, width: 450 },
-    dimensionsForXl: { height: 500, width: 500 },
-    responsive: { height: 300, width: 400, left: 45 },
-    position: { left: 45, bottom: "" },
-  },
-  {
-    id: 5,
-    path: "/hero-section/changing-image/cyclelist.svg",
-    dimensions: { height: 750, width: 500 },
-    dimensionsForLg2: { height: 650, width: 400 },
-    dimensionsForXl: { height: 700, width: 450 },
-    responsive: { height: 250, width: 250, left: 45 },
-    position: { left: 45, bottom: "" },
-  },
-  {
-    id: 6,
-    path: "/hero-section/changing-image/dj-new.png",
-    dimensions: { height: 1020, width: 680 },
-    dimensionsForLg2: { height: 920, width: 580 },
-    dimensionsForXl: { height: 1000, width: 650 },
-    responsive: { height: 250, width: 450, left: 45 },
-    position: { left: 45, bottom: "0" },
-  },
-];
+import { IMAGES_DATA } from "@/components/constants/constants";
 
 function TopSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -73,9 +17,9 @@ function TopSection() {
         setFade(false);
         setTimeout(() => {
           setCurrentImageIndex(
-            (prevIndex) => (prevIndex + 1) % imagesData.length
+            (prevIndex) => (prevIndex + 1) % IMAGES_DATA.length
           );
-         
+
           setFade(true); // Start fade-in
           setIsFading(false);
         }, 800); // fade in time
@@ -85,7 +29,7 @@ function TopSection() {
     return () => clearInterval(interval);
   }, []);
 
-  const currentImage = imagesData[currentImageIndex];
+  const currentImage = IMAGES_DATA[currentImageIndex];
   const getPositionClasses = () => {
     const { id, position } = currentImage;
 
@@ -274,7 +218,7 @@ function TopSection() {
 
         {/* Image Zone */}
         <div
-          className={`absolute border max-xxl:top-3  animate-fade transition-opacity duration-500 ease-in-out ${
+          className={`absolute  max-xxl:top-3  animate-fade transition-opacity duration-500 ease-in-out ${
             fade ? "opacity-100" : "opacity-0"
           } ${getPositionClasses()}`}
         >

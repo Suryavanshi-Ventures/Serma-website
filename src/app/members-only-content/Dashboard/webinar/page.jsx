@@ -68,7 +68,7 @@ function Webinar() {
       {loading ? (
         <Card_skeleton width={920} />
       ) : (
-        <div className="grid w-full sm:grid-cols-2 xl:grid-cols-23 gap-6">
+        <div className="grid w-full  sm:grid-cols-2 xl:grid-cols-23 gap-6">
           {currentData?.map((item) => {
             const isExpanded = expanded[item.id]; // Check if the current item is expanded
             const shouldShowReadMore = item?.description?.length > 50; // Show "Read More" if length is > 20
@@ -79,8 +79,8 @@ function Webinar() {
             return (
               <div key={item?.id}>
                 <div className="flex justify-center   bg-white">
-                  <div className="w-full shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[22px]   p-4 xl:p-[22px]">
-                    <div className="flex justify-center h-[150px] xl:h-[250px] w-full">
+                  <div className="w-full  shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[22px]   p-4 xl:p-[22px]">
+                    <div className="flex justify-center  h-[150px] xl:h-[250px] w-full">
                       <Image
                         src={item?.image_url}
                         width={445}

@@ -154,7 +154,7 @@ function Sidebar() {
         ))}
       </div>
 
-      <div className="lg:hidden flex justify-around overflow-x-scroll lg:overflow-y-scroll hideScrollbar">
+      <div className="lg:hidden flex justify-around overflow-x-scroll  lg:overflow-y-scroll ">
         {sidebarItems.map((item, index) => (
           <div
             key={index}

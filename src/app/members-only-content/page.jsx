@@ -573,7 +573,12 @@ const Membership = () => {
               />
             </svg>
 
-            <div className="text-xs font-semibold">Back to log in</div>
+            <div
+              onClick={() => setOpenOtpBox(false)}
+              className="text-xs cursor-pointer font-semibold"
+            >
+              Back to log in
+            </div>
           </div>
         </div>
       </Modal>

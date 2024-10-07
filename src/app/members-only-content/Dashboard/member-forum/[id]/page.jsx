@@ -13,6 +13,7 @@ import LoadingButton from "@/components/loadingButton/page";
 
 function GetTopic() {
   const router = useRouter();
+  
   const { id: paramdId } = useParams();
   const { data: session } = useSession();
   const token = session?.user?.userToken;
@@ -115,7 +116,7 @@ function GetTopic() {
           type={AlertDetails.type}
         />
       )}
-      <div className="w-full bg-gray-100">
+      <div className="w-full bg-gray-100 border">
         <div className="flex text-[16px] justify-between items-center gap-5">
           <div className="flex text-[16px] justify-start items-center gap-[3px] xs:gap-5">
             <div
@@ -245,7 +246,8 @@ function GetTopic() {
             </p>
           </div>
           <p
-            className="leading-loose w-auto lg:w-[800px] overflow-x-auto"
+            className="leading-loose w-full lg:w-[900px] "
+            style={{ wordWrap: "break-word" }} 
             dangerouslySetInnerHTML={{ __html: FilteredTopic?.data?.content }}
           />
           <div className="flex justify-between">
