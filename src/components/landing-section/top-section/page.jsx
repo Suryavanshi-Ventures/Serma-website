@@ -73,10 +73,9 @@ function TopSection() {
         setFade(false);
         setTimeout(() => {
           setCurrentImageIndex(
-            // (prevIndex) => (prevIndex + 1) % imagesData.length
-
-            currentImageIndex + 1
+            (prevIndex) => (prevIndex + 1) % imagesData.length
           );
+         
           setFade(true); // Start fade-in
           setIsFading(false);
         }, 800); // fade in time
@@ -143,7 +142,7 @@ function TopSection() {
 
         {/* Image Zone */}
         <div
-          className={`absolute max-lg:top-3 transition-opacity duration-500 ease-in-out   ${
+          className={`absolute  max-lg:top-3 transition-opacity duration-500 ease-in-out   ${
             fade && fade ? "animate-fade" : "opacity-0 "
           } ${getPositionClasses()}`}
         >
@@ -234,7 +233,7 @@ function TopSection() {
       </div>
 
       {/* xxl-------------------------------------------xxl------------------------------------ */}
-      <div className="hidden xxl:flex relative justify-between items-center">
+      <div className="hidden  xxl:flex relative justify-between items-center">
         <div className="xxl:w-[55%] xxl:h-[800px] xxl:bg-primaryBlue flex justify-center xxl:pt-[158px] pt-[400px] rounded-r-3xl">
           <div className="xl:w-2/3 max-xl:w-[500px] max-xl:px-[20px]">
             <h1 className="text-[#FFFFFF] font-semibold text-[24px] md:text-[30px] xxl:text-[40px]">
@@ -275,7 +274,7 @@ function TopSection() {
 
         {/* Image Zone */}
         <div
-          className={`absolute max-xxl:top-3  animate-fade transition-opacity duration-500 ease-in-out ${
+          className={`absolute border max-xxl:top-3  animate-fade transition-opacity duration-500 ease-in-out ${
             fade ? "opacity-100" : "opacity-0"
           } ${getPositionClasses()}`}
         >
