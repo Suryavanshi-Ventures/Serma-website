@@ -4,8 +4,6 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { IMAGES_DATA } from "@/components/constants/constants";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css/effect-fade";
 import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 
@@ -13,8 +11,26 @@ function TopSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fade, setFade] = useState(true);
   const [isFading, setIsFading] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false); // New state for preloading
+
+  // Preload images before starting transitions
+  useEffect(() => {
+    const imagePromises = IMAGES_DATA.map((image) =>
+      new Promise((resolve) => {
+        const img =new window.Image();;
+        img.src = image.path;
+        img.onload = resolve;
+      })
+    );
+
+    Promise.all(imagePromises).then(() => {
+      setIsLoaded(true); // Images are preloaded
+    });
+  }, []);
 
   useEffect(() => {
+    if (!isLoaded) return; // Wait until images are preloaded
+
     const interval = setInterval(() => {
       if (!isFading) {
         setIsFading(true);
@@ -27,12 +43,12 @@ function TopSection() {
 
           setFade(true); // Start fade-in
           setIsFading(false);
-        }, 1000); // Increased fade transition time
+        }, 1000); // Fade transition time
       }
-    }, 6500); // Smoothened interval duration
+    }, 6500); // Smooth interval duration
 
     return () => clearInterval(interval);
-  }, [isFading]);
+  }, [isFading, isLoaded]);
 
   const currentImage = IMAGES_DATA[currentImageIndex];
   const getPositionClasses = () => {
@@ -47,89 +63,79 @@ function TopSection() {
   };
 
   return (
-    <>
-      <div className="hidden xxl:flex relative justify-between items-center">
-        <div className="xxl:w-[55%] xxl:h-[800px] xxl:bg-primaryBlue flex justify-center xxl:pt-[158px] pt-[400px] rounded-r-3xl">
-          <div className="xl:w-2/3 max-xl:w-[500px] max-xl:px-[20px]">
-            <h1 className="text-[#FFFFFF] font-semibold text-[24px] md:text-[30px] xxl:text-[40px]">
-              <div>Sports and Entertainment</div>
-              <div className="my-[6px]">Risk Management Alliance</div>
-            </h1>
-            <div className="my-[40px] overflow-hidden">
-              <p className="text-[#FFFFFF] xl:w-[500px] max-xxl:pr-3">
-                The Sports and Entertainment Risk Management Alliance (SERMA) is
-                the first risk management association devoted entirely to the
-                sports and entertainment industries. It is an organization of
-                risk managers, claims managers, general counsels, outside
-                counsel, and other associated professionals who work in the
-                sports and entertainment field.
-              </p>
-            </div>
-            <Link href="/membership">
-              <button className="my-5 max-md:pr-[20px] flex justify-start group max-md:w-full transition duration-500 text-[#DDDDDD] font-normal items-center gap-3 text-lg tracking-wider py-3 px-6 border border-[#C8C8C8] rounded-full">
-                Membership
-                <span className="group-hover:translate-x-1 duration-200">
-                  <svg
-                    width="18"
-                    height="8"
-                    viewBox="0 0 20 8"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
-                      fill="white"
-                    />
-                  </svg>
-                </span>
-              </button>
-            </Link>
+    <div className="hidden xxl:flex relative justify-between items-center">
+      <div className="xxl:w-[55%] xxl:h-[800px] xxl:bg-primaryBlue flex justify-center xxl:pt-[158px] pt-[400px] rounded-r-3xl">
+        <div className="xl:w-2/3 max-xl:w-[500px] max-xl:px-[20px]">
+          <h1 className="text-[#FFFFFF] font-semibold text-[24px] md:text-[30px] xxl:text-[40px]">
+            <div>Sports and Entertainment</div>
+            <div className="my-[6px]">Risk Management Alliance</div>
+          </h1>
+          <div className="my-[40px] overflow-hidden">
+            <p className="text-[#FFFFFF] xl:w-[500px] max-xxl:pr-3">
+              The Sports and Entertainment Risk Management Alliance (SERMA) is
+              the first risk management association devoted entirely to the
+              sports and entertainment industries...
+            </p>
           </div>
+          <Link href="/membership">
+            <button className="my-5 max-md:pr-[20px] flex justify-start group max-md:w-full transition duration-500 text-[#DDDDDD] font-normal items-center gap-3 text-lg tracking-wider py-3 px-6 border border-[#C8C8C8] rounded-full">
+              Membership
+              <span className="group-hover:translate-x-1 duration-200">
+                <svg
+                  width="18"
+                  height="8"
+                  viewBox="0 0 20 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 3.5L0.5 3.5L0.5 4.5L1 4.5L1 3.5ZM19.3536 4.35356C19.5488 4.1583 19.5488 3.84171 19.3536 3.64645L16.1716 0.464469C15.9763 0.269207 15.6597 0.269207 15.4645 0.464469C15.2692 0.659731 15.2692 0.976314 15.4645 1.17158L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53554C15.6597 7.7308 15.9763 7.7308 16.1716 7.53554L19.3536 4.35356ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z"
+                    fill="white"
+                  />
+                </svg>
+              </span>
+            </button>
+          </Link>
         </div>
+      </div>
 
-        {/* Image Zone */}
-        <div
-          className={`absolute max-xxl:top-3 transition-opacity duration-1000 ease-in-out ${
-            fade ? "opacity-100" : "opacity-0"
-          } ${getPositionClasses()}`}
-        >
+      {/* Image Zone */}
+      <div
+        className={`absolute border max-xxl:top-3 transition-opacity duration-1000 ease-in-out ${
+          fade ? "opacity-100" : "opacity-0"
+        } ${getPositionClasses()}`}
+      >
+        {isLoaded && ( // Ensure Swiper only runs when images are loaded
           <Swiper
             effect={"fade"}
             navigation={false}
-            pagination={{
-              clickable: true,
-            }}
+            pagination={{ clickable: true }}
             modules={[EffectFade, Pagination, Autoplay]}
             className="mySwiper"
           >
             <SwiperSlide>
               <Image
-                src={currentImage.path && currentImage.path}
-                height={
-                  currentImage.dimensions.height &&
-                  currentImage.dimensions.height
-                }
-                width={
-                  currentImage.dimensions.width && currentImage.dimensions.width
-                }
+                src={currentImage.path}
+                height={currentImage.dimensions.height}
+                width={currentImage.dimensions.width}
                 priority
                 alt="image"
               />
             </SwiperSlide>
           </Swiper>
-        </div>
-
-        <div className="overflow-hidden max-xxl:mt-[-400px] xxl:pr-10 xl:pr-20">
-          <Image
-            src="/hero-section/rotate-content.svg"
-            height={40}
-            width={60}
-            alt="image"
-            className="max-xxl:h-[300px] max-xxl:w-[300px]"
-          />
-        </div>
+        )}
       </div>
-    </>
+
+      <div className="overflow-hidden max-xxl:mt-[-400px] xxl:pr-10 xl:pr-20">
+        <Image
+          src="/hero-section/rotate-content.svg"
+          height={40}
+          width={60}
+          alt="image"
+          className="max-xxl:h-[300px] max-xxl:w-[300px]"
+        />
+      </div>
+    </div>
   );
 }
 
