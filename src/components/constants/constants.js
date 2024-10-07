@@ -219,7 +219,7 @@ module.exports = {
       dimensionsForLg2: { height: 920, width: 580 },
       dimensionsForXl: { height: 1000, width: 650 },
       responsive: { height: 250, width: 450, left: 45 },
-      position: { left: 45, bottom: "0" },
+      position: { left: 45, bottom: 0 },
     },
   ],
 };

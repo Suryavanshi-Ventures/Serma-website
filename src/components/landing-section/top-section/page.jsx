@@ -54,12 +54,13 @@ function TopSection() {
 
   const getPositionClasses = () => {
     const { id } = IMAGES_DATA[currentImageIndex]; // Use currentImageIndex directly
-
+console.log(id)
     return `
       ${id === 1 || id === 4 || id === 6 ? "md:left-[22%]" : "md:left-[40%]"}
       ${id === 1 || id === 6 ? "left-[-10%]" : "left-[20%]"}
       ${id === 1 ? "lg:left-[35%]" : "lg:left-[45%]"}
       ${id === 2 ? "lg:left-[50%]" : ""}
+      ${id === 6 ? "lg:bottom-0" : ""}
     `;
   };
 
@@ -280,7 +281,7 @@ function TopSection() {
 
         {/* Image Zone */}
         <div
-          className={`absolute max-xxl:top-3 transition-opacity duration-1000 ease-in-out ${
+          className={`absolute max-xxl:top-3  animate-fade transition-opacity duration-500 ease-in-out ${
             fade ? "opacity-100" : "opacity-0"
           } ${getPositionClasses()}`}
         >
