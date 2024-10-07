@@ -116,7 +116,7 @@ function GetTopic() {
           type={AlertDetails.type}
         />
       )}
-      <div className="w-full bg-gray-100 border">
+      <div className="w-full bg-gray-100 ">
         <div className="flex text-[16px] justify-between items-center gap-5">
           <div className="flex text-[16px] justify-start items-center gap-[3px] xs:gap-5">
             <div
