@@ -73,7 +73,9 @@ function TopSection() {
         setFade(false);
         setTimeout(() => {
           setCurrentImageIndex(
-            (prevIndex) => (prevIndex + 1) % imagesData.length
+            // (prevIndex) => (prevIndex + 1) % imagesData.length
+
+            currentImageIndex + 1
           );
           setFade(true); // Start fade-in
           setIsFading(false);

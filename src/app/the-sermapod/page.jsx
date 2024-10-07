@@ -60,7 +60,7 @@ const Sermapod = () => {
                   <div className="text-center text-base sm:text-lg font-bold">
                     <h2>Mix Sermapod</h2>
                   </div>
-                  <div className="space-y-3.5 mt-5 sm:mt-2 overflow-auto h-[334px] sm:h-[372px] xl:h-[450px] ">
+                  <div className="space-y-3.5 mt-5 sm:mt-2 overflow-auto  h-[334px] sm:h-[372px] xl:h-[450px] ">
                     {mixSermapod.map((item, index) => (
                       <div className="flex items-center gap-[16px]">
                         <div>
@@ -73,14 +73,16 @@ const Sermapod = () => {
                             allowfullscreen
                           />
                         </div>
-                        <div className="w-1/2 lg2:max-w-[183px]">
+                        <div className=" w-1/2 lg2:max-w-[200px]">
                           <div>
-                            <p className="text-xs sm:text-base text-nowrap">
+                            <p className="text-xs sm:text-base  text-nowrap">
                               {item.title}
                             </p>
                           </div>
                           <div className=" w-full">
-                            <p className="text-[9px] mt-4">{item.desc}</p>
+                            <p className="text-[9px] lg:text-[12px] mt-4">
+                              {item.desc}
+                            </p>
                           </div>
                         </div>
                       </div>
