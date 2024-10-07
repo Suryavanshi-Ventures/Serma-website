@@ -337,7 +337,7 @@ console.log(id)
           /> */}
           {isLoaded && (
             <Swiper
-              effect={"fade"}
+              // effect={"fade"}
               navigation={false}
               pagination={{ clickable: true }}
               modules={[EffectFade, Pagination, Autoplay]}
