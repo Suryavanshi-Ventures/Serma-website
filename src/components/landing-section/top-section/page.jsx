@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import NextImage from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { IMAGES_DATA } from "@/components/constants/constants";
@@ -11,25 +11,25 @@ function TopSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fade, setFade] = useState(true);
   const [isFading, setIsFading] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false); // New state for preloading
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // Preload images before starting transitions
   useEffect(() => {
     const imagePromises = IMAGES_DATA.map((image) =>
       new Promise((resolve) => {
-        const img =new window.Image();;
+        const img = new window.Image();
         img.src = image.path;
         img.onload = resolve;
       })
     );
 
     Promise.all(imagePromises).then(() => {
-      setIsLoaded(true); // Images are preloaded
+      setIsLoaded(true);
     });
   }, []);
 
   useEffect(() => {
-    if (!isLoaded) return; // Wait until images are preloaded
+    if (!isLoaded) return;
 
     const interval = setInterval(() => {
       if (!isFading) {
@@ -37,9 +37,10 @@ function TopSection() {
         setFade(false);
 
         setTimeout(() => {
-          setCurrentImageIndex(
-            (prevIndex) => (prevIndex + 1) % IMAGES_DATA.length
-          );
+          setCurrentImageIndex((prevIndex) => {
+            const nextIndex = (prevIndex + 1) % IMAGES_DATA.length;
+            return nextIndex; // Calculate next index
+          });
 
           setFade(true); // Start fade-in
           setIsFading(false);
@@ -50,9 +51,8 @@ function TopSection() {
     return () => clearInterval(interval);
   }, [isFading, isLoaded]);
 
-  const currentImage = IMAGES_DATA[currentImageIndex];
   const getPositionClasses = () => {
-    const { id } = currentImage;
+    const { id } = IMAGES_DATA[currentImageIndex]; // Use currentImageIndex directly
 
     return `
       ${id === 1 || id === 4 || id === 6 ? "md:left-[22%]" : "md:left-[40%]"}
@@ -101,11 +101,11 @@ function TopSection() {
 
       {/* Image Zone */}
       <div
-        className={`absolute border max-xxl:top-3 transition-opacity duration-1000 ease-in-out ${
+        className={`absolute max-xxl:top-3 transition-opacity duration-1000 ease-in-out ${
           fade ? "opacity-100" : "opacity-0"
         } ${getPositionClasses()}`}
       >
-        {isLoaded && ( // Ensure Swiper only runs when images are loaded
+        {isLoaded && (
           <Swiper
             effect={"fade"}
             navigation={false}
@@ -113,11 +113,12 @@ function TopSection() {
             modules={[EffectFade, Pagination, Autoplay]}
             className="mySwiper"
           >
-            <SwiperSlide>
-              <Image
-                src={currentImage.path}
-                height={currentImage.dimensions.height}
-                width={currentImage.dimensions.width}
+            {/* Iterate through the images based on the current index */}
+            <SwiperSlide key={currentImageIndex}>
+              <NextImage
+                src={IMAGES_DATA[currentImageIndex].path}
+                height={IMAGES_DATA[currentImageIndex].dimensions.height}
+                width={IMAGES_DATA[currentImageIndex].dimensions.width}
                 priority
                 alt="image"
               />
@@ -127,7 +128,7 @@ function TopSection() {
       </div>
 
       <div className="overflow-hidden max-xxl:mt-[-400px] xxl:pr-10 xl:pr-20">
-        <Image
+        <NextImage
           src="/hero-section/rotate-content.svg"
           height={40}
           width={60}
