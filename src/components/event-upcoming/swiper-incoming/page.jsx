@@ -74,9 +74,9 @@ function SwiperSlideIncoming({ data, error, loading }) {
                 />
               </div>
             ) : data?.length === 0 ? (
-              <div className="flex justify-center">
+              <div className="flex justify-center items-center">
                 <Image
-                  src="/event-empty.png"
+                  src="/no-events-ava.png"
                   height={200}
                   width={300}
                   alt="image"

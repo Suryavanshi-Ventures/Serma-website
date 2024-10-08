@@ -10,10 +10,11 @@ import axios from "axios";
 import CustomAlert from "@/components/alert/page";
 import Modal from "@/components/common-modal/modal";
 import LoadingButton from "@/components/loadingButton/page";
+import ReadMoreLess from "@/hooks/read_more";
 
 function GetTopic() {
   const router = useRouter();
-  
+
   const { id: paramdId } = useParams();
   const { data: session } = useSession();
   const token = session?.user?.userToken;
@@ -43,7 +44,7 @@ function GetTopic() {
   );
 
   const FilteredTopic = topic?.result;
-
+ const content = FilteredTopic?.data?.content || ""
   const handleQuote = (quoteId) => {
     router.push(
       `/members-only-content/Dashboard/member-forum/quote/${quoteId}`
@@ -245,11 +246,31 @@ function GetTopic() {
               }`}
             </p>
           </div>
-          <p
-            className="leading-loose w-full lg:w-[900px] "
-            style={{ wordWrap: "break-word" }} 
-            dangerouslySetInnerHTML={{ __html: FilteredTopic?.data?.content }}
-          />
+          {/* <p
+            className="leading-loose w-full lg:w-[900px]"
+            style={{
+              wordWrap: "break-word", // already handling word wrapping
+              wordBreak: "break-word", // ensures long words break into new lines
+              whiteSpace: "normal", // ensures normal line breaks with long text
+            }}
+            // dangerouslySetInnerHTML={{ __html: FilteredTopic?.data?.content }}
+            dangerouslySetInnerHTML={{ __html:  <ReadMoreLess
+              content={FilteredTopic?.data?.content} 
+              maxLength={200} 
+              className="custom-content-class"
+            /> }}
+          /> */}
+
+<div>
+      <p
+        className="leading-loose w-full lg:w-[900px] overflow-hidden"
+      
+        // Set the innerHTML using dangerouslySetInnerHTML, controlled by the child component
+        dangerouslySetInnerHTML={{ __html: content.substring(0, 200) }}
+      />
+      <ReadMoreLess content={content} maxLength={200} className="text-primary text-xs" />
+    </div>
+
           <div className="flex justify-between">
             <div className="text-gray text-sm flex max-xs:flex-col xs:items-center gap-5">
               <div className="flex gap-5">

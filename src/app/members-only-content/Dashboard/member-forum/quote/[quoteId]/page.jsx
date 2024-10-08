@@ -100,12 +100,12 @@ function Quote() {
   };
 
   const handleSubmit = async () => {
+  
     setisLoading(true);
     const apiUrl = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic/update/${quoteId}`;
     const body = {
-      // title: title,
       content: content,
-      attachments: images,
+      ...(images.length > 0 && { attachments: images }),
     };
     if (!token) {
       setAlertDetails({

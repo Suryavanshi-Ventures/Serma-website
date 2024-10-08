@@ -16,6 +16,7 @@ import Skeleton from "@/components/skeleton/skeleton";
 import AxiosPost from "@/hooks/axiosPost";
 import axios from "axios";
 import CustomAlert from "@/components/alert/page";
+import ReadMoreLessWithout_html from "@/components/read_more_without_dang_html/page";
 
 const MemberShip = () => {
   const [popUp, setPopUp] = useState(false);
@@ -174,7 +175,7 @@ const MemberShip = () => {
               </h2>
             </div>
           </div>
-         
+
           <div className="mt-[50px] flex lg:flex-row flex-col items-center gap-10 lg:gap-[105px] lg:justify-between">
             {isLoading ? (
               <Skeleton item={3} style="h-[330px] w-[375px] rounded-3xl mb-3" />
@@ -194,14 +195,37 @@ const MemberShip = () => {
                 freeMode={true}
                 pagination={{ clickable: true }}
                 modules={[FreeMode]}
-                className="mySwiper"
+                className="mySwiper w-full "
+                breakpoints={{
+                  0: {
+                    slidesPerView: 1,
+                  },
+                  280: {
+                    slidesPerView: 1,
+                  },
+                  390: {
+                    slidesPerView: 1,
+                    spaceBetween: 5,
+                  },
+                  500: {
+                    slidesPerView: 1.5,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                  },
+                }}
               >
                 {apiData?.result.map((item) => (
                   <SwiperSlide key={item.id}>
                     <div className="p-3">
                       <div
                         onClick={() => setIsSelectedCard(item)}
-                        className={`lg:p-5 w-[300px] bg-white sm:w-[375px] overflow-auto sm:h-[354px] shadow-[0_3px_10px_rgb(0,0,0,0.2)] px-[24px] pt-[24px] rounded-[20px] cursor-pointer ${
+                        className={`lg:p-5 w-[300px] relative bg-white sm:w-[375px] overflow-auto min-h-[400px] sm:h-[354px]  shadow-[0_3px_10px_rgb(0,0,0,0.2)] px-[24px] pt-[24px] rounded-[20px] cursor-pointer ${
                           item.id === isSelectedCard?.id
                             ? "border-[#C42C2D] border-2"
                             : ""
@@ -226,9 +250,37 @@ const MemberShip = () => {
                             </svg>
                           )}
                         </div>
+
+                        <div className=" flex items-center mt-4 ">
+                          <span className="text-primary">
+                            {" "}
+                            Membership Registration: {"  "}{" "}
+                            {console.log(item.active)}
+                          </span>{" "}
+                          <span
+                            className={` p-1  px-2 rounded-full ml-2 font-semibold ${
+                              item.active && item.active == true
+                                ? "bg-green-100   text-green-700"
+                                : "text-red-800 bg-red-100 "
+                            }`}
+                          >
+                            {" "}
+                            {item.active && item.active
+                              ? "   Open"
+                              : "   Close"}
+                          </span>
+                        </div>
+
                         <div className="max-w-[240px] mt-[24px]">
-                          <p className="text-lg text-[#9B9A9A]">
-                            Description: {item.description}
+                          <p className="text-lg ">
+                            <span className=""> Description :</span>{" "}
+                            <span className="text-[#9B9A9A]">
+                            <ReadMoreLessWithout_html
+                          text={item.description}
+                          maxLength={40}
+                        />
+                              {/* {item.description} */}
+                            </span>
                           </p>
                         </div>
                       </div>
@@ -238,17 +290,16 @@ const MemberShip = () => {
               </Swiper>
             )}
           </div>
-          {formErrors.plan  && (
+          {formErrors.plan && (
             <p className="text-red-500 mt-2">{formErrors.plan}</p>
           )}
           {apiData?.result.length > 0 && (
-                <div className="mt-[30px] flex justify-center">
-                <span onClick={handleOpenPopForEmail} className="cursor-pointer">
-                  <Button content="Next" px="px-6" py="py-2" />
-                </span>
-              </div>
+            <div className="mt-[30px] flex justify-center">
+              <span onClick={handleOpenPopForEmail} className="cursor-pointer">
+                <Button content="Next" px="px-6" py="py-2" />
+              </span>
+            </div>
           )}
-      
         </div>
         <Modal
           wantTocloseFromScreen={false}

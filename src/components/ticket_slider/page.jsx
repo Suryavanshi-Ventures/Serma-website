@@ -17,6 +17,7 @@ import Button from "../button/page";
 import Modal from "../common-modal/modal";
 import { formatDate } from "../date-format/page";
 import CustomAlert from "../alert/page";
+import ReadMoreLessWithout_html from "../read_more_without_dang_html/page";
 
 function TicketSlider({ data, error, loading }) {
   const router = useRouter();
@@ -46,7 +47,7 @@ function TicketSlider({ data, error, loading }) {
 
   const handleOpenSlotPopUp = () => {
     console.log(selectedTicket);
-  
+
     if (selectedTicket && selectedTicket?.remain_tickets == 0) {
       setAlertDetails({
         isOpen: true,
@@ -57,7 +58,7 @@ function TicketSlider({ data, error, loading }) {
       });
       return;
     }
-  
+
     if (!data.allow_registration) {
       setAlertDetails({
         isOpen: true,
@@ -68,7 +69,7 @@ function TicketSlider({ data, error, loading }) {
       });
       return;
     }
-  
+
     if (
       selectedTicket &&
       Array.isArray(data?.event_slots) &&
@@ -81,7 +82,7 @@ function TicketSlider({ data, error, loading }) {
       console.log("slot ni hai bhai");
     }
   };
-  
+
   const handleSelectSlot = (id) => {
     setTicketSlotId(id);
     setOpenCalculatePopUp(true);
@@ -199,10 +200,10 @@ function TicketSlider({ data, error, loading }) {
               // )
               data?.ticket_types?.map((event, index) => (
                 <SwiperSlide key={index}>
-                  <div className="rounded-2xl mt-5  p-4 min-h-[350px] h-auto flex max-md:justify-center max-md:items-center max-md:p-2  ">
+                  <div className="rounded-2xl mt-5  p-4 min-h-[350px]  h-auto flex max-md:justify-center max-md:items-center max-md:p-2  ">
                     <div
                       onClick={() => handleSelectTicket(event)}
-                      className={`lg:p-3 w-[300px] xl:relative space-y-6 ${
+                      className={`lg:p-3 w-[300px] xl:relative   space-y-6 ${
                         selectedTicket?.id === event?.id
                           ? "border border-primary"
                           : "bg-white"
@@ -243,16 +244,13 @@ function TicketSlider({ data, error, loading }) {
                       </div>
 
                       <div className="overflow-y-auto hideScrollbar">
-                        {event?.description}
+                        <ReadMoreLessWithout_html
+                          text={event?.description}
+                          maxLength={50}
+                        />
+                        {/* {event?.description} */}
                       </div>
-
-                      <div
-                        className=" font-semibold text-lg text-primary
-                      "
-                      >
-                        Price : {event?.base_price} {event?.currency_type}
-                      </div>
-                      <div className=" flex items-center  xl:absolute bottom-5  ">
+                      <div className=" flex items-center    ">
                         {/* {data.allow_registration} */}
                         <span className="text-primary">
                           {" "}
@@ -273,6 +271,12 @@ function TicketSlider({ data, error, loading }) {
                             : "   Close"}
                         </span>
                       </div>
+                      <div
+                        className=" font-semibold h-auto text-lg text-primary
+                      "
+                      >
+                        Price : ${event?.base_price} {event?.currency_type}
+                      </div>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -281,7 +285,6 @@ function TicketSlider({ data, error, loading }) {
           </div>
         </Swiper>
         <div className="flex justify-center my-5">
-          {console.log(selectedTicket)}
           {selectedTicket && (
             <span onClick={handleOpenSlotPopUp}>
               <Button
@@ -307,20 +310,25 @@ function TicketSlider({ data, error, loading }) {
             <div className="font-semibold text-lg text-center ">
               Please Select Slot
             </div>
-{console.log(data.event_slots)}
-            {data.event_slots &&
-              data.event_slots.map((data, i) => {
-                return (
-                  <div className="my-5">
+
+            {data.event_slots && (
+              <div className="grid grid-cols-2 gap-4 mt-3">
+                {" "}
+                {/* Create the grid container here */}
+                {data.event_slots.map((slot, i) => (
+                  <div key={i} className="my-3 w-full">
+                    {" "}
+                    {/* Individual items */}
                     <button
-                      onClick={() => handleSelectSlot(data?.id)}
-                      className="border font-semibold border-primary rounded-lg p-2 hover:bg-primary duration-300 hover:text-white "
+                      onClick={() => handleSelectSlot(slot?.id)}
+                      className="border font-semibold border-primary rounded-lg p-2 hover:bg-primary duration-300 hover:text-white w-full"
                     >
-                      {formatDate(data?.start_date_time)}
+                      {formatDate(slot?.start_date_time)}
                     </button>
                   </div>
-                );
-              })}
+                ))}
+              </div>
+            )}
           </div>
         </Modal>
         <Modal

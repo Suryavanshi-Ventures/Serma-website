@@ -19,7 +19,7 @@ const TopicItem = ({ post, handleSeePost }) => {
             src={
               post && post.attachments && post.attachments.length > 0
                 ? post.attachments[0]
-                : "/dashboard/profile-pic.png"
+                : "/image-not-found3.png"
             }
             alt="user-Image"
             layout="fill"
@@ -74,7 +74,7 @@ const TopicItem = ({ post, handleSeePost }) => {
             className="mt-2 text-[#333333] text-[14px] w-[850px]  "
             dangerouslySetInnerHTML={{ __html: post.content.length>200?post.content.slice(0,100)+"...":post.content }}
           >
-            {console.log(post.content.length)}
+            
           </p>
         </div>
       </div>

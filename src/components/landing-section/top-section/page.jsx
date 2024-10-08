@@ -13,14 +13,13 @@ function TopSection() {
   const [isFading, setIsFading] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Preload images before starting transitions
   useEffect(() => {
     const imagePromises = IMAGES_DATA.map(
       (image) =>
         new Promise((resolve) => {
           const img = new window.Image();
           img.src = image.path;
-          img.onload = resolve;
+          img.onload = resolve; // i'm telling the promise that it's loaded fully (basically i'm loading the image here)
         })
     );
 
@@ -40,12 +39,12 @@ function TopSection() {
         setTimeout(() => {
           setCurrentImageIndex((prevIndex) => {
             const nextIndex = (prevIndex + 1) % IMAGES_DATA.length;
-            return nextIndex; // Calculate next index
+            return nextIndex;
           });
 
-          setFade(true); // Start fade-in
+          setFade(true);
           setIsFading(false);
-        }, 1000); // Fade transition time
+        }, 1000);
       }
     }, 6500); // Smooth interval duration
 
@@ -54,7 +53,7 @@ function TopSection() {
 
   const getPositionClasses = () => {
     const { id } = IMAGES_DATA[currentImageIndex]; // Use currentImageIndex directly
-console.log(id)
+    console.log(id);
     return `
       ${id === 1 || id === 4 || id === 6 ? "md:left-[22%]" : "md:left-[40%]"}
       ${id === 1 || id === 6 ? "left-[-10%]" : "left-[20%]"}
@@ -324,17 +323,6 @@ console.log(id)
             fade && fade ? "opacity-100" : "opacity-0"
           }`}
         >
-          {/* <Image
-            src={currentImage.path}
-            height={currentImage.responsive.height}
-            width={currentImage.responsive.width}
-            alt="image"
-            className={`max-lg:w-[${
-              currentImage.responsive.width
-            }px] max-lg:h-[${currentImage.responsive.height}px] ${
-              currentImage.id === 1 ? "mr-[60px]" : ""
-            }`}
-          /> */}
           {isLoaded && (
             <Swiper
               // effect={"fade"}
@@ -343,9 +331,7 @@ console.log(id)
               modules={[EffectFade, Pagination, Autoplay]}
               className="mySwiper"
             >
-          
               <SwiperSlide key={currentImageIndex}>
-               
                 <Image
                   src={IMAGES_DATA[currentImageIndex].path}
                   height={IMAGES_DATA[currentImageIndex].responsive.height}
@@ -354,7 +340,9 @@ console.log(id)
                   alt="image"
                   className={` max-lg:w-[${
                     IMAGES_DATA[currentImageIndex].responsive.width
-                  }px] max-lg:h-[${IMAGES_DATA[currentImageIndex].responsive.height}px] ${
+                  }px] max-lg:h-[${
+                    IMAGES_DATA[currentImageIndex].responsive.height
+                  }px] ${
                     IMAGES_DATA[currentImageIndex].id === 1 ? "mr-[60px]" : ""
                   }`}
                 />
