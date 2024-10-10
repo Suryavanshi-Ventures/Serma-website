@@ -213,7 +213,7 @@ const ContactDetails = () => {
                     : "top-[50%] left-[40%]"
                 }  `}
               >
-                {isImageChange ? (
+                {edit && isImageChange ? (
                   <span onClick={handleUploadImage}>
                     <LoadingButton
                       disabledProp={() => {}}
@@ -250,7 +250,7 @@ const ContactDetails = () => {
                   </div>
                 )}
               </div>
-              {isImageChange ? (
+              {edit && isImageChange ? (
                 <div
                   onClick={handleImageRemove}
                   className="absolute top-2 right-2"

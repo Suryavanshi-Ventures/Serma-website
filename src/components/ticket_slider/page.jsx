@@ -32,7 +32,7 @@ function TicketSlider({ data, error, loading }) {
     position: "bottom",
     type: "success",
   });
-  console.log(data.allow_registration);
+ 
   const [count, setCount] = useState(1);
   const ticket_price =
     data?.ticket_types &&
@@ -40,7 +40,7 @@ function TicketSlider({ data, error, loading }) {
       .filter((data) => data.id === selectedTicket?.id)
       .map((data) => data.base_price);
   const total_price = ticket_price * count;
-  console.log(total_price);
+ 
   const handleSelectTicket = (event) => {
     setSelectedTicket(event);
   };
@@ -200,10 +200,10 @@ function TicketSlider({ data, error, loading }) {
               // )
               data?.ticket_types?.map((event, index) => (
                 <SwiperSlide key={index}>
-                  <div className="rounded-2xl mt-5  p-4 min-h-[350px]  h-auto flex max-md:justify-center max-md:items-center max-md:p-2  ">
+                  <div className="rounded-2xl  mt-5  p-4 min-h-[350px]  h-auto flex max-md:justify-center max-md:items-center max-md:p-2  ">
                     <div
                       onClick={() => handleSelectTicket(event)}
-                      className={`lg:p-3 w-[300px] xl:relative   space-y-6 ${
+                      className={`lg:p-3  w-[300px] xl:relative min-h-[350px]   space-y-6 ${
                         selectedTicket?.id === event?.id
                           ? "border border-primary"
                           : "bg-white"
@@ -247,6 +247,7 @@ function TicketSlider({ data, error, loading }) {
                         <ReadMoreLessWithout_html
                           text={event?.description}
                           maxLength={50}
+                          event_Id ={event?.id}
                         />
                         {/* {event?.description} */}
                       </div>

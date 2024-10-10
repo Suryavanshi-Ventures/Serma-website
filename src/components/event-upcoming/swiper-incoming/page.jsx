@@ -12,6 +12,7 @@ import NoInfoAvailable from "@/components/no-info/page";
 import Skeleton from "@/components/skeleton/skeleton";
 import { FormatDateOnly } from "@/components/date-format/date-only/pae";
 import { FormatTimeOnly } from "@/components/date-format/time-only/page";
+import ReadMoreLessWithout_html from "@/components/read_more_without_dang_html/page";
 
 function SwiperSlideIncoming({ data, error, loading }) {
  
@@ -87,8 +88,9 @@ function SwiperSlideIncoming({ data, error, loading }) {
             ) : (
               data?.map((event, index) => (
                 <SwiperSlide key={index}>
-                  <div className="rounded-2xl  flex max-md:justify-center max-md:items-center max-md:p-2 md:p-3">
-                    <div className="lg:p-5 p-3 rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-full">
+                
+                  <div className="rounded-2xl   flex max-md:justify-center max-md:items-center max-md:p-2 md:p-3">
+                    <div className="lg:p-5 p-3 min-h-[350px] lg:min-h-[500px] rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-full">
                       <div className="h-[225px]">
                         <Image
                           src={event.image_url}
@@ -133,8 +135,13 @@ function SwiperSlideIncoming({ data, error, loading }) {
                         <div className="text-lg md:my-4 my-2">
                           {event.event_type}
                         </div>
-                        <div className="text-lg font-bold text-[#525971]">
-                          {event.title}
+                        <div className="text-lg font-semibold text-[#525971]">
+                          {/* {event.title} */}
+                          <ReadMoreLessWithout_html
+                          text={event.title}
+                          maxLength={25}
+                          event_Id ={event.id}
+                        />
                         </div>
                         <div className="flex items-center justify-between md:mt-6 mt-3">
                           <div 

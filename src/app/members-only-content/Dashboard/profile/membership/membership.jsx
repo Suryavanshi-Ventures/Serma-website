@@ -106,9 +106,9 @@ const Membership = () => {
                       className={` ${
                         GetSubscriptionPlan?.result?.data?.membership_status ==
                         "ACTIVE"
-                          ? "bg-green-400"
-                          : "bg-red-400"
-                      } p-2 rounded-full  text-white`}
+                          ? "bg-green-400 p-2"
+                          : "bg-red-400 "
+                      }  rounded-full  text-white`}
                     >
                       {GetSubscriptionPlan?.result?.data?.membership_status}
                     </span>
@@ -142,9 +142,10 @@ const Membership = () => {
                 </p>
               </div>
               <div>
+                
                 <p className="text-base font-normal text-[#9B9A9A] mt-3">
-                  Payment Statue:{" "}
-                  {GetSubscriptionPlan?.result?.data?.payment_status}
+                  Payment Status:{" "}
+                  {GetSubscriptionPlan?.result?.data?.payment_status || "N/A"}
                 </p>
               </div>
             </div>
@@ -153,7 +154,7 @@ const Membership = () => {
                 Plan Id :{" "}
                 <span className="">
                   {" "}
-                  {GetSubscriptionPlan?.result?.data?.id}{" "}
+                  { GetSubscriptionPlan?.result?.data?.id || "N/A"}{" "}
                 </span>
               </p>
 

@@ -34,7 +34,6 @@ const sidebarItems = [
     src: "/dashboard/logout.svg",
     srcOnHover: "/dashboard/logout-red2.svg",
     label: "Logout",
-    // route: "/",
   }, // Adjust the logout route if necessary
 ];
 
@@ -67,14 +66,12 @@ function Sidebar() {
   }, []);
 
   useEffect(() => {
-    if ((token, previousToken)) {
-      if (token !== previousToken && !logoutTriggered) {
-        onclickLogout();
-      } else if (logoutTriggered) {
-        setLogoutTriggered(false);
-      }
-      setPreviousToken(token);
+    if (token && token !== previousToken && !logoutTriggered) {
+      onclickLogout();
+    } else if (logoutTriggered) {
+      setLogoutTriggered(false);
     }
+    setPreviousToken(token);
   }, [token]);
 
   const onclickLogout = () => {
@@ -82,7 +79,7 @@ function Sidebar() {
     signOut({ redirect: false });
     setAlertDetails({
       isOpen: true,
-      message: "Logout Successfully! ",
+      message: "Logout Successfully!",
       duration: 3000,
       position: "top",
       type: "success",
@@ -94,7 +91,7 @@ function Sidebar() {
       onclickLogout();
     } else {
       router.push(route);
-      setActiveIndex(index === activeIndex ? null : index);
+      setActiveIndex(index);
     }
   };
 
@@ -114,69 +111,48 @@ function Sidebar() {
           type={AlertDetails.type}
         />
       )}
+
       <div className="hidden lg:block space-y-6 h-auto">
         {sidebarItems.map((item, index) => (
           <div
             key={index}
-            className={`flex px-[10px] py-[8px] font-bold items-center gap-5 cursor-pointer rounded-xl transition duration-200 
-              ${
-                pathname.includes(item.route)
-                  ? "bg-[#F6E0E0CC] text-primary font-bold"
-                  : ""
-              } ${
-              activeIndex === index
-                ? "bg-[#F6E0E0CC] text-primary font-bold"
-                : "text-gray"
-            }`}
+            className={`flex px-[10px] py-[8px] font-bold items-center gap-5 cursor-pointer rounded-xl transition-all duration-300 
+              ${pathname.includes(item.route) || activeIndex === index ? "bg-[#F6E0E0CC] text-primary font-bold" : ""}
+              ${hoveredIndex === index ? "bg-[#F6E0E0] text-primary" : "text-gray"}`}
             onClick={() => handleNavigation(item.route, index)}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <div>
               <Image
-                src={
-                  hoveredIndex === index ||
-                  activeIndex === index ||
-                  pathname.includes(item.route)
-                    ? item.srcOnHover
-                    : item.src
-                }
+                src={hoveredIndex === index || activeIndex === index || pathname.includes(item.route) ? item.srcOnHover : item.src}
                 height={30}
                 width={30}
                 alt="logo"
                 className="h-8"
               />
             </div>
-            <div className="lg:text-[18px] text-base px-0 hover:text-primary">
-              {item.label}
-            </div>
+            <div className="lg:text-[18px] text-base px-0">{item.label}</div>
           </div>
         ))}
       </div>
 
-      <div className="lg:hidden flex justify-around overflow-x-scroll  lg:overflow-y-scroll ">
+      {/* Mobile view */}
+      <div className="lg:hidden flex justify-around overflow-x-scroll lg:overflow-y-scroll">
         {sidebarItems.map((item, index) => (
           <div
             key={index}
-            className={`flex px-[10px] py-[10px] me-3 items-center gap-4 cursor-pointer rounded-xl transition duration-200 hover:bg-[#F6E0E0CC] text-gray
+            className={`flex px-[10px] py-[10px] me-3 items-center gap-4 cursor-pointer rounded-xl transition-all duration-300
               ${isMobile ? "flex-shrink-0" : ""} 
-              ${
-                pathname.includes(item.route) || activeIndex === index
-                  ? "bg-[#F6E0E0CC] text-primary"
-                  : "text-gray"
-              }
-            `}
+              ${pathname.includes(item.route) || activeIndex === index ? "bg-[#F6E0E0CC] text-primary" : "text-gray"}
+              ${hoveredIndex === index ? "bg-[#F6E0E0] text-primary" : ""}`}
             onClick={() => handleNavigation(item.route, index)}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <div>
               <Image
-                src={
-                  hoveredIndex === index || activeIndex === index
-                    ? item.srcOnHover
-                    : item.src
-                }
+                src={hoveredIndex === index || activeIndex === index ? item.srcOnHover : item.src}
                 height={30}
                 width={30}
                 alt="logo"
