@@ -89,8 +89,8 @@ function SwiperSlideIncoming({ data, error, loading }) {
               data?.map((event, index) => (
                 <SwiperSlide key={index}>
                 
-                  <div className="rounded-2xl   flex max-md:justify-center max-md:items-center max-md:p-2 md:p-3">
-                    <div className="lg:p-5 p-3 min-h-[350px] lg:min-h-[500px] rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-full">
+                  <div className="rounded-2xl    flex max-md:justify-center max-md:items-center max-md:p-2 md:p-3">
+                    <div className="lg:p-5 p-3  min-h-[450px] lg:min-h-[500px] rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-full">
                       <div className="h-[225px]">
                         <Image
                           src={event.image_url}

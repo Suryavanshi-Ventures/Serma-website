@@ -27,8 +27,8 @@ function Profile() {
 
   return (
     <div className="w-full">
-      <div className="md:absolute top-0">
-        <div className="flex md:gap-10 lg:gap-20 xl:gap-32 justify-between items-center">
+      <div className="lg:absolute top-0">
+        <div className="flex  lg:gap-20  md:gap-32 md:justify-around justify-between items-center">
           {tabList.map((item, index) => (
             <div onClick={() => setTab(index)} key={index}>
               <h2

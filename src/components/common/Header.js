@@ -60,7 +60,7 @@ const Header = () => {
         </div>
 
         <ul
-          className={`hidden lg2:flex max-[1100px]:text-[16px] text-[17px] gap-6  md:gap-8 xl:gap-12 animate-flip-down   text-[#333333]`}
+          className={`hidden lg:flex max-[1100px]:text-[16px] text-[17px] gap-6  md:gap-8 xl:gap-12 animate-flip-down   text-[#333333]`}
         >
           <li
             className={`font-semibold ${
@@ -212,7 +212,7 @@ const Header = () => {
         {/* ----------------------hamburger menu------------------------ */}
         <div
           onClick={handleOpenMenu}
-          className="lg2:hidden animate-fade-left cursor-pointer"
+          className="lg:hidden animate-fade-left cursor-pointer"
         >
           {showMenuItems ? (
             <svg

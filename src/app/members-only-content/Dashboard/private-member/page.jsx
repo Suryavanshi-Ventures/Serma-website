@@ -10,7 +10,7 @@ import { Pagination } from "@/components/pagination/page";
 const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/contact/find`;
 
 const Header = () => (
-  <div className="grid py-2 bg-[#F5F6F8] grid-cols-4 place-items-center text-[12px] md:text-[16px] font-semibold">
+  <div className="grid  py-2 bg-[#F5F6F8] grid-cols-4 max-xs:pl-[14px] xs:place-items-center text-[12px] md:text-[16px] font-semibold">
     <div>Profile</div>
     <div>Name</div>
     <div>Organization</div>
@@ -20,9 +20,7 @@ const Header = () => (
 
 const ContactRow = ({ data, onClick }) => (
   <>
-  {console.log(data.
-profile_url
-,"dd")}
+    {console.log(data.profile_url, "dd")}
     <div className="grid grid-cols-4 place-items-center max-lg:gap-10 my-4 text-[12px] md:text-[16px] font-normal">
       <div onClick={() => onClick(data?.id)} className="cursor-pointer">
         <Image
@@ -35,7 +33,7 @@ profile_url
       </div>
       <div
         onClick={() => onClick(data?.id)}
-        className="cursor-pointer underline"
+        className="cursor-pointer underline truncate duration-300 hover:text-primary hover:underline"
       >
         {data?.first_name ?? "N/A"} {data?.last_name ?? "N/A"}
       </div>
@@ -76,7 +74,7 @@ const PrivateMember = () => {
   }
 
   return (
-    <div className="w-full h-1/2 rounded-lg border border-[#D9D9D980]">
+    <div className="w-full  h-1/2 rounded-lg border border-[#D9D9D980]">
       <Header />
       {loading ? (
         <Skeleton key={10} item={10} style="h-[100px] w-full rounded-lg mb-3" />

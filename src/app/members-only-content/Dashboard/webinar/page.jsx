@@ -78,8 +78,8 @@ function Webinar() {
 
             return (
               <div key={item?.id}>
-                <div className="flex justify-center   bg-white">
-                  <div className="w-full  shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[22px]   p-4 xl:p-[22px]">
+                <div className="flex flex-col lg:justify-center    bg-white">
+                  <div className=" w-full md:w-3/4 lg:w-full  shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[22px]   p-4 xl:p-[22px]">
                     <div className="flex justify-center  h-[150px] xl:h-[250px] w-full">
                       <Image
                         src={item?.image_url}

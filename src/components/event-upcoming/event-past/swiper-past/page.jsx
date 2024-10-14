@@ -49,11 +49,11 @@ function SwiperSlideIncoming({ data, error }) {
           },
 
           768: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 15,
           },
           1024: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 15,
           },
           1280: {
@@ -93,7 +93,7 @@ function SwiperSlideIncoming({ data, error }) {
               data.result.map((event, index) => (
                 <SwiperSlide key={index}>
                   <div className="rounded-2xl  flex max-md:justify-center max-md:items-center max-md:p-2 md:p-3">
-                    <div className="p-5 rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-full">
+                    <div className="p-5   rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-full">
                       <div className="">
                         <Image
                           src={event.image_url}

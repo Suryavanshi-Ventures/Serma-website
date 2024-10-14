@@ -159,7 +159,7 @@ function Sidebar() {
                 className="w-[30px] h-[30px]"
               />
             </div>
-            <div className="text-[14px]">{item.label}</div>
+            <div className="text-[14px] sm:text-[16px] ">{item.label}</div>
           </div>
         ))}
       </div>

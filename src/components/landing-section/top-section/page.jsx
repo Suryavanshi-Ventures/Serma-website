@@ -53,7 +53,7 @@ function TopSection() {
 
   const getPositionClasses = () => {
     const { id } = IMAGES_DATA[currentImageIndex]; // Use currentImageIndex directly
-    console.log(id);
+
     return `
       ${id === 1 || id === 4 || id === 6 ? "md:left-[22%]" : "md:left-[40%]"}
       ${id === 1 || id === 6 ? "left-[-10%]" : "left-[20%]"}

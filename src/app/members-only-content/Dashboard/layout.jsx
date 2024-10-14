@@ -87,8 +87,9 @@ export default function Layout({ children }) {
               </div>
             </div>
           ) : pathname.includes("/profile") ? (
-            <div className="xs:text-[20px] text-[#333333]   md:text-2xl font-semibold">
-              <h2>Profile</h2>
+            <div className="xs:text-[20px]  text-[#333333]    md:text-2xl font-semibold">
+              {/* <h2 className="max-md:flex md:hidden">Profile</h2> */}
+              <h2 className="">Profile</h2>
             </div>
           ) : pathname.includes("/webinar") ? (
             <div className="xs:text-[20px]  text-[#333333] md:text-2xl font-semibold">
