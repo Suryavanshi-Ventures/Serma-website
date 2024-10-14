@@ -16,7 +16,7 @@ const Footer = () => {
               <Image src="/logo.svg" height={60} width={135} alt="logo" />
             </div>
             <div className="my-[20px] sm:my-[40px] xl:w-[300px] responsive-Text-footer text-[#333333]">
-              Sports and Entertainment Risk Management Alliance
+            Sports & Entertainment Risk Management Alliance
             </div>
           </div>
         </div>
@@ -28,7 +28,7 @@ const Footer = () => {
 
           <div className="sm:mt-[60px] xs:space-y-8 ">
             <div className="my-3 underline responsive-Text-footer text-[#333333]">
-              <Link href="mailto:info@theserma.org">info@theserma.org</Link>
+              <Link href="mailto:info@theserma.org" className="text-primary">info@theserma.org</Link>
             </div>
             <div className="responsive-Text-footer text-[#333333]">
               <Link href="tel:+1(123)456-7890">+1(123)456-7890</Link>
@@ -54,7 +54,7 @@ const Footer = () => {
                 </div>
                 <div className="hover:text-primary transition duration-200 ">
                   {" "}
-                  <Link href="/the-sermapod">The Sermapod</Link>{" "}
+                  <Link href="/the-sermapod">The SERMApod</Link>{" "}
                 </div>
                 <div className="my-3 hover:text-primary transition duration-200 ">
                   {" "}

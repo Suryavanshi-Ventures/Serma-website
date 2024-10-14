@@ -63,7 +63,7 @@ const PymentSucess = () => {
       //     : "fail",
       time_zone: userData?.time_zone,
     };
-    console.log(BodyData);
+
     try {
       const response = await axios.post(API_URL_POST, BodyData, {});
       console.log("API Response:", response.data);

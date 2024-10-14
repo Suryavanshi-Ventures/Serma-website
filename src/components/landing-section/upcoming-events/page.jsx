@@ -34,7 +34,7 @@ function UpcomingEvent() {
       </div>
       <div className="text-center text-[14px] md:text-[16px] lg:text-[17px] xl:text-[18px]  text-gray my-6 xl:my-8">
         <p className="leading-loose">
-          The Sports and Entertainment Risk Management Alliance (SERMA) is the
+          The Sports & Entertainment Risk Management Alliance (SERMA) is the
           first risk management association devoted entirely to the sports and
           entertainment industries.
         </p>

@@ -48,16 +48,17 @@ const ContactDetails = () => {
     city: "",
     zipcode: "",
     mobile: "",
-    bio: "N/A",
+    bio: "",
   });
-
+  console.log(ProfileData?.result?.data.profile_url);
   useEffect(() => {
     if (ProfileData?.result?.data) {
       setDetails({
         // profile_url: ProfileData?.result?.data.profile_url,
         first_name: ProfileData?.result?.data.first_name,
         last_name: ProfileData?.result?.data.last_name,
-        memberShipLevel: ProfileData?.result?.data.membership_level,
+        memberShipLevel:
+          ProfileData?.result?.data.membership_plans.title ?? "N/A",
         organization: ProfileData?.result?.data.organization,
         title: ProfileData?.result?.data.title,
         email: ProfileData?.result?.data.email,
@@ -67,7 +68,7 @@ const ContactDetails = () => {
         mobile: ProfileData?.result?.data.mobile_number,
         bio: ProfileData?.result?.data.professional_bio,
       });
-      setProfileImage(ProfileData?.result?.data.professional_bio);
+      setProfileImage(ProfileData?.result?.data.profile_url);
     }
   }, [ProfileData]);
 
@@ -191,6 +192,7 @@ const ContactDetails = () => {
           type={AlertDetails.type}
         />
       )}
+      {console.log(profileImage.url)}
       <div className="mx-5 text-[#333333]">
         <div className="flex   items-start relative">
           <div className="mx-auto ">
@@ -341,7 +343,7 @@ const ContactDetails = () => {
            duration-300 hover:text-[#C42C2D] font-semibold "
             >
               {edit ? (
-                <div onClick={handleSubmit} className="text-[16px]">
+                <div onClick={handleSubmit} className="text-[16px] animate-fade duration-300">
                   Save
                 </div>
               ) : (
@@ -406,9 +408,10 @@ const ContactDetails = () => {
             </div>
             <div>
               <input
+                disabled={true}
                 type="text"
                 name="memberShipLevel"
-                disabled={!edit}
+                // disabled={!edit}
                 onChange={handleChange}
                 id=""
                 value={details?.memberShipLevel}

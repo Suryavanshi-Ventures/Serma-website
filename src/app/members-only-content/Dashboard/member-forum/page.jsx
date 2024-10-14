@@ -8,6 +8,7 @@ import Skeleton from "@/components/skeleton/skeleton";
 import useAxiosFetch from "@/hooks/axiosFetch";
 
 const TopicItem = ({ post, handleSeePost }) => {
+  console.log(post.user.profile_url)
   return (
     <div className="bg-white p-4 animate-fade  border-b border-[#D9D9D9] ">
       <div className="flex items-start space-x-4  ">
@@ -17,8 +18,8 @@ const TopicItem = ({ post, handleSeePost }) => {
         >
           <Image
             src={
-              post && post.attachments && post.attachments.length > 0
-                ? post.attachments[0]
+              post && post.user && post.user.profile_url
+                ? post.user.profile_url
                 : "/image-not-found3.png"
             }
             alt="user-Image"

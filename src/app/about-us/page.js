@@ -15,7 +15,7 @@ function AboutUs() {
         <div className="grid grid-flow-row-dense grid-cols-5 md:grid-cols-6 gap-2">
           <div className="col-span-0 md:col-span-2"></div>
           <div className="paragraph text-center md:text-left col-span-5 md:col-span-4 text-gray max-md:leading-loose">
-            The Sports and Entertainment Risk Management Alliance (SERMA) is the
+            The Sports & Entertainment Risk Management Alliance (SERMA) is the
             first risk management association devoted entirely to the sports and
             entertainment industries. It is an organization of risk managers,
             claims managers, general counsels, outside counsel and other

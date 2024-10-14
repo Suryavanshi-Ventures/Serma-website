@@ -126,6 +126,17 @@ function GetEvent({ params }) {
                   <div className="underline lg:pr-24 my-4">
                     {upcomingEvents?.location}
                   </div>
+                  <div className="flex items-center gap-2">
+                    <div className="font-semibold">Description :</div>
+                    <div
+                      className="underline lg:pr-24 my-4"
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          upcomingEvents?.description &&
+                          upcomingEvents?.description,
+                      }}
+                    ></div>
+                  </div>
                 </div>
               </div>
 

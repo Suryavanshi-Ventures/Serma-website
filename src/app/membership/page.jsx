@@ -129,7 +129,7 @@ const Membership = () => {
               Member Benefits
             </h2>
             <p className="paragraph md:hidden mt-3 text-gray leading-loose">
-              While there are a number of excellent organizations with a wide
+            While there are a number of excellent organizations with a wide
               range of services in our community, there isn’t one specifically
               dealing with the issues that we face in handling sports and
               entertainment claims and risk management. SERMA will fill that

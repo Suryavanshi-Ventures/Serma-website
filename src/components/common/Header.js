@@ -84,7 +84,7 @@ const Header = () => {
             }  cursor-pointer hover:text-primary transition duration-200`}
           >
             {" "}
-            <Link href="/the-sermapod">The Sermapod</Link>
+            <Link href="/the-sermapod">The SERMApod</Link>
           </li>
           <li
             className="flex justify-center items-center gap-2 cursor-pointer bg-white relative font-semibold  "
@@ -281,7 +281,7 @@ const Header = () => {
                     : "text-[#333333]"
                 } `}
               >
-                <Link href="/the-sermapod">The Sermapod</Link>
+                <Link href="/the-sermapod">The SERMApod</Link>
               </li>
             </div>
             <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md ">

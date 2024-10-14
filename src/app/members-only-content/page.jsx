@@ -288,7 +288,7 @@ const Membership = () => {
             />
             <div className="absolute top-0 flex justify-center items-end xs:items-center w-full h-full">
               <h2 className="heading-2 font-bold text-white">
-                Members Only Content
+                Members-Only Content
               </h2>
             </div>
           </div>
@@ -302,8 +302,8 @@ const Membership = () => {
             />
           </div>
         </div>
-        <div className="mt-8 lg:mt-[64px] md:mx-5">
-          <div className="flex flex-col md:flex-row gap-9 items-start md:items-center justify-center">
+        <div className="mt-8 lg:mt-[40px] md:mx-5">
+          <div className="flex flex-col md:flex-row gap-9 items-start md:items-center justify-between">
             <div>
               <div>
                 <h2 className="heading-2 font-bold">Welcome to SERMA!</h2>
@@ -317,12 +317,12 @@ const Membership = () => {
                 </div>
                 <div>
                   <p className="text-gray text-xl font-normal paragraph">
-                    Please take a moment to update your user profile so that you
-                    can start interacting with other SERMA members.
+                    {/* Please take a moment to update your user profile so that you
+                    can start interacting with other SERMA memberss. */}
                   </p>
                 </div>
                 <div>
-                  <p className="font-bold text-base">
+                  <p className="font-bold text-base mt-10">
                     Complete your member bio and upload your headshot
                   </p>
                 </div>
@@ -342,16 +342,16 @@ const Membership = () => {
             </div>
           </div>
         </div>
-        <div className="mt-8 md:mt-[94px]">
+        <div className="mt-8 md:mt-[50px]">
           <div className="flex justify-center w-full">
-            <div className="w-full sm:w-fit">
+            <div className="w-full sm:w-fit ">
               <div className="">
                 <h2 className="text-[20px] md:text-[30px] font-bold text-center">
                   Members-Only Sign In
                 </h2>
               </div>
-              <div className="mt-[30px] md:mt-[57px] w-full px-3 md:px-0">
-                <div className="flex sm:justify-center w-full h-fit sm:w-[620px] lg:w-[791px] md:h-[605px] z-50 bg-white rounded-xl md:rounded-[36px] shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+              <div className="mt-[30px] w-full px-3 md:px-0">
+                <div className="flex sm:justify-center w-full h-fit sm:w-[620px] lg:w-[700px] md:h-[605px] z-50 bg-white rounded-xl md:rounded-[36px] shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
                   <div className="w-full px-4 md:px-[60px] py-[30px] md:py-16">
                     <div>
                       <div>

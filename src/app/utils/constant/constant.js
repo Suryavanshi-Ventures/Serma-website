@@ -9,7 +9,7 @@ module.exports = {
       url: "/events",
     },
     {
-      title: "The Sermapod",
+      title: "The SERMApod",
       url: "/sermapod",
     },
     {

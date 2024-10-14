@@ -23,7 +23,7 @@ import ProviderWrapper from "./utils/ProviderWrapper/provider";
 
 export const metadata = {
   title: "Serma",
-  description: "Sports and Entertainment Risk Management Alliance",
+  description: "Sports & Entertainment Risk Management Alliance",
 };
 
 export default function RootLayout({ children }) {
