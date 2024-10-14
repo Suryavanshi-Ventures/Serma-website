@@ -95,7 +95,7 @@ function SwiperSlideIncoming({ data, error, loading }) {
             data?.map((event, index) => (
               <SwiperSlide key={index}>
                 <div className="rounded-2xl    flex max-md:justify-center max-md:items-center max-md:p-2 md:p-3">
-                  <div className="lg:p-5 p-3  min-h-[450px] lg:min-h-[500px] rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-full">
+                  <div className="lg:p-5  p-3  min-h-[450px] lg:min-h-[500px] rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-full">
                     <div className="h-[225px]">
                       <Image
                         src={event.image_url}
@@ -146,7 +146,7 @@ function SwiperSlideIncoming({ data, error, loading }) {
                           event_Id={event.id}
                         />
                       </div>
-                      <div className="flex items-center justify-between md:mt-6 mt-3">
+                      <div className="flex items-center justify-between md:mt-16 mt-3">
                         <div
                           onClick={() => handleClick(event.id)}
                           className="underline text-[#474747] cursor-pointer"
@@ -185,7 +185,7 @@ function SwiperSlideIncoming({ data, error, loading }) {
         </div>
 
         {data && data?.length > 2 && (
-          <div className="flex justify-end  mx-6 gap-6">
+          <div className="flex justify-center md:justify-end  mx-6 gap-6 max-md:mt-6">
             <div
               className="swiper-button-prev cursor-pointer"
               onClick={handlePrev}
