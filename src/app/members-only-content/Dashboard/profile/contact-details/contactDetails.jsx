@@ -65,9 +65,9 @@ const ContactDetails = () => {
         city: ProfileData?.result?.data.city,
         zipcode: ProfileData?.result?.data.zip_code,
         mobile: ProfileData?.result?.data.mobile_number,
-        bio: "N/A",
+        bio: ProfileData?.result?.data.professional_bio,
       });
-      setProfileImage(ProfileData?.result?.data.profile_url);
+      setProfileImage(ProfileData?.result?.data.professional_bio);
     }
   }, [ProfileData]);
 
@@ -88,6 +88,7 @@ const ContactDetails = () => {
     zip_code: details.zipcode,
     business_phone: String(details.mobile),
     mobile_number: String(details.mobile),
+    professional_bio: details.bio,
   };
   const handleSubmit = async () => {
     try {
