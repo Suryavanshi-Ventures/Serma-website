@@ -29,7 +29,7 @@ function Membership() {
         <div className="  rounded-xl shadow-lg p-1 md:p-3 max-sm:py-4 ">
           <div className="w-full  flex max-sm:justify-center">
             <Image
-              src="/membership/memvership_two/member-1.png"
+              src="/membership/member-1.png"
               width={322}
               height={198}
               objectFit="cover"
@@ -48,7 +48,7 @@ function Membership() {
         <div className="  rounded-xl shadow-lg p-1 md:p-3 max-sm:py-4">
           <div className="w-full flex max-sm:justify-center">
             <Image
-              src="/membership/memvership_two/member-2.png"
+              src="/membership/member-2.png"
               width={322}
               height={198}
               objectFit="cover"
@@ -65,7 +65,7 @@ function Membership() {
         <div className="  rounded-xl shadow-lg p-1 md:p-3   max-sm:py-4 ">
           <div className="w-full flex max-sm:justify-center">
             <Image
-              src="/membership/memvership_two/member-3.png"
+              src="/membership/member-3.png"
               width={322}
               height={198}
               objectFit="cover"
@@ -82,7 +82,7 @@ function Membership() {
         <div className="  rounded-xl shadow-lg p-1 md:p-3  max-sm:py-4 ">
           <div className="w-full flex max-sm:justify-center">
             <Image
-              src="/membership/memvership_two/member-4.png"
+              src="/membership/member-4.png"
               width={322}
               height={198}
               objectFit="cover"
