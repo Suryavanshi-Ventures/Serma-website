@@ -74,7 +74,7 @@ function Webinar() {
             const shouldShowReadMore = item?.description?.length > 50; // Show "Read More" if length is > 20
             const descriptionPreview = isExpanded
               ? item?.description
-              : `${item?.description?.substring(0, 50)}`; // Show full or partial description
+              : `${item?.description?.substring(0, 40)}`; // Show full or partial description
 
             return (
               <div key={item?.id}>
@@ -132,7 +132,7 @@ function Webinar() {
                           {item?.title}
                         </p>
                       </div>
-                      <div className={`${!isExpanded ? "flex" : ""} items-center`}>
+                      <div className={`${!isExpanded ? "" : ""} items-center`}>
                         <p
                           className="responsive-Text font-semibold text-[#525971] overflow-y-auto"
                           dangerouslySetInnerHTML={{

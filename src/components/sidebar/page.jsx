@@ -66,13 +66,14 @@ function Sidebar() {
   }, []);
 
   useEffect(() => {
-    if (token && token !== previousToken && !logoutTriggered) {
+    if (token && previousToken && token !== previousToken && !logoutTriggered) {
       onclickLogout();
     } else if (logoutTriggered) {
       setLogoutTriggered(false);
     }
     setPreviousToken(token);
   }, [token]);
+  
 
   const onclickLogout = () => {
     setLogoutTriggered(true);
@@ -117,15 +118,29 @@ function Sidebar() {
           <div
             key={index}
             className={`flex px-[10px] py-[8px] font-bold items-center gap-5 cursor-pointer rounded-xl transition-all duration-300 
-              ${pathname.includes(item.route) || activeIndex === index ? "bg-[#F6E0E0CC] text-primary font-bold" : ""}
-              ${hoveredIndex === index ? "bg-[#F6E0E0] text-primary" : "text-gray"}`}
+              ${
+                pathname.includes(item.route) || activeIndex === index
+                  ? "bg-[#F6E0E0CC] text-primary font-bold"
+                  : ""
+              }
+              ${
+                hoveredIndex === index
+                  ? "bg-[#F6E0E0] text-primary"
+                  : "text-gray"
+              }`}
             onClick={() => handleNavigation(item.route, index)}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <div>
               <Image
-                src={hoveredIndex === index || activeIndex === index || pathname.includes(item.route) ? item.srcOnHover : item.src}
+                src={
+                  hoveredIndex === index ||
+                  activeIndex === index ||
+                  pathname.includes(item.route)
+                    ? item.srcOnHover
+                    : item.src
+                }
                 height={30}
                 width={30}
                 alt="logo"
@@ -144,7 +159,11 @@ function Sidebar() {
             key={index}
             className={`flex px-[10px] py-[10px] me-3 items-center gap-4 cursor-pointer rounded-xl transition-all duration-300
               ${isMobile ? "flex-shrink-0" : ""} 
-              ${pathname.includes(item.route) || activeIndex === index ? "bg-[#F6E0E0CC] text-primary" : "text-gray"}
+              ${
+                pathname.includes(item.route) || activeIndex === index
+                  ? "bg-[#F6E0E0CC] text-primary"
+                  : "text-gray"
+              }
               ${hoveredIndex === index ? "bg-[#F6E0E0] text-primary" : ""}`}
             onClick={() => handleNavigation(item.route, index)}
             onMouseEnter={() => setHoveredIndex(index)}
@@ -152,7 +171,11 @@ function Sidebar() {
           >
             <div>
               <Image
-                src={hoveredIndex === index || activeIndex === index ? item.srcOnHover : item.src}
+                src={
+                  hoveredIndex === index || activeIndex === index
+                    ? item.srcOnHover
+                    : item.src
+                }
                 height={30}
                 width={30}
                 alt="logo"
