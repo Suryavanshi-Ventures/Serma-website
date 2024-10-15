@@ -45,16 +45,16 @@ function UpcomingEvent() {
           upcoming_events.result.slice(0, 6).map((event, index) => (
             <div
               key={index}
-              className="rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] flex max-sm:justify-center max-sm:p-0 md:p-3"
+              className="rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] flex max-sm:justify-center max-sm:p-0 md:p-4"
             >
               <div className="max-md:p-3">
-                <div className=" min-h-[225px] h-auto  w-full">
+                <div className=" flex justify-center min-h-[225px] h-auto  w-full">
                   <Image
                     src={event.image_url}
                     height={225}
                     width={396}
                     alt="image"
-                    className=" rounded-2xl h-[250px]  "
+                    className=" rounded-2xl h-[250px] "
                   />
                 </div>
                 <div className="max-md:px-2 md:px-1">

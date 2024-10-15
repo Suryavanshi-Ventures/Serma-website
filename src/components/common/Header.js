@@ -47,7 +47,10 @@ const Header = () => {
   const OpenMobileSidebarFunct = () => {
     setOpenMobileSidebar(!OpenMobileSidebar);
   };
-
+  const handleScrollToFooter = () => {
+    localStorage.setItem("scrollToFooter", "true");
+    window.location.href = "#footer"; 
+  };
   return (
     // <header className="relative pt-[40px] pb-[40px] px-[20px] lg:px-[50px] xl:px-[85px]">
     <header className="relative pt-[20px] lg2:pt-[40px] pb-[20px] lg2:pb-[40px] px-[20px] lg:px-[20px] xl:px-[85px]">
@@ -157,7 +160,7 @@ const Header = () => {
           <li
             className={`font-semibold text-[#333333] cursor-pointer hover:text-primary transition duration-200`}
           >
-            Contact Us
+          <span onClick={handleScrollToFooter}> Contact Us</span>  
           </li>
         </ul>
 

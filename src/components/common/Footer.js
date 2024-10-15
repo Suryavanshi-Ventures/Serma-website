@@ -1,22 +1,37 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 const Footer = () => {
   const [handleVectorChange, setHandleVectorChange] = useState(false);
   const [facebook, setFacebook] = useState(false);
   const [twitter, setTwitter] = useState(false);
   const [insta, setInsta] = useState(false);
+  const footerRef = useRef(null);
+
+  useEffect(() => {
+    const scrollToFooter = localStorage.getItem("scrollToFooter");
+    if (scrollToFooter && footerRef.current) {
+      footerRef.current.scrollIntoView({ behavior: "smooth" });
+
+      // Optional: Remove the local storage item if you only want to scroll once
+      localStorage.removeItem("scrollToFooter");
+    }
+  }, []);
+
   return (
-    <div className="bg-[#F3F3F3]">
-      <div className="grid grid-cols-1  max-md:px-[15px] md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 ">
+    <div id="footer" className="bg-[#F3F3F3]   ">
+      <div
+        ref={footerRef}
+        className="grid grid-cols-1  max-md:px-[15px] md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 "
+      >
         <div className="md:border-r max-md:border-b border-[#3333331c] p-7 md:pt-12 flex md:justify-center">
           <div className="">
             <div className="flex">
               <Image src="/logo.svg" height={60} width={135} alt="logo" />
             </div>
             <div className="my-[20px] sm:my-[40px] xl:w-[300px] responsive-Text-footer text-[#333333]">
-            Sports & Entertainment Risk Management Alliance
+              Sports & Entertainment Risk Management Alliance
             </div>
           </div>
         </div>
@@ -28,10 +43,12 @@ const Footer = () => {
 
           <div className="sm:mt-[60px] xs:space-y-8 ">
             <div className="my-3 underline responsive-Text-footer text-[#333333]">
-              <Link href="mailto:info@theserma.org" className="text-primary">info@theserma.org</Link>
+              <Link href="mailto:info@theserma.org" className="text-primary">
+                info@theserma.org
+              </Link>
             </div>
             <div className="responsive-Text-footer text-[#333333]">
-              <Link href="tel:+1(123)456-7890">+1(123)456-7890</Link>
+              <Link href="tel:+1(123)456-7890">+1(312)371-2039</Link>
             </div>
           </div>
         </div>
@@ -76,7 +93,10 @@ const Footer = () => {
               onMouseLeave={() => setHandleVectorChange(false)}
               className="cursor-pointer"
             >
-              <Link href="https://www.linkedin.com/company/the-serma/" target="_blank">
+              <Link
+                href="https://www.linkedin.com/company/the-serma/"
+                target="_blank"
+              >
                 <svg
                   width="46"
                   height="46"
@@ -124,8 +144,7 @@ const Footer = () => {
               className="cursor-pointer "
             >
               {" "}
-              <Link href="https://www.facebook.com/theserma" target="_blank"
-              >
+              <Link href="https://www.facebook.com/theserma" target="_blank">
                 <svg
                   width="46"
                   height="46"
@@ -197,7 +216,10 @@ const Footer = () => {
               className="cursor-pointer  h-[48px] w-[48px]"
             >
               {" "}
-              <Link href="https://www.instagram.com/the.serma?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+              <Link
+                href="https://www.instagram.com/the.serma?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                target="_blank"
+              >
                 <Image
                   src={`${
                     insta ? "/footer/InstaNew.svg" : "/footer/Insta.svg"
@@ -213,12 +235,12 @@ const Footer = () => {
         </div>
       </div>
       <div className="lg:p-10 p-6 md:flex justify-between md:border-t-0 border-t border-[#333333]/[20%]">
-          <div className="lg:ms-auto xl:me-16 lg:me-8 font-semibold text-[#333333] md:mb-0 mb-4">
-            Copyright 2024 © Suryavanshi Ventures- All rights reserved.
-          </div>
-          <div className="xl:mx-16 lg:mx-8 font-semibold text-[#333333]">
-            Terms & Conditions Privacy Policy
-          </div>
+        <div className="lg:ms-auto xl:me-16 lg:me-8 font-semibold text-[#333333] md:mb-0 mb-4">
+          Copyright 2024 © Suryavanshi Ventures- All rights reserved.
+        </div>
+        <div className="xl:mx-16 lg:mx-8 font-semibold text-[#333333]">
+          Terms & Conditions Privacy Policy
+        </div>
       </div>
     </div>
   );
