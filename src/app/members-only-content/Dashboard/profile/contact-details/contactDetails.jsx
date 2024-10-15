@@ -192,7 +192,7 @@ const ContactDetails = () => {
           type={AlertDetails.type}
         />
       )}
-      {console.log(profileImage.url)}
+     
       <div className="mx-5 text-[#333333]">
         <div className="flex   items-start relative">
           <div className="mx-auto ">
