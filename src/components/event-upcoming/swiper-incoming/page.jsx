@@ -103,7 +103,7 @@ function SwiperSlideIncoming({ data, error, loading }) {
                         height={225}
                         alt="image"
                         unoptimized
-                        className="rounded-2xl h-full object-cover"
+                        className="rounded-2xl h-full object-fill  "
                       />
                     </div>
                     <div className="md:mt-5 mt-3">
