@@ -27,11 +27,11 @@ function Partners() {
           <div className="text-[#333333] font-semibold text-[16px] xl:text-[18px] text-center">
             SPONSORSHIP OPPORTUNITIES AVAILABLE!
           </div>
-          <div className="text-center mt-5 max-md:text-[14px] font-semibold">
-            <div>
-              CONTACT <span className="text-primary">SERMA</span> AT
+          <div className="text-center mt-5 max-md:text-[14px]  font-semibold">
+            <div className="text-[17px]">
+              CONTACT <span className="text-primary ">SERMA</span> AT
             </div>
-            <div className="text-primary">INFO@THESERMA.ORG</div> 
+            <div className="text-primary text-[17px]">INFO@THESERMA.ORG</div>
           </div>
         </div>
       </div>

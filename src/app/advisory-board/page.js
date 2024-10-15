@@ -159,8 +159,11 @@ function AdvisoryBoard() {
                   Canseco and is involved in other productions including Rock of
                   Ages and Elvis Presley’s Heartbreak Hotel In Concert.
                 </div>
-                <div className="mt-5 xl:mt-10 flex  md:w-[200px] md:py-3 py-2 md:px-6 transition duration-500 hover:bg-primary hover:text-white  font-normal  justify-center items-center gap-3 text-lg tracking-wider text-primary  border border-[#C8C8C8]  hover:border-none  rounded-full">
-                  <Link href={"#"} className=" text-center ">
+                <div className="mt-5  xl:h-[60px] cursor-pointer  xl:mt-10 flex  md:w-[200px] md:py-3 py-2 md:px-6 transition duration-500 hover:bg-primary hover:text-white  font-normal  justify-center items-center gap-3 text-lg tracking-wider text-primary  border border-[#C8C8C8]  hover:border-none  rounded-full">
+                  <Link
+                    href="mailto:rich@theserma.org"
+                    className=" text-center "
+                  >
                     Contact Rich
                   </Link>
                 </div>
