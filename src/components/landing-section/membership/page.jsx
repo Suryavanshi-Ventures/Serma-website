@@ -14,7 +14,7 @@ function Membership() {
       <div className="flex flex-col md:items-center md:flex-row gap-2 md:gap-36">
         <div className="md:text-[36px] text-xl font-bold  max-md:flex max-md:justify-center max-md:items-center gap-2 text-[#333333] ">
           <div>SERMA </div>
-          <div className="my-2">Membership</div>
+          <div className="my-2">Membershipp</div>
         </div>
         <div className="responsive-Text text-[#9B9A9A] leading-loose text-center md:text-start">
           While there are a number of excellent organizations with a wide range
