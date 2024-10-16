@@ -350,8 +350,8 @@ const Header = () => {
                 </Link>
               </li>
             </div>
-            <div className="border-b-[1px] border-[#dcd9d9] p-2 rounded-md hover:text-primary">
-              <li>Contact Us</li>
+            <div className="border-b-[1px] border-[#dcd9d9] cursor-pointer p-2 rounded-md hover:text-primary">
+              <li onClick={handleScrollToFooter}  >Contact Us</li>
             </div>
           </ul>
         )}

@@ -85,7 +85,6 @@ function GetEvent({ params }) {
   const handleOpenForm = () => {
     const registration_form = eventId;
     router.push(`/events/registration_form/${registration_form}`);
-   
   };
 
   const redirectToStripe = () => {
@@ -127,7 +126,9 @@ function GetEvent({ params }) {
                     {upcomingEvents?.location}
                   </div>
                   <div className="flex   gap-2">
-                    <div className="font-semibold mt-[14px] md:text-[17px]">Description :</div>
+                    <div className="font-semibold mt-[14px] md:text-[17px]">
+                      Description :
+                    </div>
                     <div
                       className=" lg:pr-24 my-4"
                       dangerouslySetInnerHTML={{
@@ -162,13 +163,14 @@ function GetEvent({ params }) {
                       {upcomingEvents?.location}
                     </div>
                   </div>
-                 
+
                   {isEventIsAdvance !== "advance" ? (
                     <div
                       // onClick={() => setRegister(!register)}
-                      onClick={() =>
-                        setHandleOpenanotherPopUp(!handleOpenanotherPopUp)
-                      }
+                      // onClick={() =>
+                      //   setHandleOpenanotherPopUp(!handleOpenanotherPopUp)
+                      // }
+                      onClick={handleOpenForm}
                       onMouseEnter={() => setHandleVectorChange(true)}
                       onMouseLeave={() => setHandleVectorChange(false)}
                       className="flex cursor-pointer transition duration-300 justify-center items-center gap-[10px] border border-primary hover:bg-primary p-[7px] rounded-xl w-[150px]"
@@ -216,7 +218,6 @@ function GetEvent({ params }) {
               </div>
             </div>
             {/* ---------------------------------------------------------- */}
-          
 
             {isEventIsAdvance === "advance" && upcomingEvents.ticket_types ? (
               upcomingEvents.ticket_types.length > 0 ? (
