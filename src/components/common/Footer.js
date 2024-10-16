@@ -14,13 +14,12 @@ const Footer = () => {
     if (scrollToFooter && footerRef.current) {
       footerRef.current.scrollIntoView({ behavior: "smooth" });
 
-      // Optional: Remove the local storage item if you only want to scroll once
       localStorage.removeItem("scrollToFooter");
     }
   }, []);
 
   return (
-    <div id="footer" className="bg-[#F3F3F3]   ">
+    <div id="footer" className="bg-[#F3F3F3]">
       <div
         ref={footerRef}
         className="grid grid-cols-1  max-md:px-[15px] md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 grid-rows-1 gap-x-0 gap-y-1 "

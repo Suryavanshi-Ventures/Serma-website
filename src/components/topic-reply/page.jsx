@@ -25,7 +25,7 @@ function TopicReply() {
     position: "bottom",
     type: "success",
   });
-  console.log(storeTopicId, "storeTopicId");
+
   const token = session?.user?.userToken;
   const userLoginId = session?.user?.userLoginId;
   const API_URL = `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/topic_reply/findById/${paramId}`;
@@ -40,7 +40,7 @@ function TopicReply() {
     },
     paramId
   );
-  console.log(topicReply, "topicReply");
+
   const ReplyTopics = topicReply?.result || [];
 
   const [expanded, setExpanded] = useState({}); // State to manage expanded content
@@ -71,7 +71,7 @@ function TopicReply() {
   );
 
   const handleDelete = (id) => {
-    console.log(id, "hchc");
+   
     setOpenDeletePop(true);
     setStoreTopicId(id);
   };
@@ -112,7 +112,7 @@ function TopicReply() {
   };
 
   const renderReply = (data, index) => {
-    console.log(data, "dd");
+   
     const isExpanded = expanded[index];
 
     // Truncate content if not expanded

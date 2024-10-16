@@ -12,7 +12,7 @@ import useAxiosFetch from "@/hooks/axiosFetch";
 
 function EditTopicReply() {
   const { topicEdit } = useParams();
-  console.log(topicEdit);
+
   const router = useRouter();
   const fileInputRef = useRef(null);
   const { data: session } = useSession();
@@ -43,7 +43,7 @@ function EditTopicReply() {
     },
     topicEdit
   );
-  console.log(topic?.data);
+
   useMemo(() => {
     if (topic) {
       setContent(topic?.data?.content || "");
@@ -127,8 +127,7 @@ function EditTopicReply() {
         },
       });
       console.log("API Response:", response.data);
-      console.log(response.data);
-      console.log(response);
+
       setAlertDetails({
         isOpen: true,
         message: response?.data?.message || "Topic Save Successfully",

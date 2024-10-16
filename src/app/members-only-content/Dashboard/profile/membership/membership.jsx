@@ -58,7 +58,7 @@ const Membership = () => {
       }
     } catch (error) {
       if (error.response) {
-        console.log(error?.response?.data?.message);
+     
         setAlertDetails({
           isOpen: true,
           message:

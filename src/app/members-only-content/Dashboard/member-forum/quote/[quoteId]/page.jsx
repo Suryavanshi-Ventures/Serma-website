@@ -125,7 +125,7 @@ function Quote() {
           "Content-Type": "application/json",
         },
       });
-      console.log("API Response:", response.data);
+   
       setAlertDetails({
         isOpen: true,
         message: "Topic Save Successfully",

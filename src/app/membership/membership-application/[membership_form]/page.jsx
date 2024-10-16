@@ -17,7 +17,7 @@ const Page = () => {
   const [PopUpForPayment, setPopUpForPayment] = useState(false);
   const [errors, setErrors] = useState({});
   const [StripeData, setStripeData] = useState();
-  console.log(StripeData);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -170,7 +170,7 @@ const Page = () => {
       errors.confirm_password = "Passwords do not match";
     return errors;
   };
-  console.log(StripeData, "StripeData");
+ 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -186,7 +186,7 @@ const Page = () => {
 
     if (Object.keys(validationErrors).length === 0) {
       localStorage.removeItem("Formdata");
-      console.log(formData);
+   
       localStorage.setItem("Formdata", JSON.stringify(formData));
       setPopUpForPayment(true);
       // proceed with form submission or other actions
@@ -199,7 +199,7 @@ const Page = () => {
       setProfileImage(imageUrl);
     }
   };
-  console.log(profileImage);
+ 
   return (
     <Container>
       <div className="mt-8 text-[#333333]">

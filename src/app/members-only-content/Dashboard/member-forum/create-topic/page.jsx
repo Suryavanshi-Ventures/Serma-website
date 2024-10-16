@@ -68,7 +68,6 @@ function CreateTopic() {
     "image",
     "video",
   ];
-  // console.log(process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL)
 
   const SaymanGoBack = () => {
     router.push("/members-only-content/Dashboard/member-forum");
@@ -110,8 +109,6 @@ function CreateTopic() {
       }
     }
   };
-
- 
 
   const handleButtonClick = () => {
     fileInputRef.current.click();
@@ -167,16 +164,14 @@ function CreateTopic() {
         type: "success",
       });
       setTimeout(() => {
-        router.push("/members-only-content/Dashboard/member-forum")
+        router.push("/members-only-content/Dashboard/member-forum");
       }, 2000);
-    } 
-    catch (error) {
+    } catch (error) {
       // Handle errors
 
       console.error("Error making API call:", error);
     }
   };
-
 
   return (
     <>
@@ -239,7 +234,7 @@ function CreateTopic() {
         </div>
         <div className="overflow-hidden  ">
           <ReactQuill
-            // style={{ height: "300px" }} 
+            // style={{ height: "300px" }}
             modules={modules}
             theme="snow"
             value={content}

@@ -123,7 +123,7 @@ const RegistrationForm = ({ params }) => {
         type: "success",
       });
     } catch (error) {
-      console.log(error);
+   
       setAlertDetails({
         isOpen: true,
         message: error?.response?.data?.message || "Failed to register event",
@@ -144,7 +144,7 @@ const RegistrationForm = ({ params }) => {
   ) => (
     <div>
       <label className="block font-bold text-[#333333] mb-2">
-        {console.log(name,"name")}
+       
         {label}
         {required && "*"}
       </label>

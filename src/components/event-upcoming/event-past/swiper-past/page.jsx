@@ -14,7 +14,6 @@ import Skeleton from "@/components/skeleton/skeleton";
 function SwiperSlideIncoming({ data, error }) {
   const router = useRouter();
   const handleClick = (id) => {
-    console.log(id);
     router.push(`/events/${id}`);
   };
 

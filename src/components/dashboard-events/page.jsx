@@ -28,7 +28,7 @@ function DashboardEvents() {
   );
 
   const handleClick = (id) => {
-    console.log(id);
+   
     router.push(`/events/${id}`);
   };
 

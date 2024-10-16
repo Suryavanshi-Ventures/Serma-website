@@ -167,7 +167,7 @@ function Reply() {
         position: "top",
         type: "danger",
       });
-      console.log(error);
+     
       console.error("Image upload error:", error);
     }
   };

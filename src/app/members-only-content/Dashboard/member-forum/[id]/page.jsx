@@ -44,7 +44,7 @@ function GetTopic() {
   );
 
   const FilteredTopic = topic?.result;
- const content = FilteredTopic?.data?.content || ""
+  const content = FilteredTopic?.data?.content || "";
   const handleQuote = (quoteId) => {
     router.push(
       `/members-only-content/Dashboard/member-forum/quote/${quoteId}`
@@ -261,15 +261,18 @@ function GetTopic() {
             /> }}
           /> */}
 
-<div>
-      <p
-        className="leading-loose w-full lg:w-[900px] overflow-hidden"
-      
-        // Set the innerHTML using dangerouslySetInnerHTML, controlled by the child component
-        dangerouslySetInnerHTML={{ __html: content.substring(0, 200) }}
-      />
-      <ReadMoreLess content={content} maxLength={200} className="text-primary text-xs" />
-    </div>
+          <div>
+            <p
+              className="leading-loose w-full lg:w-[900px] overflow-hidden"
+              // Set the innerHTML using dangerouslySetInnerHTML, controlled by the child component
+              dangerouslySetInnerHTML={{ __html: content.substring(0, 200) }}
+            />
+            <ReadMoreLess
+              content={content}
+              maxLength={200}
+              className="text-primary text-xs"
+            />
+          </div>
 
           <div className="flex justify-between">
             <div className="text-gray text-sm flex max-xs:flex-col xs:items-center gap-5">

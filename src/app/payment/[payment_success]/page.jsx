@@ -66,9 +66,7 @@ const PymentSucess = () => {
 
     try {
       const response = await axios.post(API_URL_POST, BodyData, {});
-      console.log("API Response:", response.data);
-      console.log(response.data.status);
-      console.log(response.status);
+
       if (response.data.status === "success") {
         setIsRegistered(true);
         setAlertDetails({

@@ -19,7 +19,6 @@ const AdvanceRegistrationForm = ({ params }) => {
   const [stripe, setStripe] = useState(null);
   const [popUpForPayment, setPopUpForPayment] = useState(false);
 
-  console.log(details);
   useState(() => {
     const storedDetails = localStorage.getItem("ticket_details");
     if (storedDetails) {
@@ -113,7 +112,6 @@ const AdvanceRegistrationForm = ({ params }) => {
 
   const handleSubmit = async () => {
     if (!validate()) {
-      console.log("Form data is invalid. Fix errors.");
       return;
     }
 
@@ -163,8 +161,8 @@ const AdvanceRegistrationForm = ({ params }) => {
       console.log(error, "Payment intent error");
     }
   };
-  console.log(details);
-  console.log(paymentIntent);
+ 
+  
   // Reusable function to render input fields
   const renderInputField = (
     label,
@@ -344,7 +342,7 @@ const AdvanceRegistrationForm = ({ params }) => {
           </div>
         </form>
       </div>
-      {console.log(details)}
+     
       <Modal
         wantTocloseFromScreen={false}
         wantCrossButton={true}

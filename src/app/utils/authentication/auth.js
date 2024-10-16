@@ -9,8 +9,6 @@ export const authOptions = {
         password: { label: "Pasword", type: "password" },
       },
       async authorize(credentials) {
-        console.log(credentials, "credentials");
-
         try {
           const response = await axios.post(
             `${process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL}/auth/login`,
@@ -45,7 +43,6 @@ export const authOptions = {
             return Promise.resolve(ReturnedUserObj);
           }
         } catch (error) {
-          
           const ErrorObject = {
             responseMessage: error?.response?.data?.message,
             responseStatus: error?.response?.status,
@@ -67,7 +64,7 @@ export const authOptions = {
   callbacks: {
     async jwt(returnedObj) {
       const { token, user, account, trigger, session } = returnedObj;
-     
+
       // UPDATING SESSION IMAGE
       // if (trigger === "update") {
       //   const propertiesToCopy = [

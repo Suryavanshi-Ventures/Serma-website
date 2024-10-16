@@ -59,7 +59,7 @@ function Webinar() {
   };
 
   const handleGotoEvent = (id) => {
-    console.log(id);
+
     router.push(`/events/${id}`);
   };
 
@@ -132,7 +132,7 @@ function Webinar() {
                           {item?.title}
                         </p>
                       </div>
-                      <div className={`${!isExpanded ? "" : ""} items-center`}>
+                      <div className={`${!isExpanded ? "" : ""} items-center min-h-[70px]`}>
                         <p
                           className="responsive-Text font-semibold text-[#525971] overflow-y-auto"
                           dangerouslySetInnerHTML={{

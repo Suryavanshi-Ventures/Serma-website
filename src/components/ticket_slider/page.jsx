@@ -32,7 +32,7 @@ function TicketSlider({ data, error, loading }) {
     position: "bottom",
     type: "success",
   });
- 
+
   const [count, setCount] = useState(1);
   const ticket_price =
     data?.ticket_types &&
@@ -40,13 +40,13 @@ function TicketSlider({ data, error, loading }) {
       .filter((data) => data.id === selectedTicket?.id)
       .map((data) => data.base_price);
   const total_price = ticket_price * count;
- 
+
   const handleSelectTicket = (event) => {
     setSelectedTicket(event);
   };
 
   const handleOpenSlotPopUp = () => {
-    console.log(selectedTicket);
+ 
 
     if (selectedTicket && selectedTicket?.remain_tickets == 0) {
       setAlertDetails({
@@ -76,17 +76,17 @@ function TicketSlider({ data, error, loading }) {
       data?.event_slots?.length > 0 &&
       selectedTicket.remain_tickets > 0
     ) {
-      console.log("slot hai bhai");
+     
       setOpenSlotPopUp(true);
     } else {
-      console.log("slot ni hai bhai");
+      console.log("No slots available");
     }
   };
 
   const handleSelectSlot = (id) => {
     setTicketSlotId(id);
     setOpenCalculatePopUp(true);
-    console.log(id);
+    
   };
   const AddCount = () => {
     setCount(count + 1);
@@ -96,10 +96,10 @@ function TicketSlider({ data, error, loading }) {
       setCount(count - 1);
     }
   };
-  console.log(data?.id, `data.id`);
+  
 
   const handldeConntinueToForm = () => {
-    console.log(selectedTicket);
+   
 
     const ticket_details = {
       event_id: data?.id,
@@ -120,7 +120,7 @@ function TicketSlider({ data, error, loading }) {
     router.push(
       `/events/advance_registration_form/${advance_registration_form}`
     );
-    console.log("hell yeah");
+   
   };
 
   return (
@@ -243,11 +243,11 @@ function TicketSlider({ data, error, loading }) {
                         </span>
                       </div>
 
-                      <div className="overflow-y-auto hideScrollbar">
+                      <div className="overflow-y-auto min-h-[50px] hideScrollbar">
                         <ReadMoreLessWithout_html
                           text={event?.description}
                           maxLength={50}
-                          event_Id ={event?.id}
+                          event_Id={event?.id}
                         />
                         {/* {event?.description} */}
                       </div>
@@ -256,7 +256,7 @@ function TicketSlider({ data, error, loading }) {
                         <span className="text-primary">
                           {" "}
                           Registration: {"  "}{" "}
-                          {console.log(data.allow_registration)}
+                         
                         </span>{" "}
                         <span
                           className={` p-1 px-2 rounded-full ml-2 font-semibold ${

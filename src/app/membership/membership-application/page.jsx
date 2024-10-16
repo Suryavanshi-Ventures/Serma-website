@@ -54,8 +54,7 @@ const MemberShip = () => {
   const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const validateFullName = (name) => name.trim().length > 0;
   const validatePhone = (phone) => /^[0-9]{10}$/.test(phone);
-  console.log(apiError);
-  console.log(apiData);
+ 
   const handleInputChange = (setter, validator, field) => (e) => {
     const { value } = e.target;
     setter(value);
@@ -255,7 +254,7 @@ const MemberShip = () => {
                           <span className="text-primary">
                             {" "}
                             Membership Registration: {"  "}{" "}
-                            {console.log(item.active)}
+                          
                           </span>{" "}
                           <span
                             className={` p-1  px-2 rounded-full ml-2 font-semibold ${

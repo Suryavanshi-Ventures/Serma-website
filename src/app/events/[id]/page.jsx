@@ -85,7 +85,7 @@ function GetEvent({ params }) {
   const handleOpenForm = () => {
     const registration_form = eventId;
     router.push(`/events/registration_form/${registration_form}`);
-    console.log("Opening form for non-member...");
+   
   };
 
   const redirectToStripe = () => {
@@ -126,10 +126,10 @@ function GetEvent({ params }) {
                   <div className="underline lg:pr-24 my-4">
                     {upcomingEvents?.location}
                   </div>
-                  <div className="flex  gap-2">
-                    <div className="font-semibold">Description :</div>
+                  <div className="flex   gap-2">
+                    <div className="font-semibold mt-[14px] md:text-[17px]">Description :</div>
                     <div
-                      className="underline lg:pr-24 my-4"
+                      className=" lg:pr-24 my-4"
                       dangerouslySetInnerHTML={{
                         __html:
                           upcomingEvents?.description &&
@@ -162,7 +162,7 @@ function GetEvent({ params }) {
                       {upcomingEvents?.location}
                     </div>
                   </div>
-                  {console.log(isEventIsAdvance)}
+                 
                   {isEventIsAdvance !== "advance" ? (
                     <div
                       // onClick={() => setRegister(!register)}
@@ -216,7 +216,7 @@ function GetEvent({ params }) {
               </div>
             </div>
             {/* ---------------------------------------------------------- */}
-            {console.log(isEventIsAdvance)}
+          
 
             {isEventIsAdvance === "advance" && upcomingEvents.ticket_types ? (
               upcomingEvents.ticket_types.length > 0 ? (

@@ -50,7 +50,7 @@ const ContactDetails = () => {
     mobile: "",
     bio: "",
   });
-  console.log(ProfileData?.result?.data.profile_url);
+ 
   useEffect(() => {
     if (ProfileData?.result?.data) {
       setDetails({
@@ -112,7 +112,7 @@ const ContactDetails = () => {
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name);
+  
     setDetails({
       ...details,
       [name]: value,

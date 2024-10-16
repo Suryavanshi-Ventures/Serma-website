@@ -8,7 +8,6 @@ import Skeleton from "@/components/skeleton/skeleton";
 import useAxiosFetch from "@/hooks/axiosFetch";
 
 const TopicItem = ({ post, handleSeePost }) => {
-  console.log(post.user.profile_url)
   return (
     <div className="bg-white p-4 animate-fade  border-b border-[#D9D9D9] ">
       <div className="flex items-start space-x-4  ">
@@ -73,10 +72,13 @@ const TopicItem = ({ post, handleSeePost }) => {
           </div>
           <p
             className="mt-2 text-[#333333] text-[14px] w-[850px]  "
-            dangerouslySetInnerHTML={{ __html: post.content.length>200?post.content.slice(0,100)+"...":post.content }}
-          >
-            
-          </p>
+            dangerouslySetInnerHTML={{
+              __html:
+                post.content.length > 200
+                  ? post.content.slice(0, 100) + "..."
+                  : post.content,
+            }}
+          ></p>
         </div>
       </div>
     </div>

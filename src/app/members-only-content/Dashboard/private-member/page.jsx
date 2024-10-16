@@ -20,7 +20,7 @@ const Header = () => (
 
 const ContactRow = ({ data, onClick }) => (
   <>
-    {console.log(data.profile_url, "dd")}
+  
     <div className="grid grid-cols-4 place-items-center max-lg:gap-10 my-4 text-[12px] md:text-[16px] font-normal">
       <div onClick={() => onClick(data?.id)} className="cursor-pointer">
         <Image

@@ -40,13 +40,12 @@ const AdvanceCheckoutForm = ({
       setEventsDetails(JSON.parse(event_details));
     }
   }, []);
-  console.log(formData);
-  console.log(eventsDetails?.event_id);
+
   const handleCallEventRegisterApi = async (sucessPaymentId) => {
     const API_URL = `${
       process.env.NEXT_PUBLIC_APP_NEXTAUTH_URL
     }/event_registration/create/${eventsDetails && eventsDetails?.event_id}`;
-    console.log(sucessPaymentId);
+    
     if (sucessPaymentId) {
       const body = {
         first_name: formData.first_name,
@@ -127,7 +126,7 @@ const AdvanceCheckoutForm = ({
       setIsLoading(false);
     }
   };
-  console.log(PaymentId);
+
   return (
     <>
       {alertDetails.isOpen && (
